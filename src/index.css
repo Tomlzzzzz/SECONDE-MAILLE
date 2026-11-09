@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #111111;
+    overflow-x: hidden;
+  }
+}
+
+/* Surlignage jaune Vakita authentique (avec animation de révélation) */
+.marker-yellow {
+  position: relative;
+  display: inline;
+  background-image: linear-gradient(120deg, #FFEA00 0%, #FFEA00 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 88%;
+  background-position: 0 85%;
+  padding: 0 0.2em;
+  border-radius: 2px;
+  color: #111111;
+  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.marker-yellow-box {
+  background-color: #FFEA00;
+  color: #111111;
+  padding: 0.06em 0.32em;
+  border-radius: 4px;
+  display: inline-block;
+  transform: rotate(-0.8deg);
+  transition: transform 0.25s ease;
+}
+
+.marker-yellow-box:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Soulignement cousu La Vie est Belt */
+.belt-underline {
+  text-decoration: underline;
+  text-decoration-color: #FFEA00;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+/* Animation fluide de défilement horizontal */
+@keyframes ticker {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 34s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Animation de flottement doux */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Animation Laser Scan QR Moderne */
+@keyframes laserSweep {
+  0% { top: 10%; opacity: 0.8; }
+  50% { top: 86%; opacity: 1; }
+  100% { top: 10%; opacity: 0.8; }
+}
+
+.scanner-beam {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 2.5px;
+  background: #FFEA00;
+  box-shadow: 0 0 18px 4px rgba(255, 234, 0, 0.9);
+  border-radius: 999px;
+  animation: laserSweep 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Ondes radar autour du point GPS */
+@keyframes pulseRing {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+.gps-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background-color: rgba(255, 234, 0, 0.65);
+  animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Scrollbar minimaliste sur fond blanc */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
