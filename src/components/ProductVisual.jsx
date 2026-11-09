@@ -37,7 +37,7 @@ export default function ProductVisual({ type, className = "w-full h-64" }) {
   const media = PRODUCT_MEDIA[type] || PRODUCT_MEDIA.belt;
 
   return (
-    <div className={`relative overflow-hidden bg-slate-100 group select-none ${className}`}>
+    <div className={`relative overflow-hidden bg-teal-50/40 group select-none ${className}`}>
       <img
         src={media.photo}
         alt={media.tag}
@@ -45,20 +45,20 @@ export default function ProductVisual({ type, className = "w-full h-64" }) {
         loading="lazy"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-900/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0F2926]/65 via-[#0F2926]/10 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
       <div className="absolute top-3 left-3 flex items-center gap-1.5">
-        <span className="bg-white/95 backdrop-blur-md text-[#0F172A] text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs">
+        <span className="bg-white/95 backdrop-blur-md text-[#0F2926] text-[11px] font-bold px-2.5 py-1 rounded-full shadow-xs">
           {media.originBadge}
         </span>
       </div>
 
-      {/* Signature matière surlignée en bleu Vakita × La Vie est Belt */}
+      {/* Signature matière surlignée en vert d'eau Vakita × La Vie est Belt */}
       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-        <span className="bg-[#38BDF8] text-[#0F172A] text-[11px] font-extrabold px-2.5 py-1 rounded-sm tracking-tight shadow-xs">
+        <span className="bg-[#5EEAD4] text-[#0F2926] text-[11px] font-extrabold px-2.5 py-1 rounded-sm tracking-tight shadow-xs">
           {media.tag}
         </span>
-        <span className="bg-[#0F172A]/85 backdrop-blur-xs text-[#38BDF8] text-[10px] font-bold px-2 py-1 rounded">
+        <span className="bg-[#0F2926]/85 backdrop-blur-xs text-[#5EEAD4] text-[10px] font-bold px-2 py-1 rounded">
           59 × VAKITA
         </span>
       </div>

@@ -42,7 +42,7 @@ export const DONATION_BOXES = [
     directionSteps: [
       "Prendre la piste cyclable boulevard Gambetta sur 250m",
       "Tourner à droite sur Rue de Lannoy (façade briques du Nord)",
-      "La Box Bleue & Pneu se trouve devant le portail de La Belterie"
+      "La Box Vert d'eau & Pneu se trouve devant le portail de La Belterie"
     ],
     leagueLeader: "Ligue Roubaix Zéro Déchet"
   },
@@ -282,7 +282,7 @@ export const LEAGUES_DATA = [
     members: 428,
     totalKg: 842.5,
     points: 18450,
-    badge: "Maillot Bleu Vakita",
+    badge: "Maillot Vert d'eau Vakita",
     trend: "+14% cette semaine",
     isUserLeague: true
   },

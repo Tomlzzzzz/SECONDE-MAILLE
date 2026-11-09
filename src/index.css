@@ -6,28 +6,28 @@
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
     background-color: #FFFFFF;
-    color: #0F172A;
+    color: #0F2926;
     overflow-x: hidden;
   }
 }
 
-/* Surlignage Bleu Océan / Vakita × La Vie est Belt */
+/* Surlignage Vert d'eau / Vakita × La Vie est Belt */
 .marker-yellow {
   position: relative;
   display: inline;
-  background-image: linear-gradient(120deg, #7DD3FC 0%, #38BDF8 100%);
+  background-image: linear-gradient(120deg, #99F6E4 0%, #5EEAD4 100%);
   background-repeat: no-repeat;
   background-size: 100% 88%;
   background-position: 0 85%;
   padding: 0 0.22em;
   border-radius: 3px;
-  color: #0F172A;
+  color: #0F2926;
   transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .marker-yellow-box {
-  background-color: #38BDF8;
-  color: #0F172A;
+  background-color: #5EEAD4;
+  color: #0F2926;
   padding: 0.06em 0.34em;
   border-radius: 6px;
   display: inline-block;
@@ -37,13 +37,13 @@
 
 .marker-yellow-box:hover {
   transform: rotate(0deg) scale(1.02);
-  background-color: #7DD3FC;
+  background-color: #99F6E4;
 }
 
-/* Soulignement cousu Bleu La Vie est Belt */
+/* Soulignement cousu Vert d'eau La Vie est Belt */
 .belt-underline {
   text-decoration: underline;
-  text-decoration-color: #38BDF8;
+  text-decoration-color: #5EEAD4;
   text-decoration-thickness: 4px;
   text-underline-offset: 6px;
 }
@@ -74,7 +74,7 @@
   animation: floatSlow 4s ease-in-out infinite;
 }
 
-/* Animation Laser Scan QR Bleu */
+/* Animation Laser Scan QR Vert d'eau */
 @keyframes laserSweep {
   0% { top: 10%; opacity: 0.8; }
   50% { top: 86%; opacity: 1; }
@@ -86,8 +86,8 @@
   left: 8%;
   right: 8%;
   height: 2.5px;
-  background: #38BDF8;
-  box-shadow: 0 0 18px 4px rgba(56, 189, 248, 0.9);
+  background: #5EEAD4;
+  box-shadow: 0 0 18px 4px rgba(94, 234, 212, 0.9);
   border-radius: 999px;
   animation: laserSweep 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -103,7 +103,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 9999px;
-  background-color: rgba(56, 189, 248, 0.65);
+  background-color: rgba(94, 234, 212, 0.65);
   animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
@@ -116,9 +116,9 @@
   background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #99F6E4;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284C7;
+  background: #0D9488;
 }
