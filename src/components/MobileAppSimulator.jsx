@@ -136,7 +136,7 @@ export default function MobileAppSimulator({
         <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-2.5">
           <span>15:42</span>
           <div className="w-24 h-5 bg-[#0F2926] rounded-full flex items-center justify-center gap-1.5 px-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#5EEAD4] animate-ping" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#bae3d1] animate-ping" />
             <span className="text-[9px] font-bold text-white tracking-wider">59 LIVE</span>
           </div>
           <span className="text-[#0D9488] font-extrabold">{userProfile.points} pts</span>
@@ -151,7 +151,7 @@ export default function MobileAppSimulator({
 
           <button
             onClick={() => setActiveTab('leagues')}
-            className="flex items-center gap-1 bg-teal-50 hover:bg-[#5EEAD4] text-[#0F2926] px-2.5 py-1 rounded-full text-[11px] font-bold transition"
+            className="flex items-center gap-1 bg-teal-50 hover:bg-[#bae3d1] text-[#0F2926] px-2.5 py-1 rounded-full text-[11px] font-bold transition"
           >
             <Flame className="w-3.5 h-3.5 text-[#0D9488]" />
             <span>{progressPercentage}% Cagnotte</span>
@@ -168,12 +168,12 @@ export default function MobileAppSimulator({
           </div>
           <div className="w-full h-1.5 bg-teal-100 rounded-full mt-1 overflow-hidden">
             <div
-              className="h-full bg-[#5EEAD4] transition-all duration-500"
+              className="h-full bg-[#bae3d1] transition-all duration-500"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
         </div>
-        <span className="bg-[#5EEAD4] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
+        <span className="bg-[#bae3d1] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
           {isGoalReached ? 'DÉBLOQUÉ' : '+15 000 €'}
         </span>
       </div>
@@ -186,7 +186,7 @@ export default function MobileAppSimulator({
             {geoStatus !== 'granted' && (
               <div className="m-3 p-3.5 rounded-2xl bg-[#F5FBF9] border border-teal-200/80 shadow-xs">
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#5EEAD4] flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#bae3d1] flex items-center justify-center shrink-0">
                     <Compass
                       className={`w-5 h-5 text-[#0F2926] ${geoStatus === 'locating' ? 'animate-spin' : ''}`}
                     />
@@ -202,7 +202,7 @@ export default function MobileAppSimulator({
                       onClick={handleRequestGeolocation}
                       className="mt-2 w-full bg-[#0F2926] hover:bg-[#0D9488] text-white text-xs font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 transition"
                     >
-                      <MapPin className="w-3.5 h-3.5 text-[#5EEAD4]" />
+                      <MapPin className="w-3.5 h-3.5 text-[#bae3d1]" />
                       {geoStatus === 'locating'
                         ? 'Recherche des Box autour de vous...'
                         : 'Activer ma position GPS'}
@@ -255,7 +255,7 @@ export default function MobileAppSimulator({
                       : 'M 200 115 Q 250 135 295 152'
                   }
                   fill="none"
-                  stroke="#5EEAD4"
+                  stroke="#bae3d1"
                   strokeWidth="2.5"
                   strokeDasharray="5 5"
                   strokeLinecap="round"
@@ -304,9 +304,9 @@ export default function MobileAppSimulator({
                     <div
                       className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold flex items-center gap-1 shadow-md transition ${
                         isSelected
-                          ? 'bg-[#5EEAD4] text-[#0F2926] ring-2 ring-[#0F2926]'
+                          ? 'bg-[#bae3d1] text-[#0F2926] ring-2 ring-[#0F2926]'
                           : box.status === 'POP-UP LIVE'
-                          ? 'bg-[#0F2926] text-[#5EEAD4]'
+                          ? 'bg-[#0F2926] text-[#bae3d1]'
                           : 'bg-white text-[#0F2926] border border-teal-200'
                       }`}
                     >
@@ -330,7 +330,7 @@ export default function MobileAppSimulator({
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <span className="bg-[#5EEAD4] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                    <span className="bg-[#bae3d1] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
                       {selectedBox.bonusMultiplier}
                     </span>
                     <span className="text-[11px] font-semibold text-slate-400">
@@ -412,7 +412,7 @@ export default function MobileAppSimulator({
                   <ol className="mt-2.5 space-y-1.5 border-t border-teal-200/60 pt-2 text-[11px] text-slate-700">
                     {selectedBox.directionSteps.map((step, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="w-4 h-4 rounded-full bg-[#5EEAD4] text-[#0F2926] font-extrabold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-4 h-4 rounded-full bg-[#bae3d1] text-[#0F2926] font-extrabold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
                           {idx + 1}
                         </span>
                         <span className="leading-snug">{step}</span>
@@ -427,7 +427,7 @@ export default function MobileAppSimulator({
                   setScanState('idle');
                   setActiveTab('scan');
                 }}
-                className="mt-3.5 w-full bg-[#5EEAD4] hover:bg-[#0D9488] hover:text-white text-[#0F2926] font-extrabold text-xs py-3 px-4 rounded-2xl shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99]"
+                className="mt-3.5 w-full bg-[#bae3d1] hover:bg-[#0D9488] hover:text-white text-[#0F2926] font-extrabold text-xs py-3 px-4 rounded-2xl shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99]"
               >
                 <QrCode className="w-4 h-4" />
                 J'ai déposé mes articles → Scanner le QR Box
@@ -443,7 +443,7 @@ export default function MobileAppSimulator({
               {/* Étape 1 : Ce qui se passe sur la Box après le dépôt */}
               <div className="bg-[#F5FBF9] border border-teal-200/70 rounded-2xl p-3">
                 <div className="flex items-center justify-between">
-                  <span className="bg-[#0F2926] text-[#5EEAD4] text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                  <span className="bg-[#0F2926] text-[#bae3d1] text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
                     1. Balance connectée de la Box
                   </span>
                   <span className="text-[10px] font-bold text-[#0D9488]">{selectedBox.id}</span>
@@ -458,7 +458,7 @@ export default function MobileAppSimulator({
                       <Scale className="w-3.5 h-3.5 text-[#0D9488]" />
                       Poids pesé dans la Box :
                     </span>
-                    <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold px-2.5 py-0.5 rounded-full text-xs">
+                    <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold px-2.5 py-0.5 rounded-full text-xs">
                       {weightCalculation.weightKg.toFixed(1)} kg → +{weightCalculation.totalPoints} pts
                     </span>
                   </div>
@@ -492,7 +492,7 @@ export default function MobileAppSimulator({
                         }}
                         className={`text-[9.5px] font-bold px-2 py-0.5 rounded-full border transition ${
                           Math.abs(depositWeightKg - preset.w) < 0.05
-                            ? 'bg-[#0F2926] text-[#5EEAD4] border-[#0F2926]'
+                            ? 'bg-[#0F2926] text-[#bae3d1] border-[#0F2926]'
                             : 'bg-teal-50/40 text-slate-600 border-teal-200/70 hover:border-teal-400'
                         }`}
                       >
@@ -523,7 +523,7 @@ export default function MobileAppSimulator({
                         <div
                           key={b.id}
                           className={`h-full rounded-full transition-colors ${
-                            active ? 'bg-[#5EEAD4]' : 'bg-teal-200/70'
+                            active ? 'bg-[#bae3d1]' : 'bg-teal-200/70'
                           }`}
                         />
                       );
@@ -533,7 +533,7 @@ export default function MobileAppSimulator({
                     className="absolute top-0 -translate-x-1/2 transition-all duration-200"
                     style={{ left: `${timelineCursorPercent}%` }}
                   >
-                    <div className="w-3.5 h-3.5 rounded-full bg-[#0F2926] border-2 border-[#5EEAD4] shadow-xs" />
+                    <div className="w-3.5 h-3.5 rounded-full bg-[#0F2926] border-2 border-[#bae3d1] shadow-xs" />
                   </div>
                 </div>
 
@@ -559,7 +559,7 @@ export default function MobileAppSimulator({
                             {bracket.rangeLabel}
                           </span>
                           {bracket.bonusPoints > 0 && (
-                            <span className="bg-[#0F2926] text-[#5EEAD4] text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full">
+                            <span className="bg-[#0F2926] text-[#bae3d1] text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full">
                               +{bracket.bonusPoints} bonus
                             </span>
                           )}
@@ -581,15 +581,15 @@ export default function MobileAppSimulator({
                 {scanState !== 'success' ? (
                   <>
                     <div className="scanner-beam" />
-                    <div className="w-24 h-24 rounded-2xl border-2 border-[#5EEAD4]/90 relative flex items-center justify-center bg-white/5 backdrop-blur-xs">
+                    <div className="w-24 h-24 rounded-2xl border-2 border-[#bae3d1]/90 relative flex items-center justify-center bg-white/5 backdrop-blur-xs">
                       <QrCode
-                        className={`w-14 h-14 text-[#5EEAD4] transition-transform ${
+                        className={`w-14 h-14 text-[#bae3d1] transition-transform ${
                           scanState === 'scanning' ? 'scale-90 opacity-60 animate-pulse' : ''
                         }`}
                       />
                     </div>
                     <div className="mt-2 text-center">
-                      <span className="text-[10px] font-extrabold text-[#5EEAD4] block tracking-wider">
+                      <span className="text-[10px] font-extrabold text-[#bae3d1] block tracking-wider">
                         {scanState === 'scanning'
                           ? 'Décodage des infos de la Box & du poids...'
                           : `QR Box : ${generatedBoxQrPayload}`}
@@ -601,10 +601,10 @@ export default function MobileAppSimulator({
                   </>
                 ) : (
                   <div className="text-center w-full h-full flex flex-col items-center justify-center">
-                    <div className="w-9 h-9 rounded-full bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center mb-1.5">
+                    <div className="w-9 h-9 rounded-full bg-[#bae3d1] text-[#0F2926] flex items-center justify-center mb-1.5">
                       <CheckCircle2 className="w-5 h-5" />
                     </div>
-                    <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-0.5 rounded-full">
+                    <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-0.5 rounded-full">
                       +{lastReward.points} POINTS RÉCUPÉRÉS !
                     </span>
                     <div className="text-[11px] font-bold text-white mt-1.5">
@@ -623,7 +623,7 @@ export default function MobileAppSimulator({
               disabled={scanState === 'scanning'}
               className="w-full bg-[#0F2926] hover:bg-[#0D9488] text-white font-extrabold text-xs py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 transition shrink-0"
             >
-              <Camera className="w-4 h-4 text-[#5EEAD4]" />
+              <Camera className="w-4 h-4 text-[#bae3d1]" />
               {scanState === 'scanning'
                 ? 'Lecture du QR Box & Poids...'
                 : scanState === 'success'
@@ -637,18 +637,18 @@ export default function MobileAppSimulator({
         {activeTab === 'leagues' && (
           <div className="p-4 space-y-4">
             <div className="bg-[#0F2926] text-white p-4 rounded-3xl">
-              <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
+              <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
                 Cagnotte Solidaire Vakita × La Vie est Belt
               </span>
               <h3 className="font-extrabold text-base mt-2 text-white">
-                Objectif 2 500 kg = <span className="text-[#5EEAD4]">15 000 € reversés</span> par les 2 marques
+                Objectif 2 500 kg = <span className="text-[#bae3d1]">15 000 € reversés</span> par les 2 marques
               </h3>
               <p className="text-xs text-teal-100/80 mt-1 leading-relaxed">
                 Dès que le compteur collectif atteint 2 500 kg, Vakita et La Vie est Belt versent 15 000 € supplémentaires aux associations Sea Shepherd et AlterEos (59).
               </p>
 
               <div className="mt-3 bg-white/10 p-3 rounded-2xl">
-                <div className="flex justify-between text-xs font-bold text-[#5EEAD4]">
+                <div className="flex justify-between text-xs font-bold text-[#bae3d1]">
                   <span>Progression collective</span>
                   <span>
                     {collectiveGoal.currentKg.toFixed(1)} / {collectiveGoal.targetKg} kg
@@ -656,7 +656,7 @@ export default function MobileAppSimulator({
                 </div>
                 <div className="w-full h-2.5 bg-white/20 rounded-full mt-1.5 overflow-hidden">
                   <div
-                    className="h-full bg-[#5EEAD4] rounded-full transition-all duration-500"
+                    className="h-full bg-[#bae3d1] rounded-full transition-all duration-500"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -679,7 +679,7 @@ export default function MobileAppSimulator({
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-6 h-6 rounded-full bg-[#0F2926] text-[#5EEAD4] font-extrabold text-xs flex items-center justify-center">
+                        <span className="w-6 h-6 rounded-full bg-[#0F2926] text-[#bae3d1] font-extrabold text-xs flex items-center justify-center">
                           {league.rank}
                         </span>
                         <div>
@@ -711,7 +711,7 @@ export default function MobileAppSimulator({
             <div className="bg-[#F5FBF9] border border-teal-200/70 rounded-3xl p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center font-extrabold text-base">
+                  <div className="w-11 h-11 rounded-2xl bg-[#bae3d1] text-[#0F2926] flex items-center justify-center font-extrabold text-base">
                     CA
                   </div>
                   <div>
@@ -754,7 +754,7 @@ export default function MobileAppSimulator({
 
             <div className="bg-teal-50 border border-teal-200 rounded-3xl p-4 text-[#0F2926]">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-[#0F2926] text-[#5EEAD4] px-2.5 py-0.5 rounded-full">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-[#0F2926] text-[#bae3d1] px-2.5 py-0.5 rounded-full">
                   Pass Avantages Pop-Up Lille
                 </span>
                 <Gift className="w-4 h-4 text-[#0D9488]" />
@@ -781,7 +781,7 @@ export default function MobileAppSimulator({
                   >
                     <div className="flex justify-between items-center text-[10px] text-slate-500 font-semibold">
                       <span>{item.boxName}</span>
-                      <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold px-2 py-0.5 rounded-full">
+                      <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold px-2 py-0.5 rounded-full">
                         +{item.points} pts
                       </span>
                     </div>
@@ -813,7 +813,7 @@ export default function MobileAppSimulator({
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center justify-center py-1 rounded-2xl transition ${
                 active
-                  ? 'bg-[#5EEAD4] text-[#0F2926] font-extrabold'
+                  ? 'bg-[#bae3d1] text-[#0F2926] font-extrabold'
                   : 'text-slate-400 hover:text-[#0F2926]'
               }`}
             >

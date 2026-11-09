@@ -11,11 +11,11 @@
   }
 }
 
-/* Surlignage Vert d'eau / Vakita × La Vie est Belt */
+/* Surlignage Vert d'eau #bae3d1 / Vakita × La Vie est Belt */
 .marker-yellow {
   position: relative;
   display: inline;
-  background-image: linear-gradient(120deg, #99F6E4 0%, #5EEAD4 100%);
+  background-image: linear-gradient(120deg, #d3efe2 0%, #bae3d1 100%);
   background-repeat: no-repeat;
   background-size: 100% 88%;
   background-position: 0 85%;
@@ -26,7 +26,7 @@
 }
 
 .marker-yellow-box {
-  background-color: #5EEAD4;
+  background-color: #bae3d1;
   color: #0F2926;
   padding: 0.06em 0.34em;
   border-radius: 6px;
@@ -37,13 +37,13 @@
 
 .marker-yellow-box:hover {
   transform: rotate(0deg) scale(1.02);
-  background-color: #99F6E4;
+  background-color: #d3efe2;
 }
 
-/* Soulignement cousu Vert d'eau La Vie est Belt */
+/* Soulignement cousu Vert d'eau #bae3d1 La Vie est Belt */
 .belt-underline {
   text-decoration: underline;
-  text-decoration-color: #5EEAD4;
+  text-decoration-color: #bae3d1;
   text-decoration-thickness: 4px;
   text-underline-offset: 6px;
 }
@@ -74,7 +74,7 @@
   animation: floatSlow 4s ease-in-out infinite;
 }
 
-/* Animation Laser Scan QR Vert d'eau */
+/* Animation Laser Scan QR Vert d'eau #bae3d1 */
 @keyframes laserSweep {
   0% { top: 10%; opacity: 0.8; }
   50% { top: 86%; opacity: 1; }
@@ -86,8 +86,8 @@
   left: 8%;
   right: 8%;
   height: 2.5px;
-  background: #5EEAD4;
-  box-shadow: 0 0 18px 4px rgba(94, 234, 212, 0.9);
+  background: #bae3d1;
+  box-shadow: 0 0 18px 4px rgba(186, 227, 209, 0.9);
   border-radius: 999px;
   animation: laserSweep 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
@@ -103,7 +103,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 9999px;
-  background-color: rgba(94, 234, 212, 0.65);
+  background-color: rgba(186, 227, 209, 0.75);
   animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
@@ -116,7 +116,7 @@
   background: #FFFFFF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #99F6E4;
+  background: #bae3d1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {

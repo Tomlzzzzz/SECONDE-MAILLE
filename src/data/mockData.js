@@ -347,7 +347,7 @@ export const MERCH_PRODUCTS = [
       { label: "Sur-mesure (Découpe sur place)", stockPopUp: 15, status: "ATELIER LIVE" }
     ],
     visualType: "belt",
-    accentColor: "#38BDF8",
+    accentColor: "#bae3d1",
     batchNumber: "SÉRIE #01 — 150 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -439,7 +439,7 @@ export const MERCH_PRODUCTS = [
       { label: "XL", stockPopUp: 7, status: "EN STOCK POP-UP" }
     ],
     visualType: "tshirt",
-    accentColor: "#38BDF8",
+    accentColor: "#bae3d1",
     batchNumber: "SÉRIE #01 — 200 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -497,7 +497,7 @@ export const MERCH_PRODUCTS = [
       { label: "T2 (58-60 cm)", stockPopUp: 5, status: "STOCK LIMITÉ" }
     ],
     visualType: "hat",
-    accentColor: "#38BDF8",
+    accentColor: "#bae3d1",
     batchNumber: "SÉRIE #01 — 80 EXEMPLAIRES NUMÉROTÉS"
   }
 ];

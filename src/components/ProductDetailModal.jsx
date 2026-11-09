@@ -23,7 +23,7 @@ export default function ProductDetailModal({ product, onClose }) {
         {/* Barre supérieure épurée */}
         <div className="bg-white px-6 py-4 flex items-center justify-between border-b border-teal-100/70">
           <div className="flex items-center gap-2.5">
-            <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
+            <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
               Traçabilité • {product.id}
             </span>
             <span className="text-xs font-semibold text-slate-400 hidden sm:inline">
@@ -32,7 +32,7 @@ export default function ProductDetailModal({ product, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-teal-50 hover:bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center transition"
+            className="w-9 h-9 rounded-full bg-teal-50 hover:bg-[#bae3d1] text-[#0F2926] flex items-center justify-center transition"
             aria-label="Fermer"
           >
             <X className="w-4 h-4" />
@@ -66,14 +66,14 @@ export default function ProductDetailModal({ product, onClose }) {
 
             {/* Impact Écologique */}
             <div className="p-6 bg-[#0F2926] text-white">
-              <div className="flex items-center gap-2 text-[#5EEAD4] text-xs font-extrabold uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-[#bae3d1] text-xs font-extrabold uppercase tracking-wider">
                 <Recycle className="w-4 h-4" />
                 <span>Impact Matière Revalorisée</span>
               </div>
               <p className="text-xs text-teal-100/90 mt-1.5 leading-relaxed">
                 {product.impact}
               </p>
-              <div className="mt-3 pt-3 border-t border-white/10 text-[11px] font-semibold text-[#5EEAD4]">
+              <div className="mt-3 pt-3 border-t border-white/10 text-[11px] font-semibold text-[#bae3d1]">
                 Origine : {product.origin}
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function ProductDetailModal({ product, onClose }) {
                 <span className="bg-teal-50 text-[#0D9488] font-bold text-xs px-3 py-1 rounded-full">
                   {product.category}
                 </span>
-                <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                   {totalPopUpStock} exemplaires dispo au Pop-Up
                 </span>
               </div>
@@ -130,7 +130,7 @@ export default function ProductDetailModal({ product, onClose }) {
                     <span>Tailles & Suivi de Stock en Direct (Pop-Up Lille)</span>
                   </label>
                   <span className="text-[11px] font-bold text-[#0D9488] flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#5EEAD4] animate-ping" />
+                    <span className="w-2 h-2 rounded-full bg-[#bae3d1] animate-ping" />
                     Temps réel
                   </span>
                 </div>
@@ -156,7 +156,7 @@ export default function ProductDetailModal({ product, onClose }) {
                             {sizeObj.status}
                           </div>
                         </div>
-                        <span className="bg-[#0F2926] text-[#5EEAD4] font-extrabold text-xs px-2.5 py-1 rounded-full">
+                        <span className="bg-[#0F2926] text-[#bae3d1] font-extrabold text-xs px-2.5 py-1 rounded-full">
                           {sizeObj.stockPopUp} dispo
                         </span>
                       </button>
@@ -184,7 +184,7 @@ export default function ProductDetailModal({ product, onClose }) {
             {/* Encart Zéro Commande en Ligne */}
             <div className="bg-teal-50 border border-teal-200 rounded-2xl p-4 text-[#0F2926]">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#0F2926] text-[#5EEAD4] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#0F2926] text-[#bae3d1] flex items-center justify-center shrink-0">
                   <Store className="w-5 h-5" />
                 </div>
                 <div>

@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         vakita: {
-          aqua: '#5EEAD4',
+          aqua: '#bae3d1',
           deep: '#0D9488',
           black: '#0F2926',
         },

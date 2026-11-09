@@ -133,21 +133,21 @@ export default function App() {
       <div className="bg-[#0F2926] text-white overflow-hidden py-2 border-b border-teal-900">
         <div className="animate-ticker flex items-center gap-10 text-xs font-semibold tracking-wide">
           <span className="flex items-center gap-2">
-            <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold px-2 py-0.5 rounded-xs text-[10px]">
+            <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold px-2 py-0.5 rounded-xs text-[10px]">
               SECONDE MAILLE
             </span>
             <span>Collaboration engagée Vakita × La Vie est Belt (Roubaix - 59)</span>
           </span>
           <span className="text-teal-600">•</span>
           <span>
-            Filet de pêche marin (<strong className="text-[#5EEAD4]">Vakita</strong>) × Pneu de vélo (<strong className="text-[#5EEAD4]">La Vie est Belt</strong>)
+            Filet de pêche marin (<strong className="text-[#bae3d1]">Vakita</strong>) × Pneu de vélo (<strong className="text-[#bae3d1]">La Vie est Belt</strong>)
           </span>
           <span className="text-teal-600">•</span>
           <span>
             Pas de vente en ligne : suivi des stocks en direct & rendez-vous au Pop-Up Gare Saint-Sauveur (Lille)
           </span>
           <span className="text-teal-600">•</span>
-          <span className="text-[#5EEAD4] font-bold">
+          <span className="text-[#bae3d1] font-bold">
             Cagnotte Box : {collectiveGoal.currentKg.toFixed(1)} / {collectiveGoal.targetKg} kg = 15 000 € offerts aux associations
           </span>
           <span className="text-teal-600">•</span>
@@ -171,7 +171,7 @@ export default function App() {
             </a>
             <a href="#merch" className="hover:text-[#0D9488] transition flex items-center gap-1.5">
               <span>Vestiaire & Stocks Pop-Up</span>
-              <span className="bg-[#5EEAD4] text-[#0F2926] text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">
+              <span className="bg-[#bae3d1] text-[#0F2926] text-[10px] font-extrabold px-1.5 py-0.2 rounded-full">
                 Live
               </span>
             </a>
@@ -211,7 +211,7 @@ export default function App() {
               onClick={() => setViewMode('app')}
               className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 transition ${
                 viewMode === 'app'
-                  ? 'bg-[#5EEAD4] text-[#0F2926] shadow-xs'
+                  ? 'bg-[#bae3d1] text-[#0F2926] shadow-xs'
                   : 'text-slate-600 hover:text-[#0F2926]'
               }`}
             >
@@ -226,11 +226,11 @@ export default function App() {
       {toastNotification && (
         <div className="fixed bottom-6 right-6 z-50 max-w-md bg-[#0F2926] text-white rounded-3xl p-4 shadow-soft-lg border border-teal-400/40 animate-float">
           <div className="flex items-start gap-3.5">
-            <div className="bg-[#5EEAD4] text-[#0F2926] px-3 py-1.5 rounded-2xl font-extrabold text-xs shrink-0">
+            <div className="bg-[#bae3d1] text-[#0F2926] px-3 py-1.5 rounded-2xl font-extrabold text-xs shrink-0">
               +{toastNotification.points} pts
             </div>
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#5EEAD4] block">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#bae3d1] block">
                 Synchronisé avec le réseau Box 59
               </span>
               <h4 className="font-bold text-sm mt-0.5 text-white">
@@ -249,7 +249,7 @@ export default function App() {
         <main className="flex-1 py-10 px-4 bg-[#F5FBF9]">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-5 space-y-5">
-              <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full inline-block">
+              <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full inline-block">
                 Application Mobile Seconde Maille
               </span>
               <h1 className="font-extrabold text-3xl sm:text-4xl tracking-tight leading-tight text-[#0F2926]">
@@ -308,7 +308,7 @@ export default function App() {
                 {/* HERO ÉDITORIAL LUMINEUX SUR FOND BLANC & SURLIGNAGE VERT D'EAU */}
                 <section className="relative bg-white rounded-3xl border border-teal-200/70 p-6 sm:p-10 lg:p-12 shadow-soft overflow-hidden">
                   <div className="flex flex-wrap items-center gap-2 mb-6">
-                    <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                    <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                       COLLABORATION ÉVÉNEMENT • LILLE & ROUBAIX (59)
                     </span>
                     <span className="bg-teal-50 text-[#0D9488] font-semibold text-xs px-3 py-1 rounded-full">
@@ -329,7 +329,7 @@ export default function App() {
                     {PROCESS_STEPS.map((step) => (
                       <div
                         key={step.number}
-                        className="bg-[#F5FBF9] hover:bg-teal-50 border border-teal-200/60 hover:border-[#5EEAD4] rounded-2xl p-3.5 transition-all duration-300 group"
+                        className="bg-[#F5FBF9] hover:bg-teal-50 border border-teal-200/60 hover:border-[#bae3d1] rounded-2xl p-3.5 transition-all duration-300 group"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-[11px] font-extrabold text-slate-400 group-hover:text-[#0D9488]">
@@ -350,7 +350,7 @@ export default function App() {
                   {/* 3 Cartes Matières : Filet de pêche x Pneu x Seconde main */}
                   <div className="mt-8 pt-8 border-t border-teal-100/70 grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="p-4 rounded-2xl bg-[#F5FBF9] border border-teal-200/60 flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-[#bae3d1] text-[#0F2926] flex items-center justify-center shrink-0">
                         <Anchor className="w-5 h-5" />
                       </div>
                       <div>
@@ -384,7 +384,7 @@ export default function App() {
                     </div>
 
                     <div className="p-4 rounded-2xl bg-[#F5FBF9] border border-teal-200/60 flex items-start gap-3.5">
-                      <div className="w-10 h-10 rounded-xl bg-[#0F2926] text-[#5EEAD4] flex items-center justify-center shrink-0">
+                      <div className="w-10 h-10 rounded-xl bg-[#0F2926] text-[#bae3d1] flex items-center justify-center shrink-0">
                         <Recycle className="w-5 h-5" />
                       </div>
                       <div>
@@ -409,7 +409,7 @@ export default function App() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <div>
-                      <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                      <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                         DÉFI COLLECTIF DES BOX • LIGUES DONATEURS
                       </span>
                       <h2 className="font-extrabold text-2xl sm:text-3xl text-[#0F2926] mt-2.5 tracking-tight">
@@ -420,7 +420,7 @@ export default function App() {
                       onClick={handleSimulateCollectiveMilestone}
                       className="bg-[#0F2926] hover:bg-[#0D9488] text-white font-bold text-xs px-4 py-2.5 rounded-full transition flex items-center gap-2 shrink-0 shadow-xs"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-[#5EEAD4]" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#bae3d1]" />
                       Simuler l'objectif atteint (2 500 kg)
                     </button>
                   </div>
@@ -443,13 +443,13 @@ export default function App() {
 
                     <div className="w-full h-4 bg-teal-50 rounded-full mt-3.5 overflow-hidden p-0.5 border border-teal-200">
                       <div
-                        className="h-full bg-gradient-to-r from-[#5EEAD4] to-[#0D9488] rounded-full transition-all duration-700"
+                        className="h-full bg-gradient-to-r from-[#bae3d1] to-[#0D9488] rounded-full transition-all duration-700"
                         style={{ width: `${progressPercentage}%` }}
                       />
                     </div>
 
                     {isGoalReached ? (
-                      <div className="mt-4 bg-[#5EEAD4] text-[#0F2926] px-4 py-3 rounded-xl font-bold text-xs flex items-center justify-between">
+                      <div className="mt-4 bg-[#bae3d1] text-[#0F2926] px-4 py-3 rounded-xl font-bold text-xs flex items-center justify-between">
                         <span>
                           🎉 Objectif collectif atteint ! Vakita et La Vie est Belt débloquent le don de 15 000 € pour les associations !
                         </span>
@@ -491,7 +491,7 @@ export default function App() {
                   <div className="mt-6 bg-white rounded-2xl p-5 sm:p-6 border border-teal-200/70">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-xl bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-xl bg-[#bae3d1] text-[#0F2926] flex items-center justify-center">
                           <Scale className="w-4 h-4" />
                         </div>
                         <div>
@@ -511,22 +511,22 @@ export default function App() {
                     {/* Frise visuelle horizontale des 4 fourchettes de poids */}
                     <div className="relative">
                       <div className="hidden md:block absolute top-6 left-8 right-8 h-1.5 bg-teal-50 rounded-full overflow-hidden">
-                        <div className="w-full h-full bg-gradient-to-r from-teal-200 via-[#5EEAD4] to-[#0D9488]" />
+                        <div className="w-full h-full bg-gradient-to-r from-teal-200 via-[#bae3d1] to-[#0D9488]" />
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 relative z-10">
                         {WEIGHT_POINT_BRACKETS.map((bracket, index) => (
                           <div
                             key={bracket.id}
-                            className="bg-[#F5FBF9] hover:bg-teal-50/70 border border-teal-200/70 hover:border-[#5EEAD4] rounded-2xl p-4 transition flex flex-col justify-between"
+                            className="bg-[#F5FBF9] hover:bg-teal-50/70 border border-teal-200/70 hover:border-[#bae3d1] rounded-2xl p-4 transition flex flex-col justify-between"
                           >
                             <div>
                               <div className="flex items-center justify-between">
-                                <span className="w-6 h-6 rounded-full bg-[#0F2926] text-[#5EEAD4] font-extrabold text-xs flex items-center justify-center">
+                                <span className="w-6 h-6 rounded-full bg-[#0F2926] text-[#bae3d1] font-extrabold text-xs flex items-center justify-center">
                                   {index + 1}
                                 </span>
                                 {bracket.bonusPoints > 0 ? (
-                                  <span className="bg-[#5EEAD4] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                                  <span className="bg-[#bae3d1] text-[#0F2926] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
                                     +{bracket.bonusPoints} pts bonus
                                   </span>
                                 ) : (
@@ -583,7 +583,7 @@ export default function App() {
                       <div className="mt-4 bg-[#F5FBF9] rounded-2xl p-4 border border-teal-200/60 space-y-1.5 text-xs">
                         <div className="flex items-center justify-between font-bold text-[#0F2926]">
                           <span>Pneus revalorisés aujourd'hui :</span>
-                          <span className="bg-[#5EEAD4] text-[#0F2926] px-2 py-0.5 rounded-md font-extrabold">
+                          <span className="bg-[#bae3d1] text-[#0F2926] px-2 py-0.5 rounded-md font-extrabold">
                             Seulement 15%
                           </span>
                         </div>
@@ -603,7 +603,7 @@ export default function App() {
                     <div>
                       <div className="flex items-center justify-between mb-5">
                         <VakitaLogo blueBox={true} />
-                        <span className="text-[11px] font-extrabold bg-[#5EEAD4] text-[#0F2926] px-3 py-1 rounded-full">
+                        <span className="text-[11px] font-extrabold bg-[#bae3d1] text-[#0F2926] px-3 py-1 rounded-full">
                           Média 100% Indépendant
                         </span>
                       </div>
@@ -614,7 +614,7 @@ export default function App() {
                         Fondé par <strong>Hugo Clément</strong>, le média tire son nom du <em>Vaquita</em>, le plus petit cétacé du monde décimé par les filets de pêche illégaux. L'objectif de Vakita : informer sur l'écologie et la cause animale tout en créant de l'entraide concrète.
                       </p>
                       <div className="mt-4 bg-[#0F2926] text-white rounded-2xl p-4 space-y-1.5 text-xs">
-                        <div className="flex items-center justify-between font-bold text-[#5EEAD4]">
+                        <div className="flex items-center justify-between font-bold text-[#bae3d1]">
                           <span>Pourquoi « Seconde Maille » ?</span>
                           <span>Investigation + Terrain</span>
                         </div>
@@ -634,7 +634,7 @@ export default function App() {
                 <section id="merch" className="space-y-6">
                   <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <div className="inline-flex items-center gap-2 bg-[#5EEAD4] text-[#0F2926] px-3 py-1 rounded-full text-xs font-extrabold mb-2">
+                      <div className="inline-flex items-center gap-2 bg-[#bae3d1] text-[#0F2926] px-3 py-1 rounded-full text-xs font-extrabold mb-2">
                         <Store className="w-3.5 h-3.5" />
                         <span>VITRINE DU POP-UP • PAS DE COMMANDE EN LIGNE</span>
                       </div>
@@ -659,7 +659,7 @@ export default function App() {
                           onClick={() => setSelectedCategory(cat)}
                           className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition ${
                             selectedCategory === cat
-                              ? 'bg-[#0F2926] text-[#5EEAD4] shadow-xs'
+                              ? 'bg-[#0F2926] text-[#bae3d1] shadow-xs'
                               : 'text-slate-600 hover:text-[#0F2926]'
                           }`}
                         >
@@ -677,12 +677,12 @@ export default function App() {
                         <div
                           key={product.id}
                           onClick={() => setActiveProductModal(product)}
-                          className="cursor-pointer bg-white rounded-3xl border border-teal-200/70 overflow-hidden shadow-soft hover:shadow-soft-lg hover:border-[#5EEAD4] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+                          className="cursor-pointer bg-white rounded-3xl border border-teal-200/70 overflow-hidden shadow-soft hover:shadow-soft-lg hover:border-[#bae3d1] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
                         >
                           <div>
                             <div className="relative">
                               <ProductVisual type={product.visualType} className="w-full h-56" />
-                              <span className="absolute top-3 right-3 bg-[#0F2926]/90 backdrop-blur-md text-[#5EEAD4] font-extrabold text-[11px] px-3 py-1 rounded-full">
+                              <span className="absolute top-3 right-3 bg-[#0F2926]/90 backdrop-blur-md text-[#bae3d1] font-extrabold text-[11px] px-3 py-1 rounded-full">
                                 {totalStock} en stock Pop-Up
                               </span>
                             </div>
@@ -711,7 +711,7 @@ export default function App() {
                                       key={i}
                                       className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${
                                         sz.stockPopUp <= 4
-                                          ? 'bg-teal-50 border-[#5EEAD4] text-[#0D9488]'
+                                          ? 'bg-teal-50 border-[#bae3d1] text-[#0D9488]'
                                           : 'bg-slate-50 border-slate-200 text-slate-700'
                                       }`}
                                     >
@@ -727,7 +727,7 @@ export default function App() {
                             <span className="text-xs font-extrabold text-[#0F2926]">
                               {product.indicativePrice.split('(')[0]}
                             </span>
-                            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold bg-teal-50 group-hover:bg-[#5EEAD4] text-[#0F2926] px-3.5 py-2 rounded-full transition">
+                            <span className="inline-flex items-center gap-1.5 text-xs font-extrabold bg-teal-50 group-hover:bg-[#bae3d1] text-[#0F2926] px-3.5 py-2 rounded-full transition">
                               <Eye className="w-3.5 h-3.5" />
                               Détails & Tailles
                             </span>
@@ -745,14 +745,14 @@ export default function App() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
                     <div>
-                      <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                      <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                         FORMAT VAKITA • REPORTAGES & PRÉPARATION ATELIER
                       </span>
                       <h2 className="font-extrabold text-2xl sm:text-3xl mt-2.5 tracking-tight">
                         Du déchet déposé en Box jusqu'au vêtement du Pop-Up
                       </h2>
                     </div>
-                    <span className="text-xs font-bold text-[#5EEAD4] bg-white/10 px-3.5 py-1.5 rounded-full">
+                    <span className="text-xs font-bold text-[#bae3d1] bg-white/10 px-3.5 py-1.5 rounded-full">
                       3 immersions vidéo
                     </span>
                   </div>
@@ -769,7 +769,7 @@ export default function App() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E1C] via-[#0A1E1C]/40 to-transparent" />
 
                         <div className="relative z-10 flex items-center justify-between">
-                          <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
+                          <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
                             {activeReportage.tag}
                           </span>
                           <span className="bg-[#0F2926]/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
@@ -780,11 +780,11 @@ export default function App() {
                         <div className="relative z-10 my-auto flex flex-col items-center">
                           <button
                             onClick={() => setIsPlayingVideo(!isPlayingVideo)}
-                            className="w-16 h-16 rounded-full bg-[#5EEAD4] text-[#0F2926] flex items-center justify-center shadow-lg hover:scale-105 transition"
+                            className="w-16 h-16 rounded-full bg-[#bae3d1] text-[#0F2926] flex items-center justify-center shadow-lg hover:scale-105 transition"
                           >
                             <Play className="w-6 h-6 fill-current ml-0.5" />
                           </button>
-                          <span className="mt-2 text-xs font-bold text-[#5EEAD4]">
+                          <span className="mt-2 text-xs font-bold text-[#bae3d1]">
                             {isPlayingVideo ? 'Lecture en cours...' : 'Regarder le reportage'}
                           </span>
                         </div>
@@ -793,7 +793,7 @@ export default function App() {
                           <h3 className="font-extrabold text-lg sm:text-xl text-white leading-snug">
                             {activeReportage.title}
                           </h3>
-                          <p className="text-xs text-[#5EEAD4] font-semibold mt-1">
+                          <p className="text-xs text-[#bae3d1] font-semibold mt-1">
                             {activeReportage.protagonists}
                           </p>
                         </div>
@@ -807,7 +807,7 @@ export default function App() {
                         <div className="grid grid-cols-3 gap-3">
                           {activeReportage.keyStats.map((st, i) => (
                             <div key={i} className="bg-white/5 rounded-xl p-3 text-center">
-                              <span className="font-extrabold text-lg text-[#5EEAD4] block">
+                              <span className="font-extrabold text-lg text-[#bae3d1] block">
                                 {st.value}
                               </span>
                               <span className="text-[10px] text-teal-200/70 uppercase font-semibold">
@@ -824,7 +824,7 @@ export default function App() {
                               onClick={() => setIsPlayingVideo(true)}
                               className="flex items-center gap-3 text-xs bg-white/5 hover:bg-white/10 p-2.5 rounded-xl cursor-pointer transition"
                             >
-                              <span className="font-bold text-[#5EEAD4] shrink-0">{ch.time}</span>
+                              <span className="font-bold text-[#bae3d1] shrink-0">{ch.time}</span>
                               <span className="text-teal-50">{ch.label}</span>
                             </div>
                           ))}
@@ -846,7 +846,7 @@ export default function App() {
                               }}
                               className={`w-full text-left p-4 rounded-2xl border transition ${
                                 isSelected
-                                  ? 'bg-[#5EEAD4] text-[#0F2926] border-[#5EEAD4]'
+                                  ? 'bg-[#bae3d1] text-[#0F2926] border-[#bae3d1]'
                                   : 'bg-white/5 text-white border-white/10 hover:border-white/30'
                               }`}
                             >
@@ -870,7 +870,7 @@ export default function App() {
                       </div>
 
                       <div className="bg-[#115E59] rounded-2xl p-5 text-white border border-teal-400/20">
-                        <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
+                        <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
                           Circuit 100% Solidaire
                         </span>
                         <h4 className="font-extrabold text-base mt-2">
@@ -878,10 +878,10 @@ export default function App() {
                         </h4>
                         <ul className="mt-2.5 space-y-2 text-xs text-teal-50 leading-relaxed">
                           <li>
-                            <strong className="text-[#5EEAD4]">1. Dons directs :</strong> Les vêtements en bon état sont remis aux associations lilloises pour être redistribués gratuitement.
+                            <strong className="text-[#bae3d1]">1. Dons directs :</strong> Les vêtements en bon état sont remis aux associations lilloises pour être redistribués gratuitement.
                           </li>
                           <li>
-                            <strong className="text-[#5EEAD4]">2. Upcycling & Merch :</strong> Les textiles usés, pneus et filets deviennent les pièces du Pop-Up, dont 100% des recettes financent ces mêmes associations.
+                            <strong className="text-[#bae3d1]">2. Upcycling & Merch :</strong> Les textiles usés, pneus et filets deviennent les pièces du Pop-Up, dont 100% des recettes financent ces mêmes associations.
                           </li>
                         </ul>
                       </div>
@@ -896,7 +896,7 @@ export default function App() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-teal-100/70">
                     <div>
-                      <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                      <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                         SE RETROUVER • BOUTIQUE ÉPHÉMÈRE DANS LE 59
                       </span>
                       <h2 className="font-extrabold text-2xl sm:text-3xl text-[#0F2926] mt-2 tracking-tight">
@@ -916,7 +916,7 @@ export default function App() {
                       >
                         <div>
                           <div className="flex items-center justify-between text-xs font-bold">
-                            <span className="bg-[#5EEAD4] text-[#0F2926] px-2.5 py-0.5 rounded-full text-[10px] font-extrabold">
+                            <span className="bg-[#bae3d1] text-[#0F2926] px-2.5 py-0.5 rounded-full text-[10px] font-extrabold">
                               {item.day}
                             </span>
                             <span className="text-slate-500">{item.hours}</span>
@@ -1007,7 +1007,7 @@ export default function App() {
           </div>
 
           <div className="bg-white rounded-2xl p-4 border border-teal-200/70">
-            <span className="bg-[#5EEAD4] text-[#0F2926] font-extrabold text-[10px] px-2 py-0.5 rounded-full uppercase">
+            <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-[10px] px-2 py-0.5 rounded-full uppercase">
               Zéro commande en ligne
             </span>
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
