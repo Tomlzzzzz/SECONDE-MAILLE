@@ -42,7 +42,7 @@ export const DONATION_BOXES = [
     directionSteps: [
       "Prendre la piste cyclable boulevard Gambetta sur 250m",
       "Tourner à droite sur Rue de Lannoy (façade briques du Nord)",
-      "La Box Jaune & Pneu se trouve devant le portail de La Belterie"
+      "La Box Bleue & Pneu se trouve devant le portail de La Belterie"
     ],
     leagueLeader: "Ligue Roubaix Zéro Déchet"
   },
@@ -282,7 +282,7 @@ export const LEAGUES_DATA = [
     members: 428,
     totalKg: 842.5,
     points: 18450,
-    badge: "Maillot Jaune Vakita",
+    badge: "Maillot Bleu Vakita",
     trend: "+14% cette semaine",
     isUserLeague: true
   },
@@ -333,7 +333,7 @@ export const MERCH_PRODUCTS = [
     ],
     origin: "Façonnée à la main chez AlterEos & La Belterie à Roubaix (59)",
     impact: "1,2 kg de déchets sauvages détournés de l'incinération et des océans",
-    description: "L'alliance brute entre l'histoire colombienne & lilloise d'Hubert Motte et les enquêtes océaniques de Vakita. Chaque ceinture porte l'empreinte unique des crampons d'un pneu ayant roulé sur les pavés du Nord, bordée d'une tresse jaune vif issue de filets de pêche récupérés en mer.",
+    description: "L'alliance brute entre l'histoire colombienne & lilloise d'Hubert Motte et les enquêtes océaniques de Vakita. Chaque ceinture porte l'empreinte unique des crampons d'un pneu ayant roulé sur les pavés du Nord, bordée d'une tresse bleu océan issue de filets de pêche récupérés en mer.",
     artisan: {
       name: "Karim & Léa",
       workshop: "Atelier AlterEos (Roubaix)",
@@ -347,7 +347,7 @@ export const MERCH_PRODUCTS = [
       { label: "Sur-mesure (Découpe sur place)", stockPopUp: 15, status: "ATELIER LIVE" }
     ],
     visualType: "belt",
-    accentColor: "#FFE600",
+    accentColor: "#38BDF8",
     batchNumber: "SÉRIE #01 — 150 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -364,7 +364,7 @@ export const MERCH_PRODUCTS = [
     ],
     origin: "Filé et tricoté en circuit court dans les Hauts-de-France (59)",
     impact: "Économise 4 200 litres d'eau par rapport à un sweat en coton vierge",
-    description: "Un sweat lourd (450g/m²), coupe boxy unisexe, pensé comme une armure douce pour les citoyens engagés. Le patch poitrine en chambre à air de vélo reprend le surlignage jaune Vakita et les coordonnées GPS du Pop-Up de Lille/Roubaix.",
+    description: "Un sweat lourd (450g/m²), coupe boxy unisexe, pensé comme une armure douce pour les citoyens engagés. Le patch poitrine en chambre à air de vélo reprend le surlignage bleu Vakita et les coordonnées GPS du Pop-Up de Lille/Roubaix.",
     artisan: {
       name: "Atelier Tissage du Nord & La Belterie",
       workshop: "Roubaix & Tourcoing (59)",
@@ -378,7 +378,7 @@ export const MERCH_PRODUCTS = [
       { label: "XL (Coupe Boxy)", stockPopUp: 5, status: "EN STOCK POP-UP" }
     ],
     visualType: "hoodie",
-    accentColor: "#1E4E68",
+    accentColor: "#0284C7",
     batchNumber: "SÉRIE #01 — 100 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -404,10 +404,10 @@ export const MERCH_PRODUCTS = [
     },
     sizes: [
       { label: "Taille Unique (Sangle réglable 75-135cm)", stockPopUp: 14, status: "EN STOCK POP-UP" },
-      { label: "Édition Limitée Bandoulière Jaune", stockPopUp: 3, status: "STOCK LIMITÉ" }
+      { label: "Édition Limitée Bandoulière Bleue", stockPopUp: 3, status: "STOCK LIMITÉ" }
     ],
     visualType: "bag",
-    accentColor: "#D95D39",
+    accentColor: "#0284C7",
     batchNumber: "SÉRIE #01 — 120 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -420,7 +420,7 @@ export const MERCH_PRODUCTS = [
     materials: [
       "85% Jersey de coton revalorisé à partir des collectes du 59",
       "15% Lin local des Flandres",
-      "Sérigraphie à l'encre à l'eau jaune Vakita sans solvant"
+      "Sérigraphie à l'encre à l'eau bleu Vakita sans solvant"
     ],
     origin: "Sérigraphié et cousu à Roubaix (59)",
     impact: "Zéro culture de coton neuf, 100% issu du gisement de vêtements déposés",
@@ -439,7 +439,7 @@ export const MERCH_PRODUCTS = [
       { label: "XL", stockPopUp: 7, status: "EN STOCK POP-UP" }
     ],
     visualType: "tshirt",
-    accentColor: "#FFE600",
+    accentColor: "#38BDF8",
     batchNumber: "SÉRIE #01 — 200 EXEMPLAIRES NUMÉROTÉS"
   },
   {
@@ -468,7 +468,7 @@ export const MERCH_PRODUCTS = [
       { label: "Modèle Garde-Boue Selle Vélo", stockPopUp: 11, status: "EN STOCK POP-UP" }
     ],
     visualType: "keychain",
-    accentColor: "#2A6F4E",
+    accentColor: "#0284C7",
     batchNumber: "ATELIER CONTINU — ZÉRO CHUTE"
   },
   {
@@ -480,12 +480,12 @@ export const MERCH_PRODUCTS = [
     pointsEquivalent: "420 PTS (Coupon Prioritaire Pop-Up)",
     materials: [
       "Face A : Jeans usagés collectés dans les Box étudiantes de Lille",
-      "Face B : Nylon de filet de pêche régénéré jaune & bleu",
+      "Face B : Nylon de filet de pêche régénéré bleu océan & marine",
       "Visière rigidifiée par une fine bande de chambre à air"
     ],
     origin: "Roubaix (59)",
     impact: "Donne une seconde vie aux jeans troués non réparables en l'état",
-    description: "Clin d'œil au voyage fondateur d'Hubert en Colombie où tout a commencé et aux expéditions de Vakita sous la pluie. Réversible selon la météo du Nord : côté jean brut par temps sec, côté filet marin déperlant jaune Vakita sous la drache lilloise.",
+    description: "Clin d'œil au voyage fondateur d'Hubert en Colombie où tout a commencé et aux expéditions de Vakita sous la pluie. Réversible selon la météo du Nord : côté jean brut par temps sec, côté filet marin déperlant bleu Vakita sous la drache lilloise.",
     artisan: {
       name: "Nadia",
       workshop: "Atelier Couture Solidaire 59",
@@ -497,7 +497,7 @@ export const MERCH_PRODUCTS = [
       { label: "T2 (58-60 cm)", stockPopUp: 5, status: "STOCK LIMITÉ" }
     ],
     visualType: "hat",
-    accentColor: "#FFE600",
+    accentColor: "#38BDF8",
     batchNumber: "SÉRIE #01 — 80 EXEMPLAIRES NUMÉROTÉS"
   }
 ];

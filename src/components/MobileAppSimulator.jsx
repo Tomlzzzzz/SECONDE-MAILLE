@@ -13,13 +13,11 @@ import {
   Gift,
   Camera,
   Scale,
-  Sparkles,
-  Info
+  Sparkles
 } from 'lucide-react';
 import { VakitaLogo, LaVieEstBeltLogo } from './BrandLogos';
 import {
   DONATION_BOXES,
-  DEPOSIT_PRESETS,
   LEAGUES_DATA,
   WEIGHT_POINT_BRACKETS,
   calculatePointsFromWeight
@@ -50,11 +48,7 @@ export default function MobileAppSimulator({
   const [lastReward, setLastReward] = useState(null);
 
   const selectedBox = DONATION_BOXES.find((b) => b.id === selectedBoxId) || DONATION_BOXES[0];
-
-  // Calcul dynamique des points proportionnels au poids mesuré par la Box
   const weightCalculation = calculatePointsFromWeight(depositWeightKg);
-
-  // Code QR dynamique généré par l'écran de la Box (contient ID Box + Poids mesuré)
   const generatedBoxQrPayload = `${selectedBox.id}|W:${weightCalculation.weightKg}KG|PTS:${weightCalculation.totalPoints}`;
 
   const handleRequestGeolocation = () => {
@@ -124,61 +118,62 @@ export default function MobileAppSimulator({
     Math.round((collectiveGoal.currentKg / collectiveGoal.targetKg) * 100)
   );
   const isGoalReached = collectiveGoal.currentKg >= collectiveGoal.targetKg;
-
-  // Position du curseur sur la frise (de 0 à 6 kg max sur la jauge visuelle)
-  const timelineCursorPercent = Math.min(98, Math.max(4, Math.round((weightCalculation.weightKg / 6.0) * 100)));
+  const timelineCursorPercent = Math.min(
+    98,
+    Math.max(4, Math.round((weightCalculation.weightKg / 6.0) * 100))
+  );
 
   return (
     <div
-      className={`flex flex-col bg-white text-[#111111] rounded-[42px] overflow-hidden shadow-phone border-[8px] border-[#111111] transition-all duration-300 ${
+      className={`flex flex-col bg-white text-[#0F172A] rounded-[42px] overflow-hidden shadow-phone border-[8px] border-[#0F172A] transition-all duration-300 ${
         isFullscreenMobile
           ? 'w-full max-w-[430px] mx-auto h-[860px]'
           : 'w-full max-w-[410px] mx-auto h-[810px]'
       }`}
     >
       {/* En-tête Smartphone épuré sur fond blanc */}
-      <div className="bg-white px-5 pt-3 pb-3 border-b border-zinc-100">
-        <div className="flex items-center justify-between text-[11px] font-semibold text-zinc-500 mb-2.5">
-          <span>12:42</span>
-          <div className="w-24 h-5 bg-[#111111] rounded-full flex items-center justify-center gap-1.5 px-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FFEA00] animate-ping" />
+      <div className="bg-white px-5 pt-3 pb-3 border-b border-slate-100">
+        <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-2.5">
+          <span>15:24</span>
+          <div className="w-24 h-5 bg-[#0F172A] rounded-full flex items-center justify-center gap-1.5 px-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-ping" />
             <span className="text-[9px] font-bold text-white tracking-wider">59 LIVE</span>
           </div>
-          <span className="text-[#111111] font-bold">{userProfile.points} pts</span>
+          <span className="text-[#0284C7] font-extrabold">{userProfile.points} pts</span>
         </div>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <VakitaLogo size="sm" yellowBox={true} />
-            <span className="text-zinc-400 text-xs font-bold">×</span>
-            <LaVieEstBeltLogo size="sm" variant="yellow" />
+            <VakitaLogo size="sm" blueBox={true} />
+            <span className="text-slate-400 text-xs font-bold">×</span>
+            <LaVieEstBeltLogo size="sm" variant="blue" />
           </div>
 
           <button
             onClick={() => setActiveTab('leagues')}
-            className="flex items-center gap-1 bg-zinc-100 hover:bg-[#FFEA00] text-[#111111] px-2.5 py-1 rounded-full text-[11px] font-bold transition"
+            className="flex items-center gap-1 bg-sky-50 hover:bg-[#38BDF8] text-[#0F172A] px-2.5 py-1 rounded-full text-[11px] font-bold transition"
           >
-            <Flame className="w-3.5 h-3.5 text-[#E85D3F]" />
+            <Flame className="w-3.5 h-3.5 text-[#0284C7]" />
             <span>{progressPercentage}% Cagnotte</span>
           </button>
         </div>
       </div>
 
       {/* Mini Jauge Collective Solidaire */}
-      <div className="bg-[#F8F9FA] px-4 py-2 border-b border-zinc-200/80 flex items-center justify-between gap-3">
+      <div className="bg-[#F8FAFC] px-4 py-2 border-b border-slate-200/80 flex items-center justify-between gap-3">
         <div className="flex-1">
-          <div className="flex justify-between text-[10px] font-bold text-zinc-600">
+          <div className="flex justify-between text-[10px] font-bold text-slate-600">
             <span>Objectif 2 500 kg → 15 000 € Assos</span>
-            <span className="text-[#111111]">{collectiveGoal.currentKg.toFixed(1)} kg</span>
+            <span className="text-[#0F172A]">{collectiveGoal.currentKg.toFixed(1)} kg</span>
           </div>
-          <div className="w-full h-1.5 bg-zinc-200 rounded-full mt-1 overflow-hidden">
+          <div className="w-full h-1.5 bg-slate-200 rounded-full mt-1 overflow-hidden">
             <div
-              className="h-full bg-[#FFEA00] transition-all duration-500"
+              className="h-full bg-[#38BDF8] transition-all duration-500"
               style={{ width: `${progressPercentage}%` }}
             />
           </div>
         </div>
-        <span className="bg-[#FFEA00] text-[#111111] text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
+        <span className="bg-[#38BDF8] text-[#0F172A] text-[10px] font-extrabold px-2 py-0.5 rounded-full shrink-0">
           {isGoalReached ? 'DÉBLOQUÉ' : '+15 000 €'}
         </span>
       </div>
@@ -189,25 +184,25 @@ export default function MobileAppSimulator({
         {activeTab === 'map' && (
           <div className="flex-1 flex flex-col">
             {geoStatus !== 'granted' && (
-              <div className="m-3 p-3.5 rounded-2xl bg-[#F8F9FA] border border-zinc-200/90 shadow-xs">
+              <div className="m-3 p-3.5 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 shadow-xs">
                 <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#FFEA00] flex items-center justify-center shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#38BDF8] flex items-center justify-center shrink-0">
                     <Compass
-                      className={`w-5 h-5 text-[#111111] ${geoStatus === 'locating' ? 'animate-spin' : ''}`}
+                      className={`w-5 h-5 text-[#0F172A] ${geoStatus === 'locating' ? 'animate-spin' : ''}`}
                     />
                   </div>
                   <div className="flex-1">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-zinc-500">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
                       Géolocalisation Box 59
                     </span>
-                    <h4 className="font-bold text-xs text-[#111111] mt-0.5">
+                    <h4 className="font-bold text-xs text-[#0F172A] mt-0.5">
                       Autoriser la localisation pour trouver la Box la plus proche
                     </h4>
                     <button
                       onClick={handleRequestGeolocation}
-                      className="mt-2 w-full bg-[#111111] hover:bg-[#12354A] text-white text-xs font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 transition"
+                      className="mt-2 w-full bg-[#0F172A] hover:bg-[#0284C7] text-white text-xs font-bold py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 transition"
                     >
-                      <MapPin className="w-3.5 h-3.5 text-[#FFEA00]" />
+                      <MapPin className="w-3.5 h-3.5 text-[#38BDF8]" />
                       {geoStatus === 'locating'
                         ? 'Recherche des Box autour de vous...'
                         : 'Activer ma position GPS'}
@@ -217,11 +212,11 @@ export default function MobileAppSimulator({
               </div>
             )}
 
-            {/* Carte Interactive Claire */}
-            <div className="relative h-56 bg-[#F1F3F5] border-b border-zinc-200 overflow-hidden select-none">
+            {/* Carte Interactive Claire aux tons Bleus */}
+            <div className="relative h-56 bg-[#F1F5F9] border-b border-slate-200 overflow-hidden select-none">
               <svg viewBox="0 0 400 230" className="w-full h-full object-cover">
-                <path d="M 0 0 L 120 0 L 90 85 L 0 60 Z" fill="#E6F4EA" />
-                <path d="M 270 140 L 400 120 L 400 230 L 250 230 Z" fill="#E6F4EA" />
+                <path d="M 0 0 L 120 0 L 90 85 L 0 60 Z" fill="#E0F2FE" />
+                <path d="M 270 140 L 400 120 L 400 230 L 250 230 Z" fill="#E0F2FE" />
                 <path
                   d="M 0 175 Q 140 145 255 105 T 400 40"
                   fill="none"
@@ -245,7 +240,7 @@ export default function MobileAppSimulator({
                       : 'M 200 115 Q 250 135 295 152'
                   }
                   fill="none"
-                  stroke="#111111"
+                  stroke="#0F172A"
                   strokeWidth="4.5"
                   strokeLinecap="round"
                 />
@@ -260,22 +255,22 @@ export default function MobileAppSimulator({
                       : 'M 200 115 Q 250 135 295 152'
                   }
                   fill="none"
-                  stroke="#FFEA00"
+                  stroke="#38BDF8"
                   strokeWidth="2.5"
                   strokeDasharray="5 5"
                   strokeLinecap="round"
                 />
 
-                <text x="235" y="42" fill="#71717A" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
+                <text x="235" y="42" fill="#64748B" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
                   ROUBAIX (59)
                 </text>
-                <text x="28" y="122" fill="#71717A" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
+                <text x="28" y="122" fill="#64748B" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
                   LILLE FLANDRES
                 </text>
-                <text x="58" y="208" fill="#71717A" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
+                <text x="58" y="208" fill="#64748B" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
                   GARE ST-SAUVEUR
                 </text>
-                <text x="275" y="182" fill="#71717A" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
+                <text x="275" y="182" fill="#64748B" fontSize="8.5" fontWeight="700" letterSpacing="0.06em">
                   CAMPUS 4 CANTONS
                 </text>
               </svg>
@@ -284,8 +279,8 @@ export default function MobileAppSimulator({
                 className="absolute left-[50%] top-[49%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center"
                 title="Votre position"
               >
-                <div className="relative w-4 h-4 rounded-full bg-[#12354A] border-2 border-white shadow-md gps-ring" />
-                <span className="bg-[#111111] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full mt-1 shadow-xs">
+                <div className="relative w-4 h-4 rounded-full bg-[#0284C7] border-2 border-white shadow-md gps-ring" />
+                <span className="bg-[#0F172A] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full mt-1 shadow-xs">
                   Vous
                 </span>
               </div>
@@ -309,10 +304,10 @@ export default function MobileAppSimulator({
                     <div
                       className={`px-2.5 py-1 rounded-full text-[10px] font-extrabold flex items-center gap-1 shadow-md transition ${
                         isSelected
-                          ? 'bg-[#FFEA00] text-[#111111] ring-2 ring-[#111111]'
+                          ? 'bg-[#38BDF8] text-[#0F172A] ring-2 ring-[#0F172A]'
                           : box.status === 'POP-UP LIVE'
-                          ? 'bg-[#111111] text-[#FFEA00]'
-                          : 'bg-white text-[#111111] border border-zinc-200'
+                          ? 'bg-[#0F172A] text-[#38BDF8]'
+                          : 'bg-white text-[#0F172A] border border-slate-200'
                       }`}
                     >
                       <MapPin className="w-3 h-3 shrink-0" />
@@ -322,9 +317,9 @@ export default function MobileAppSimulator({
                 );
               })}
 
-              <div className="absolute bottom-2.5 left-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-zinc-200/80 flex items-center justify-between text-[10px]">
-                <span className="font-semibold text-zinc-700 truncate">{userCoords.label}</span>
-                <span className="font-extrabold text-[#12354A] shrink-0 ml-2">
+              <div className="absolute bottom-2.5 left-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-full shadow-sm border border-slate-200/80 flex items-center justify-between text-[10px]">
+                <span className="font-semibold text-slate-700 truncate">{userCoords.label}</span>
+                <span className="font-extrabold text-[#0284C7] shrink-0 ml-2">
                   {DONATION_BOXES.length} Box proches
                 </span>
               </div>
@@ -335,24 +330,24 @@ export default function MobileAppSimulator({
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <span className="bg-[#FFEA00] text-[#111111] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                    <span className="bg-[#38BDF8] text-[#0F172A] text-[10px] font-extrabold px-2 py-0.5 rounded-full">
                       {selectedBox.bonusMultiplier}
                     </span>
-                    <span className="text-[11px] font-semibold text-zinc-400">
+                    <span className="text-[11px] font-semibold text-slate-400">
                       {selectedBox.id}
                     </span>
                   </div>
-                  <h3 className="font-extrabold text-base text-[#111111] mt-1">
+                  <h3 className="font-extrabold text-base text-[#0F172A] mt-1">
                     {selectedBox.name}
                   </h3>
-                  <p className="text-xs text-zinc-500">{selectedBox.address}</p>
+                  <p className="text-xs text-slate-500">{selectedBox.address}</p>
                 </div>
 
-                <div className="text-right bg-[#F8F9FA] border border-zinc-200 rounded-2xl px-3 py-1.5 shrink-0">
-                  <div className="font-extrabold text-sm text-[#111111]">
+                <div className="text-right bg-[#F8FAFC] border border-slate-200 rounded-2xl px-3 py-1.5 shrink-0">
+                  <div className="font-extrabold text-sm text-[#0F172A]">
                     {selectedBox.distanceKm} km
                   </div>
-                  <div className="text-[10px] font-semibold text-[#12354A]">
+                  <div className="text-[10px] font-semibold text-[#0284C7]">
                     {transportMode === 'bike'
                       ? `${selectedBox.bikeMinutes} min à vélo`
                       : `${selectedBox.walkMinutes} min à pied`}
@@ -361,13 +356,13 @@ export default function MobileAppSimulator({
               </div>
 
               <div className="mt-3 flex items-center justify-between gap-2">
-                <div className="inline-flex bg-zinc-100 p-1 rounded-xl">
+                <div className="inline-flex bg-slate-100 p-1 rounded-xl">
                   <button
                     onClick={() => setTransportMode('bike')}
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition ${
                       transportMode === 'bike'
-                        ? 'bg-white text-[#111111] shadow-2xs'
-                        : 'text-zinc-500'
+                        ? 'bg-white text-[#0F172A] shadow-2xs'
+                        : 'text-slate-500'
                     }`}
                   >
                     <Bike className="w-3.5 h-3.5" />
@@ -377,8 +372,8 @@ export default function MobileAppSimulator({
                     onClick={() => setTransportMode('walk')}
                     className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition ${
                       transportMode === 'walk'
-                        ? 'bg-white text-[#111111] shadow-2xs'
-                        : 'text-zinc-500'
+                        ? 'bg-white text-[#0F172A] shadow-2xs'
+                        : 'text-slate-500'
                     }`}
                   >
                     <Footprints className="w-3.5 h-3.5" />
@@ -387,37 +382,37 @@ export default function MobileAppSimulator({
                 </div>
 
                 <div className="text-right">
-                  <span className="text-[10px] font-semibold text-zinc-500 block">
+                  <span className="text-[10px] font-semibold text-slate-500 block">
                     Disponibilité Box : {100 - selectedBox.fillPercent}% libre
                   </span>
-                  <div className="w-24 h-1.5 bg-zinc-100 rounded-full overflow-hidden mt-0.5">
+                  <div className="w-24 h-1.5 bg-slate-100 rounded-full overflow-hidden mt-0.5">
                     <div
-                      className="h-full bg-[#1F7A54] rounded-full"
+                      className="h-full bg-[#0284C7] rounded-full"
                       style={{ width: `${selectedBox.fillPercent}%` }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="mt-3 bg-[#F8F9FA] rounded-2xl p-3 border border-zinc-200/70">
+              <div className="mt-3 bg-[#F8FAFC] rounded-2xl p-3 border border-slate-200/70">
                 <button
                   onClick={() => setShowRouteDrawer(!showRouteDrawer)}
-                  className="w-full flex items-center justify-between text-xs font-bold text-[#111111]"
+                  className="w-full flex items-center justify-between text-xs font-bold text-[#0F172A]"
                 >
                   <span className="flex items-center gap-1.5">
-                    <Navigation className="w-3.5 h-3.5 text-[#12354A]" />
+                    <Navigation className="w-3.5 h-3.5 text-[#0284C7]" />
                     Itinéraire conseillé ({selectedBox.distanceKm} km)
                   </span>
-                  <span className="text-[11px] text-zinc-500">
+                  <span className="text-[11px] text-slate-500">
                     {showRouteDrawer ? 'Masquer' : 'Afficher'}
                   </span>
                 </button>
 
                 {showRouteDrawer && (
-                  <ol className="mt-2.5 space-y-1.5 border-t border-zinc-200/80 pt-2 text-[11px] text-zinc-700">
+                  <ol className="mt-2.5 space-y-1.5 border-t border-slate-200/80 pt-2 text-[11px] text-slate-700">
                     {selectedBox.directionSteps.map((step, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <span className="w-4 h-4 rounded-full bg-[#FFEA00] text-[#111111] font-extrabold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
+                        <span className="w-4 h-4 rounded-full bg-[#38BDF8] text-[#0F172A] font-extrabold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
                           {idx + 1}
                         </span>
                         <span className="leading-snug">{step}</span>
@@ -432,7 +427,7 @@ export default function MobileAppSimulator({
                   setScanState('idle');
                   setActiveTab('scan');
                 }}
-                className="mt-3.5 w-full bg-[#FFEA00] hover:bg-[#f5e000] text-[#111111] font-extrabold text-xs py-3 px-4 rounded-2xl shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99]"
+                className="mt-3.5 w-full bg-[#38BDF8] hover:bg-[#0284C7] hover:text-white text-[#0F172A] font-extrabold text-xs py-3 px-4 rounded-2xl shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99]"
               >
                 <QrCode className="w-4 h-4" />
                 J'ai déposé mes articles → Scanner le QR Box
@@ -446,25 +441,24 @@ export default function MobileAppSimulator({
           <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
             <div className="space-y-3">
               {/* Étape 1 : Ce qui se passe sur la Box après le dépôt */}
-              <div className="bg-[#F8F9FA] border border-zinc-200 rounded-2xl p-3">
+              <div className="bg-[#F8FAFC] border border-slate-200 rounded-2xl p-3">
                 <div className="flex items-center justify-between">
-                  <span className="bg-[#111111] text-[#FFEA00] text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                  <span className="bg-[#0F172A] text-[#38BDF8] text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
                     1. Balance connectée de la Box
                   </span>
-                  <span className="text-[10px] font-bold text-[#12354A]">{selectedBox.id}</span>
+                  <span className="text-[10px] font-bold text-[#0284C7]">{selectedBox.id}</span>
                 </div>
-                <p className="text-[11px] text-zinc-600 mt-1 leading-snug">
+                <p className="text-[11px] text-slate-600 mt-1 leading-snug">
                   Après fermeture de la trappe, la Box pèse votre dépôt et génère un <strong>QR Code unique</strong> contenant l'identité de la Box et le poids exact :
                 </p>
 
-                {/* Curseur pour tester différents poids de dépôt dans la Box */}
-                <div className="mt-2.5 bg-white rounded-xl p-2.5 border border-zinc-200/80">
+                <div className="mt-2.5 bg-white rounded-xl p-2.5 border border-slate-200/80">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-zinc-700 flex items-center gap-1.5">
-                      <Scale className="w-3.5 h-3.5 text-[#12354A]" />
+                    <span className="font-bold text-slate-700 flex items-center gap-1.5">
+                      <Scale className="w-3.5 h-3.5 text-[#0284C7]" />
                       Poids pesé dans la Box :
                     </span>
-                    <span className="bg-[#FFEA00] text-[#111111] font-extrabold px-2.5 py-0.5 rounded-full text-xs">
+                    <span className="bg-[#38BDF8] text-[#0F172A] font-extrabold px-2.5 py-0.5 rounded-full text-xs">
                       {weightCalculation.weightKg.toFixed(1)} kg → +{weightCalculation.totalPoints} pts
                     </span>
                   </div>
@@ -479,10 +473,9 @@ export default function MobileAppSimulator({
                       setDepositWeightKg(parseFloat(e.target.value));
                       setScanState('idle');
                     }}
-                    className="w-full mt-2 accent-[#111111] cursor-pointer h-1.5 bg-zinc-200 rounded-lg"
+                    className="w-full mt-2 accent-[#0284C7] cursor-pointer h-1.5 bg-slate-200 rounded-lg"
                   />
 
-                  {/* Boutons de poids rapides */}
                   <div className="flex flex-wrap gap-1 mt-2">
                     {[
                       { w: 0.6, label: "0.6 kg (T-shirt / Chambre à air)" },
@@ -499,8 +492,8 @@ export default function MobileAppSimulator({
                         }}
                         className={`text-[9.5px] font-bold px-2 py-0.5 rounded-full border transition ${
                           Math.abs(depositWeightKg - preset.w) < 0.05
-                            ? 'bg-[#111111] text-[#FFEA00] border-[#111111]'
-                            : 'bg-zinc-50 text-zinc-600 border-zinc-200 hover:border-zinc-400'
+                            ? 'bg-[#0F172A] text-[#38BDF8] border-[#0F172A]'
+                            : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-400'
                         }`}
                       >
                         {preset.w} kg
@@ -511,42 +504,39 @@ export default function MobileAppSimulator({
               </div>
 
               {/* FRISE VISUELLE DES POINTS SELON LES FOURCHETTES DE POIDS */}
-              <div className="bg-white border border-zinc-200 rounded-2xl p-3 shadow-2xs">
+              <div className="bg-white border border-slate-200 rounded-2xl p-3 shadow-2xs">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#111111] flex items-center gap-1">
-                    <Sparkles className="w-3.5 h-3.5 text-[#E85D3F]" />
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#0F172A] flex items-center gap-1">
+                    <Sparkles className="w-3.5 h-3.5 text-[#0284C7]" />
                     Frise des Points selon les fourchettes de poids
                   </span>
-                  <span className="text-[10px] font-bold text-[#12354A]">
+                  <span className="text-[10px] font-bold text-[#0284C7]">
                     100 à 130 pts/kg + Bonus
                   </span>
                 </div>
 
-                {/* Barre de la Frise graduée avec curseur dynamique */}
                 <div className="relative pt-1 pb-2">
-                  <div className="grid grid-cols-4 gap-1 h-2.5 rounded-full overflow-hidden bg-zinc-100 p-0.5">
+                  <div className="grid grid-cols-4 gap-1 h-2.5 rounded-full overflow-hidden bg-slate-100 p-0.5">
                     {WEIGHT_POINT_BRACKETS.map((b) => {
                       const active = weightCalculation.bracket.id === b.id;
                       return (
                         <div
                           key={b.id}
                           className={`h-full rounded-full transition-colors ${
-                            active ? 'bg-[#FFEA00]' : 'bg-zinc-300/70'
+                            active ? 'bg-[#38BDF8]' : 'bg-slate-300/70'
                           }`}
                         />
                       );
                     })}
                   </div>
-                  {/* Marqueur du poids actuel sur la frise */}
                   <div
                     className="absolute top-0 -translate-x-1/2 transition-all duration-200"
                     style={{ left: `${timelineCursorPercent}%` }}
                   >
-                    <div className="w-3.5 h-3.5 rounded-full bg-[#111111] border-2 border-[#FFEA00] shadow-xs" />
+                    <div className="w-3.5 h-3.5 rounded-full bg-[#0F172A] border-2 border-[#38BDF8] shadow-xs" />
                   </div>
                 </div>
 
-                {/* Les 4 Fourchettes de Poids de la Frise */}
                 <div className="grid grid-cols-2 gap-1.5 mt-1">
                   {WEIGHT_POINT_BRACKETS.map((bracket) => {
                     const isCurrent = weightCalculation.bracket.id === bracket.id;
@@ -560,24 +550,24 @@ export default function MobileAppSimulator({
                         }}
                         className={`text-left p-2 rounded-xl border transition ${
                           isCurrent
-                            ? 'bg-[#FFEA00]/30 border-[#111111] ring-1 ring-[#111111]'
-                            : 'bg-[#F8F9FA] border-zinc-200/80 opacity-80 hover:opacity-100'
+                            ? 'bg-sky-50 border-[#0284C7] ring-1 ring-[#0284C7]'
+                            : 'bg-[#F8FAFC] border-slate-200/80 opacity-80 hover:opacity-100'
                         }`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-extrabold text-[#111111]">
+                          <span className="text-[10px] font-extrabold text-[#0F172A]">
                             {bracket.rangeLabel}
                           </span>
                           {bracket.bonusPoints > 0 && (
-                            <span className="bg-[#111111] text-[#FFEA00] text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full">
+                            <span className="bg-[#0F172A] text-[#38BDF8] text-[8.5px] font-extrabold px-1.5 py-0.2 rounded-full">
                               +{bracket.bonusPoints} bonus
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] font-extrabold text-[#12354A] mt-0.5">
+                        <div className="text-[11px] font-extrabold text-[#0284C7] mt-0.5">
                           {bracket.pointsRange}
                         </div>
-                        <div className="text-[9.5px] text-zinc-500 leading-tight mt-0.5 truncate">
+                        <div className="text-[9.5px] text-slate-500 leading-tight mt-0.5 truncate">
                           {bracket.examples}
                         </div>
                       </button>
@@ -587,40 +577,40 @@ export default function MobileAppSimulator({
               </div>
 
               {/* Étape 2 : Viseur Caméra qui scanne le QR Code de la Box et décode Box + Poids */}
-              <div className="relative h-44 bg-[#111111] rounded-3xl overflow-hidden flex flex-col items-center justify-center text-white shadow-inner p-3">
+              <div className="relative h-44 bg-[#0F172A] rounded-3xl overflow-hidden flex flex-col items-center justify-center text-white shadow-inner p-3">
                 {scanState !== 'success' ? (
                   <>
                     <div className="scanner-beam" />
-                    <div className="w-24 h-24 rounded-2xl border-2 border-[#FFEA00]/90 relative flex items-center justify-center bg-white/5 backdrop-blur-xs">
+                    <div className="w-24 h-24 rounded-2xl border-2 border-[#38BDF8]/90 relative flex items-center justify-center bg-white/5 backdrop-blur-xs">
                       <QrCode
-                        className={`w-14 h-14 text-[#FFEA00] transition-transform ${
+                        className={`w-14 h-14 text-[#38BDF8] transition-transform ${
                           scanState === 'scanning' ? 'scale-90 opacity-60 animate-pulse' : ''
                         }`}
                       />
                     </div>
                     <div className="mt-2 text-center">
-                      <span className="text-[10px] font-extrabold text-[#FFEA00] block tracking-wider">
+                      <span className="text-[10px] font-extrabold text-[#38BDF8] block tracking-wider">
                         {scanState === 'scanning'
                           ? 'Décodage des infos de la Box & du poids...'
                           : `QR Box : ${generatedBoxQrPayload}`}
                       </span>
-                      <span className="text-[10px] text-zinc-400 block mt-0.5">
+                      <span className="text-[10px] text-slate-400 block mt-0.5">
                         Box : {selectedBox.name} • Poids transmis : {weightCalculation.weightKg} kg
                       </span>
                     </div>
                   </>
                 ) : (
                   <div className="text-center w-full h-full flex flex-col items-center justify-center">
-                    <div className="w-9 h-9 rounded-full bg-[#FFEA00] text-[#111111] flex items-center justify-center mb-1.5">
+                    <div className="w-9 h-9 rounded-full bg-[#38BDF8] text-[#0F172A] flex items-center justify-center mb-1.5">
                       <CheckCircle2 className="w-5 h-5" />
                     </div>
-                    <span className="bg-[#FFEA00] text-[#111111] font-extrabold text-xs px-3 py-0.5 rounded-full">
+                    <span className="bg-[#38BDF8] text-[#0F172A] font-extrabold text-xs px-3 py-0.5 rounded-full">
                       +{lastReward.points} POINTS RÉCUPÉRÉS !
                     </span>
                     <div className="text-[11px] font-bold text-white mt-1.5">
                       Box : {lastReward.boxName} ({lastReward.boxId})
                     </div>
-                    <div className="text-[10px] text-zinc-300 mt-0.5">
+                    <div className="text-[10px] text-slate-300 mt-0.5">
                       Poids mesuré : <strong>{lastReward.weightKg} kg</strong> ({lastReward.bracketLabel}) → {lastReward.basePoints} pts + {lastReward.bonusPoints} pts bonus
                     </div>
                   </div>
@@ -631,9 +621,9 @@ export default function MobileAppSimulator({
             <button
               onClick={handleTriggerScan}
               disabled={scanState === 'scanning'}
-              className="w-full bg-[#111111] hover:bg-[#12354A] text-white font-extrabold text-xs py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 transition shrink-0"
+              className="w-full bg-[#0F172A] hover:bg-[#0284C7] text-white font-extrabold text-xs py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 transition shrink-0"
             >
-              <Camera className="w-4 h-4 text-[#FFEA00]" />
+              <Camera className="w-4 h-4 text-[#38BDF8]" />
               {scanState === 'scanning'
                 ? 'Lecture du QR Box & Poids...'
                 : scanState === 'success'
@@ -646,19 +636,19 @@ export default function MobileAppSimulator({
         {/* ONGLET 3 : LIGUES SOLIDAIRES & CAGNOTTE */}
         {activeTab === 'leagues' && (
           <div className="p-4 space-y-4">
-            <div className="bg-[#111111] text-white p-4 rounded-3xl">
-              <span className="bg-[#FFEA00] text-[#111111] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
+            <div className="bg-[#0F172A] text-white p-4 rounded-3xl">
+              <span className="bg-[#38BDF8] text-[#0F172A] font-extrabold text-[10px] px-2.5 py-0.5 rounded-full uppercase">
                 Cagnotte Solidaire Vakita × La Vie est Belt
               </span>
               <h3 className="font-extrabold text-base mt-2 text-white">
-                Objectif 2 500 kg = <span className="text-[#FFEA00]">15 000 € reversés</span> par les 2 marques
+                Objectif 2 500 kg = <span className="text-[#38BDF8]">15 000 € reversés</span> par les 2 marques
               </h3>
-              <p className="text-xs text-zinc-300 mt-1 leading-relaxed">
+              <p className="text-xs text-slate-300 mt-1 leading-relaxed">
                 Dès que le compteur collectif atteint 2 500 kg, Vakita et La Vie est Belt versent 15 000 € supplémentaires aux associations Sea Shepherd et AlterEos (59).
               </p>
 
               <div className="mt-3 bg-white/10 p-3 rounded-2xl">
-                <div className="flex justify-between text-xs font-bold text-[#FFEA00]">
+                <div className="flex justify-between text-xs font-bold text-[#38BDF8]">
                   <span>Progression collective</span>
                   <span>
                     {collectiveGoal.currentKg.toFixed(1)} / {collectiveGoal.targetKg} kg
@@ -666,7 +656,7 @@ export default function MobileAppSimulator({
                 </div>
                 <div className="w-full h-2.5 bg-white/20 rounded-full mt-1.5 overflow-hidden">
                   <div
-                    className="h-full bg-[#FFEA00] rounded-full transition-all duration-500"
+                    className="h-full bg-[#38BDF8] rounded-full transition-all duration-500"
                     style={{ width: `${progressPercentage}%` }}
                   />
                 </div>
@@ -674,7 +664,7 @@ export default function MobileAppSimulator({
             </div>
 
             <div>
-              <h4 className="font-extrabold text-xs uppercase tracking-wider text-zinc-400 mb-2.5">
+              <h4 className="font-extrabold text-xs uppercase tracking-wider text-slate-400 mb-2.5">
                 Classement des Ligues Donateurs (59)
               </h4>
               <div className="space-y-2">
@@ -683,27 +673,27 @@ export default function MobileAppSimulator({
                     key={league.rank}
                     className={`p-3 rounded-2xl border ${
                       league.isUserLeague
-                        ? 'bg-[#FFEA00]/25 border-[#111111]'
-                        : 'bg-white border-zinc-200'
+                        ? 'bg-sky-50 border-[#0284C7]'
+                        : 'bg-white border-slate-200'
                     }`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-6 h-6 rounded-full bg-[#111111] text-[#FFEA00] font-extrabold text-xs flex items-center justify-center">
+                        <span className="w-6 h-6 rounded-full bg-[#0F172A] text-[#38BDF8] font-extrabold text-xs flex items-center justify-center">
                           {league.rank}
                         </span>
                         <div>
-                          <div className="font-bold text-xs text-[#111111]">{league.name}</div>
-                          <div className="text-[10px] text-zinc-500">
+                          <div className="font-bold text-xs text-[#0F172A]">{league.name}</div>
+                          <div className="text-[10px] text-slate-500">
                             {league.members} donateurs • {league.totalKg} kg collectés
                           </div>
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="font-extrabold text-xs text-[#111111]">
+                        <div className="font-extrabold text-xs text-[#0F172A]">
                           {league.points} pts
                         </div>
-                        <div className="text-[10px] font-semibold text-[#1F7A54]">
+                        <div className="text-[10px] font-semibold text-[#0284C7]">
                           {league.trend}
                         </div>
                       </div>
@@ -718,61 +708,61 @@ export default function MobileAppSimulator({
         {/* ONGLET 4 : PROFIL DONATEUR */}
         {activeTab === 'profile' && (
           <div className="p-4 space-y-4">
-            <div className="bg-[#F8F9FA] border border-zinc-200 rounded-3xl p-4">
+            <div className="bg-[#F8FAFC] border border-slate-200 rounded-3xl p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-[#FFEA00] text-[#111111] flex items-center justify-center font-extrabold text-base">
+                  <div className="w-11 h-11 rounded-2xl bg-[#38BDF8] text-[#0F172A] flex items-center justify-center font-extrabold text-base">
                     CA
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-[#12354A] block">
+                    <span className="text-[10px] font-bold text-[#0284C7] block">
                       {userProfile.level}
                     </span>
-                    <h4 className="font-extrabold text-base text-[#111111]">{userProfile.name}</h4>
-                    <p className="text-[11px] text-zinc-500">{userProfile.league}</p>
+                    <h4 className="font-extrabold text-base text-[#0F172A]">{userProfile.name}</h4>
+                    <p className="text-[11px] text-slate-500">{userProfile.league}</p>
                   </div>
                 </div>
-                <div className="text-right bg-white border border-zinc-200 px-3 py-1.5 rounded-2xl">
-                  <span className="font-extrabold text-base text-[#111111] block leading-none">
+                <div className="text-right bg-white border border-slate-200 px-3 py-1.5 rounded-2xl">
+                  <span className="font-extrabold text-base text-[#0284C7] block leading-none">
                     {userProfile.points}
                   </span>
-                  <span className="text-[9px] font-bold text-zinc-400 uppercase">Points</span>
+                  <span className="text-[9px] font-bold text-slate-400 uppercase">Points</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 mt-3.5 pt-3 border-t border-zinc-200/80 text-center">
-                <div className="bg-white p-2 rounded-xl border border-zinc-100">
-                  <span className="text-xs font-extrabold text-[#111111] block">
+              <div className="grid grid-cols-3 gap-2 mt-3.5 pt-3 border-t border-slate-200/80 text-center">
+                <div className="bg-white p-2 rounded-xl border border-slate-100">
+                  <span className="text-xs font-extrabold text-[#0F172A] block">
                     {userProfile.totalKg.toFixed(1)} kg
                   </span>
-                  <span className="text-[9px] text-zinc-500">Collectés</span>
+                  <span className="text-[9px] text-slate-500">Collectés</span>
                 </div>
-                <div className="bg-white p-2 rounded-xl border border-zinc-100">
-                  <span className="text-xs font-extrabold text-[#111111] block">
+                <div className="bg-white p-2 rounded-xl border border-slate-100">
+                  <span className="text-xs font-extrabold text-[#0F172A] block">
                     {userProfile.co2Saved.toFixed(1)} kg
                   </span>
-                  <span className="text-[9px] text-zinc-500">CO₂ évité</span>
+                  <span className="text-[9px] text-slate-500">CO₂ évité</span>
                 </div>
-                <div className="bg-white p-2 rounded-xl border border-zinc-100">
-                  <span className="text-xs font-extrabold text-[#111111] block">
+                <div className="bg-white p-2 rounded-xl border border-slate-100">
+                  <span className="text-xs font-extrabold text-[#0F172A] block">
                     {userProfile.history.length}
                   </span>
-                  <span className="text-[9px] text-zinc-500">Dépôts QR</span>
+                  <span className="text-[9px] text-slate-500">Dépôts QR</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-[#FFEA00] rounded-3xl p-4 text-[#111111]">
+            <div className="bg-sky-50 border border-sky-200 rounded-3xl p-4 text-[#0F172A]">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-[#111111] text-white px-2.5 py-0.5 rounded-full">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-[#0F172A] text-[#38BDF8] px-2.5 py-0.5 rounded-full">
                   Pass Avantages Pop-Up Lille
                 </span>
-                <Gift className="w-4 h-4" />
+                <Gift className="w-4 h-4 text-[#0284C7]" />
               </div>
               <p className="text-xs font-bold mt-2">
                 Présentez ce QR Pass à la Boutique Éphémère (Gare Saint-Sauveur) :
               </p>
-              <ul className="text-[11px] space-y-1 mt-1.5 font-medium">
+              <ul className="text-[11px] space-y-1 mt-1.5 font-medium text-slate-700">
                 <li>• <strong>180 pts</strong> : Porte-clés Pneu & Filet gravé en direct</li>
                 <li>• <strong>350 pts</strong> : Accès prioritaire aux séries limitées</li>
                 <li>• <strong>600 pts</strong> : Bon solidaire Pop-Up (100% reversé aux assos)</li>
@@ -780,23 +770,23 @@ export default function MobileAppSimulator({
             </div>
 
             <div>
-              <h5 className="font-extrabold text-xs uppercase tracking-wider text-zinc-400 mb-2">
+              <h5 className="font-extrabold text-xs uppercase tracking-wider text-slate-400 mb-2">
                 Derniers dépôts scannés (Box + Poids)
               </h5>
               <div className="space-y-2">
                 {userProfile.history.map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-white border border-zinc-200 rounded-2xl p-3 text-xs"
+                    className="bg-white border border-slate-200 rounded-2xl p-3 text-xs"
                   >
-                    <div className="flex justify-between items-center text-[10px] text-zinc-500 font-semibold">
+                    <div className="flex justify-between items-center text-[10px] text-slate-500 font-semibold">
                       <span>{item.boxName}</span>
-                      <span className="bg-[#FFEA00] text-[#111111] font-extrabold px-2 py-0.5 rounded-full">
+                      <span className="bg-[#38BDF8] text-[#0F172A] font-extrabold px-2 py-0.5 rounded-full">
                         +{item.points} pts
                       </span>
                     </div>
-                    <div className="font-bold text-[#111111] mt-1">{item.title}</div>
-                    <div className="text-[11px] text-[#12354A] font-medium mt-0.5">
+                    <div className="font-bold text-[#0F172A] mt-1">{item.title}</div>
+                    <div className="text-[11px] text-[#0284C7] font-medium mt-0.5">
                       Transformé en : {item.futureProduct}
                     </div>
                   </div>
@@ -808,7 +798,7 @@ export default function MobileAppSimulator({
       </div>
 
       {/* Barre de Navigation Mobile */}
-      <div className="bg-white border-t border-zinc-100 grid grid-cols-4 py-2 px-3">
+      <div className="bg-white border-t border-slate-100 grid grid-cols-4 py-2 px-3">
         {[
           { id: 'map', label: 'Box GPS', icon: MapPin },
           { id: 'scan', label: 'Scan & Poids', icon: QrCode },
@@ -823,8 +813,8 @@ export default function MobileAppSimulator({
               onClick={() => setActiveTab(tab.id)}
               className={`flex flex-col items-center justify-center py-1 rounded-2xl transition ${
                 active
-                  ? 'bg-[#FFEA00] text-[#111111] font-extrabold'
-                  : 'text-zinc-400 hover:text-[#111111]'
+                  ? 'bg-[#38BDF8] text-[#0F172A] font-extrabold'
+                  : 'text-slate-400 hover:text-[#0F172A]'
               }`}
             >
               <IconComponent className="w-4 h-4" />
