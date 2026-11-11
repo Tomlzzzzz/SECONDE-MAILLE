@@ -5,32 +5,12 @@ import LocationMap from '../components/LocationMap';
 import { Reveal, SplitText, TiltCard, CountUp } from '../components/Motion';
 import { SectionLabel, PageHeroCopy, PageLead } from '../components/Blocks';
 import { Mascot } from '../components/Brand';
-import { SITE_PAGES, EVENT, PROGRAMME, COLLECTION, AUDIENCES } from '../data/siteContent';
+import MerchShowcase from '../components/shop/MerchShowcase';
+import StarterPack from '../components/shop/StarterPack';
+import { SITE_PAGES, EVENT, PROGRAMME, AUDIENCES } from '../data/siteContent';
 
 const PROGRAMME_ICONS = [Sparkles, Ticket, Scissors, Coffee, ShoppingBag];
 const daysUntil = (d) => Math.max(0, Math.ceil((d.getTime() - Date.now()) / 86400000));
-
-/* Visuel provisoire : motif de maille aux couleurs du projet */
-function MeshVisual({ index }) {
-  const tones = [
-    ['#0F2926', '#bae3d1'],
-    ['#194080', '#bae3d1'],
-    ['#a4d2b3', '#0F2926'],
-    ['#0D9488', '#F5FBF9']
-  ][index % 4];
-  return (
-    <div
-      className="h-44 sm:h-52 relative overflow-hidden"
-      style={{
-        backgroundColor: tones[0],
-        backgroundImage: `repeating-linear-gradient(45deg, ${tones[1]}33 0 2px, transparent 2px 18px), repeating-linear-gradient(-45deg, ${tones[1]}33 0 2px, transparent 2px 18px)`
-      }}
-      aria-hidden="true"
-    >
-      <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-extrabold uppercase tracking-wider text-[#0F2926]">Visuel à venir</span>
-    </div>
-  );
-}
 
 export default function PopupPage() {
   const page = SITE_PAGES[3];
@@ -122,7 +102,7 @@ export default function PopupPage() {
       </section>
 
       {/* VENIR — carte réelle */}
-      <section className="bg-white pb-16 lg:pb-20">
+      <section id="venir" className="bg-white pb-16 lg:pb-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <Reveal>
             <div className="rounded-[32px] sm:rounded-[40px] bg-gradient-to-br from-[#0F2926] to-[#194080] text-white p-5 sm:p-8 lg:p-10">
@@ -165,36 +145,11 @@ export default function PopupPage() {
         </div>
       </section>
 
-      {/* COLLECTION */}
-      <section className="bg-[#F5FBF9] py-20 lg:py-28 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-            <div>
-              <SectionLabel num="D">À la boutique</SectionLabel>
-              <SplitText as="h2" text="Une nouvelle gamme upcyclée." className="font-display uppercase text-[clamp(34px,5vw,72px)] leading-[0.95] text-[#0F2926] mt-6" />
-            </div>
-            <Reveal direction="right">
-              <p className="text-sm text-slate-600 max-w-sm">
-                Des vêtements et des accessoires créés par La Vie est Belt à partir de matériaux récupérés, notamment des filets de pêche. Les visuels de la collection arrivent bientôt.
-              </p>
-            </Reveal>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {COLLECTION.map((c, i) => (
-              <Reveal key={c.title} delay={i * 90}>
-                <TiltCard className="h-full rounded-[28px] bg-white border border-[#bae3d1] overflow-hidden group">
-                  <MeshVisual index={i} />
-                  <div className="p-6">
-                    <span className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#194080]">{c.material}</span>
-                    <h3 className="font-display uppercase text-3xl text-[#0F2926] mt-1">{c.title}</h3>
-                    <p className="text-sm text-slate-600 leading-relaxed mt-2">{c.text}</p>
-                  </div>
-                </TiltCard>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* MERCH — stock en direct */}
+      <MerchShowcase />
+
+      {/* GOODIES — le starter pack */}
+      <StarterPack />
     </>
   );
 }

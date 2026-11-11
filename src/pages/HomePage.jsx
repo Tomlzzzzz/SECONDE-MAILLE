@@ -404,6 +404,44 @@ export default function HomePage({ onNavigate }) {
         </div>
       </section>
 
+      {/* ==================== LA BOUTIQUE (aperçu) ==================== */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+              <SectionLabel num="★">À la boutique éphémère</SectionLabel>
+              <SplitText as="h2" text="Le merch et le starter pack." className="font-display uppercase text-[clamp(34px,5vw,72px)] leading-[0.95] text-[#0F2926] mt-5" />
+            </div>
+            <Reveal direction="right">
+              <p className="text-slate-600 max-w-sm">En vente au pop-up le 20 mars 2027. Les tailles disponibles sont visibles en direct sur le site.</p>
+            </Reveal>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              { k: 'merch', title: 'Le merch', sub: 'T-shirt, sweat, casquette, chaussettes', img: `${import.meta.env?.BASE_URL ?? '/'}products/tshirt-blanc-1.webp`, tone: 'bg-[#F5FBF9] text-[#0F2926]' },
+              { k: 'starter-pack', title: 'Le starter pack', sub: '7 objets pour remplacer le jetable', img: `${import.meta.env?.BASE_URL ?? '/'}products/tote-bag.webp`, tone: 'bg-[#194080] text-white' }
+            ].map((c, i) => (
+              <Reveal key={c.k} delay={i * 120} className="h-full">
+                <button onClick={() => onNavigate('popup-merch', c.k)} className={`group w-full h-full text-left rounded-[32px] overflow-hidden grid grid-cols-5 ${c.tone}`} data-cursor="Voir">
+                  <div className="col-span-3 p-6 sm:p-8 flex flex-col justify-between gap-8">
+                    <div>
+                      <p className="font-display uppercase text-[clamp(30px,3.4vw,48px)] leading-[0.9]">{c.title}</p>
+                      <p className="text-sm font-bold opacity-75 mt-3">{c.sub}</p>
+                    </div>
+                    <span className="index-arrow w-12 h-12 rounded-full border-2 border-current grid place-items-center transition-transform duration-500 group-hover:translate-x-2">
+                      <ArrowRight className="w-5 h-5" />
+                    </span>
+                  </div>
+                  <div className="col-span-2 relative min-h-[220px] overflow-hidden">
+                    <img src={c.img} alt="" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                  </div>
+                </button>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ==================== LES 5 TEMPS ==================== */}
       <StepsRiver />
 

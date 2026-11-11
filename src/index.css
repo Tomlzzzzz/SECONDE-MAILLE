@@ -1519,6 +1519,120 @@ html.a11y-dyslexic-spacing {
 }
 
 /* =====================================================================
+   BOUTIQUE — merch & starter pack
+   ===================================================================== */
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.merch-slide { animation: merch-in 0.7s var(--ease) both; }
+.merch-slide.from-left { animation-name: merch-in-left; }
+@keyframes merch-in { from { opacity: 0; transform: translate3d(6%, 0, 0) scale(1.03); } }
+@keyframes merch-in-left { from { opacity: 0; transform: translate3d(-6%, 0, 0) scale(1.03); } }
+.merch-arrow {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  box-shadow: 0 10px 24px -12px rgba(15, 41, 38, 0.45);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.4s var(--ease);
+}
+.merch-arrow:hover { background: var(--ink); color: var(--aqua); transform: scale(1.08); }
+
+.size-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 54px;
+  padding: 6px 4px;
+  border-radius: 16px;
+  border: 2px solid var(--aqua);
+  background: #fff;
+  color: var(--ink);
+  position: relative;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.4s var(--ease), color 0.3s ease;
+}
+.size-chip::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+.size-chip.low::after { background: #f59e0b; }
+.size-chip.out { color: #94a3b8; background: #f8fafc; border-style: dashed; border-color: #cbd5e1; }
+.size-chip.out::after { background: #cbd5e1; }
+.size-chip.out .font-extrabold { text-decoration: line-through; }
+.size-chip:hover { border-color: var(--ink); transform: translateY(-2px); }
+.size-chip.is-on { background: var(--ink); color: var(--aqua); border-color: var(--ink); }
+.size-chip.is-changed, .stock-flash { animation: stock-flash 1.6s ease; }
+@keyframes stock-flash {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  30% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.35); }
+}
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, 26vw);
+  gap: 14px;
+}
+@media (min-width: 1024px) {
+  .pack-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(200px, 15.5vw); gap: 18px; }
+}
+@media (min-width: 1440px) { .pack-grid { grid-auto-rows: 230px; } }
+@media (max-width: 1023px) {
+  .pack-grid > .row-span-2:not(.col-span-2) { grid-row: span 2; }
+}
+.pack-tile { box-shadow: 0 24px 40px -28px rgba(0, 0, 0, 0.6); }
+.pack-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease);
+}
+.pack-more > * { overflow: hidden; }
+.pack-tile:hover .pack-more,
+.pack-tile:focus-within .pack-more { grid-template-rows: 1fr; }
+.pack-tile:hover .pack-more > *:first-child { }
+@media (hover: none) { .pack-more { grid-template-rows: 1fr; } }
+.pack-sticker {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: var(--aqua);
+  color: var(--ink);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(12deg);
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.5);
+  animation: sticker-wobble 4s ease-in-out infinite;
+}
+.pack-sticker span {
+  display: block;
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-size: 40px;
+}
+@keyframes sticker-wobble {
+  0%, 100% { transform: rotate(12deg) scale(1); }
+  50% { transform: rotate(4deg) scale(1.06); }
+}
+@media (max-width: 639px) { .pack-sticker { width: 70px; height: 70px; font-size: 10px; } .pack-sticker span { font-size: 30px; } }
+
+/* =====================================================================
    MOUVEMENT RÉDUIT (option du site + préférence système)
    ===================================================================== */
 html.a11y-reduce-motion *,

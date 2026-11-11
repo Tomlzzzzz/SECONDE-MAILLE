@@ -121,15 +121,29 @@ export default function App() {
     };
   }, []);
 
-  const navigateToPage = (pageId) => {
+  // ancre optionnelle : on fait défiler jusqu'à une section après le changement de page
+  const scrollToAnchor = (anchor) => {
+    if (!anchor) return;
+    let n = 0;
+    const tryIt = () => {
+      const el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      else if (n++ < 20) setTimeout(tryIt, 50);
+    };
+    setTimeout(tryIt, 80);
+  };
+
+  const navigateToPage = (pageId, anchor) => {
     if (busy.current) return;
     if (pageId === activePage) {
+      if (anchor) return scrollToAnchor(anchor);
       window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
       return;
     }
     if (reduce) {
       setActivePage(pageId);
       window.scrollTo(0, 0);
+      scrollToAnchor(anchor);
       return;
     }
     busy.current = true;
@@ -139,6 +153,7 @@ export default function App() {
       setActivePage(pageId);
       window.scrollTo(0, 0);
       setCurtain('out');
+      scrollToAnchor(anchor);
       setTimeout(() => {
         setCurtain(null);
         busy.current = false;

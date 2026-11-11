@@ -119,7 +119,7 @@ export default function SiteFooter({ onNavigate, onLegal }) {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0F2926]/60 mb-4">Restez informé·e</h2>
+            <h2 id="footer-newsletter" className="scroll-mt-28 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0F2926]/60 mb-4">Restez informé·e</h2>
             <p className="text-sm text-slate-600 leading-relaxed">Un e-mail pour l’ouverture des box, l’inauguration du pop-up et les contenus Vakita.</p>
             {sent ? (
               <p className="modal-panel mt-4 p-3.5 rounded-2xl bg-[#bae3d1] text-sm font-bold">✓ Merci, vous êtes inscrit·e !</p>
