@@ -2,123 +2,1553 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =====================================================================
+   TYPOGRAPHIES — Titre : Apparat Semi Condensed · Texte : Gilroy Medium
+   Déposez les fichiers dans /public/fonts (voir LISEZMOI.txt).
+   Sans fichier, repli automatique sur Barlow Semi Condensed / Plus Jakarta Sans.
+   ===================================================================== */
+@font-face {
+  font-family: 'Apparat Semi Condensed';
+  src: local('Apparat Semi Condensed Bold'), local('ApparatSemiCondensed-Bold'), local('Apparat SemiCond Bold'),
+    url('/fonts/Apparat-SemiCondensed-Bold.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: local('Gilroy Medium'), local('Gilroy-Medium'), url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: local('Gilroy Bold'), local('Gilroy-Bold'), url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =====================================================================
+   SECONDE MAILLE — Design system
+   Palette conservée : encre #0F2926 · aqua #bae3d1 · teal #0D9488
+   · navy #115E59 · sable #F5FBF9 · secondaire bleu #194080
+   ===================================================================== */
+:root {
+  --ink: #0F2926;
+  --aqua: #bae3d1;
+  --deep: #0D9488;
+  --navy: #115E59;
+  --sand: #F5FBF9;
+  --blue: #194080;
+  --logo-green: #a4d2b3;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+  --nav-h: 84px;
+}
+
 @layer base {
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+  html {
     background-color: #FFFFFF;
-    color: #0F2926;
+    color: var(--ink);
+    font-family: 'Gilroy', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 500;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
     overflow-x: hidden;
+    overflow-x: clip;
+    background-color: #FFFFFF;
+    color: var(--ink);
+  }
+  img { max-width: 100%; }
+  ::selection {
+    background-color: var(--aqua);
+    color: var(--ink);
   }
 }
 
-/* Surlignage Vert d'eau #bae3d1 / Vakita × La Vie est Belt */
-.marker-yellow {
+/* Accessibilité RGAA : focus clavier haute visibilité (le champ e-mail gère son propre contour) */
+*:focus-visible:not(.email-input) {
+  outline: 3px solid var(--ink) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px var(--aqua) !important;
+}
+
+.font-display {
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  overflow-wrap: normal;
+  hyphens: manual;
+  text-wrap: balance;
+}
+
+/* Lien d'évitement RGAA */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 16px;
+  z-index: 9999;
+  background-color: var(--ink);
+  color: var(--aqua);
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.875rem;
+  box-shadow: 0 12px 30px rgba(15, 41, 38, 0.25);
+  transition: top 0.25s var(--ease);
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Options d'accessibilité activables */
+html.a11y-large-text {
+  font-size: 112.5%;
+}
+html.a11y-dyslexic-spacing {
+  letter-spacing: 0.035em;
+  line-height: 1.75;
+  word-spacing: 0.08em;
+}
+
+/* =====================================================================
+   HERO — scène marine en calques
+   ===================================================================== */
+.hero {
   position: relative;
-  display: inline;
-  background-image: linear-gradient(120deg, #d3efe2 0%, #bae3d1 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 88%;
-  background-position: 0 85%;
-  padding: 0 0.22em;
-  border-radius: 3px;
-  color: #0F2926;
-  transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+  isolation: isolate;
+  background: #e6f6ef;
+  --mx: 0;
+  --my: 0;
+  --sy: 0;
+}
+.hero--full {
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  max-height: 1080px;
+}
+.hero--compact {
+  height: 70vh;
+  height: 70svh;
+  min-height: 500px;
+  max-height: 740px;
 }
 
-.marker-yellow-box {
-  background-color: #bae3d1;
-  color: #0F2926;
-  padding: 0.06em 0.34em;
-  border-radius: 6px;
+.hero-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  will-change: transform;
+  transform: translate3d(
+    calc(var(--mx) * var(--d) * 1px),
+    calc(var(--sy) * var(--k) * 1px + var(--my) * var(--d) * 0.5px),
+    0
+  );
+}
+.hero-sky {
+  top: -12%;
+  height: 124%;
+  left: -3%;
+  right: -3%;
+}
+.hero-clouds {
+  top: 5%;
+  height: 26%;
+}
+
+/* Défilement horizontal infini des calques tuilables */
+.hero-drift {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -80px;
+  width: calc(100% + var(--tile) + 160px);
+  background-repeat: repeat-x;
+  background-size: var(--tile) 100%;
+  animation: hero-drift linear infinite;
+  will-change: transform;
+}
+@keyframes hero-drift {
+  to {
+    transform: translate3d(calc(-1 * var(--tile)), 0, 0);
+  }
+}
+.hero-bob {
+  position: absolute;
+  inset: 0;
+  animation: hero-bob ease-in-out infinite alternate;
+}
+@keyframes hero-bob {
+  from { transform: translate3d(0, calc(-1 * var(--bob)), 0); }
+  to { transform: translate3d(0, var(--bob), 0); }
+}
+
+/* Mers */
+.hero-sea-back { top: 54%; bottom: -12%; }
+.hero-sea-mid { top: 63%; bottom: -12%; }
+.hero-sea-front { top: 79%; bottom: -16%; }
+.hero--compact .hero-sea-back { top: 58%; }
+.hero--compact .hero-sea-mid { top: 68%; }
+.hero--compact .hero-sea-front { top: 84%; }
+
+/* Grand titre posé sur l'horizon (la mer passe devant sa base) */
+.hero-title-layer {
+  top: auto;
+  bottom: 44.5%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.hero-title {
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  /* calé sur la largeur ET la hauteur de l'écran → jamais coupé */
+  font-size: min(10.4vw, 23vh, 220px);
+  line-height: 0.82;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+  display: flex;
+  gap: 0.2em;
+  margin: 0;
+}
+.hero-title-word {
+  display: inline-flex;
+}
+.hero-letter {
   display: inline-block;
-  transform: rotate(-0.8deg);
-  transition: transform 0.25s ease, background-color 0.25s ease;
+  pointer-events: auto;
+  animation: letter-rise 1.1s var(--ease) backwards;
+  transition: transform 0.45s var(--ease), color 0.3s ease;
+}
+.hero-letter:hover {
+  transform: translateY(-9%) rotate(-4deg);
+  color: var(--blue);
+}
+/* « MAILLE » est rempli d'un motif de maille de filet */
+.hero-title-word:nth-child(2) .hero-letter {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  background-image:
+    repeating-linear-gradient(45deg, var(--ink) 0 2px, transparent 2px 15px),
+    repeating-linear-gradient(-45deg, var(--ink) 0 2px, transparent 2px 15px);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.hero-title-word:nth-child(2) .hero-letter:hover {
+  background-image: none;
+  -webkit-text-stroke-color: var(--blue);
+  color: var(--blue);
+}
+@keyframes letter-rise {
+  from {
+    transform: translate3d(0, 55%, 0) rotate(6deg);
+    opacity: 0;
+  }
+}
+@media (max-width: 639px) {
+  .hero-title {
+    flex-direction: column;
+    align-items: center;
+    font-size: min(19vw, 9vh);
+    gap: 0.02em;
+  }
+  .hero-title-layer { bottom: 44.5%; }
+  .hero--full { min-height: 600px; }
 }
 
-.marker-yellow-box:hover {
-  transform: rotate(0deg) scale(1.02);
-  background-color: #d3efe2;
+/* Bateau */
+.hero-boat {
+  left: auto;
+  right: 3%;
+  width: clamp(170px, min(30vw, 46vh), 470px);
+  top: 65.5%;
+}
+.hero--compact .hero-boat {
+  width: clamp(150px, min(24vw, 40vh), 360px);
+  top: 70%;
+  right: 6%;
+}
+.hero-boat-anchor { transform: translateY(-80%); }
+.hero-boat-rock {
+  position: relative;
+  transform-origin: 50% 80%;
+  animation: boat-rock 6.5s ease-in-out infinite;
+}
+@keyframes boat-rock {
+  0%, 100% { transform: rotate(-1.6deg) translateY(0); }
+  50% { transform: rotate(1.4deg) translateY(5px); }
+}
+.hero-net-hauled {
+  position: absolute;
+  left: -3.46%;
+  top: 15.3%;
+  width: 30%;
+  transform-origin: 50% 0;
+  animation: net-sway 4.4s ease-in-out infinite;
+}
+@keyframes net-sway {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-4deg) translateY(-3%); }
 }
 
-/* Soulignement cousu Vert d'eau #bae3d1 La Vie est Belt */
-.belt-underline {
-  text-decoration: underline;
-  text-decoration-color: #bae3d1;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 6px;
+/* Vaquita */
+.hero-vaquita {
+  left: 8%;
+  right: auto;
+  top: 83.5%;
+  width: clamp(150px, 19vw, 300px);
+}
+.hero--compact .hero-vaquita {
+  top: 88.5%;
+  left: 5%;
+  width: clamp(120px, 14vw, 220px);
+}
+.hero-vaquita-anchor {
+  position: relative;
+  transform: translateY(-68%);
+}
+.hero-vaquita-float {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transform-origin: 50% 60%;
+  animation: vaquita-float 4.6s ease-in-out infinite;
+}
+.hero-vaquita-float img {
+  transition: transform 0.5s var(--ease);
+}
+.hero-vaquita-float:hover img {
+  transform: rotate(-5deg) scale(1.05);
+}
+.hero-vaquita-float.is-jumping {
+  animation: vaquita-jump 1.1s var(--ease-io);
+}
+@keyframes vaquita-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2.5deg); }
+}
+@keyframes vaquita-jump {
+  0% { transform: translateY(0) rotate(0); }
+  35% { transform: translateY(-95%) translateX(8%) rotate(-22deg); }
+  65% { transform: translateY(-40%) translateX(16%) rotate(18deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+.hero-ripples {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: 66%;
+  height: 34%;
+  pointer-events: none;
+}
+.hero-ripple {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 46%;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.35);
+  animation: ripple 2.8s ease-out infinite;
+}
+.hero-ripple--splash {
+  border-width: 3px;
+  animation: ripple 1.6s ease-out 1;
+}
+@keyframes ripple {
+  0% { transform: translate(-50%, -50%) scale(0.35); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.35); opacity: 0; }
 }
 
-/* Animation fluide de défilement horizontal */
-@keyframes ticker {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* Filets à la dérive */
+.hero-net-drift {
+  right: auto;
+  pointer-events: none;
+}
+.hero-net-drift img {
+  animation: net-float 9s ease-in-out infinite alternate;
+}
+.hero-net-drift--a {
+  left: 30%;
+  top: 86%;
+  width: clamp(100px, 12vw, 200px);
+}
+.hero-net-drift--b {
+  left: 70%;
+  top: 91%;
+  width: clamp(80px, 9vw, 150px);
+}
+.hero-net-drift--b img { animation-duration: 12s; animation-delay: -4s; }
+.hero--compact .hero-net-drift--a { top: 90%; left: 36%; }
+@media (max-width: 639px) {
+  .hero-net-drift--a { left: 4%; top: 91%; }
+  .hero-net-drift--b { left: 72%; top: 89%; }
+}
+.hero--compact .hero-net-drift--b { display: none; }
+@keyframes net-float {
+  from { transform: translate3d(-24px, 0, 0) rotate(-7deg); }
+  to { transform: translate3d(34px, 8px, 0) rotate(5deg); }
 }
 
+/* Texte du hero */
+.hero-copy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding-top: calc(var(--nav-h) + 3.5vh);
+  opacity: calc(1 - var(--sy) / 380);
+  transform: translate3d(0, calc(var(--sy) * -0.25px), 0);
+  pointer-events: none;
+}
+.hero-copy * {
+  pointer-events: auto;
+}
+.hero--compact .hero-copy {
+  padding-top: calc(var(--nav-h) + 5vh);
+}
+@media (max-width: 767px) {
+  .hero-copy { padding-top: calc(var(--nav-h) + 2vh); }
+  .hero-boat { width: clamp(150px, 46vw, 260px); }
+  .hero--compact .hero-boat { width: clamp(130px, 40vw, 220px); right: 3%; }
+  .hero-vaquita { width: clamp(120px, 34vw, 200px); left: 4%; }
+  .hero--compact { height: 62svh; min-height: 440px; }
+}
+/* écrans très bas (téléphone à l'horizontale, petits portables) */
+@media (max-height: 560px) {
+  .hero--full { height: auto; min-height: 640px; max-height: none; }
+  .hero--compact { height: auto; min-height: 460px; }
+  .hero-cue { display: none; }
+}
+
+.hero-cue {
+  position: absolute;
+  bottom: 3.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.hero-cue-line {
+  width: 1.5px;
+  height: 44px;
+  background: linear-gradient(#fff, transparent);
+  transform-origin: top;
+  animation: cue 2.2s var(--ease-io) infinite;
+}
+@keyframes cue {
+  0% { transform: scaleY(0); opacity: 1; }
+  60% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+/* Apparitions au chargement du hero */
+.hero-intro { animation: fade-up 0.9s var(--ease) backwards; }
+.hero-line { animation: line-up 1.1s var(--ease) backwards; }
+@keyframes fade-up {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+}
+@keyframes line-up {
+  from { transform: translate3d(0, 110%, 0); }
+}
+
+/* Badge rond tournant (Pop-Up) */
+.spin-badge {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.5s var(--ease);
+}
+.spin-badge:hover {
+  transform: scale(1.08) rotate(-6deg);
+}
+.spin-badge svg {
+  position: absolute;
+  inset: 0;
+  animation: spin 20s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =====================================================================
+   HEADER « RUE DE ROUBAIX » — boutique, box, lampadaires, oiseaux
+   ===================================================================== */
+.street { background: #e4f5ee; }
+.street--full {
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  max-height: 1080px;
+}
+.street--compact {
+  height: 70vh;
+  height: 70svh;
+  min-height: 500px;
+  max-height: 740px;
+}
+.street-sky { top: -12%; height: 124%; left: -3%; right: -3%; }
+.street-clouds { top: 4%; height: 22%; }
+.street-city { bottom: 14%; height: 40%; left: -3%; right: -3%; }
+.street-houses { bottom: 14%; height: 27%; left: -3%; right: -3%; }
+.street-road { bottom: -1%; height: 16%; left: -3%; right: -3%; }
+
+.street-tile {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  background-size: auto 100%;
+}
+/* « SECONDE MAILLE » en grand, à droite, sur une ligne, derrière les bâtiments */
+.street--full {
+  --shop-w: clamp(320px, min(46vw, 76vh), 880px);
+  /* le titre fait la largeur de la boutique : il ne déborde jamais sur le texte à gauche */
+  --title-fs: calc(var(--shop-w) * 0.158);
+}
+/* le bas du titre passe derrière le haut de la verrière et du mur de briques */
+.street-title-layer {
+  left: auto;
+  right: 3%;
+  width: var(--shop-w);
+  display: flex;
+  justify-content: center;
+  bottom: calc(13.2% + var(--shop-w) * 0.662 - var(--title-fs) * 0.1);
+  pointer-events: none;
+}
+/* grand écran : le titre est centré en hauteur sur le paragraphe d'infos de gauche */
+@media (min-width: 768px) {
+  .street-title-layer { bottom: auto; top: var(--title-y, 40%); }
+  .street-title-box { transform: translateY(-50%); }
+}
+.street-title-box { width: 100%; display: flex; justify-content: flex-end; }
+.street-title.hero-title {
+  font-size: calc(var(--title-fs) * var(--fit, 1));
+  flex-direction: row;
+  gap: 0.2em;
+  width: max-content;
+}
+@media (max-width: 767px) {
+  .street--full { --shop-w: 92vw; --title-fs: min(11.6vw, 7vh); }
+  .street-title-layer { right: 4vw; }
+  .street-lamp--a { display: none; }
+  .street-title.hero-title { flex-direction: row; align-items: flex-end; }
+}
+
+/* oiseaux */
+.street-birds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 45%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.street-bird {
+  position: absolute;
+  left: 0;
+  animation: bird-fly linear infinite;
+}
+.street-bird svg { display: block; animation: bird-bob 2.6s ease-in-out infinite alternate; overflow: visible; }
+.street-bird-wings {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bird-flap 0.42s ease-in-out infinite alternate;
+}
+@keyframes bird-fly {
+  from { transform: translate3d(-80px, 0, 0); }
+  to { transform: translate3d(calc(100vw + 80px), -30px, 0); }
+}
+@keyframes bird-bob {
+  from { transform: translateY(-6px); }
+  to { transform: translateY(8px); }
+}
+@keyframes bird-flap {
+  from { transform: scaleY(1); }
+  to { transform: scaleY(-0.5); }
+}
+
+/* lampadaires */
+.street-lamp {
+  right: auto;
+  width: auto;
+  bottom: 13%;
+  height: 38%;
+}
+.street-lamp--a { left: 2.5%; }
+.street-lamp--b { left: 41%; }
+.street-lamp--c { display: none; }
+.street--compact .street-lamp { height: 34%; }
+.street--compact .street-lamp--b { left: 30%; }
+.street--compact .street-lamp--c { display: block; left: 56%; }
+.street-lamp-glow {
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  width: 360%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -38%);
+  background: radial-gradient(circle, rgba(255, 236, 170, 1) 0%, rgba(255, 236, 170, 0.5) 20%, rgba(255, 236, 170, 0) 58%);
+  pointer-events: none;
+  animation: lamp-glow 4s ease-in-out infinite;
+}
+.street-lamp--b .street-lamp-glow { animation-delay: -1.7s; }
+@keyframes lamp-glow {
+  0%, 100% { opacity: 0.75; transform: translate(-50%, -38%) scale(1); }
+  45% { opacity: 1; transform: translate(-50%, -38%) scale(1.08); }
+  48% { opacity: 0.55; }
+  51% { opacity: 1; }
+}
+
+/* boutique */
+.street-shop {
+  left: auto;
+  right: 3%;
+  bottom: 13.2%;
+  width: var(--shop-w, clamp(320px, min(46vw, 76vh), 880px));
+}
+.street--compact .street-shop {
+  width: clamp(250px, min(36vw, 56vh), 640px);
+  right: 4%;
+}
+.street-shop-logo {
+  position: absolute;
+  left: 8%;
+  top: 37%;
+  width: 39%;
+  filter: drop-shadow(0 4px 0 rgba(15, 41, 38, 0.25));
+  transition: transform 0.6s var(--ease);
+}
+.street-shop:hover .street-shop-logo { transform: scale(1.04) rotate(-1.5deg); }
+.shop-glow { opacity: 0.25; animation: shop-glow 5s ease-in-out infinite alternate; }
+@keyframes shop-glow {
+  from { opacity: 0.15; }
+  to { opacity: 0.5; }
+}
+.shop-shine { animation: shop-shine 8s ease-in-out infinite; }
+@keyframes shop-shine {
+  0% { transform: translateX(-320px); }
+  60%, 100% { transform: translateX(520px); }
+}
+.shop-garment {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: garment-sway 3.4s ease-in-out infinite alternate;
+}
+@keyframes garment-sway {
+  from { transform: rotate(-3deg); }
+  to { transform: rotate(3deg); }
+}
+
+/* box de dépôt */
+.street-box {
+  left: 4%;
+  right: auto;
+  bottom: 5%;
+  width: clamp(160px, min(22vw, 30vh), 400px);
+}
+.street-box-btn {
+  display: block;
+  width: 100%;
+  transition: transform 0.6s var(--ease);
+  transform-origin: 50% 100%;
+}
+.street-box-btn:hover { transform: translateY(-6px) rotate(-1.5deg) scale(1.02); }
+.box-drop {
+  opacity: 0;
+  animation: box-drop 5s ease-in infinite;
+}
+.box-drop--1 { animation-delay: 2.5s; }
+@keyframes box-drop {
+  0% { transform: translateY(-40px); opacity: 0; }
+  12% { opacity: 1; }
+  40% { transform: translateY(0); opacity: 1; }
+  62% { transform: translateY(100px); opacity: 1; }
+  63%, 100% { transform: translateY(100px); opacity: 0; }
+}
+.box-plant {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: garment-sway 4s ease-in-out infinite alternate;
+}
+
+/* vague de transition sous le header */
+.street-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 2;
+}
+.street-wave .wave-divider { height: 56px; }
+
+@media (max-width: 767px) {
+  .street--full { min-height: 720px; height: auto; max-height: none; }
+  .street--full { height: 100svh; }
+  .street--compact { height: 62svh; min-height: 440px; }
+  .street-shop { width: 92vw; right: 4vw; }
+  .street--compact .street-shop { width: 72vw; }
+  .street-box { width: 46vw; left: 1%; bottom: 4.5%; }
+  .street-lamp--b { display: none; }
+  .street--compact .street-lamp--c { display: none; }
+  .street-houses { height: 22%; }
+  .street-city { height: 32%; }
+}
+
+/* =====================================================================
+   PLONGÉE — la scène marine en fond, qui descend avec le scroll
+   ===================================================================== */
+.ocean-dive {
+  position: relative;
+  --q: 0;
+  background: #0F2926;
+}
+.ocean-track {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* surtout pas d'overflow ici : sinon le fond ne reste plus collé à l'écran */
+}
+.ocean-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.ocean-content { position: relative; z-index: 1; }
+.ocean-world {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 262vh;
+  transform: translate3d(0, calc(var(--q) * -162vh), 0);
+  will-change: transform;
+}
+.ow { position: absolute; left: 0; right: 0; }
+.ow-sky { top: -6vh; height: 64vh; left: -2%; right: -2%; transform: translate3d(0, calc(var(--q) * 45vh), 0); }
+.ow-clouds { top: 3vh; height: 20vh; transform: translate3d(0, calc(var(--q) * 45vh), 0); }
+.ow-sea-back { top: 53vh; height: 44vh; }
+.ow-sea-mid { top: 62vh; height: 44vh; }
+.ow-sea-front { top: 77vh; height: 30vh; }
+.ow-boat {
+  left: auto;
+  right: 4vw;
+  top: 64.5vh;
+  width: clamp(190px, min(30vw, 46vh), 460px);
+  transform: translate3d(calc(var(--q) * -38vw), 0, 0);
+}
+.ow-vaquita {
+  right: auto;
+  left: 8vw;
+  top: 81vh;
+  width: clamp(140px, min(18vw, 30vh), 280px);
+  transform: translate3d(calc(var(--q) * 24vw), 0, 0);
+}
+.ow-deep {
+  top: 100vh;
+  height: 162vh;
+  background: linear-gradient(180deg, #0F2926 0%, #10345e 40%, #194080 75%, #1b4688 100%);
+}
+.ow-rays { top: 100vh; height: 100vh; overflow: hidden; pointer-events: none; }
+.ow-rays span {
+  position: absolute;
+  top: -10%;
+  width: 9vw;
+  height: 120%;
+  background: linear-gradient(180deg, rgba(186, 227, 209, 0.22), rgba(186, 227, 209, 0));
+  transform: skewX(-14deg);
+  filter: blur(6px);
+  animation: ray 7s ease-in-out infinite alternate;
+}
+@keyframes ray {
+  from { opacity: 0.35; transform: skewX(-14deg) translateX(-2vw); }
+  to { opacity: 0.9; transform: skewX(-10deg) translateX(2vw); }
+}
+.ow-bubbles { top: 96vh; height: 166vh; overflow: hidden; }
+.ow-net { right: auto; opacity: 0.55; }
+.ow-net img { animation: net-sink 14s ease-in-out infinite alternate; }
+.ow-net--a { top: 128vh; left: 62vw; width: clamp(110px, 16vw, 240px); }
+.ow-net--b { top: 196vh; left: 8vw; width: clamp(90px, 12vw, 180px); }
+.ow-net--b img { animation-duration: 18s; animation-delay: -6s; }
+@keyframes net-sink {
+  from { transform: translate3d(-20px, -20px, 0) rotate(-12deg); }
+  to { transform: translate3d(30px, 40px, 0) rotate(10deg); }
+}
+.ow-diver {
+  right: auto;
+  left: 0;
+  top: 150vh;
+  width: clamp(120px, 14vw, 220px);
+  opacity: 0.8;
+  filter: saturate(0.8) brightness(0.85);
+  animation: diver-swim 34s linear infinite;
+}
+@keyframes diver-swim {
+  0% { transform: translate3d(110vw, 0, 0) rotate(0deg); }
+  25% { transform: translate3d(80vw, -4vh, 0) rotate(-4deg); }
+  50% { transform: translate3d(48vw, 3vh, 0) rotate(3deg); }
+  75% { transform: translate3d(16vw, -3vh, 0) rotate(-3deg); }
+  100% { transform: translate3d(-30vw, 0, 0) rotate(0deg); }
+}
+.ocean-shade {
+  position: absolute;
+  inset: 0;
+  background: #0F2926;
+  opacity: calc(var(--q) * 0.12);
+  pointer-events: none;
+}
+/* animations réduites : pas de fond fixe, simple dégradé surface → profondeur */
+.ocean-dive.is-static .ocean-track { display: none; }
+.ocean-dive.is-static {
+  background: linear-gradient(180deg, #CFEDE0 0, #E4F5EE 420px, #0F2926 820px, #12305f 60%, #194080 100%);
+}
+/* cartes du récit : verre sombre lisible sur le ciel comme sous l'eau */
+.story-card {
+  background: rgba(15, 41, 38, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background-color 0.5s ease, border-color 0.5s ease, transform 0.6s var(--ease);
+}
+.story-card:hover { background: rgba(15, 41, 38, 0.85); border-color: rgba(186, 227, 209, 0.35); transform: translateY(-4px); }
+
+/* =====================================================================
+   NAVIGATION
+   ===================================================================== */
+.site-nav {
+  position: fixed;
+  top: 12px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: transform 0.6s var(--ease);
+}
+.site-nav.is-hidden {
+  transform: translateY(-150%);
+}
+.site-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 7px 7px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 30px -18px rgba(15, 41, 38, 0.25);
+  transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.site-nav.is-scrolled .site-nav-bar {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(186, 227, 209, 0.9);
+  box-shadow: 0 18px 40px -22px rgba(15, 41, 38, 0.4);
+}
+.nav-pills {
+  position: relative;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(244, 251, 248, 0.85);
+  border: 1px solid rgba(186, 227, 209, 0.7);
+}
+.nav-indicator,
+.nav-hover {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 999px;
+  transition: left 0.55s var(--ease), width 0.55s var(--ease), opacity 0.3s ease;
+}
+.nav-indicator { background: var(--ink); }
+.nav-hover { background: rgba(186, 227, 209, 0.6); }
+.nav-pill {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #475569;
+  transition: color 0.35s ease;
+  white-space: nowrap;
+}
+.nav-pill:hover { color: var(--ink); }
+.nav-pill.is-active { color: var(--aqua); }
+.nav-num {
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  opacity: 0.55;
+}
+
+/* Menu mobile plein écran */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: var(--ink);
+  color: #fff;
+  clip-path: circle(0% at calc(100% - 44px) 44px);
+  transition: clip-path 0.8s var(--ease-io);
+  visibility: hidden;
+}
+.mobile-menu.is-open {
+  clip-path: circle(150% at calc(100% - 44px) 44px);
+  visibility: visible;
+}
+.mobile-menu-link {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.mobile-menu.is-open .mobile-menu-link {
+  opacity: 1;
+  transform: none;
+}
+
+/* =====================================================================
+   RIDEAU-VAGUE ENTRE LES PAGES
+   ===================================================================== */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+}
+.page-curtain.is-active { pointer-events: auto; }
+.curtain-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -90px;
+  height: calc(100% + 180px);
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, 100%, 0);
+}
+.curtain-layer svg {
+  display: block;
+  width: 100%;
+  height: 90px;
+  flex: none;
+}
+.curtain-layer .curtain-body { flex: 1; }
+.page-curtain.is-hold .curtain-layer { transform: translate3d(0, 0, 0); }
+.page-curtain.is-hold .curtain-label { opacity: 1; transform: none; transition: none; }
+.page-curtain.is-in .curtain-layer {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.62s var(--ease-io);
+}
+.page-curtain.is-in .curtain-layer--ink { transition-delay: 0.07s; }
+.page-curtain.is-out .curtain-layer {
+  transform: translate3d(0, -100%, 0);
+  transition: transform 0.7s var(--ease-io);
+}
+.page-curtain.is-out .curtain-layer--aqua { transition-delay: 0.08s; }
+.curtain-label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--aqua);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.5s var(--ease);
+}
+.curtain-mascot { animation: mascot-bob 2.4s ease-in-out infinite; }
+.page-curtain.is-in .curtain-label {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.3s;
+}
+
+/* =====================================================================
+   RÉVÉLATIONS AU SCROLL
+   ===================================================================== */
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease),
+    clip-path 1.1s var(--ease);
+  will-change: opacity, transform;
+}
+.reveal-up { transform: translate3d(0, 44px, 0); }
+.reveal-left { transform: translate3d(-48px, 0, 0); }
+.reveal-right { transform: translate3d(48px, 0, 0); }
+.reveal-scale { transform: scale(0.94); }
+.reveal-clip {
+  opacity: 1;
+  transform: translate3d(0, 30px, 0);
+}
+/* le masque est posé sur l'enfant : l'élément observé reste détectable */
+.reveal-clip > * {
+  clip-path: inset(100% 0 0 0 round 32px);
+  transition: clip-path 1.2s var(--ease);
+}
+.reveal-clip.is-in > * {
+  clip-path: inset(-60px -60px -60px -60px round 0px);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.split-mask {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  /* marge interne pour ne pas couper les accents des majuscules (À, É, È) */
+  padding: 0.14em 0 0.1em;
+  margin: -0.14em 0 -0.1em;
+}
+.split-word {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1s var(--ease);
+}
+.split.is-in .split-word { transform: none; }
+
+/* =====================================================================
+   COMPOSANTS INTERACTIFS
+   ===================================================================== */
+
+/* Boutons : remplissage "liquide" au survol */
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  transition: color 0.45s var(--ease), border-color 0.45s ease;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 45% 45% 0 0 / 40% 40% 0 0;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.6s var(--ease), border-radius 0.6s var(--ease);
+}
+.btn:hover::before {
+  transform: none;
+  border-radius: 0;
+}
+.btn .btn-arrow { transition: transform 0.45s var(--ease); }
+.btn:hover .btn-arrow { transform: translateX(5px); }
+.btn-ink { background: var(--ink); color: var(--aqua); }
+.btn-ink::before { background: var(--aqua); }
+.btn-ink:hover { color: var(--ink); }
+.btn-aqua { background: var(--aqua); color: var(--ink); }
+.btn-aqua::before { background: var(--ink); }
+.btn-aqua:hover { color: var(--aqua); }
+.btn-ghost { background: rgba(255, 255, 255, 0.6); color: var(--ink); border: 2px solid var(--ink); }
+.btn-ghost::before { background: var(--ink); }
+.btn-ghost:hover { color: #fff; }
+.btn-sm { padding: 10px 16px; font-size: 12px; }
+.magnetic { transition: transform 0.5s var(--ease); }
+
+/* Lien souligné animé */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.5s var(--ease);
+  padding-bottom: 2px;
+}
+.link-line:hover { background-size: 100% 2px; }
+
+/* Surligneur aqua */
+.marker-aqua {
+  background: linear-gradient(120deg, var(--aqua) 0%, var(--aqua) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 40%;
+  background-position: 0 88%;
+  padding: 0 4px;
+  transition: background-size 0.4s var(--ease);
+}
+.marker-aqua:hover { background-size: 100% 90%; }
+
+/* Carte inclinable */
+.tilt-card {
+  position: relative;
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease), border-color 0.4s ease;
+  transform-style: preserve-3d;
+}
+.tilt-card:hover {
+  transition: transform 0.12s linear, box-shadow 0.6s var(--ease), border-color 0.4s ease;
+  box-shadow: 0 34px 60px -28px rgba(15, 41, 38, 0.35);
+}
+.tilt-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(420px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(186, 227, 209, 0.35), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.tilt-card:hover::after { opacity: 1; }
+
+/* Vague séparatrice animée */
+.wave-divider {
+  position: relative;
+  height: 64px;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+.wave-divider svg {
+  width: 200%;
+  height: 100%;
+  display: block;
+}
+.wave-divider-anim { animation: wave-slide 16s linear infinite; }
+@keyframes wave-slide {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Barre de lecture */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 65;
+  background: linear-gradient(90deg, var(--aqua), var(--deep) 45%, var(--blue));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* Curseur bulle */
+.cursor-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  transition: width 0.4s var(--ease), height 0.4s var(--ease), margin 0.4s var(--ease),
+    background-color 0.4s ease, border-color 0.4s ease, opacity 0.3s ease;
+  mix-blend-mode: multiply;
+  /* invisible tant qu'on ne survole pas un élément cliquable */
+  opacity: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+}
+.cursor-bubble.is-hover {
+  opacity: 1;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  background: rgba(186, 227, 209, 0.55);
+  border-color: transparent;
+}
+.cursor-bubble.has-label {
+  width: 86px;
+  height: 86px;
+  margin: -43px 0 0 -43px;
+  background: var(--ink);
+  border-color: var(--ink);
+  mix-blend-mode: normal;
+}
+.cursor-bubble.is-hidden,
+.cursor-bubble.is-hidden.is-hover { opacity: 0; }
+.cursor-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--aqua);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  text-align: center;
+  line-height: 1.1;
+}
+.cursor-bubble.has-label .cursor-label { opacity: 1; }
+
+/* Texte géant défilant */
+.marquee-word {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(56px, 10vw, 150px);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-right: 0.35em;
+  white-space: nowrap;
+}
+.marquee-word.is-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+}
+.marquee-dot {
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  border-radius: 50%;
+  background: var(--deep);
+  margin-left: 0.35em;
+}
+
+/* Bandeau défilant d'annonces (incliné) */
+@keyframes marqueeTicker {
+  to { transform: translate3d(-50%, 0, 0); }
+}
 .animate-ticker {
   display: flex;
   width: max-content;
-  animation: ticker 34s linear infinite;
+  animation: marqueeTicker 38s linear infinite;
 }
+.animate-ticker:hover { animation-play-state: paused; }
 
-.animate-ticker:hover {
-  animation-play-state: paused;
-}
-
-/* Animation de flottement doux */
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-.animate-float {
-  animation: floatSlow 4s ease-in-out infinite;
-}
-
-/* Animation Laser Scan QR Vert d'eau #bae3d1 */
-@keyframes laserSweep {
-  0% { top: 10%; opacity: 0.8; }
-  50% { top: 86%; opacity: 1; }
-  100% { top: 10%; opacity: 0.8; }
-}
-
-.scanner-beam {
+/* Bulles qui remontent */
+.bubbles span {
   position: absolute;
-  left: 8%;
-  right: 8%;
-  height: 2.5px;
-  background: #bae3d1;
-  box-shadow: 0 0 18px 4px rgba(186, 227, 209, 0.9);
-  border-radius: 999px;
-  animation: laserSweep 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  bottom: -30px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(186, 227, 209, 0.35);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.25), transparent 60%);
+  animation: bubble-rise linear infinite;
+}
+@keyframes bubble-rise {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate3d(14px, -45vh, 0); }
+  100% { transform: translate3d(-10px, -95vh, 0); opacity: 0; }
 }
 
-/* Ondes radar autour du point GPS */
-@keyframes pulseRing {
-  0% { transform: scale(0.8); opacity: 0.9; }
-  100% { transform: scale(2.6); opacity: 0; }
+/* Lignes d'index éditoriales */
+.index-row {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
 }
-
-.gps-ring::before {
+.index-row::before {
   content: '';
   position: absolute;
-  inset: -6px;
-  border-radius: 9999px;
-  background-color: rgba(186, 227, 209, 0.75);
-  animation: pulseRing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  inset: 0;
+  z-index: -1;
+  background: var(--aqua);
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 0.65s var(--ease);
+}
+.index-row:hover::before { transform: scaleY(1); }
+.index-row .index-arrow { transition: transform 0.55s var(--ease), background-color 0.4s ease, color 0.4s ease; }
+.index-row .index-arrow svg { transition: transform 0.55s var(--ease); }
+.index-row:hover .index-arrow {
+  background: var(--ink);
+  color: var(--aqua);
+}
+.index-row:hover .index-arrow svg { transform: rotate(-45deg); }
+.index-row .index-title { transition: transform 0.6s var(--ease); }
+.index-row:hover .index-title { transform: translateX(14px); }
+
+/* Bandeau "page suivante" */
+.next-band {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.next-band-fill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translate3d(0, calc(100% + 60px), 0);
+  transition: transform 0.9s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+.next-band-fill svg { width: 100%; height: 50px; flex: none; margin-top: -49px; display: block; }
+.next-band-fill div { flex: 1; background: var(--aqua); }
+.next-band:hover .next-band-fill { transform: translate3d(0, 0, 0); }
+.next-band-wave {
+  position: relative;
+  z-index: 1;
+  margin-top: 0;
+  margin-bottom: -1px;
+}
+.next-band .next-title { transition: color 0.5s ease, transform 0.8s var(--ease); }
+.next-band:hover .next-title { color: var(--ink); transform: translateX(1.5vw); }
+.next-band:hover .next-sub { color: var(--ink); }
+
+/* Champ e-mail du footer : un seul contour, porté par la pastille */
+.email-input:focus,
+.email-input:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.email-field:focus-within {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px rgba(186, 227, 209, 0.9);
 }
 
-/* Scrollbar minimaliste sur fond blanc */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Slider produits */
+.slider {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 10px 4px 28px;
+  cursor: grab;
 }
-::-webkit-scrollbar-track {
-  background: #FFFFFF;
+.slider::-webkit-scrollbar { display: none; }
+.slider.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.slider.is-dragging * { pointer-events: none; }
+.slider > * { scroll-snap-align: start; flex: 0 0 auto; }
+
+/* Onglets avec contenu glissant */
+.tab-panel-enter { animation: tab-in 0.55s var(--ease) both; }
+@keyframes tab-in {
+  from { opacity: 0; transform: translate3d(24px, 0, 0); }
 }
-::-webkit-scrollbar-thumb {
-  background: #bae3d1;
-  border-radius: 9999px;
+
+/* Modales */
+.modal-backdrop { animation: fade-in 0.35s ease both; }
+.modal-panel { animation: modal-in 0.6s var(--ease) both; }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes modal-in {
+  from { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.97); }
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #0D9488;
+
+/* Lecture vidéo : anneaux pulsants */
+.play-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--aqua);
+  animation: play-ring 2.4s ease-out infinite;
+}
+@keyframes play-ring {
+  from { transform: scale(1); opacity: 0.8; }
+  to { transform: scale(1.9); opacity: 0; }
+}
+.scan-lines {
+  background: repeating-linear-gradient(0deg, rgba(186, 227, 209, 0.07) 0 2px, transparent 2px 6px);
+}
+
+/* Mini carte : ping GPS */
+@keyframes gpsPulse {
+  0% { transform: scale(0.85); opacity: 0.75; }
+  70%, 100% { transform: scale(2.2); opacity: 0; }
+}
+.gps-ring { animation: gpsPulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Ligne de corde qui se dessine */
+.rope-line path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s var(--ease);
+}
+.rope-line.is-in path { stroke-dashoffset: 0; }
+
+/* Mot-signature du footer (SVG) */
+.footer-wordmark text {
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: 128px;
+  fill: transparent;
+  stroke: rgba(15, 41, 38, 0.22);
+  stroke-width: 1.2;
+  transition: fill 0.6s ease, stroke 0.6s ease;
+}
+.footer-wordmark:hover text { fill: var(--aqua); stroke: var(--ink); }
+/* ancien mot-signature */
+.footer-mark {
+  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: 13.5vw;
+  line-height: 0.8;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(15, 41, 38, 0.22);
+  user-select: none;
+}
+.footer-mark span {
+  display: inline-block;
+  transition: color 0.5s ease, transform 0.6s var(--ease), -webkit-text-stroke-color 0.5s ease;
+}
+.footer-mark span:hover {
+  color: var(--aqua);
+  -webkit-text-stroke-color: var(--ink);
+  transform: translateY(-6%);
+}
+
+/* =====================================================================
+   MASCOTTE & LOGO
+   ===================================================================== */
+/* Bouton « remonter à la surface » : la mascotte sort de l'eau */
+.mascot-top {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right));
+  bottom: 0;
+  z-index: 55;
+  width: 66px;
+  transform: translate3d(0, 130%, 0);
+  transition: transform 0.7s var(--ease);
+}
+.mascot-top.is-visible { transform: translate3d(0, -18px, 0); }
+.mascot-top img {
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(15, 41, 38, 0.25));
+  animation: mascot-bob 3.2s ease-in-out infinite;
+}
+.mascot-top:hover img { animation: mascot-wiggle 0.6s ease-in-out; }
+.mascot-top .mascot-tip {
+  position: absolute;
+  right: 110%;
+  top: 50%;
+  transform: translate3d(8px, -50%, 0);
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.4s var(--ease);
+  pointer-events: none;
+}
+.mascot-top:hover .mascot-tip,
+.mascot-top:focus-visible .mascot-tip { opacity: 1; transform: translate3d(0, -50%, 0); }
+@keyframes mascot-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-6px) rotate(3deg); }
+}
+@keyframes mascot-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-12deg) scale(1.05); }
+  75% { transform: rotate(10deg) scale(1.05); }
+}
+
+/* Mascotte qui nage le long du fil de l'histoire */
+.story-swimmer {
+  position: absolute;
+  left: 50%;
+  width: 56px;
+  margin-left: -28px;
+  transition: top 0.25s linear;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+}
+.story-swimmer img { animation: mascot-bob 3s ease-in-out infinite; }
+
+/* =====================================================================
+   CARTE (Leaflet)
+   ===================================================================== */
+.map-shell {
+  position: relative;
+  isolation: isolate; /* garde les calques Leaflet sous la navigation */
+  z-index: 0;
+}
+.map-shell .leaflet-container {
+  font-family: inherit;
+  background: #e3f5ec;
+  border-radius: inherit;
+}
+.map-shell .leaflet-control-attribution { font-size: 10px; }
+.map-shell .leaflet-bar a { color: var(--ink); }
+.sm-pin {
+  position: relative;
+  width: 58px;
+  height: 58px;
+}
+.sm-pin img {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 10px rgba(15, 41, 38, 0.35));
+}
+.sm-pin::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: rgba(25, 64, 128, 0.35);
+  animation: gpsPulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.me-pin {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 6px rgba(25, 64, 128, 0.25);
+}
+
+/* =====================================================================
+   MOUVEMENT RÉDUIT (option du site + préférence système)
+   ===================================================================== */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+html.a11y-reduce-motion .reveal-clip > *,
+html.a11y-reduce-motion .reveal,
+html.a11y-reduce-motion .split-word {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal-clip > *,
+  .reveal,
+  .split-word {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
 }

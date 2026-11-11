@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   MapPin,
   Navigation,
@@ -23,6 +23,8 @@ import {
   calculatePointsFromWeight
 } from '../data/mockData';
 
+const TAB_ORDER = ['map', 'scan', 'leagues', 'profile'];
+
 export default function MobileAppSimulator({
   userProfile,
   collectiveGoal,
@@ -32,6 +34,19 @@ export default function MobileAppSimulator({
   isFullscreenMobile = false
 }) {
   const [activeTab, setActiveTab] = useState('map'); // 'map' | 'scan' | 'leagues' | 'profile'
+  const [slideDir, setSlideDir] = useState('right');
+  const prevTabRef = useRef('map');
+
+  const switchTab = (tabId) => {
+    const prevIdx = TAB_ORDER.indexOf(prevTabRef.current);
+    const nextIdx = TAB_ORDER.indexOf(tabId);
+    if (prevIdx !== -1 && nextIdx !== -1 && prevIdx !== nextIdx) {
+      setSlideDir(nextIdx > prevIdx ? 'right' : 'left');
+    }
+    prevTabRef.current = tabId;
+    setActiveTab(tabId);
+  };
+
   const [geoStatus, setGeoStatus] = useState('prompt'); // 'prompt' | 'locating' | 'granted'
   const [userCoords, setUserCoords] = useState({
     lat: 50.6845,
@@ -150,7 +165,7 @@ export default function MobileAppSimulator({
           </div>
 
           <button
-            onClick={() => setActiveTab('leagues')}
+            onClick={() => switchTab('leagues')}
             className="flex items-center gap-1 bg-teal-50 hover:bg-[#bae3d1] text-[#0F2926] px-2.5 py-1 rounded-full text-[11px] font-bold transition"
           >
             <Flame className="w-3.5 h-3.5 text-[#0D9488]" />
@@ -178,8 +193,13 @@ export default function MobileAppSimulator({
         </span>
       </div>
 
-      {/* Contenu Principal de l'Application */}
-      <div className="flex-1 overflow-y-auto bg-white flex flex-col">
+      {/* Contenu Principal de l'Application avec animation slide */}
+      <div
+        key={activeTab}
+        className={`flex-1 overflow-y-auto phone-scroll bg-white flex flex-col ${
+          slideDir === 'right' ? 'tab-slide-right' : 'tab-slide-left'
+        }`}
+      >
         {/* ONGLET 1 : CARTE & LOCALISATION DES BOX */}
         {activeTab === 'map' && (
           <div className="flex-1 flex flex-col">
@@ -425,7 +445,7 @@ export default function MobileAppSimulator({
               <button
                 onClick={() => {
                   setScanState('idle');
-                  setActiveTab('scan');
+                  switchTab('scan');
                 }}
                 className="mt-3.5 w-full bg-[#bae3d1] hover:bg-[#0D9488] hover:text-white text-[#0F2926] font-extrabold text-xs py-3 px-4 rounded-2xl shadow-sm flex items-center justify-center gap-2 transition active:scale-[0.99]"
               >
@@ -810,7 +830,7 @@ export default function MobileAppSimulator({
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => switchTab(tab.id)}
               className={`flex flex-col items-center justify-center py-1 rounded-2xl transition ${
                 active
                   ? 'bg-[#bae3d1] text-[#0F2926] font-extrabold'

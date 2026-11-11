@@ -624,3 +624,61 @@ export const POPUP_SCHEDULE = [
   }
 ];
 
+
+/* =====================================================================
+   DONNÉES DU SITE VITRINE (utilisées par App.jsx)
+   Ajoutées pour faire correspondre les imports du site aux données existantes.
+   ===================================================================== */
+
+const pickProduct = (visualType) => MERCH_PRODUCTS.find((p) => p.visualType === visualType);
+
+// Les 4 pièces de la collection présentées sur le site (prix alignés sur la charte de transparence)
+export const PRODUCTS = [
+  { ...pickProduct('belt'), price: 65, badge: 'Pièce phare', stockLille: '39 pièces' },
+  { ...pickProduct('hat'), price: 42, badge: 'Réversible', stockLille: '24 pièces' },
+  { ...pickProduct('bag'), price: 58, badge: 'Terrain', stockLille: '17 pièces' },
+  { ...pickProduct('keychain'), price: 18, badge: 'Gravé en direct', stockLille: '80 pièces' }
+];
+
+export const BRAND_PILLARS = {
+  vakita: {
+    tagline: 'Média d’enquête',
+    url: 'https://www.vakita.fr',
+    mission:
+      'Vakita est un média indépendant qui enquête sur le terrain pour raconter l’état des océans et donner envie d’agir. Son nom vient du vaquita, le plus petit cétacé du monde, menacé par les filets maillants.',
+    highlights: [
+      'Enquêtes et documentaires exclusifs sur les filets fantômes',
+      'Récit de la traçabilité de chaque pièce via le QR code',
+      'Mobilisation de sa communauté autour du Pop-Up'
+    ]
+  },
+  belt: {
+    tagline: 'Upcycling du Nord',
+    url: 'https://www.lavieestbelt.fr',
+    mission:
+      'La Vie est Belt transforme des matières délaissées — pneus de vélo, chambres à air, filets — en accessoires durables, façonnés à la main dans des ateliers solidaires des Hauts-de-France.',
+    highlights: [
+      'Conception et façonnage des 4 pièces de la collection',
+      'Ateliers d’insertion et emploi solidaire dans le 59',
+      'Gravure à chaud et ajustement sur-mesure en Pop-Up'
+    ]
+  }
+};
+
+export const BOX_EXPERIENCE_STEPS = [
+  { step: 1, title: 'Ouvrir le coffret', description: 'Votre pièce numérotée et sa carte en papier ensemencé vous attendent dans un carton recyclé.' },
+  { step: 2, title: 'Scanner le QR code', description: 'La carte débloque le passeport d’origine : lot de filet, atelier, artisan.' },
+  { step: 3, title: 'Prolonger l’histoire', description: 'Accédez aux reportages Vakita et à vos avantages lors des prochains Pop-Up.' }
+];
+
+export const POPUP_BOUTIQUES = [
+  { id: 'lille', city: 'Lille', venue: 'Gare Saint-Sauveur', address: '17 Bd Jean-Baptiste Lebas, 59800 Lille', dates: '14 — 16 nov. 2026', status: 'Ouvert' },
+  { id: 'paris', city: 'Paris', venue: 'Lieu à annoncer', address: 'Adresse communiquée par newsletter', dates: 'Dates à venir', status: 'Bientôt' },
+  { id: 'nantes', city: 'Nantes', venue: 'Lieu à annoncer', address: 'Adresse communiquée par newsletter', dates: 'Dates à venir', status: 'Bientôt' }
+];
+
+export const VAKITA_REPORTAGES = REPORTAGES_VIDEOS.map((v) => ({
+  ...v,
+  journalist: v.protagonists,
+  impactStat: `${v.keyStats[0].value} — ${v.keyStats[0].label.toLowerCase()}`
+}));

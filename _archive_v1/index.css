@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #FFFFFF;
+    color: #0F2926;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #FFFFFF;
+    color: #0F2926;
+  }
+
+  ::selection {
+    background-color: #bae3d1;
+    color: #0F2926;
+  }
+
+  /* Accessibilité RGAA : Focus clavier haute visibilité */
+  *:focus-visible {
+    outline: 3px solid #0F2926 !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px #bae3d1 !important;
+  }
+}
+
+/* Lien d'évitement RGAA (Skip to content) */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 16px;
+  z-index: 9999;
+  background-color: #0F2926;
+  color: #bae3d1;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.875rem;
+  box-shadow: 0 12px 30px rgba(15, 41, 38, 0.25);
+  transition: top 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Options d'accessibilité activables par l'utilisateur */
+html.a11y-large-text {
+  font-size: 112.5%;
+}
+
+html.a11y-dyslexic-spacing {
+  letter-spacing: 0.035em;
+  line-height: 1.75;
+  word-spacing: 0.08em;
+}
+
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Vakita #bae3d1 Aqua Highlight Marker */
+.marker-aqua {
+  background: linear-gradient(120deg, #bae3d1 0%, #bae3d1 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 42%;
+  background-position: 0 86%;
+  padding: 0 6px;
+  border-radius: 4px;
+  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.marker-aqua:hover {
+  background-size: 100% 88%;
+}
+
+.marker-aqua-pill {
+  background-color: #bae3d1;
+  color: #0F2926;
+  padding: 2px 14px;
+  border-radius: 12px;
+  display: inline-block;
+  transform: rotate(-1deg);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+
+.marker-aqua-pill:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 0 8px 20px -6px rgba(15, 41, 38, 0.16);
+}
+
+/* La Vie est Belt Terracotta Stitching Underline */
+.belt-underline {
+  text-decoration: underline;
+  text-decoration-color: #D96B43;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 6px;
+}
+
+/* Animations de changement d'onglet (Slide directionnel fluide) */
+@keyframes tabSlideFromRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(28px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes tabSlideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translate3d(-28px, 0, 0) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.tab-slide-right {
+  animation: tabSlideFromRight 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.tab-slide-left {
+  animation: tabSlideFromLeft 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animations d'apparition au scroll (Scroll Reveal) */
+.reveal-base {
+  opacity: 0;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up {
+  transform: translate3d(0, 28px, 0);
+}
+
+.reveal-left {
+  transform: translate3d(-28px, 0, 0);
+}
+
+.reveal-right {
+  transform: translate3d(28px, 0, 0);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Micro-interactions au survol des cartes & boutons */
+.interactive-card {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px -12px rgba(15, 41, 38, 0.12);
+}
+
+.interactive-slide-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interactive-slide-btn:hover {
+  transform: translateY(-2px);
+}
+
+.interactive-slide-btn .slide-arrow {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.interactive-slide-btn:hover .slide-arrow {
+  transform: translateX(5px);
+}
+
+/* Custom Scrollbar for Phone Simulator */
+.phone-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.phone-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.phone-scroll::-webkit-scrollbar-thumb {
+  background: rgba(15, 41, 38, 0.15);
+  border-radius: 9999px;
+}
+
+/* QR Scanner Beam Animation */
+@keyframes scanBeam {
+  0%, 100% {
+    top: 10%;
+    opacity: 0.9;
+  }
+  50% {
+    top: 86%;
+    opacity: 1;
+  }
+}
+
+.scanner-beam {
+  animation: scanBeam 2.4s ease-in-out infinite;
+}
+
+/* Pulse Ring for GPS */
+@keyframes gpsPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.75;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.gps-ring {
+  animation: gpsPulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Bandeau défilant continu parfaitement aligné */
+@keyframes marqueeTicker {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: marqueeTicker 34s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker,
+  .scanner-beam,
+  .gps-ring {
+    animation: none !important;
+  }
+  .reveal-base {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
