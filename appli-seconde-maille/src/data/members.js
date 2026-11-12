@@ -1,3 +1,4 @@
+import { BOXES } from './places';
 /* =====================================================================
    MEMBRES — données simulées pour l'aspect social (prototype).
    À remplacer par le serveur : ce n'est PAS du temps réel, comme Waze
@@ -26,7 +27,7 @@ export const MEMBERS = NAMES.map((n, i) => {
     total,
     week: Math.round(r() * 320),
     kg: Math.round((total / 160) * 10) / 10,
-    lastBox: ['GPL', 'VBO', 'VXL', 'EUR', 'RBX'][Math.floor(r() * 5)],
+    lastBox: BOXES[Math.floor(r() * BOXES.length)].id,
     lastAgoMin: Math.round(5 + r() * 60 * 30)
   };
 });

@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { MapPin, Navigation, ShieldCheck, ArrowRight, Loader2, Check } from 'lucide-react';
+import { MapPin, Navigation, ShieldCheck, ArrowRight, Loader2, Check, CloudUpload } from 'lucide-react';
 import { useStore } from '../state/store';
 import { Avatar } from '../components/ui';
 import { POPUP } from '../data/places';
+import AuthForm from '../components/AuthForm';
+import { cloudEnabled } from '../lib/cloud';
 
 const COLORS = ['#194080', '#0D9488', '#0F2926', '#2c5aa8', '#5fbfa6', '#115E59'];
 
 export default function Onboarding() {
-  const { dispatch } = useStore();
-  const [step, setStep] = useState(0);
+  const { state, dispatch, account } = useStore();
+  // étapes : 0 bienvenue · 1 compte · 2 localisation · 3 profil
+  const [step, setStep] = useState(() => (state.onboarded ? 2 : 0)); // compte retrouvé sur un nouvel appareil → localisation
+  const steps = cloudEnabled ? [0, 1, 2, 3] : [0, 2, 3];
+  const next = (from) => setStep(steps[steps.indexOf(from) + 1]);
   const [geo, setGeo] = useState('idle'); // idle | asking | granted | denied | unsupported
   const [pseudo, setPseudo] = useState('');
   const [color, setColor] = useState(COLORS[0]);
@@ -22,11 +27,17 @@ export default function Onboarding() {
     navigator.geolocation.getCurrentPosition(
       () => {
         setGeo('granted');
-        setTimeout(() => setStep(2), 700);
+        setTimeout(() => afterGeo('granted'), 700);
       },
       (e) => setGeo(e.code === 1 ? 'denied' : 'unsupported'),
       { enableHighAccuracy: true, timeout: 15000 }
     );
+  };
+
+  // si le profil vient du compte, on s'arrête après la localisation
+  const afterGeo = (value) => {
+    if (state.onboarded) dispatch({ type: 'geo', value });
+    else setStep(3);
   };
 
   const finish = () =>
@@ -39,7 +50,7 @@ export default function Onboarding() {
   return (
     <div className="onb">
       <div className="onb-dots" aria-hidden="true">
-        {[0, 1, 2].map((i) => (
+        {steps.map((i) => (
           <span key={i} className={i === step ? 'is-on' : i < step ? 'is-done' : ''} />
         ))}
       </div>
@@ -55,7 +66,7 @@ export default function Onboarding() {
             Dépose tes matières dans les box, gagne des points à chaque pesée et utilise-les au pop-up du <strong className="text-[#0F2926]">20 mars 2027</strong>.
           </p>
           <div className="mt-auto">
-            <button onClick={() => setStep(1)} className="app-btn app-btn-ink w-full">
+            <button onClick={() => next(0)} className="app-btn app-btn-ink w-full">
               C’est parti <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -63,6 +74,29 @@ export default function Onboarding() {
       )}
 
       {step === 1 && (
+        <section key="s-acc" className="onb-step">
+          <div className="flex flex-col items-center mt-4">
+            <span className="w-20 h-20 rounded-[28px] bg-[#0F2926] text-[#bae3d1] grid place-items-center">
+              <CloudUpload className="w-9 h-9" />
+            </span>
+            <h1 className="font-display uppercase text-[34px] leading-[0.95] text-[#0F2926] text-center mt-5">Ton compte</h1>
+            <p className="text-sm text-[#0F2926]/65 text-center mt-2 leading-relaxed">
+              Tes points, ta série et tes récompenses sont sauvegardés sur ton compte : tu les retrouves sur n’importe quel téléphone.
+            </p>
+          </div>
+          <div className="mt-6">
+            <AuthForm onDone={() => setStep(2)} />
+          </div>
+          <div className="mt-auto pt-4">
+            <button onClick={() => setStep(2)} className="app-btn app-btn-ghost w-full">
+              Continuer sans compte
+            </button>
+            <p className="text-[11px] text-[#0F2926]/50 text-center mt-2">Sans compte, ta progression reste sur cet appareil. Tu pourras en créer un plus tard depuis le Pass.</p>
+          </div>
+        </section>
+      )}
+
+      {step === 2 && (
         <section key="s1" className="onb-step">
           <div className="onb-hero">
             <span className="gps-ring" />
@@ -76,7 +110,7 @@ export default function Onboarding() {
           <ul className="mt-6 space-y-3">
             {[
               [Navigation, 'Voir la box la plus proche et la distance qui t’en sépare'],
-              [MapPin, 'Être guidé·e pas à pas jusqu’à une box ou au pop-up de Roubaix'],
+              [MapPin, 'Être guidé·e pas à pas jusqu’à une box ou au pop-up de Lille'],
               [ShieldCheck, 'Ta position reste sur ton téléphone : elle n’est ni partagée ni enregistrée']
             ].map(([Icon, t]) => (
               <li key={t} className="flex gap-3 items-start p-3 rounded-2xl bg-white border border-[#bae3d1]">
@@ -100,12 +134,12 @@ export default function Onboarding() {
                 {geo === 'asking' ? 'En attente de ton accord…' : geo === 'granted' ? 'Localisation activée' : 'Activer la localisation'}
               </button>
             ) : (
-              <button onClick={() => setStep(2)} className="app-btn app-btn-ink w-full">
+              <button onClick={() => afterGeo('skipped')} className="app-btn app-btn-ink w-full">
                 Continuer <ArrowRight className="w-4 h-4" />
               </button>
             )}
             {geo === 'idle' && (
-              <button onClick={() => setStep(2)} className="app-btn app-btn-ghost w-full">
+              <button onClick={() => afterGeo('skipped')} className="app-btn app-btn-ghost w-full">
                 Plus tard
               </button>
             )}
@@ -113,7 +147,7 @@ export default function Onboarding() {
         </section>
       )}
 
-      {step === 2 && (
+      {step === 3 && (
         <section key="s2" className="onb-step">
           <div className="flex flex-col items-center mt-6">
             <Avatar pseudo={pseudo || 'SM'} color={color} size={96} />

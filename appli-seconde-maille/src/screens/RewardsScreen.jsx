@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Coffee, Gift, Percent, Package, Sparkles, X, QrCode, MapPin, CalendarDays, Lock, RotateCcw } from 'lucide-react';
+import { Coffee, Gift, Percent, Package, Sparkles, X, QrCode, MapPin, CalendarDays, Lock, RotateCcw, CloudUpload, LogOut, RefreshCw } from 'lucide-react';
 import { TopBar, Counter, ProgressBar, Pill, Avatar } from '../components/ui';
 import QrImage from '../components/QrImage';
 import Portal from '../components/Portal';
@@ -7,6 +7,8 @@ import { useStore } from '../state/store';
 import { REWARDS } from '../data/rewards';
 import { POPUP } from '../data/places';
 import { randomNonce } from '../lib/points';
+import AuthForm from '../components/AuthForm';
+import { timeAgo } from '../components/ui';
 
 const ICONS = { cafe: Coffee, goodie: Gift, merch10: Percent, pack15: Package, all20: Sparkles };
 
@@ -32,9 +34,64 @@ function QrModal({ title, sub, code, onClose }) {
   );
 }
 
+const SYNC_LABEL = {
+  syncing: 'Synchronisation…',
+  saved: 'Progression sauvegardée',
+  offline: 'Hors ligne : envoi au retour du réseau',
+  error: 'Échec de la sauvegarde',
+  off: 'Non connecté'
+};
+
+function AccountCard({ onAuth }) {
+  const { account, balance } = useStore();
+  if (!account.enabled) return null;
+  const { user, sync } = account;
+  if (!user)
+    return (
+      <section className="mx-4 mt-5 p-4 rounded-3xl bg-[#0F2926] text-white">
+        <div className="flex items-start gap-3">
+          <span className="w-10 h-10 rounded-2xl bg-[#bae3d1] text-[#0F2926] grid place-items-center shrink-0">
+            <CloudUpload className="w-5 h-5" />
+          </span>
+          <div>
+            <p className="text-sm font-extrabold">Ta progression n’est que sur ce téléphone</p>
+            <p className="text-[12px] text-white/70 mt-1">Crée un compte pour sauvegarder tes {balance} pts, ta série et tes récompenses, et les retrouver partout.</p>
+          </div>
+        </div>
+        <button onClick={onAuth} className="app-btn app-btn-aqua w-full mt-4">
+          Créer un compte / Se connecter
+        </button>
+      </section>
+    );
+  return (
+    <section className="mx-4 mt-5 p-4 rounded-3xl bg-white border border-[#bae3d1]">
+      <p className="text-xs font-extrabold text-[#0F2926]">Mon compte</p>
+      <p className="text-sm text-[#0F2926] mt-1 truncate">{user.email}</p>
+      <div className="flex items-center gap-2 mt-2 text-[12px] text-slate-600">
+        <span className={`sync-dot is-${sync.status}`} />
+        <span className="flex-1 min-w-0 truncate">
+          {SYNC_LABEL[sync.status]}
+          {sync.status === 'saved' && sync.at ? ` · ${timeAgo(new Date(sync.at))}` : ''}
+          {sync.status === 'error' && sync.message ? ` · ${sync.message}` : ''}
+        </span>
+        <button onClick={account.syncNow} className="icon-btn !w-8 !h-8" aria-label="Synchroniser maintenant">
+          <RefreshCw className="w-3.5 h-3.5" />
+        </button>
+      </div>
+      <button
+        onClick={() => window.confirm('Te déconnecter ? Ta progression reste sur ton compte et cet appareil est vidé.') && account.logout()}
+        className="app-btn app-btn-ghost w-full mt-3"
+      >
+        <LogOut className="w-4 h-4" /> Me déconnecter
+      </button>
+    </section>
+  );
+}
+
 export default function RewardsScreen() {
-  const { state, dispatch, balance } = useStore();
+  const { state, dispatch, balance, account } = useStore();
   const [confirm, setConfirm] = useState(null);
+  const [auth, setAuth] = useState(false);
   const [show, setShow] = useState(null); // { title, sub, code }
   const passCode = `SM-PASS|${state.memberId}|${state.profile.pseudo}`;
   const days = Math.max(0, Math.ceil((POPUP.date - Date.now()) / 864e5));
@@ -67,7 +124,7 @@ export default function RewardsScreen() {
                   <CalendarDays className="w-3.5 h-3.5 text-[#bae3d1]" /> {POPUP.dateLabel} · J-{days}
                 </p>
                 <p className="flex items-center gap-1.5 truncate">
-                  <MapPin className="w-3.5 h-3.5 text-[#bae3d1] shrink-0" /> 82 rue Louis Braille, Roubaix
+                  <MapPin className="w-3.5 h-3.5 text-[#bae3d1] shrink-0" /> 17 bd Jean-Baptiste Lebas, Lille
                 </p>
                 <p className="text-white/60">Entrée : un matériau déposé</p>
               </div>
@@ -147,16 +204,20 @@ export default function RewardsScreen() {
           )}
         </section>
 
-        <div className="mx-4 mt-6 text-center">
-          <button
-            onClick={() => {
-              if (window.confirm('Réinitialiser l’appli sur cet appareil ? (profil, dépôts et points de démo)')) dispatch({ type: 'reset' });
-            }}
-            className="text-[11px] font-bold text-slate-400 inline-flex items-center gap-1"
-          >
-            <RotateCcw className="w-3 h-3" /> Réinitialiser la démo
-          </button>
-        </div>
+        <AccountCard onAuth={() => setAuth(true)} />
+
+        {!account.user && (
+          <div className="mx-4 mt-5 text-center">
+            <button
+              onClick={() => {
+                if (window.confirm('Réinitialiser l’appli sur cet appareil ? (profil, dépôts et points)')) dispatch({ type: 'reset' });
+              }}
+              className="text-[11px] font-bold text-slate-400 inline-flex items-center gap-1"
+            >
+              <RotateCcw className="w-3 h-3" /> Réinitialiser cet appareil
+            </button>
+          </div>
+        )}
       </div>
 
       {confirm && (
@@ -181,6 +242,21 @@ export default function RewardsScreen() {
         </Portal>
       )}
       {show && <QrModal {...show} onClose={() => setShow(null)} />}
+      {auth && (
+        <Portal>
+          <div className="modal" role="dialog" aria-modal="true" aria-label="Compte" onClick={() => setAuth(false)}>
+            <div className="modal-card pop-in" onClick={(e) => e.stopPropagation()}>
+              <button onClick={() => setAuth(false)} className="absolute right-3 top-3 icon-btn" aria-label="Fermer">
+                <X className="w-5 h-5" />
+              </button>
+              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">Sauvegarder ma progression</p>
+              <p className="font-display uppercase text-2xl leading-none text-[#0F2926] mt-1 mb-4 pr-10">Mon compte</p>
+              <AuthForm pseudo={state.profile.pseudo} onDone={() => setAuth(false)} />
+              <p className="text-[11px] text-slate-500 mt-3">Tes points actuels sont ajoutés à ton compte, rien n’est perdu.</p>
+            </div>
+          </div>
+        </Portal>
+      )}
     </div>
   );
 }

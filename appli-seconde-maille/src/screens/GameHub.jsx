@@ -4,7 +4,7 @@ import { TopBar, Avatar, Pill, Counter } from '../components/ui';
 import { useNav } from '../App';
 import { useStore } from '../state/store';
 import { MEMBERS } from '../data/members';
-import { GAME_NAME, COLLAB_START, COLLAB_END, MAX_GAME_POINTS, STREAK_STEP, STREAK_MAX, collabPhase, dayKey, streakIncluding, dailyBoard } from '../data/game';
+import { GAME_NAME, COLLAB_START, MAX_GAME_POINTS, STREAK_STEP, STREAK_MAX, collabPhase, dayKey, streakIncluding, dailyBoard } from '../data/game';
 
 const DAY_LETTERS = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
 
@@ -18,7 +18,6 @@ export default function GameHub() {
   const streak = streakIncluding(state.games) || streakIncluding(state.games, new Date(Date.now() - 864e5));
   const best = state.games.reduce((m, g) => Math.max(m, g.score), 0);
   const gamePts = real.reduce((a, g) => a + g.points, 0);
-  const totalDays = Math.round((COLLAB_END - COLLAB_START) / 864e5) + 1;
   const daysToStart = Math.max(0, Math.ceil((COLLAB_START - Date.now()) / 864e5));
 
   // 7 derniers jours
@@ -114,7 +113,7 @@ export default function GameHub() {
           <div className="game-tile">
             <CalendarDays className="w-4 h-4 text-[#194080]" />
             <p className="font-display text-2xl leading-none mt-1">
-              {real.length}/{totalDays}
+              {real.length}
             </p>
             <p className="text-[10px] text-slate-500">jours joués</p>
           </div>
@@ -149,7 +148,7 @@ export default function GameHub() {
           <p className="text-xs font-extrabold text-[#bae3d1] mb-2">Comment ça rapporte</p>
           <ul className="space-y-2 text-[12px] text-white/80">
             <li className="flex gap-2">
-              <Timer className="w-4 h-4 shrink-0 text-[#bae3d1]" /> 1 pt toutes les 3 secondes de survie
+              <Timer className="w-4 h-4 shrink-0 text-[#bae3d1]" /> 1 pt toutes les 2 secondes de survie
             </li>
             <li className="flex gap-2">
               <Droplets className="w-4 h-4 shrink-0 text-[#bae3d1]" /> 1 pt par bulle d’air attrapée (max {MAX_GAME_POINTS} pts par partie)
@@ -158,7 +157,7 @@ export default function GameHub() {
               <Flame className="w-4 h-4 shrink-0 text-[#bae3d1]" /> Bonus de série : +{STREAK_STEP} pts par jour consécutif, jusqu’à +{STREAK_MAX}
             </li>
             <li className="flex gap-2">
-              <CalendarDays className="w-4 h-4 shrink-0 text-[#bae3d1]" /> Une partie comptée par jour, du 20 janv. au 20 mars 2027
+              <CalendarDays className="w-4 h-4 shrink-0 text-[#bae3d1]" /> Une partie comptée par jour, jusqu’au 20 mars 2027 (jour du pop-up)
             </li>
           </ul>
           <p className="text-[11px] text-white/50 mt-3">Les points du jeu s’ajoutent à ceux de tes dépôts : même solde, mêmes ligues, même Pass. Pour comparer, 1 kg déposé = 100 pts.</p>

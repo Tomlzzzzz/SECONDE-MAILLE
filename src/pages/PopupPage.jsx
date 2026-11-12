@@ -20,7 +20,7 @@ export default function PopupPage() {
   return (
     <>
       <StreetScene variant="compact" label="Le pop-up store Seconde Maille">
-        <PageHeroCopy page={page} title={['Le 20 mars', 'à Roubaix']} />
+        <PageHeroCopy page={page} title={['Le 20 mars', 'à Lille']} />
       </StreetScene>
 
       <PageLead
@@ -42,7 +42,7 @@ export default function PopupPage() {
         }
       >
         <p>
-          Le <span className="marker-aqua font-bold">samedi 20 mars 2027</span>, Seconde Maille inaugure sa boutique éphémère au 82 rue Louis Braille, à Roubaix. Un événement
+          Le <span className="marker-aqua font-bold">samedi 20 mars 2027</span>, Seconde Maille inaugure sa boutique éphémère au 17 boulevard Jean-Baptiste Lebas, à Lille. Un événement
           participatif pour découvrir la démarche et y prendre part.
         </p>
       </PageLead>

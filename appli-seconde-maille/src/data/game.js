@@ -18,8 +18,12 @@ export const STREAK_MAX = 20; // bonus de série plafonné
 export const dayKey = (d = new Date()) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
+// Phase de test : les parties du jour rapportent déjà des points avant le 20 janvier.
+// Passe à false pour la vraie saison (avant la collab = entraînement seulement).
+export const SCORE_BEFORE_START = true;
+
 export function collabPhase(now = new Date()) {
-  if (now < COLLAB_START) return 'before';
+  if (now < COLLAB_START) return SCORE_BEFORE_START ? 'live' : 'before';
   if (now > COLLAB_END) return 'after';
   return 'live';
 }
@@ -27,9 +31,9 @@ export function collabPhase(now = new Date()) {
 /* Score de partie : 10 par seconde survécue + 25 par bulle */
 export const scoreFor = (seconds, bubbles) => Math.floor(seconds * 10) + bubbles * 25;
 
-/* Points pour l'appli : 1 pt toutes les 3 s + 1 par bulle (plafonné) + bonus de série */
+/* Points pour l'appli : 1 pt toutes les 2 s + 1 par bulle (plafonné) + bonus de série */
 export function pointsFor(seconds, bubbles, streak) {
-  const base = Math.min(MAX_GAME_POINTS, Math.floor(seconds / 3) + bubbles);
+  const base = Math.min(MAX_GAME_POINTS, Math.floor(seconds / 2) + bubbles);
   const streakBonus = Math.min(STREAK_MAX, Math.max(0, streak - 1) * STREAK_STEP);
   return { base, streakBonus, total: base + streakBonus };
 }
@@ -56,7 +60,7 @@ export function dailyBoard(members, day = dayKey()) {
   return members
     .map((m) => {
       const r = seeded(m.id + day);
-      const seconds = 8 + Math.pow(r, 1.8) * 70;
+      const seconds = 5 + Math.pow(r, 2) * 45;
       const bubbles = Math.floor(seconds / 6 * seeded(day + m.id));
       return { ...m, seconds, bubbles, score: scoreFor(seconds, bubbles), played: seeded('p' + m.id + day) > 0.25 };
     })

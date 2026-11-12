@@ -1,6 +1,7 @@
 ' =====================================================================
 '  SECONDE MAILLE - lanceur Windows
-'  Double-clic : demarre le serveur local (invisible) puis ouvre l'appli
+'  Double-clic : met l'appli a jour si besoin, demarre le serveur local
+'  (invisible) puis ouvre l'appli
 '  dans sa propre fenetre format telephone (Edge ou Chrome en mode appli).
 '  A la fermeture de la fenetre, le serveur s'arrete.
 ' =====================================================================
@@ -20,16 +21,22 @@ If sh.Run("cmd /c where node >nul 2>nul", 0, True) <> 0 Then
   WScript.Quit 1
 End If
 
-' 2. Premiere ouverture : installation + compilation (une seule fois)
-If Not fso.FileExists(root & "\dist\index.html") Then
-  MsgBox "Premiere ouverture : preparation de l'appli (1 a 2 minutes)." & vbCrLf & "Une fenetre noire va s'ouvrir puis se fermer toute seule.", vbInformation, "Seconde Maille"
-  If Not fso.FolderExists(root & "\node_modules") Then
-    sh.Run "cmd /c cd /d " & q & root & q & " && npm install", 1, True
-  End If
-  sh.Run "cmd /c cd /d " & q & root & q & " && npm run build", 1, True
-  If Not fso.FileExists(root & "\dist\index.html") Then
-    MsgBox "La preparation a echoue. Ouvre un terminal dans le dossier appli-seconde-maille et lance : npm install puis npm run build", vbCritical, "Seconde Maille"
-    WScript.Quit 1
+' 2. Mise a jour automatique : a chaque lancement, on verifie si l'appli
+'    a ete modifiee (src, public, .env.local, package.json...) et on la
+'    recompile si besoin. Si rien n'a change, l'appli s'ouvre tout de suite.
+Dim status, cmd
+status = sh.Run("cmd /c cd /d " & q & root & q & " && node lanceur\update.mjs", 0, True)
+If status = 10 Or status = 11 Then
+  cmd = "cmd /c title Seconde Maille - mise a jour && cd /d " & q & root & q & " && echo. && echo   SECONDE MAILLE : mise a jour de l'appli... && echo   (cette fenetre se ferme toute seule) && echo."
+  If status = 11 Then cmd = cmd & " && (call npm install || ver>nul)"
+  cmd = cmd & " && call npm run build"
+  If sh.Run(cmd, 1, True) <> 0 Then
+    If fso.FileExists(root & "\dist\index.html") Then
+      MsgBox "La mise a jour a echoue : l'appli s'ouvre dans sa version precedente." & vbCrLf & "Pour voir l'erreur : ouvre un terminal dans appli-seconde-maille et lance  npm run build", vbExclamation, "Seconde Maille"
+    Else
+      MsgBox "La preparation a echoue. Ouvre un terminal dans le dossier appli-seconde-maille et lance : npm install puis npm run build", vbCritical, "Seconde Maille"
+      WScript.Quit 1
+    End If
   End If
 End If
 

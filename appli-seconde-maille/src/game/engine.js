@@ -39,12 +39,12 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     phase: 'ready', // ready | playing | paused | over
     t: 0, // temps de survie
     scroll: 0,
-    speed: 170,
+    speed: 230,
     lives,
     bubbles: 0,
     inv: 0, // invincibilité après un choc
     shake: 0,
-    spawnIn: 1.2,
+    spawnIn: 0.9,
     bubbleIn: 1.6,
     boatX: null,
     obs: [],
@@ -103,23 +103,23 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     const t = S.t;
     const pick = Math.random();
     const playH = bottom() - top();
-    if (pick < 0.42 || t < 6) {
+    if (pick < 0.38 || t < 3) {
       // filet dérivant
       const w = rand(96, 130);
       const h = w * (120 / 260);
-      S.obs.push({ kind: 'drift', x: W + 40, y: rand(top() + h / 2, bottom() - h / 2), w, h, ph: rand(0, 6), bob: rand(10, 26), sp: rand(0.95, 1.25), rot: rand(-0.2, 0.2) });
+      S.obs.push({ kind: 'drift', x: W + 40, y: rand(top() + h / 2, bottom() - h / 2), w, h, ph: rand(0, 6), bob: rand(14, 34), sp: rand(1, 1.4), rot: rand(-0.2, 0.2), vy: t > 8 ? rand(-1, 1) * Math.min(90, 30 + t * 1.5) : 0 });
     } else if (pick < 0.72) {
       // rideau qui tombe de la surface
-      const len = playH * rand(0.32, 0.56 + Math.min(0.12, t / 300));
+      const len = playH * rand(0.4, 0.62 + Math.min(0.14, t / 200));
       S.obs.push({ kind: 'curtain', x: W + 30, y0: horizon() + 4, y1: horizon() + 4 + len, w: rand(44, 62), ph: rand(0, 6), sp: 1 });
     } else {
       // filet ancré au fond
-      const len = playH * rand(0.3, 0.52 + Math.min(0.12, t / 300));
+      const len = playH * rand(0.38, 0.6 + Math.min(0.14, t / 200));
       S.obs.push({ kind: 'anchor', x: W + 30, y0: H - len - 6, y1: H - 6, w: rand(44, 62), ph: rand(0, 6), sp: 1 });
     }
     // à partir de 25 s, parfois un duo surface + fond avec un passage
-    if (t > 25 && Math.random() < Math.min(0.45, (t - 25) / 80)) {
-      const gap = clamp(S.v.h * 2.6 - (t - 25) * 0.4, S.v.h * 1.9, S.v.h * 2.6);
+    if (t > 12 && Math.random() < Math.min(0.6, (t - 12) / 50)) {
+      const gap = clamp(S.v.h * 2.3 - (t - 12) * 0.6, S.v.h * 1.6, S.v.h * 2.3);
       const gy = rand(top() + gap / 2 + 20, bottom() - gap / 2 - 20);
       const x = W + 220;
       S.obs.push({ kind: 'curtain', x, y0: horizon() + 4, y1: gy - gap / 2, w: 50, ph: rand(0, 6), sp: 1 });
@@ -151,17 +151,17 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
   /* ---------------- mise à jour ---------------- */
   function update(dt) {
     S.t += dt;
-    S.speed = Math.min(430, 170 + S.t * 5.5);
+    S.speed = Math.min(560, 230 + S.t * 8);
     const dx = S.speed * dt;
     S.scroll += dx;
 
     // vaquita
     const v = S.v;
-    if (keys.up) v.target -= 340 * dt;
-    if (keys.down) v.target += 340 * dt;
+    if (keys.up) v.target -= 300 * dt;
+    if (keys.down) v.target += 300 * dt;
     v.target = clamp(v.target, top() + v.h * 0.4, bottom() - v.h * 0.4);
     const prev = v.y;
-    v.y += (v.target - v.y) * Math.min(1, dt * 7.5);
+    v.y += (v.target - v.y) * Math.min(1, dt * 6);
     v.vy = (v.y - prev) / Math.max(dt, 0.001);
     if (S.inv > 0) S.inv -= dt;
     if (S.shake > 0) S.shake -= dt;
@@ -170,25 +170,33 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     S.spawnIn -= dt;
     if (S.spawnIn <= 0) {
       spawnObstacle();
-      S.spawnIn = Math.max(0.62, 1.55 - S.t * 0.018) * rand(0.8, 1.2);
+      S.spawnIn = Math.max(0.42, 1.2 - S.t * 0.022) * rand(0.75, 1.1);
     }
     S.bubbleIn -= dt;
     if (S.bubbleIn <= 0) {
       spawnBubble();
-      S.bubbleIn = rand(1.6, 2.8);
+      S.bubbleIn = rand(2.4, 3.8);
     }
 
     // obstacles
-    const rx = v.w * 0.36, ry = v.h * 0.3;
+    const rx = v.w * 0.4, ry = v.h * 0.34;
     const cx = v.x + v.w * 0.52, cy = v.y + v.h * 0.06;
     for (const o of S.obs) {
       o.x -= dx * o.sp;
+      if (o.vy) {
+        // les filets dérivants remontent / plongent et rebondissent sur les bords
+        o.y += o.vy * dt;
+        if (o.y < top() + o.h / 2 || o.y > bottom() - o.h / 2) {
+          o.vy *= -1;
+          o.y = clamp(o.y, top() + o.h / 2, bottom() - o.h / 2);
+        }
+      }
       if (S.inv <= 0 && !o.hit) {
         const [x0, y0, x1, y1] = obstacleBox(o);
         if (hitRect(cx, cy, rx, ry, x0, y0, x1, y1)) {
           o.hit = true;
           S.lives -= 1;
-          S.inv = 1.5;
+          S.inv = 0.9;
           S.shake = reducedMotion ? 0 : 0.35;
           for (let i = 0; i < 10; i++) S.fx.push({ x: cx, y: cy, vx: rand(-120, 60), vy: rand(-110, 110), life: 0.7, r: rand(2, 5), c: '#ffffff' });
           navigator.vibrate?.(60);

@@ -20,18 +20,18 @@ export const EVENT = {
   date: new Date('2027-03-20T00:00:00+01:00'),
   boxDateLabel: '20 janvier 2027',
   boxDate: new Date('2027-01-20T00:00:00+01:00'),
-  street: '82 Rue Louis Braille',
-  city: '59100 Roubaix',
-  address: '82 Rue Louis Braille, 59100 Roubaix',
-  // Coordonnées du n°82 rue Louis Braille (Roubaix)
-  lat: 50.676251,
-  lng: 3.194141,
+  street: '17 boulevard Jean-Baptiste Lebas',
+  city: '59000 Lille',
+  address: '17 boulevard Jean-Baptiste Lebas, 59000 Lille',
+  // Coordonnées du n°17 bd Jean-Baptiste Lebas (Lille)
+  lat: 50.62639,
+  lng: 3.07417,
   hours: 'Horaires communiqués prochainement'
 };
 
 export const TICKER_ITEMS = [
   { badge: 'Collab', text: 'VAKITA × LA VIE EST BELT — SECONDE MAILLE' },
-  { badge: 'Pop-Up', text: 'SAMEDI 20 MARS 2027 · 82 RUE LOUIS BRAILLE, ROUBAIX' },
+  { badge: 'Pop-Up', text: 'SAMEDI 20 MARS 2027 · 17 BD JEAN-BAPTISTE LEBAS, LILLE' },
   { badge: 'Box', text: 'BOX DE DÉPÔT DISPONIBLES DÈS LE 20 JANVIER 2027' },
   { badge: 'Entrée', text: 'VOTRE BILLET D’ENTRÉE : UN MATÉRIAU DÉPOSÉ' }
 ];

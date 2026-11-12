@@ -115,7 +115,7 @@ export default function StreetScene({ bigTitle, variant = 'full', showBox = vari
     <section
       ref={root}
       className={`hero street ${full ? 'street--full' : 'street--compact'}`}
-      aria-label={label || 'Illustration : la boutique éphémère Seconde Maille dans une rue de Roubaix, avec une box de dépôt devant'}
+      aria-label={label || 'Illustration : la boutique éphémère Seconde Maille dans la rue, avec une box de dépôt devant'}
     >
       <Layer className="street-sky" d={3} k={0.5} aria-hidden="true">
         <img src={S.sky} alt="" className="w-full h-full object-cover" draggable="false" />

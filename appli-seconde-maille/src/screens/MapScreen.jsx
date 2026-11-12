@@ -237,7 +237,7 @@ export default function MapScreen() {
                     </span>
                     <span className="flex-1 min-w-0 text-left">
                       <span className="block font-extrabold text-sm text-[#0F2926] truncate">{p.name}</span>
-                      <span className="block text-[11px] text-slate-500 truncate">{p.type === 'popup' ? '20 mars 2027 · Roubaix' : `${p.area} · rempli à ${Math.round(p.fill * 100)} %`}</span>
+                      <span className="block text-[11px] text-slate-500 truncate">{p.type === 'popup' ? '20 mars 2027 · Lille' : `${p.area} · rempli à ${Math.round(p.fill * 100)} %`}</span>
                     </span>
                     <span className="text-right">
                       <span className="block font-extrabold text-sm text-[#194080] tabular-nums">{fmtDist(d)}</span>

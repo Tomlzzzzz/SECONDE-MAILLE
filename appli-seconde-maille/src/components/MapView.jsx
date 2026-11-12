@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 
-const MASCOT = '/brand/vaquita-mascotte.png';
+// pictogramme boutique (store) pour le pop-up
+const SHOP_SVG =
+  '<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 9l1.6-5h14.8L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 11.5V20h14v-8.5"/><path d="M10 20v-5h4v5"/></svg>';
 
 const boxIcon = (selected, fill) =>
   L.divIcon({
@@ -13,12 +15,19 @@ const boxIcon = (selected, fill) =>
 const popupIcon = (selected) =>
   L.divIcon({
     className: '',
-    html: `<div class="pin-popup ${selected ? 'is-sel' : ''}"><img src="${MASCOT}" alt=""></div>`,
-    iconSize: [54, 54],
-    iconAnchor: [27, 50]
+    html: `<div class="pin-popup ${selected ? 'is-sel' : ''}"><span class="pin-popup-ic">${SHOP_SVG}</span><span class="pin-popup-tag">Pop-up</span></div>`,
+    iconSize: [56, 74],
+    iconAnchor: [28, 74]
   });
+// ta position = le vaquita
+const MASCOT = '/brand/vaquita-mascotte.png';
 const meIcon = (approx) =>
-  L.divIcon({ className: '', html: `<div class="pin-me ${approx ? 'is-approx' : ''}"></div>`, iconSize: [22, 22], iconAnchor: [11, 11] });
+  L.divIcon({
+    className: '',
+    html: `<div class="pin-me ${approx ? 'is-approx' : ''}"><img src="${MASCOT}" alt=""></div>`,
+    iconSize: [46, 46],
+    iconAnchor: [23, 23]
+  });
 
 /**
  * Carte Leaflet (fond OpenStreetMap) — places, position de l'utilisateur, tracé d'itinéraire.
@@ -102,7 +111,7 @@ export default function MapView({ places = [], me, selectedId, onSelect, route, 
         return;
       }
     } else {
-      const pts = places.filter((p) => p.type === 'box' && p.area !== 'Roubaix').map((p) => [p.lat, p.lng]);
+      const pts = places.map((p) => [p.lat, p.lng]);
       if (me && !me.approximate) pts.push([me.lat, me.lng]);
       if (pts.length) b = L.latLngBounds(pts);
     }

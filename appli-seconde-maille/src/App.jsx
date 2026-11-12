@@ -69,7 +69,8 @@ function Shell() {
     return () => clearTimeout(t);
   }, [toast]);
 
-  if (!state.onboarded) return <Onboarding />;
+  // geoChoice vide = compte retrouvé sur un nouvel appareil : on demande encore la localisation
+  if (!state.onboarded || !state.geoChoice) return <Onboarding />;
 
   const top = stack[stack.length - 1];
   const screens = { map: MapScreen, scan: ScanScreen, leagues: LeaguesScreen, rewards: RewardsScreen, game: GameHub };

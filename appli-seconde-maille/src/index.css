@@ -382,34 +382,83 @@ button { -webkit-user-select: none; user-select: none; }
 .pin-fill { position: absolute; left: 0; right: 0; bottom: 0; height: var(--f); background: rgba(186, 227, 209, 0.28); }
 .pin-box.is-sel { background: var(--blue); color: #fff; transform: rotate(-45deg) scale(1.2); }
 .pin-popup {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--aqua);
+  position: relative;
+  width: 56px;
+  height: 74px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  transform-origin: 50% 100%;
+  transition: transform 0.4s var(--ease);
+  filter: drop-shadow(0 8px 10px rgba(15, 41, 38, 0.35));
+}
+.pin-popup-ic {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 9px;
+  border-radius: 16px;
+  background: var(--ink);
   border: 3px solid #fff;
   display: grid;
   place-items: center;
-  box-shadow: 0 10px 22px -8px rgba(15, 41, 38, 0.6);
-  transition: transform 0.4s var(--ease);
+  color: var(--aqua);
 }
-.pin-popup img,
-.leaflet-container .leaflet-marker-pane .pin-popup img {
-  /* Leaflet force width:auto sur les images de marqueurs : on reprend la main */
-  width: 40px !important;
-  height: auto !important;
-  max-width: 40px !important;
+.pin-popup-ic::after {
+  /* pointe du marqueur */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  width: 14px;
+  height: 14px;
+  background: var(--ink);
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  border-bottom-right-radius: 3px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.pin-popup-tag {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 2px solid #fff;
 }
 .pin-popup.is-sel { transform: scale(1.18); }
 .pin-me {
-  width: 22px;
-  height: 22px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: var(--blue);
-  border: 4px solid #fff;
+  background: #fff;
+  border: 3px solid var(--blue);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
   box-shadow: 0 0 0 0 rgba(25, 64, 128, 0.45);
   animation: me-pulse 2s ease-out infinite;
 }
-.pin-me.is-approx { background: #94a3b8; }
+.pin-me img,
+.leaflet-container .leaflet-marker-pane .pin-me img {
+  /* Leaflet force width:auto sur les images de marqueurs : on reprend la main */
+  width: 34px !important;
+  height: auto !important;
+  max-width: 34px !important;
+  margin-top: 4px;
+}
+.pin-me.is-approx { border-color: #94a3b8; animation: none; }
+.pin-me.is-approx img { opacity: 0.6; filter: grayscale(1); }
 @keyframes me-pulse { 0% { box-shadow: 0 0 0 0 rgba(25, 64, 128, 0.45); } 100% { box-shadow: 0 0 0 18px rgba(25, 64, 128, 0); } }
 .map-fab {
   position: absolute;
@@ -750,3 +799,28 @@ button { -webkit-user-select: none; user-select: none; }
 @media (prefers-reduced-motion: reduce) {
   .gh-city, .gh-boat, .gh-net, .gh-vaquita, .gh-bub { animation: none; }
 }
+
+/* =====================================================================
+   COMPTE
+   ===================================================================== */
+.auth { display: flex; flex-direction: column; gap: 10px; }
+.auth-tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 16px; background: #fff; border: 1.5px solid var(--aqua); margin-bottom: 4px; }
+.auth-tabs-blob { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc((100% - 8px) / 2); border-radius: 12px; background: var(--ink); transition: transform 0.45s var(--ease); }
+.auth-tabs button { position: relative; z-index: 1; height: 38px; font-size: 13px; font-weight: 800; color: var(--ink); transition: color 0.3s; }
+.auth-tabs button.is-on { color: var(--aqua); }
+.auth-field {
+  display: flex; align-items: center; gap: 10px; height: 50px; padding: 0 14px; border-radius: 14px;
+  background: #fff; border: 1.5px solid var(--aqua); color: #6b8a84; transition: border-color 0.2s;
+}
+.auth-field:focus-within { border-color: var(--blue); color: var(--blue); }
+.auth-field input { flex: 1; min-width: 0; height: 100%; border: 0; outline: 0; background: transparent; font-size: 15px; font-weight: 700; color: var(--ink); }
+.auth-field input:focus-visible { outline: none; }
+.auth-field button { color: #6b8a84; padding: 4px; }
+.auth-msg { font-size: 12px; font-weight: 700; line-height: 1.45; padding: 10px 12px; border-radius: 12px; background: #eef8f4; color: var(--ink); }
+.auth-msg--err { background: #e8eefb; color: var(--blue); }
+.auth-link { font-size: 12px; font-weight: 800; color: var(--blue); align-self: center; padding: 4px; }
+.sync-dot { width: 8px; height: 8px; border-radius: 50%; background: #9bb3ae; flex: none; }
+.sync-dot.is-saved { background: #0D9488; }
+.sync-dot.is-syncing { background: var(--blue); animation: sync-pulse 1s ease-in-out infinite; }
+.sync-dot.is-offline, .sync-dot.is-error { background: #c9a227; }
+@keyframes sync-pulse { 50% { opacity: 0.3; } }

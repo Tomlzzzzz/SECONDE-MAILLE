@@ -101,7 +101,7 @@ export default function App() {
     }
   })();
   const [curtain, setCurtain] = useState(firstVisit ? 'hold' : null); // null | 'hold' | 'in' | 'out'
-  const [curtainLabel, setCurtainLabel] = useState(firstVisit ? { num: '20.03.2027 · Roubaix', label: 'Seconde Maille' } : null);
+  const [curtainLabel, setCurtainLabel] = useState(firstVisit ? { num: '20.03.2027 · Lille', label: 'Seconde Maille' } : null);
   const busy = useRef(firstVisit);
   useEffect(() => {
     if (!firstVisit) return;

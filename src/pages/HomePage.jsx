@@ -10,7 +10,7 @@ import { SITE_PAGES, TICKER_ITEMS, STORY_INTRO, STORY_CHAPTERS, NAME_ORIGIN, STE
 const PAGE_BLURBS = {
   marques: 'Un média engagé et une marque d’upcycling : pourquoi elles se complètent.',
   'appli-box': 'Les box de dépôt de matériaux, disponibles dès le 20 janvier 2027.',
-  'popup-merch': 'L’inauguration du 20 mars 2027 à Roubaix, le plan et le programme.',
+  'popup-merch': 'L’inauguration du 20 mars 2027 à Lille, le plan et le programme.',
   reportages: 'Le vaquita, les filets abandonnés et la seconde vie des matières.'
 };
 
@@ -242,7 +242,7 @@ export default function HomePage({ onNavigate }) {
 
   return (
     <>
-      {/* ==================== HEADER : LA BOUTIQUE À ROUBAIX ==================== */}
+      {/* ==================== HEADER : LA BOUTIQUE ==================== */}
       <StreetScene variant="full" bigTitle="Seconde Maille" onBoxClick={() => onNavigate('appli-box')} waveColor="#CFEDE0">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="w-fit max-w-full">
@@ -333,7 +333,7 @@ export default function HomePage({ onNavigate }) {
             {[
               { icon: Package, top: 'Box de dépôt', value: '20.01.2027', sub: <>dans <CountUp to={daysUntil(EVENT.boxDate)} /> jours</> },
               { icon: CalendarDays, top: 'Inauguration du pop-up', value: EVENT.dateShort, sub: <>dans <CountUp to={daysUntil(EVENT.date)} /> jours</> },
-              { icon: MapPin, top: 'Lieu', value: 'Roubaix', sub: EVENT.street }
+              { icon: MapPin, top: 'Lieu', value: 'Lille', sub: EVENT.street }
             ].map((s, i) => {
               const Icon = s.icon;
               return (
