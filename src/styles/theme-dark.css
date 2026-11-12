@@ -193,8 +193,7 @@ html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter {
     repeating-linear-gradient(45deg, var(--d-text) 0 2px, transparent 2px 15px),
     repeating-linear-gradient(-45deg, var(--d-text) 0 2px, transparent 2px 15px);
 }
-html[data-theme='dark'] .hero-letter:hover,
-html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter:hover { color: var(--aqua); -webkit-text-stroke-color: var(--aqua); }
+html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter:hover { background-image: none; color: var(--d-blue); -webkit-text-stroke-color: var(--d-blue); }
 
 /* ---------- plongée océan : ciel de nuit ---------- */
 html[data-theme='dark'] .ow-sky img { filter: brightness(0.32) saturate(1.2) hue-rotate(28deg); }

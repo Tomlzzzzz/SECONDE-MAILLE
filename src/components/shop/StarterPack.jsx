@@ -18,6 +18,9 @@ const LAYOUT = {
   pass: ''
 };
 
+// cadrage de chaque photo dans sa zone (le bandeau texte est sous la photo)
+const FOCUS = { ecocup: '50% 30%', stylo: '50% 22%', tasse: '50% 55%' };
+
 function PackTile({ item, index }) {
   const [v, setV] = useState(0);
   const variant = item.variants[v];
@@ -25,7 +28,8 @@ function PackTile({ item, index }) {
   const src = big && variant.tall ? variant.tall : variant.src;
   return (
     <Reveal delay={index * 70} direction="scale" className={`${LAYOUT[item.id]} min-h-0`}>
-      <TiltCard max={4} className="pack-tile group h-full rounded-[26px] overflow-hidden bg-white relative">
+      <TiltCard max={4} className="pack-tile group h-full rounded-[26px] overflow-hidden bg-white relative flex flex-col">
+        <div className="pack-media relative flex-1 min-h-0 overflow-hidden">
         {item.variants.map((vv, k) => (
           <img
             key={vv.src}
@@ -33,15 +37,16 @@ function PackTile({ item, index }) {
             alt={k === v ? `${item.name} — ${vv.label}` : ''}
             aria-hidden={k !== v}
             className={`absolute inset-0 w-full h-full object-cover transition-[opacity,transform] duration-700 group-hover:scale-[1.06] ${k === v ? 'opacity-100' : 'opacity-0'}`}
-            style={big ? { objectPosition: '50% 78%' } : undefined}
+            style={{ objectPosition: big ? '50% 78%' : FOCUS[item.id] || '50% 50%' }}
             loading="lazy"
             draggable="false"
           />
         ))}
+        </div>
         <span className="absolute top-3 left-3 w-9 h-9 rounded-full bg-[#0F2926] text-[#bae3d1] grid place-items-center font-display text-sm z-10">0{index + 1}</span>
 
         {item.variants.length > 1 && (
-          <div className="absolute top-3 right-3 z-10 flex gap-1.5 p-1.5 rounded-full bg-white/85 backdrop-blur">
+          <div className="pack-swatches absolute top-3 right-3 z-10 flex gap-1.5 p-1.5 rounded-full bg-white">
             {item.variants.map((vv, k) => (
               <button
                 key={vv.label}
@@ -55,8 +60,8 @@ function PackTile({ item, index }) {
           </div>
         )}
 
-        {/* étiquette + description qui monte au survol */}
-        <div className="pack-info absolute left-2.5 right-2.5 bottom-2.5 z-10 rounded-[20px] bg-white/92 backdrop-blur p-3.5 sm:p-4">
+        {/* bandeau sous la photo (ne recouvre plus le produit) ; la description s'ouvre au survol */}
+        <div className="pack-info relative z-10 shrink-0 bg-white px-4 py-3 sm:px-5 sm:py-3.5">
           <p className="font-display uppercase text-lg sm:text-xl leading-none text-[#0F2926]">{item.name}</p>
           <p className="text-[11px] font-extrabold text-[#194080] mt-1">{item.role}</p>
           <div className="pack-more">
