@@ -99,7 +99,7 @@ export default function BrandsPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* COMPLÉMENTARITÉ */}
+      {/* Complémentarité */}
       <section className="relative bg-gradient-to-b from-[#0F2926] to-[#18407f] text-white overflow-hidden">
         <WaveDivider color="#FFFFFF" flip />
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-12 gap-12 items-center">

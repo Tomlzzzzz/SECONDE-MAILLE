@@ -1,10 +1,9 @@
-/* =====================================================================
-   Moteur du jeu « Maille à part » — canvas 2D, sans dépendance.
-   Décor repris du header du site : ciel, nuages, silhouette de Roubaix,
-   houle, bateau de récupération, fond marin. Le vaquita esquive les
-   filets égarés (dérivants, rideaux tombant de la surface, filets ancrés)
-   et attrape des bulles d'air.
-   ===================================================================== */
+/*
+  Moteur du jeu "Maille à part" - canvas 2D, sans dépendance.
+  Décor repris du header du site : ciel, nuages, silhouette de Roubaix,
+  houle, bateau de récupération, fond marin. Le vaquita esquive les
+  filets égarés (dérivants, rideaux tombant de la surface, filets ancrés)
+*/
 const SRC = {
   sky: '/game/sky.svg',
   clouds: '/game/clouds.svg',
@@ -54,7 +53,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     v: { x: 0, y: 0, vy: 0, target: 0, w: 86, h: 48 }
   };
 
-  /* ---------------- dimensions ---------------- */
+  /* dimensions */
   const horizon = () => Math.round(H * 0.3);
   const top = () => horizon() + 26;
   const bottom = () => H - 34;
@@ -76,7 +75,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     draw();
   }
 
-  /* ---------------- commandes ---------------- */
+  /* commandes */
   function setTarget(clientY) {
     const r = canvas.getBoundingClientRect();
     S.v.target = clamp(clientY - r.top, top() + S.v.h * 0.4, bottom() - S.v.h * 0.4);
@@ -98,7 +97,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
   window.addEventListener('keydown', onKey);
   window.addEventListener('keyup', onKey);
 
-  /* ---------------- apparitions ---------------- */
+  /* apparitions */
   function spawnObstacle() {
     const t = S.t;
     const pick = Math.random();
@@ -132,7 +131,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     for (let i = 0; i < n; i++) S.bubs.push({ x: W + 30 + i * 34, y: y + Math.sin(i) * 16, r: 9, ph: rand(0, 6) });
   }
 
-  /* ---------------- collisions (ellipse vaquita / rectangle) ---------------- */
+  /* collisions (ellipse vaquita / rectangle) */
   function hitRect(cx, cy, rx, ry, x0, y0, x1, y1) {
     const px = clamp(cx, x0, x1);
     const py = clamp(cy, y0, y1);
@@ -148,7 +147,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     return [o.x + o.w * 0.15, o.y0, o.x + o.w * 0.85, o.y1];
   }
 
-  /* ---------------- mise à jour ---------------- */
+  /* mise à jour */
   function update(dt) {
     S.t += dt;
     S.speed = Math.min(560, 230 + S.t * 8);
@@ -246,7 +245,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     onOver?.({ seconds: S.t, bubbles: S.bubbles });
   }
 
-  /* ---------------- dessin ---------------- */
+  /* dessin */
   function tile(img, factor, y, h, tw) {
     if (!img) return;
     const off = -((S.scroll * factor) % tw);
@@ -434,7 +433,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     ctx.restore();
   }
 
-  /* ---------------- boucle ---------------- */
+  /* boucle */
   let hudT = 0;
   function hud(force) {
     hudT = 0;

@@ -4,11 +4,11 @@ import { useGeolocation } from '../lib/geo';
 import { cloudEnabled, readSession, pullSave, pushSave, signOut as cloudSignOut } from '../lib/cloud';
 import { mergeStates, sameData, toCloud } from './merge';
 
-/* =====================================================================
-   ÉTAT DE L'APPLI — copie sur l'appareil (localStorage, marche hors ligne)
-   + synchronisation avec le compte de la personne (lib/cloud.js) :
-   à la connexion on fusionne, puis chaque changement est envoyé.
-   ===================================================================== */
+/*
+  ÉTAT DE L'APPLI - copie sur l'appareil (localStorage, marche hors ligne)
+  + synchronisation avec le compte de la personne (lib/cloud.js) :
+  à la connexion on fusionne, puis chaque changement est envoyé.
+*/
 const KEY = 'seconde-maille-app-v1';
 
 const initial = {
@@ -71,7 +71,7 @@ export function StoreProvider({ children }) {
 
   const geo = useGeolocation(state.onboarded && state.geoChoice === 'granted');
 
-  /* ---------------- compte & synchronisation ---------------- */
+  /* compte & synchronisation */
   const [session, setSession] = useState(() => (cloudEnabled ? readSession() : null));
   const [sync, setSync] = useState({ status: cloudEnabled && readSession() ? 'syncing' : 'off', at: null });
   const stateRef = useRef(state);

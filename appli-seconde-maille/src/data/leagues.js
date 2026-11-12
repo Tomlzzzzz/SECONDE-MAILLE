@@ -1,7 +1,7 @@
-/* =====================================================================
-   LIGUES — plus ta ligue est haute, plus chaque kilo rapporte de points.
-   La ligue dépend des points GAGNÉS au total (dépenser ses points ne fait pas descendre).
-   ===================================================================== */
+/*
+  LIGUES - plus ta ligue est haute, plus chaque kilo rapporte de points.
+  La ligue dépend des points GAGNÉS au total (dépenser ses points ne fait pas descendre).
+*/
 export const LEAGUES = [
   { id: 'plancton', name: 'Plancton', min: 0, mult: 1, color: '#a5d2b2', emoji: '·' },
   { id: 'crevette', name: 'Crevette', min: 150, mult: 1.1, color: '#9fd8c4', emoji: '◦' },

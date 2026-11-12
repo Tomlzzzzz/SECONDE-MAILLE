@@ -6,7 +6,7 @@ import SizeGuide from './SizeGuide';
 import { Reveal, SplitText } from '../Motion';
 import { SectionLabel } from '../Blocks';
 
-/* Pastille « stock en direct » */
+/* Pastille "stock en direct" */
 export function LiveBadge({ status, checkedAt, dark = false }) {
   const ago = useAgo(checkedAt);
   const live = status === 'live';

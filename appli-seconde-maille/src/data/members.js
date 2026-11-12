@@ -1,9 +1,9 @@
 import { BOXES } from './places';
-/* =====================================================================
-   MEMBRES — données simulées pour l'aspect social (prototype).
-   À remplacer par le serveur : ce n'est PAS du temps réel, comme Waze
-   on affiche des positions relatives et des activités récentes.
-   ===================================================================== */
+/*
+  MEMBRES - données simulées pour l'aspect social (prototype).
+  À remplacer par le serveur : ce n'est PAS du temps réel, comme waze
+  on affiche des positions relatives et des activités récentes.
+*/
 const NAMES = [
   'Léa', 'Hugo', 'Inès', 'Malo', 'Chloé', 'Yanis', 'Jade', 'Nolan', 'Manon', 'Sacha', 'Lina', 'Théo', 'Zoé', 'Adam', 'Romane', 'Noé',
   'Camille', 'Rayan', 'Louise', 'Gabin', 'Anaïs', 'Ilyes', 'Margaux', 'Tom', 'Sarah', 'Liam', 'Elsa', 'Maël', 'Nina', 'Axel', 'Lou', 'Eden'

@@ -1,8 +1,8 @@
-/* =====================================================================
-   LE JEU — « Maille à part » : le vaquita esquive les filets égarés.
-   Une partie qui rapporte des points par jour, pendant la collab.
-   Avant / après la collab : mode entraînement illimité, sans points.
-   ===================================================================== */
+/*
+  LE JEU - "Maille à part" : le vaquita esquive les filets égarés.
+  Une partie qui rapporte des points par jour, pendant la collab.
+  Avant / après la collab : mode entraînement illimité, sans points.
+*/
 export const GAME_NAME = 'Maille à part';
 
 // Période de la collab : de l'ouverture des box à l'inauguration du pop-up
@@ -13,13 +13,13 @@ export const LIVES = 3;
 export const MAX_GAME_POINTS = 30; // plafond par partie (hors bonus de série)
 export const STREAK_STEP = 5; // +5 pts par jour consécutif
 export const STREAK_MAX = 20; // bonus de série plafonné
-// Repère : 1 kg déposé = 100 pts. Le jeu crée l'habitude sans remplacer le dépôt.
+// pour comparer : 1 kg déposé = 100 pts
 
 export const dayKey = (d = new Date()) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
-// Phase de test : les parties du jour rapportent déjà des points avant le 20 janvier.
-// Passe à false pour la vraie saison (avant la collab = entraînement seulement).
+// mode test : points actifs avant le 20 janvier
+// mettre à false pour la vraie saison
 export const SCORE_BEFORE_START = true;
 
 export function collabPhase(now = new Date()) {

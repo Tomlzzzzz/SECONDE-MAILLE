@@ -1,14 +1,14 @@
-/* =====================================================================
-   BOUTIQUE — merch & starter pack
-   Les quantités en stock ne sont PAS ici : elles sont lues en direct dans
-   /public/stock.json (voir src/components/shop/useLiveStock.js).
-   Textes de fabrication et mesures : à vérifier / ajuster avec le fournisseur.
-   ===================================================================== */
+/*
+  BOUTIQUE - merch & starter pack
+  Les quantités en stock ne sont PAS ici : elles sont lues en direct dans
+  /public/stock.json (voir src/components/shop/useLiveStock.js).
+  Textes de fabrication et mesures : à vérifier / ajuster avec le fournisseur.
+*/
 const img = (n) => `${import.meta.env?.BASE_URL ?? '/'}products/${n}.webp`;
 
 export const STOCK_URL = `${import.meta.env?.BASE_URL ?? '/'}stock.json`;
 export const STOCK_REFRESH_MS = 15000;
-export const LOW_STOCK = 5; // en dessous : « Plus que N »
+export const LOW_STOCK = 5; // en dessous : "Plus que N"
 
 export const MERCH = [
   {
@@ -145,7 +145,7 @@ export const MERCH = [
   }
 ];
 
-/* Guide des tailles — mesures à plat, en cm (valeurs standard unisexe à confirmer) */
+/* Guide des tailles - mesures à plat, en cm (valeurs standard unisexe à confirmer) */
 export const SIZE_GUIDES = {
   haut: {
     label: 'T-shirt',
@@ -190,7 +190,7 @@ export const SIZE_GUIDES = {
   }
 };
 
-/* Starter pack — les goodies */
+/* Starter pack - les goodies */
 export const STARTER_PACK = {
   title: 'Le Starter Pack',
   pitch: 'Tout ce qu’il faut pour commencer ta seconde maille.',

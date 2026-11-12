@@ -29,7 +29,7 @@ function Confetti() {
   );
 }
 
-/* Frise des points : solde avant → après, jalons des récompenses */
+/* Frise des points : solde avant -> après, jalons des récompenses */
 function PointsFrieze({ before, after }) {
   const max = Math.max(REWARDS[REWARDS.length - 1].cost, after) * 1.05;
   const [shown, setShown] = useState(before);

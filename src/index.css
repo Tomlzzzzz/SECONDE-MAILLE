@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =====================================================================
-   TYPOGRAPHIES (charte) — Titre : ApparatSemiCond Black · Sous-titre : ApparatSemiCond Black Italic · Texte : Gilroy Medium
-   Déposez les fichiers dans /public/fonts (voir LISEZMOI.txt).
-   Sans fichier, repli automatique sur Barlow Semi Condensed / Plus Jakarta Sans.
-   ===================================================================== */
+/*
+  TYPOGRAPHIES (charte) - titre : apparatSemiCond black · sous-titre : apparatSemiCond black italic · texte : Gilroy medium
+  Déposez les fichiers dans /public/fonts (voir LISEZMOI.txt).
+  Sans fichier, repli automatique sur Barlow semi condensed / Plus Jakarta Sans.
+*/
 @font-face {
   font-family: 'Apparat Semi Condensed';
   src: local('ApparatSemiCond Black'), local('ApparatSemiCond-Black'), local('Apparat SemiCond Black'),
@@ -40,11 +40,11 @@
   font-display: swap;
 }
 
-/* =====================================================================
-   SECONDE MAILLE — Design system
-   Palette (charte) : vert #a5d2b2 · bleu #18407f · encre #0F2926 (texte)
-   · sable #F5FBF9 (fond clair)
-   ===================================================================== */
+/*
+  SECONDE MAILLE - design system
+  Palette (charte) : vert #a5d2b2 · bleu #18407f · encre #0F2926 (texte)
+  · sable #F5FBF9 (fond clair)
+*/
 :root {
   --ink: #0F2926;
   --aqua: #a5d2b2;
@@ -96,7 +96,7 @@
   hyphens: manual;
   text-wrap: balance;
 }
-/* charte : sous-titres en ApparatSemiCond Black Italic */
+/* sous-titres en italique (charte) */
 h3.font-display, .font-subtitle { font-style: italic; }
 
 /* Lien d'évitement RGAA */
@@ -128,9 +128,7 @@ html.a11y-dyslexic-spacing {
   word-spacing: 0.08em;
 }
 
-/* =====================================================================
-   HERO — scène marine en calques
-   ===================================================================== */
+/* HERO - scène marine en calques */
 .hero {
   position: relative;
   overflow: hidden;
@@ -221,7 +219,7 @@ html.a11y-dyslexic-spacing {
 .hero-title {
   font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
   font-weight: 800;
-  /* calé sur la largeur ET la hauteur de l'écran → jamais coupé */
+  /* s'adapte à la largeur et à la hauteur */
   font-size: min(10.4vw, 23vh, 220px);
   line-height: 0.82;
   letter-spacing: -0.01em;
@@ -242,7 +240,7 @@ html.a11y-dyslexic-spacing {
   transition: transform 0.45s var(--ease), color 0.3s ease;
 }
 
-/* « MAILLE » est rempli d'un motif de maille de filet */
+/* "MAILLE" est rempli d'un motif de maille de filet */
 .hero-title-word:nth-child(2) .hero-letter {
   color: transparent;
   -webkit-text-stroke: 2px var(--ink);
@@ -252,7 +250,7 @@ html.a11y-dyslexic-spacing {
   -webkit-background-clip: text;
   background-clip: text;
 }
-/* survol : seules les lettres de « MAILLE » réagissent, une par une */
+/* survol : seules les lettres de "MAILLE" réagissent, une par une */
 .hero-title-word:nth-child(2) .hero-letter:hover {
   background-image: none;
   -webkit-text-stroke-color: var(--blue);
@@ -426,8 +424,10 @@ html.a11y-dyslexic-spacing {
 .hero-copy * {
   pointer-events: none;
 }
-/* seuls les éléments interactifs captent la souris : le bloc texte pleine largeur
-   ne doit pas masquer le grand titre (lettres de « MAILLE ») placé dessous */
+/*
+  seuls les éléments interactifs captent la souris : le bloc texte pleine largeur
+  ne doit pas masquer le grand titre (lettres de "MAILLE") placé dessous
+*/
 .hero-copy :is(a, button, input, select, textarea, label, summary, [role='button'], [tabindex], .hero-letter) {
   pointer-events: auto;
 }
@@ -507,9 +507,7 @@ html.a11y-dyslexic-spacing {
   to { transform: rotate(360deg); }
 }
 
-/* =====================================================================
-   HEADER « RUE DE ROUBAIX » — boutique, box, lampadaires, oiseaux
-   ===================================================================== */
+/* HEADER "RUE DE ROUBAIX" - boutique, box, lampadaires, oiseaux */
 .street { background: #e4f5ee; }
 .street--full {
   height: 100vh;
@@ -536,15 +534,15 @@ html.a11y-dyslexic-spacing {
   background-position: center bottom;
   background-size: auto 100%;
 }
-/* « SECONDE MAILLE » en grand, à droite, sur une ligne, derrière les bâtiments */
+/* "SECONDE MAILLE" en grand, à droite, sur une ligne, derrière les bâtiments */
 .street--full {
   --shop-w: clamp(320px, min(46vw, 76vh), 880px);
-  /* le titre fait la largeur de la boutique : il ne déborde jamais sur le texte à gauche */
+  /* largeur calée sur la boutique */
   --title-fs: calc(var(--shop-w) * 0.158);
 }
 /* le bas du titre passe derrière le haut de la verrière et du mur de briques */
 .street-title-layer {
-  z-index: 3; /* au-dessus de la façade (sa boîte SVG transparente recouvre le titre sur mobile) */
+  z-index: 3;
   left: auto;
   right: 3%;
   width: var(--shop-w);
@@ -734,9 +732,7 @@ html.a11y-dyslexic-spacing {
   .street-city { height: 32%; }
 }
 
-/* =====================================================================
-   PLONGÉE — la scène marine en fond, qui descend avec le scroll
-   ===================================================================== */
+/* PLONGÉE - la scène marine en fond, qui descend avec le scroll */
 .ocean-dive {
   position: relative;
   --q: 0;
@@ -746,7 +742,7 @@ html.a11y-dyslexic-spacing {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* surtout pas d'overflow ici : sinon le fond ne reste plus collé à l'écran */
+  /* pas d'overflow sinon le sticky ne marche plus */
 }
 .ocean-sticky {
   position: sticky;
@@ -837,7 +833,7 @@ html.a11y-dyslexic-spacing {
   opacity: calc(var(--q) * 0.12);
   pointer-events: none;
 }
-/* animations réduites : pas de fond fixe, simple dégradé surface → profondeur */
+/* animations réduites : pas de fond fixe, simple dégradé surface -> profondeur */
 .ocean-dive.is-static .ocean-track { display: none; }
 .ocean-dive.is-static {
   background: linear-gradient(180deg, #CFEDE0 0, #E4F5EE 420px, #0F2926 820px, #12305f 60%, #18407f 100%);
@@ -852,9 +848,7 @@ html.a11y-dyslexic-spacing {
 }
 .story-card:hover { background: rgba(15, 41, 38, 0.85); border-color: rgba(186, 227, 209, 0.35); transform: translateY(-4px); }
 
-/* =====================================================================
-   NAVIGATION
-   ===================================================================== */
+/* Navigation */
 .site-nav {
   position: fixed;
   top: max(12px, calc(env(safe-area-inset-top) + 6px));
@@ -951,9 +945,7 @@ html.a11y-dyslexic-spacing {
   transform: none;
 }
 
-/* =====================================================================
-   RIDEAU-VAGUE ENTRE LES PAGES
-   ===================================================================== */
+/* Rideau-vague entre les pages */
 .page-curtain {
   position: fixed;
   inset: 0;
@@ -1007,9 +999,7 @@ html.a11y-dyslexic-spacing {
   transition-delay: 0.3s;
 }
 
-/* =====================================================================
-   RÉVÉLATIONS AU SCROLL
-   ===================================================================== */
+/* Révélations au scroll */
 .reveal {
   opacity: 0;
   transition:
@@ -1055,9 +1045,7 @@ html.a11y-dyslexic-spacing {
 }
 .split.is-in .split-word { transform: none; }
 
-/* =====================================================================
-   COMPOSANTS INTERACTIFS
-   ===================================================================== */
+/* Composants interactifs */
 
 /* Boutons : remplissage "liquide" au survol */
 .btn {
@@ -1133,7 +1121,6 @@ html.a11y-dyslexic-spacing {
   transition: transform 0.12s linear, box-shadow 0.6s var(--ease), border-color 0.4s ease;
   box-shadow: 0 34px 60px -28px rgba(15, 41, 38, 0.35);
 }
-/* (halo vert qui suivait la souris sur les cartes : retiré) */
 
 /* Vague séparatrice animée */
 .wave-divider {
@@ -1189,7 +1176,7 @@ html.a11y-dyslexic-spacing {
   height: 12px;
   margin: -6px 0 0 -6px;
 }
-/* plus de rond vert au survol des liens / boutons : seule la bulle avec texte reste */
+
 .cursor-bubble.has-label {
   opacity: 1;
   width: 86px;
@@ -1402,32 +1389,8 @@ html.a11y-dyslexic-spacing {
   transition: fill 0.6s ease, stroke 0.6s ease;
 }
 .footer-wordmark:hover text { fill: var(--aqua); stroke: var(--ink); }
-/* ancien mot-signature */
-.footer-mark {
-  font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
-  font-weight: 800;
-  font-size: 13.5vw;
-  line-height: 0.8;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(15, 41, 38, 0.22);
-  user-select: none;
-}
-.footer-mark span {
-  display: inline-block;
-  transition: color 0.5s ease, transform 0.6s var(--ease), -webkit-text-stroke-color 0.5s ease;
-}
-.footer-mark span:hover {
-  color: var(--aqua);
-  -webkit-text-stroke-color: var(--ink);
-  transform: translateY(-6%);
-}
-
-/* =====================================================================
-   MASCOTTE & LOGO
-   ===================================================================== */
-/* Bouton « remonter à la surface » : la mascotte sort de l'eau */
+/* Mascotte & logo */
+/* Bouton "remonter à la surface" : la mascotte sort de l'eau */
 .mascot-top {
   position: fixed;
   right: max(14px, env(safe-area-inset-right));
@@ -1477,9 +1440,7 @@ html.a11y-dyslexic-spacing {
 }
 .story-swimmer img { animation: mascot-bob 3s ease-in-out infinite; }
 
-/* =====================================================================
-   CARTE (Leaflet)
-   ===================================================================== */
+/* CARTE (Leaflet) */
 .map-shell {
   position: relative;
   isolation: isolate; /* garde les calques Leaflet sous la navigation */
@@ -1521,9 +1482,7 @@ html.a11y-dyslexic-spacing {
   box-shadow: 0 0 0 6px rgba(25, 64, 128, 0.25);
 }
 
-/* =====================================================================
-   BOUTIQUE — merch & starter pack
-   ===================================================================== */
+/* BOUTIQUE - merch & starter pack */
 .scrollbar-none { scrollbar-width: none; }
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .merch-slide { animation: merch-in 0.7s var(--ease) both; }
@@ -1597,7 +1556,7 @@ html.a11y-dyslexic-spacing {
   .pack-grid > .row-span-2:not(.col-span-2) { grid-row: span 2; }
 }
 .pack-tile { box-shadow: 0 24px 40px -28px rgba(0, 0, 0, 0.6); }
-/* bandeau produit sous la photo, liseré menthe à gauche */
+/* bandeau produit */
 .pack-info { border-top: 1px solid rgba(15, 41, 38, 0.08); }
 .pack-info::before {
   content: ''; position: absolute; left: 0; top: 12px; bottom: 12px; width: 4px;
@@ -1643,9 +1602,7 @@ html[data-theme='dark'] .pack-info { border-top-color: rgba(186, 227, 209, 0.12)
 }
 @media (max-width: 639px) { .pack-sticker { width: 70px; height: 70px; font-size: 10px; } .pack-sticker span { font-size: 30px; } }
 
-/* =====================================================================
-   MOUVEMENT RÉDUIT (option du site + préférence système)
-   ===================================================================== */
+/* MOUVEMENT RÉDUIT (option du site + préférence système) */
 html.a11y-reduce-motion *,
 html.a11y-reduce-motion *::before,
 html.a11y-reduce-motion *::after {
@@ -1678,7 +1635,7 @@ html.a11y-reduce-motion .split-word {
   }
 }
 
-/* icônes réseaux sociaux du footer (sans lien pour l'instant) */
+/* réseaux sociaux (footer) */
 .social-icon {
   width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9999px;
   background: #0F2926; color: #a5d2b2; cursor: default;
@@ -1687,3 +1644,40 @@ html.a11y-reduce-motion .split-word {
 .social-icon:hover { transform: translateY(-2px) rotate(-6deg); background: #18407f; color: #fff; }
 html[data-theme='dark'] .social-icon { background: #a5d2b2; color: #0F2926; }
 html[data-theme='dark'] .social-icon:hover { background: #45C9B7; color: #0F2926; }
+
+/* productions multimédia */
+.media-cover { background: radial-gradient(circle at 50% 45%, rgba(15, 41, 38, 0.05), rgba(15, 41, 38, 0.55)); }
+.media-play { transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); box-shadow: 0 0 0 0 rgba(165, 210, 178, 0.6); }
+.media-cover:hover .media-play, .media-play:hover { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(165, 210, 178, 0.25); }
+.media-seek { transition: height 0.2s; }
+.media-seek:hover { height: 8px; }
+.screen-flash { opacity: 0; animation: screen-zap 0.45s ease-out; }
+@keyframes screen-zap {
+  0% { opacity: 0.85; transform: scaleY(0.02); }
+  45% { opacity: 0.5; transform: scaleY(1); }
+  100% { opacity: 0; }
+}
+.channel-btn:hover { transform: translateY(-2px); }
+.channel-btn { transition: transform 0.3s var(--ease), background-color 0.3s; }
+.wave-bar { transition: background-color 0.2s; transform-origin: center; }
+.radio-spot.is-on .wave-bar { animation: wave-pulse 0.9s ease-in-out infinite alternate; }
+@keyframes wave-pulse { from { transform: scaleY(0.82); } to { transform: scaleY(1.06); } }
+.radio-spot.is-on .on-air-dot { animation: on-air 1s ease-in-out infinite; }
+@keyframes on-air { 50% { opacity: 0.3; } }
+.media-story { transition: transform 0.5s var(--ease); }
+.media-story:hover { transform: translateY(-6px) rotate(-0.6deg); }
+@media (prefers-reduced-motion: reduce) {
+  .radio-spot.is-on .wave-bar, .screen-flash, .on-air-dot { animation: none !important; }
+}
+/* plein écran : on garde le format d'origine (vertical reste vertical) */
+video:fullscreen { object-fit: contain !important; background: #000; }
+video:-webkit-full-screen { object-fit: contain !important; background: #000; }
+/* volume du spot radio */
+.radio-volume { -webkit-appearance: none; appearance: none; border: 0; padding: 0; height: 4px; border-radius: 9999px; cursor: pointer;
+  background: linear-gradient(to right, #a5d2b2 var(--v, 80%), rgba(255, 255, 255, 0.22) var(--v, 80%)); }
+.radio-volume::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0; }
+.radio-volume::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0; }
+.radio-volume:focus-visible { outline: 2px solid #a5d2b2; outline-offset: 4px; }
+/* page Raconter : les deux vidéos */
+.story-tv-screen { transition: transform 0.6s var(--ease); }
+.story-tv:hover .story-tv-screen { transform: rotate(0deg) scale(1.015); }

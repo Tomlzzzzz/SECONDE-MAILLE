@@ -1,10 +1,10 @@
 import React from 'react';
 
-/**
- * Box de dépôt Seconde Maille (inspirée du visuel de la borne en bois).
- * Deux trappes : pneus usés / vieux tissus & filets, QR code « Scan me » sur le côté.
- * Petite animation : des matériaux tombent régulièrement dans les trappes.
- */
+/*
+  Box de dépôt Seconde Maille (inspirée du visuel de la borne en bois).
+  Deux trappes : pneus usés / vieux tissus & filets, QR code "Scan me" sur le côté.
+  Petite animation : des matériaux tombent régulièrement dans les trappes.
+*/
 const INK = '#0F2926';
 const WOOD = '#E8CFA6';
 const FONT = "'Apparat Semi Condensed','Barlow Semi Condensed','Arial Narrow',sans-serif";

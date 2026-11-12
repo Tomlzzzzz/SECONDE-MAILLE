@@ -29,10 +29,10 @@ const meIcon = (approx) =>
     iconAnchor: [23, 23]
   });
 
-/**
- * Carte Leaflet (fond OpenStreetMap) — places, position de l'utilisateur, tracé d'itinéraire.
- * fit : 'places' | 'route' | 'me'
- */
+/*
+  Carte Leaflet (fond OpenStreetMap) - places, position de l'utilisateur, tracé d'itinéraire.
+  fit : 'places' | 'route' | 'me'
+*/
 export default function MapView({ places = [], me, selectedId, onSelect, route, fit = 'places', className = '', focusKey }) {
   const el = useRef(null);
   const map = useRef(null);

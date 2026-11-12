@@ -93,7 +93,7 @@ export function NextBand({ activePage, onNavigate }) {
             <ArrowRight className="w-8 h-8" />
           </span>
         </div>
-        {/* vague de transition vers le footer : posée AU-DESSUS du remplissage → raccord propre au survol */}
+        {/* vague vers le footer */}
         <WaveDivider color="#F5FBF9" className="next-band-wave" />
       </button>
     </section>

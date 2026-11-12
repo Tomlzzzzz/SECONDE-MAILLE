@@ -5,6 +5,8 @@ import StreetScene from '../components/street/StreetScene';
 import { Reveal, SplitText, CountUp, Magnetic, TiltCard, WaveDivider, VelocityMarquee, useElementProgress, useReduce } from '../components/Motion';
 import { SectionLabel } from '../components/Blocks';
 import { SecondeMailleLogo, Mascot } from '../components/Brand';
+import { PhoneVideo, RadioSpot } from '../components/Media';
+import { TEASER, RADIO } from '../data/media';
 import { SITE_PAGES, TICKER_ITEMS, STORY_INTRO, STORY_CHAPTERS, NAME_ORIGIN, STEPS, OBJECTIVES, EVENT } from '../data/siteContent';
 
 const PAGE_BLURBS = {
@@ -13,8 +15,6 @@ const PAGE_BLURBS = {
   'popup-merch': 'L’inauguration du 20 mars 2027 à Lille, le plan et le programme.',
   reportages: 'Le vaquita, les filets abandonnés et la seconde vie des matières.'
 };
-
-
 
 const daysUntil = (d) => Math.max(0, Math.ceil((d.getTime() - Date.now()) / 86400000));
 
@@ -29,7 +29,7 @@ function useMedia(query) {
   return match;
 }
 
-/* ---------- Ticker incliné ---------- */
+/* Ticker incliné */
 function TickerBand() {
   return (
     <div className="relative -mx-[3%] -rotate-2 bg-[#a5d2b2] text-[#0F2926] py-3 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]" role="region" aria-label="Annonces Seconde Maille">
@@ -52,7 +52,7 @@ function TickerBand() {
   );
 }
 
-/* ---------- Le récit en 5 temps : la mascotte nage le long du fil ---------- */
+/* Le récit en 5 temps : la mascotte nage le long du fil */
 function StoryLine() {
   const ref = useRef(null);
   const [p, setP] = useState(0);
@@ -119,7 +119,7 @@ function StoryLine() {
   );
 }
 
-/* ---------- Les 5 temps : défilement horizontal piloté par le scroll ---------- */
+/* Les 5 temps : défilement horizontal piloté par le scroll */
 function StepCard({ step }) {
   return (
     <TiltCard className="w-[78vw] max-w-[360px] sm:w-[380px] sm:max-w-none lg:w-[400px] h-full rounded-[32px] bg-white border border-[#a5d2b2] p-7 sm:p-8 flex flex-col justify-between overflow-hidden">
@@ -235,6 +235,16 @@ function StepsRiver() {
 }
 
 export default function HomePage({ onNavigate }) {
+  const teaserCtrl = useRef(null);
+  const [teaserChapter, setTeaserChapter] = useState(-1);
+  const onTeaserTime = (t) => {
+    let i = -1;
+    TEASER.chapters.forEach((c, k) => {
+      if (t >= c.t) i = k;
+    });
+    if (t >= 94) i = -1; // fin de visite : dehors, devant le pop-up
+    setTeaserChapter((cur) => (cur === i ? cur : i));
+  };
   const [first, ...restIntro] = STORY_INTRO;
   const parts = first.split('. ');
   const firstSentences = parts.slice(1, 3).join('. ') + '.';
@@ -242,7 +252,7 @@ export default function HomePage({ onNavigate }) {
 
   return (
     <>
-      {/* ==================== HEADER : LA BOUTIQUE ==================== */}
+      {/* Header : La boutique */}
       <StreetScene variant="full" bigTitle="Seconde Maille" onBoxClick={() => onNavigate('appli-box')} waveColor="#CFEDE0">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="w-fit max-w-full">
@@ -288,9 +298,9 @@ export default function HomePage({ onNavigate }) {
         </div>
       </StreetScene>
 
-      {/* ==================== LA PLONGÉE : récit + sous la surface, sur la scène marine ==================== */}
+      {/* LA PLONGÉE : récit + sous la surface, sur la scène marine */}
       <OceanDive>
-        {/* LE RÉCIT — commence à la surface */}
+        {/* LE RÉCIT - commence à la surface */}
         <section id="histoire" className="relative">
           <div className="max-w-6xl mx-auto px-5 sm:px-6 lg:px-8 pt-[16vh] pb-24 lg:pb-32">
             <div className="text-center max-w-4xl mx-auto mb-[34vh] md:mb-[38vh]">
@@ -306,7 +316,7 @@ export default function HomePage({ onNavigate }) {
           </div>
         </section>
 
-        {/* SOUS LA SURFACE — au fond, dans le bleu */}
+        {/* SOUS LA SURFACE - au fond, dans le bleu */}
         <section id="plongee" className="relative text-white">
         <div className="pt-6">
           <TickerBand />
@@ -354,7 +364,7 @@ export default function HomePage({ onNavigate }) {
         <WaveDivider color="#FFFFFF" />
       </OceanDive>
 
-      {/* ==================== LE NOM ==================== */}
+      {/* Le nom */}
       <section className="bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
@@ -404,7 +414,7 @@ export default function HomePage({ onNavigate }) {
         </div>
       </section>
 
-      {/* ==================== LA BOUTIQUE (aperçu) ==================== */}
+      {/* LA BOUTIQUE (aperçu) */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pb-20 lg:pb-28">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
@@ -442,15 +452,65 @@ export default function HomePage({ onNavigate }) {
         </div>
       </section>
 
-      {/* ==================== LES 5 TEMPS ==================== */}
+      {/* teaser + spot radio */}
+      <section className="bg-[#F5FBF9] py-20 lg:py-28 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-7">
+            <SectionLabel num="▶">En vidéo et à la radio</SectionLabel>
+            <SplitText as="h2" text="Deux minutes au pop-up." className="font-display uppercase text-[clamp(34px,5vw,72px)] leading-[0.95] text-[#0F2926] mt-5" />
+            <Reveal>
+              <p className="text-slate-700 leading-relaxed mt-6 max-w-xl">{TEASER.text}</p>
+            </Reveal>
+            <Reveal delay={100}>
+              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#0F2926]/60 mt-7 mb-3">Aller directement à un espace</p>
+              <ol className="teaser-stops flex flex-wrap items-center gap-y-3">
+                {TEASER.chapters.map((c, i) => (
+                  <li key={c.label} className="flex items-center">
+                    <button
+                      type="button"
+                      onClick={() => teaserCtrl.current?.jump(c.t)}
+                      className={`teaser-stop inline-flex items-center gap-2 rounded-full border pl-1.5 pr-3.5 py-1.5 text-sm font-bold transition-colors ${
+                        teaserChapter === i ? 'bg-[#18407f] border-[#18407f] text-white' : 'bg-white border-[#a5d2b2] text-[#0F2926]'
+                      }`}
+                      aria-pressed={teaserChapter === i}
+                    >
+                      <span className="w-6 h-6 rounded-full bg-[#0F2926] text-[#a5d2b2] grid place-items-center font-display text-xs">{i + 1}</span>
+                      {c.label}
+                    </button>
+                    {i < TEASER.chapters.length - 1 && (
+                      <svg className="w-7 h-3 mx-1 text-[#18407f]/50" viewBox="0 0 28 12" aria-hidden="true">
+                        <path d="M1 6 Q7 1 14 6 T27 6" fill="none" stroke="currentColor" strokeWidth="1.6" strokeDasharray="3 3" />
+                      </svg>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </Reveal>
+            <Reveal delay={180} className="mt-10 max-w-xl">
+              <RadioSpot {...RADIO} />
+            </Reveal>
+          </div>
+          <Reveal direction="right" className="lg:col-span-5 relative">
+            <div className="absolute inset-0 m-auto w-[85%] aspect-square rounded-full bg-[#a5d2b2]/60 blur-0 -z-0" aria-hidden="true" />
+            <span className="absolute -top-2 right-2 sm:right-8 z-10 rotate-6 rounded-full bg-[#18407f] text-white text-xs font-extrabold uppercase tracking-[0.15em] px-3.5 py-2 shadow-lg">
+              Format vertical · 2 min
+            </span>
+            <div className="relative">
+              <PhoneVideo src={TEASER.src} poster={TEASER.poster} title={TEASER.title} chapters={TEASER.chapters} controlRef={teaserCtrl} onTime={onTeaserTime} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Les 5 temps */}
       <StepsRiver />
 
-      {/* ==================== BANDEAU GÉANT ==================== */}
+      {/* Bandeau géant */}
       <section className="bg-white py-14 lg:py-20 border-y border-[#a5d2b2]/60">
         <VelocityMarquee items={['Déposer', 'Fabriquer', 'Transmettre', 'Seconde Maille']} />
       </section>
 
-      {/* ==================== EXPLORER ==================== */}
+      {/* Explorer */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">

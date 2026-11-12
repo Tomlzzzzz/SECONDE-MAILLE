@@ -174,7 +174,7 @@ export default function SiteFooter({ onNavigate, onLegal }) {
         </div>
       </div>
 
-      {/* Mot-signature géant — en SVG pour toujours tenir dans la largeur de l'écran */}
+      {/* Mot-signature géant - en SVG pour toujours tenir dans la largeur de l'écran */}
       <div className="px-3 sm:px-6 select-none" aria-hidden="true">
         <svg viewBox="0 0 1000 120" className="footer-wordmark w-full h-auto block">
           <text x="500" y="104" textAnchor="middle" textLength="990" lengthAdjust="spacingAndGlyphs">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarDays, MapPin, Clock, Ticket, Sparkles, Scissors, Coffee, ShoppingBag, Users, Baby } from 'lucide-react';
+import { CalendarDays, MapPin, Clock, Ticket, Compass, Scissors, Coffee, ShoppingBag, Mic, Users, Baby } from 'lucide-react';
 import StreetScene from '../components/street/StreetScene';
 import LocationMap from '../components/LocationMap';
 import { Reveal, SplitText, TiltCard, CountUp } from '../components/Motion';
@@ -7,9 +7,11 @@ import { SectionLabel, PageHeroCopy, PageLead } from '../components/Blocks';
 import { Mascot } from '../components/Brand';
 import MerchShowcase from '../components/shop/MerchShowcase';
 import StarterPack from '../components/shop/StarterPack';
+import { ShopScreen } from '../components/Media';
+import { SHOP_SCREENS } from '../data/media';
 import { SITE_PAGES, EVENT, PROGRAMME, AUDIENCES } from '../data/siteContent';
 
-const PROGRAMME_ICONS = [Sparkles, Ticket, Scissors, Coffee, ShoppingBag];
+const PROGRAMME_ICONS = [Compass, Coffee, ShoppingBag, Scissors, Mic];
 const daysUntil = (d) => Math.max(0, Math.ceil((d.getTime() - Date.now()) / 86400000));
 
 export default function PopupPage() {
@@ -42,12 +44,12 @@ export default function PopupPage() {
         }
       >
         <p>
-          Le <span className="marker-aqua font-bold">samedi 20 mars 2027</span>, Seconde Maille inaugure sa boutique éphémère au 17 boulevard Jean-Baptiste Lebas, à Lille. Un événement
-          participatif pour découvrir la démarche et y prendre part.
+          Le <span className="marker-aqua font-bold">samedi 20 mars 2027</span>, Seconde Maille ouvre son pop-up store au 17 boulevard Jean-Baptiste Lebas, à Lille. Quatre espaces et une salle de masterclass
+          pour découvrir la démarche et y prendre part, de 9h à 17h jusqu’au 20 juin.
         </p>
       </PageLead>
 
-      {/* ÉVÉNEMENT */}
+      {/* Événement */}
       <section className="bg-white pb-16 lg:pb-20">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <Reveal direction="clip">
@@ -67,7 +69,7 @@ export default function PopupPage() {
                       <MapPin className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> <span>{EVENT.address}</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <Clock className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> <span className="text-white/70">{EVENT.hours}</span>
+                      <Clock className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> <span>{EVENT.hours}</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Ticket className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> <span>Entrée : <strong>un matériau déposé</strong></span>
@@ -75,7 +77,7 @@ export default function PopupPage() {
                   </ul>
                 </div>
                 <div className="lg:col-span-7">
-                  <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2] mb-4">Au programme</p>
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2] mb-4">Sur place : 4 espaces + une masterclass</p>
                   <ul className="grid sm:grid-cols-2 gap-3">
                     {PROGRAMME.map((item, i) => {
                       const Icon = PROGRAMME_ICONS[i];
@@ -101,7 +103,25 @@ export default function PopupPage() {
         </div>
       </section>
 
-      {/* VENIR — carte réelle */}
+      {/* écrans de la boutique */}
+      <section className="bg-[#F5FBF9] py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          <div className="lg:col-span-4 lg:sticky lg:top-28">
+            <SectionLabel num="B">Sur les écrans de la boutique</SectionLabel>
+            <SplitText as="h2" text="Ce qui tourne en boucle." className="font-display uppercase text-[clamp(32px,4.4vw,60px)] leading-[0.95] text-[#0F2926] mt-5" />
+            <Reveal>
+              <p className="text-slate-600 leading-relaxed mt-5">
+                Deux écrans accompagnent la visite. Zappez de l’un à l’autre pour voir ce qui sera diffusé dans le pop-up.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal direction="right" className="lg:col-span-8">
+            <ShopScreen channels={SHOP_SCREENS} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* VENIR - carte réelle */}
       <section id="venir" className="bg-white pb-16 lg:pb-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <Reveal>
@@ -121,7 +141,7 @@ export default function PopupPage() {
         </div>
       </section>
 
-      {/* POUR QUI */}
+      {/* Pour qui */}
       <section className="bg-white pb-20 lg:pb-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-6 items-center">
           <div className="md:col-span-5">
@@ -145,10 +165,10 @@ export default function PopupPage() {
         </div>
       </section>
 
-      {/* MERCH — stock en direct */}
+      {/* MERCH - stock en direct */}
       <MerchShowcase />
 
-      {/* GOODIES — le starter pack */}
+      {/* GOODIES - le starter pack */}
       <StarterPack />
     </>
   );

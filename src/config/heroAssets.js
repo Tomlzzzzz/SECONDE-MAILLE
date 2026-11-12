@@ -1,15 +1,9 @@
-/**
- * CALQUES DU HEADER — à remplacer par tes propres réalisations.
- *
- * Chaque calque est une image séparée posée dans /public/hero/.
- * Pour remplacer : dépose ton fichier (PNG transparent ou SVG) dans /public/hero/
- * puis change simplement le chemin ci-dessous. Rien d'autre à toucher.
- *
- * Vagues (seaBack / seaMid / seaFront) et nuages :
- *   - doivent être "tuilables" horizontalement (le bord droit raccorde le bord gauche),
- *   - `tile` = largeur en px d'une répétition à l'écran (garde à peu près le ratio de ton image),
- *   - `speed` = durée en secondes d'un cycle de défilement (plus grand = plus lent).
- */
+/*
+  CALQUES DU HEADER - à remplacer par tes propres réalisations.
+  Chaque calque est une image séparée posée dans /public/hero/.
+  Pour remplacer : dépose ton fichier (PNG transparent ou SVG) dans /public/hero/
+  puis change simplement le chemin ci-dessous. Rien d'autre à toucher.
+*/
 // BASE_URL : fonctionne aussi si le site est publié dans un sous-dossier
 const base = `${import.meta.env?.BASE_URL ?? '/'}hero/`;
 
@@ -25,12 +19,12 @@ export const HERO_ASSETS = {
   vaquita: { src: `${base}vaquita.png`, alt: 'Un vaquita flotte à la surface' }
 };
 
-/**
- * CALQUES DU HEADER « RUE DE ROUBAIX » (page d'accueil + en-têtes des pages).
- * Même principe : remplace le fichier dans /public/street/ ou change le chemin.
- * `shop` et `box` : laisser à null pour garder les dessins intégrés (SVG dans
- * src/components/street/), ou indiquer le chemin d'une image pour les remplacer.
- */
+/*
+  CALQUES DU HEADER "RUE DE ROUBAIX" (page d'accueil + en-têtes des pages).
+  Même principe : remplace le fichier dans /public/street/ ou change le chemin.
+  `shop` et `box` : laisser à null pour garder les dessins intégrés (SVG dans
+  src/components/street/), ou indiquer le chemin d'une image pour les remplacer.
+*/
 const street = `${import.meta.env?.BASE_URL ?? '/'}street/`;
 
 export const STREET_ASSETS = {

@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =====================================================================
-   SECONDE MAILLE — L'APPLI · même DA que le site
-   encre #0F2926 · aqua #a5d2b2 · teal #18407f · bleu #18407f · sable #F5FBF9
-   ===================================================================== */
+/*
+  SECONDE MAILLE - L'APPLI · même DA que le site
+  encre #0F2926 · aqua #a5d2b2 · teal #18407f · bleu #18407f · sable #F5FBF9
+*/
 @font-face {
   font-family: 'Apparat Semi Condensed';
   src: local('ApparatSemiCond Black'), local('ApparatSemiCond-Black'), local('Apparat SemiCond Black'),
@@ -64,13 +64,13 @@ body {
   font-weight: 900;
   letter-spacing: -0.005em;
 }
-/* charte : sous-titres en ApparatSemiCond Black Italic */
+/* sous-titres en italique (charte) */
 h3.font-display, .font-subtitle { font-style: italic; }
 button { -webkit-user-select: none; user-select: none; }
 *:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 ::-webkit-scrollbar { width: 0; height: 0; }
 
-/* ---------------------------------------------------------------- cadre */
+/* cadre */
 .app-fullscreen { position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; background: var(--sand); overflow: hidden; overscroll-behavior: none; }
 html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overflow: hidden; overscroll-behavior: none; background: var(--sand); }
 :fullscreen .app-fullscreen, .app-fullscreen:fullscreen { height: 100vh; }
@@ -141,7 +141,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
   pointer-events: none;
 }
 
-/* ---------------------------------------------------------------- structure */
+/* structure */
 .app { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--sand); }
 .app-body { position: absolute; inset: 0; }
 .screen { position: absolute; inset: 0; overflow: hidden; }
@@ -174,7 +174,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 }
 .icon-btn:active { transform: scale(0.92); }
 
-/* ---------------------------------------------------------------- tab bar */
+/* tab bar */
 .tabbar {
   position: absolute;
   left: 10px;
@@ -218,7 +218,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .tabbar-btn.is-on { color: var(--ink); }
 .tabbar-btn:active { transform: scale(0.92); }
 
-/* ---------------------------------------------------------------- boutons */
+/* boutons */
 .app-btn {
   display: inline-flex;
   align-items: center;
@@ -317,7 +317,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
     repeating-linear-gradient(-45deg, #a5d2b2 0 1.5px, transparent 1.5px 22px);
 }
 
-/* ---------------------------------------------------------------- onboarding */
+/* onboarding */
 .onb {
   position: relative;
   height: 100%;
@@ -375,7 +375,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 @keyframes float { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
 @keyframes pulse-soft { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.06); opacity: 1; } }
 
-/* ---------------------------------------------------------------- carte */
+/* carte */
 .map { background: #e3f5ec; }
 .map .leaflet-control-attribution { font-size: 9px; background: rgba(255, 255, 255, 0.7); }
 .map .leaflet-bottom.leaflet-right { bottom: calc(var(--tabbar) + var(--sheet-closed) - 4px); }
@@ -523,7 +523,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 }
 .place-row:active, .place-row:hover { background: var(--sand); }
 
-/* ---------------------------------------------------------------- itinéraire */
+/* itinéraire */
 .route-step {
   display: flex;
   gap: 12px;
@@ -547,7 +547,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .route-step.is-done { opacity: 0.4; }
 .guide-card { animation: onb-in 0.4s var(--ease) both; }
 
-/* ---------------------------------------------------------------- scan */
+/* scan */
 .viewfinder {
   position: relative;
   aspect-ratio: 1;
@@ -574,7 +574,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 @keyframes scan-line { from { top: 24px; } to { top: calc(100% - 26px); } }
 .panel-dark { padding: 14px; border-radius: 22px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
 
-/* ---------------------------------------------------------------- reçu */
+/* reçu */
 .receipt {
   position: relative;
   margin-top: 6px;
@@ -629,7 +629,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .confetti span { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; animation: confetti linear both; }
 @keyframes confetti { to { transform: translate3d(30px, 110vh, 0) rotate(540deg); } }
 
-/* ---------------------------------------------------------------- ligues */
+/* ligues */
 .rank-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-bottom: 1px solid #eef6f2; }
 .rank-row:last-child { border-bottom: 0; }
 .rank-row.is-me { background: #eaf1fb; }
@@ -653,7 +653,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 @keyframes claim { 0%, 100% { box-shadow: 0 0 0 0 rgba(25, 64, 128, 0.45); } 50% { box-shadow: 0 0 0 7px rgba(25, 64, 128, 0); } }
 .tab-in { animation: onb-in 0.4s var(--ease) both; }
 
-/* ---------------------------------------------------------------- pass & récompenses */
+/* pass & récompenses */
 .pass-card {
   position: relative;
   display: block;
@@ -740,9 +740,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
 
-/* =====================================================================
-   LE JEU — « Maille à part »
-   ===================================================================== */
+/* LE JEU - "Maille à part" */
 .game { position: absolute; inset: 0; background: #0F2926; overflow: hidden; touch-action: none; }
 .game-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: ns-resize; }
 .game-hud {
@@ -816,9 +814,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
   .gh-city, .gh-boat, .gh-net, .gh-vaquita, .gh-bub { animation: none; }
 }
 
-/* =====================================================================
-   COMPTE
-   ===================================================================== */
+/* Compte */
 .auth { display: flex; flex-direction: column; gap: 10px; }
 .auth-tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 4px; border-radius: 16px; background: #fff; border: 1.5px solid var(--aqua); margin-bottom: 4px; }
 .auth-tabs-blob { position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc((100% - 8px) / 2); border-radius: 12px; background: var(--ink); transition: transform 0.45s var(--ease); }

@@ -212,7 +212,7 @@ export default function ScanScreen({ active }) {
           <div className="mt-2 p-3 rounded-2xl bg-white/[0.06] border border-white/10 text-[11px] text-white/70 flex gap-2">
             <Sparkles className="w-4 h-4 text-[#a5d2b2] shrink-0" />
             <span>
-              1 pt / 10 g · filets ×2 · pneus ×1,5 · ligue <strong className="text-white">{league.name}</strong> ×{String(league.mult).replace('.', ',')}
+              1 pt / 10 g · tissus & filets ×2 · pneus ×1,5 · ligue <strong className="text-white">{league.name}</strong> ×{String(league.mult).replace('.', ',')}
             </span>
           </div>
         </div>

@@ -11,7 +11,7 @@ const COLORS = ['#18407f', '#18407f', '#0F2926', '#2c5aa8', '#5fbfa6', '#115E59'
 export default function Onboarding() {
   const { state, dispatch, account } = useStore();
   // étapes : 0 bienvenue · 1 compte · 2 localisation · 3 profil
-  const [step, setStep] = useState(() => (state.onboarded ? 2 : 0)); // compte retrouvé sur un nouvel appareil → localisation
+  const [step, setStep] = useState(() => (state.onboarded ? 2 : 0)); // compte retrouvé sur un nouvel appareil -> localisation
   const steps = cloudEnabled ? [0, 1, 2, 3] : [0, 2, 3];
   const next = (from) => setStep(steps[steps.indexOf(from) + 1]);
   const [geo, setGeo] = useState('idle'); // idle | asking | granted | denied | unsupported

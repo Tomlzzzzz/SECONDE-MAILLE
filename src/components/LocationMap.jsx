@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Navigation, MapPin, Footprints, Bike, Car, TrainFront, Bus, ParkingCircle, Copy, Check, ArrowUpRight, LocateFixed, Loader2 } from 'lucide-react';
 import { EVENT } from '../data/siteContent';
 
-/* =====================================================================
-   PLAN DE LOCALISATION RÉEL
-   - Carte : Leaflet + OpenStreetMap (chargés à la demande depuis unpkg)
-   - Position : API Geolocation du navigateur → demande l'autorisation
-   - Itinéraires : serveur de routage OSRM d'OpenStreetMap (FOSSGIS)
-   - À proximité : arrêts, stations V'Lille, parkings via l'API Overpass (OSM)
-   ===================================================================== */
+/*
+  Plan de localisation réel
+  - Carte : Leaflet + OpenStreetMap (chargés à la demande depuis unpkg)
+  - Position : API Geolocation du navigateur -> demande l'autorisation
+  - Itinéraires : serveur de routage OSRM d'OpenStreetMap (FOSSGIS)
+*/
 
 const DEST = { lat: EVENT.lat, lng: EVENT.lng };
 const BRAND_BLUE = '#18407f';
@@ -276,7 +275,7 @@ export default function LocationMap() {
 
   return (
     <div className="grid lg:grid-cols-12 gap-6 lg:gap-8">
-      {/* CARTE */}
+      {/* Carte */}
       <div className="lg:col-span-7">
         <div className="map-shell h-[320px] sm:h-[420px] lg:h-full lg:min-h-[520px] rounded-[28px] overflow-hidden border border-white/10 bg-[#e3f5ec]">
           {mapState !== 'fallback' ? (
@@ -299,7 +298,7 @@ export default function LocationMap() {
         </div>
       </div>
 
-      {/* PANNEAU */}
+      {/* Panneau */}
       <div className="lg:col-span-5 space-y-5 min-w-0">
         <div>
           <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2]">Adresse</p>

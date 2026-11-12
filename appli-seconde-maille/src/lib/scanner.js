@@ -1,10 +1,10 @@
 import jsQR from 'jsqr';
 
-/**
- * Lecture de QR code depuis la caméra.
- * 1. API native BarcodeDetector quand elle existe (Chrome Android, Safari récent…)
- * 2. sinon jsQR (fonctionne partout, y compris sur PC)
- */
+/*
+  Lecture de QR code depuis la caméra.
+  1. API native barcodeDetector quand elle existe (chrome Android, safari récent...)
+  2. sinon jsQR (fonctionne partout, y compris sur PC)
+*/
 export async function startScanner(video, onCode) {
   const stream = await navigator.mediaDevices.getUserMedia({
     video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },

@@ -1,5 +1,7 @@
-/* Vérifie si l'appli doit être mise à jour avant de l'ouvrir (sans dépendance).
-   Code de sortie : 0 = à jour · 10 = recompiler · 11 = installer les modules puis recompiler */
+/*
+  Vérifie si l'appli doit être mise à jour avant de l'ouvrir (sans dépendance).
+  Code de sortie : 0 = à jour · 10 = recompiler · 11 = installer les modules puis recompiler
+*/
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

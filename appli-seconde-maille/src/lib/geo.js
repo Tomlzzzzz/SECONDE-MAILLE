@@ -25,11 +25,11 @@ export const fmtDur = (s) => {
 // estimation à pied (~4,8 km/h) quand on n'a pas encore l'itinéraire
 export const walkMin = (m) => Math.max(1, Math.round(m / 80));
 
-/**
- * Position de l'utilisateur.
- * status : idle | asking | granted | denied | unavailable | unsupported
- * Tant que la permission n'est pas accordée, on utilise une position par défaut (Lille-Centre).
- */
+/*
+  Position de l'utilisateur.
+  status : idle | asking | granted | denied | unavailable | unsupported
+  Tant que la permission n'est pas accordée, on utilise une position par défaut (Lille-Centre).
+*/
 export function useGeolocation(enabled) {
   const [pos, setPos] = useState(DEFAULT_POSITION);
   const [status, setStatus] = useState('idle');

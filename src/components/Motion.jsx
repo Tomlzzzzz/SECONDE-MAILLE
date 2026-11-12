@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 
-/* =====================================================================
-   CONTEXTE "MOUVEMENT RÉDUIT"
-   (option RGAA du header + préférence système prefers-reduced-motion)
-   ===================================================================== */
+/*
+  Contexte "mouvement réduit"
+  (option RGAA du header + préférence système prefers-reduced-motion)
+*/
 export const MotionContext = createContext({ reduce: false });
 export const useReduce = () => useContext(MotionContext).reduce;
 
@@ -44,10 +44,10 @@ export function useInView(options = {}) {
   return [ref, inView];
 }
 
-/* =====================================================================
-   RÉVÉLATION AU SCROLL
-   direction : up | left | right | scale | clip
-   ===================================================================== */
+/*
+  Révélation au scroll
+  direction : up | left | right | scale | clip
+*/
 export function Reveal({ children, direction = 'up', delay = 0, className = '', as: Tag = 'div', ...rest }) {
   const [ref, inView] = useInView();
   return (
@@ -161,7 +161,7 @@ const THEMED = { '#ffffff': 'var(--c-white)', '#fff': 'var(--c-white)', '#f5fbf9
 export const themedFill = (c) => THEMED[String(c).toLowerCase()] || c;
 
 export function WaveDivider({ color = '#FFFFFF', className = '', flip = false, animated = true }) {
-  // motif périodique sur 1200 px, dupliqué sur 2400 → défilement sans couture
+  // motif périodique sur 1200 px, dupliqué sur 2400 -> défilement sans couture
   const d =
     'M0,40 C200,10 400,10 600,40 C800,70 1000,70 1200,40 C1400,10 1600,10 1800,40 C2000,70 2200,70 2400,40 L2400,80 L0,80 Z';
   return (
@@ -294,7 +294,7 @@ export function VelocityMarquee({ items, className = '', baseSpeed = 0.6, outlin
   );
 }
 
-/* Progression de scroll d'un élément (0 quand son haut touche le bas de l'écran → 1 quand son bas touche le haut) */
+/* Progression de scroll d'un élément (0 quand son haut touche le bas de l'écran -> 1 quand son bas touche le haut) */
 export function useElementProgress(ref, mode = 'pin') {
   const [p, setP] = useState(0);
   useEffect(() => {

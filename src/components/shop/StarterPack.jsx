@@ -7,7 +7,7 @@ import { Reveal, SplitText, TiltCard } from '../Motion';
 import { SectionLabel } from '../Blocks';
 import { Mascot } from '../Brand';
 
-/* place de chaque objet dans la grille « flat lay » */
+/* place de chaque objet dans la grille "flat lay" */
 const LAYOUT = {
   tote: 'col-span-2 row-span-2',
   gourde: 'row-span-2',
@@ -18,7 +18,7 @@ const LAYOUT = {
   pass: ''
 };
 
-// cadrage de chaque photo dans sa zone (le bandeau texte est sous la photo)
+// cadrage des photos
 const FOCUS = { ecocup: '50% 30%', stylo: '50% 22%', tasse: '50% 55%' };
 
 function PackTile({ item, index }) {
@@ -60,7 +60,7 @@ function PackTile({ item, index }) {
           </div>
         )}
 
-        {/* bandeau sous la photo (ne recouvre plus le produit) ; la description s'ouvre au survol */}
+        {/* nom + description au survol */}
         <div className="pack-info relative z-10 shrink-0 bg-white px-4 py-3 sm:px-5 sm:py-3.5">
           <p className="font-display uppercase text-lg sm:text-xl leading-none text-[#0F2926]">{item.name}</p>
           <p className="text-[11px] font-extrabold text-[#18407f] mt-1">{item.role}</p>
@@ -128,7 +128,7 @@ export default function StarterPack() {
                   <Package className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> {P.priceLabel}
                 </li>
                 <li className="flex gap-2.5">
-                  <Sparkles className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> Tes dépôts dans les box te rapportent des points : un café, des goodies…
+                  <Sparkles className="w-4 h-4 mt-0.5 text-[#a5d2b2] shrink-0" /> Tes dépôts dans les box te rapportent des points : un café offert dès 100 points, des goodies…
                 </li>
               </ul>
               <div className="flex flex-wrap gap-2.5 mt-6">
@@ -143,7 +143,7 @@ export default function StarterPack() {
           </Reveal>
         </div>
 
-        {/* le contenu du pack, façon « flat lay » */}
+        {/* le contenu du pack, façon "flat lay" */}
         <div className="pack-grid">
           {P.items.map((item, i) => (
             <PackTile key={item.id} item={item} index={i} />

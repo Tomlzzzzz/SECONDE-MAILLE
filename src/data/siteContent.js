@@ -1,8 +1,6 @@
 import { Compass, HeartHandshake, Package, Store, Tv } from 'lucide-react';
 
-/* =====================================================================
-   CONTENUS DU SITE — issus du brief Seconde Maille
-   ===================================================================== */
+/* CONTENUS DU SITE - issus du brief Seconde Maille */
 
 export const SITE_PAGES = [
   { id: 'accueil', num: '01', label: 'Le Concept', short: 'Accueil', icon: Compass },
@@ -12,31 +10,36 @@ export const SITE_PAGES = [
   { id: 'reportages', num: '05', label: 'Raconter', short: 'Vakita', icon: Tv }
 ];
 
-/* ---------- Événement ---------- */
+/* Événement */
+export const APP_URL = 'https://seconde-maille-app.vercel.app/';
+
 export const EVENT = {
-  name: 'Inauguration du Pop-Up Store Seconde Maille',
+  name: 'Ouverture du Pop-Up Store Seconde Maille',
   dateLabel: 'Samedi 20 mars 2027',
   dateShort: '20.03.2027',
   date: new Date('2027-03-20T00:00:00+01:00'),
   boxDateLabel: '20 janvier 2027',
   boxDate: new Date('2027-01-20T00:00:00+01:00'),
+  boxEndLabel: '20 mars 2027',
   street: '17 boulevard Jean-Baptiste Lebas',
   city: '59000 Lille',
   address: '17 boulevard Jean-Baptiste Lebas, 59000 Lille',
   // Coordonnées du n°17 bd Jean-Baptiste Lebas (Lille)
   lat: 50.62639,
   lng: 3.07417,
-  hours: 'Horaires communiqués prochainement'
+  endDate: new Date('2027-06-20T17:00:00+02:00'),
+  hours: '9h - 17h, jusqu’au 20 juin 2027'
 };
 
 export const TICKER_ITEMS = [
   { badge: 'Collab', text: 'VAKITA × LA VIE EST BELT — SECONDE MAILLE' },
   { badge: 'Pop-Up', text: 'SAMEDI 20 MARS 2027 · 17 BD JEAN-BAPTISTE LEBAS, LILLE' },
-  { badge: 'Box', text: 'BOX DE DÉPÔT DISPONIBLES DÈS LE 20 JANVIER 2027' },
+  { badge: 'Box', text: 'BOX DE DÉPÔT DU 20 JANVIER AU 20 MARS 2027' },
+  { badge: 'Horaires', text: 'POP-UP OUVERT DE 9H À 17H JUSQU’AU 20 JUIN' },
   { badge: 'Entrée', text: 'VOTRE BILLET D’ENTRÉE : UN MATÉRIAU DÉPOSÉ' }
 ];
 
-/* ---------- Storytelling ---------- */
+/* Storytelling */
 export const STORY_INTRO = [
   'Tout commence par un filet de pêche abandonné. Dans la mer, il devient un piège pour les animaux qui y vivent. Parmi eux, le vaquita, un petit mammifère marin aujourd’hui gravement menacé. Ce filet, conçu pour attraper, peut continuer à faire des victimes longtemps après avoir été perdu ou jeté.',
   'À Lille, deux marques décident de lui donner une autre histoire. Vakita, média engagé, informe et sensibilise aux enjeux environnementaux et à la protection animale. La Vie est Belt transforme des matériaux destinés à être jetés en accessoires utiles. Ensemble, elles imaginent Seconde Maille : une collaboration qui donne une seconde vie aux matières et fait entendre une cause souvent éloignée de notre quotidien.',
@@ -72,19 +75,19 @@ export const STORY_CHAPTERS = [
   }
 ];
 
-/* ---------- Le nom ---------- */
+/* Le nom */
 export const NAME_ORIGIN = [
   { word: 'Seconde', meanings: ['Seconde vie', 'Seconde main'] },
   { word: 'Maille', meanings: ['La maille du textile, la texture des vêtements', 'La maille du filet de pêche'] }
 ];
 
-/* ---------- Les 5 temps ---------- */
+/* Les 5 temps */
 export const STEPS = [
   {
     number: '01',
     verb: 'Collecter',
     title: 'Des box de dépôt',
-    description: 'Dès le 20 janvier 2027, des box accueillent les matériaux destinés à être jetés : filets de pêche, pneus et textiles. Chaque dépôt compte.',
+    description: 'Du 20 janvier au 20 mars 2027, des box installées dans la région lilloise accueillent les pneus usés, les vieux tissus et les filets. Chaque dépôt compte.',
     tag: 'Dès le 20 janvier'
   },
   {
@@ -98,14 +101,14 @@ export const STEPS = [
     number: '03',
     verb: 'Vendre',
     title: 'Une boutique éphémère',
-    description: 'La collection se découvre dans le pop-up store, avec un espace merch Seconde Maille.',
+    description: 'La boutique du pop-up présente les pièces upcyclées, les tote bags et le merch Seconde Maille.',
     tag: 'Boutique merch'
   },
   {
     number: '04',
     verb: 'Se retrouver',
     title: 'Un événement participatif',
-    description: 'Le 20 mars 2027, l’inauguration du pop-up réunit le public. Le billet d’entrée : un matériau déposé. Au programme : ateliers de création.',
+    description: 'Le pop-up ouvre le 20 mars 2027 : un hub d’accueil, un café vegan, une boutique, un atelier et une salle de masterclass. Ouvert de 9h à 17h jusqu’au 20 juin.',
     tag: '20 mars 2027'
   },
   {
@@ -128,23 +131,23 @@ export const AUDIENCES = [
   { title: 'Familles', detail: 'avec enfants, sensibles à l’écologie' }
 ];
 
-/* ---------- Le pop-up ---------- */
+/* Le pop-up */
 export const PROGRAMME = [
-  { title: 'Inauguration du pop-up store', text: 'Découvrez la démarche Seconde Maille et la nouvelle gamme upcyclée.' },
-  { title: 'Entrée = un matériau déposé', text: 'Apportez un matériau destiné à être jeté : c’est votre billet d’entrée.' },
-  { title: 'Ateliers de création', text: 'Création de sacs à partir de matières récupérées.' },
-  { title: 'Points & récompenses', text: 'Vos dépôts rapportent des points : un café, des goodies…' },
-  { title: 'Boutique merch', text: 'Vêtements, accessoires et merch Seconde Maille.' }
+  { title: 'Le hub', text: 'Un accueil circulaire au centre du pop-up, d’où l’on part vers l’espace de son choix.' },
+  { title: 'Le café vegan', text: 'Une pause sur place : vos points de dépôt valent des réductions, et un café est offert dès 100 points.' },
+  { title: 'La boutique', text: 'Des pièces upcyclées, des tote bags et le merch Seconde Maille.' },
+  { title: 'L’atelier', text: 'Fabriquez votre tote bag à partir de filets de pêche avec l’équipe de La Vie est Belt. Vous repartez avec une pièce unique et numérotée.' },
+  { title: 'La salle de masterclass', text: 'Les journalistes de Vakita racontent leurs enquêtes et répondent à vos questions.' }
 ];
 
 export const COLLECTION = [
   { title: 'Accessoires', text: 'Pneus et filets de pêche revalorisés par La Vie est Belt.', material: 'Pneu × Filet' },
   { title: 'Vêtements', text: 'Textiles de seconde main et matières écologiques.', material: 'Seconde main' },
-  { title: 'Sacs', text: 'À découvrir — et à fabriquer soi-même en atelier.', material: 'Atelier' },
+  { title: 'Tote bags', text: 'À fabriquer soi-même à l’atelier, à partir de filets de pêche : chaque pièce est numérotée.', material: 'Atelier' },
   { title: 'Merch', text: 'Les pièces aux couleurs de Seconde Maille.', material: 'Boutique' }
 ];
 
-/* ---------- Les marques ---------- */
+/* Les marques */
 export const BRANDS = {
   vakita: {
     tagline: 'Média engagé',
@@ -164,21 +167,18 @@ export const BRANDS = {
   }
 };
 
-/* ---------- Raconter (Vakita) ---------- */
+/* Raconter (Vakita) */
 export const STORIES = [
   {
     tag: 'Espèce menacée',
     title: 'Le vaquita',
-    text: 'Un petit mammifère marin gravement menacé, notamment par les filets de pêche jetés lors de la pêche illégale au Mexique. C’est lui qui a donné son nom à Vakita.'
+    text: 'Un petit mammifère marin gravement menacé, notamment par les filets de pêche jetés lors de la pêche illégale au Mexique. C’est lui qui a donné son nom à Vakita.',
+    video: { youtube: 'BCfiY0SOWfQ', title: 'Risquer sa vie pour sauver les tous derniers vaquitas !' }
   },
   {
-    tag: 'Pollution',
-    title: 'Les filets abandonnés',
-    text: 'Conçu pour attraper, un filet perdu continue de piéger des animaux longtemps après avoir été jeté.'
-  },
-  {
-    tag: 'Seconde vie',
-    title: 'De la mer à l’atelier',
-    text: 'Comment des matières destinées à être jetées deviennent des vêtements et des accessoires grâce à l’upcycling.'
+    tag: 'Upcycling',
+    title: 'Mettre la gomme',
+    text: 'Une idée pour la France : donner une seconde vie aux pneus de vélo usés. À Roubaix, La Vie est Belt les transforme en ceintures et en accessoires, fabriqués dans des ateliers partenaires.',
+    video: { youtube: 'SECoXh6cBo8', title: 'Une idée pour la France ? Mettre la gomme !' }
   }
 ];

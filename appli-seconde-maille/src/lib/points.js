@@ -1,11 +1,11 @@
 import { MATERIALS, placeById } from '../data/places';
 
-/* =====================================================================
-   FORMAT DU QR CODE AFFICHÉ PAR L'ÉCRAN DE LA BOX (après pesée)
-     SM|<idBox>|<poids en grammes>|<matière>|<code unique>
-   ex. SM|GPL|1250|FIL|8F2KQ  →  Box Grande Place, 1,25 kg de filets
-   Le code unique empêche de scanner deux fois le même dépôt.
-   ===================================================================== */
+/*
+  FORMAT DU QR CODE AFFICHÉ PAR L'ÉCRAN DE LA BOX (après pesée)
+  SM|<idBox>|<poids en grammes>|<matière>|<code unique>
+  ex. SM|GPL|1250|FIL|8F2KQ  ->  Box Grande Place, 1,25 kg de filets
+  Le code unique empêche de scanner deux fois le même dépôt.
+*/
 export const QR_PREFIX = 'SM';
 export const MAX_GRAMS = 10000; // 10 kg max par dépôt
 

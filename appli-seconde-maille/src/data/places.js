@@ -1,12 +1,10 @@
-/* =====================================================================
-   LIEUX — box de dépôt & pop-up
-   Pop-up : 17 bd Jean-Baptiste Lebas, Lille (Gare Saint-Sauveur).
-   Lille : lieux du brief (Grande Place, Vieux-Lille, Euralille, Marché aux
-   livres) + gares, marchés, lieux culturels et quartiers étudiants.
-   Roubaix, ville du textile : Grand-Place, gare, La Piscine, Condition
-   Publique, La Manufacture, parc Barbieux, vélodrome.
-   ⚠️ Emplacements exacts et taux de remplissage à remplacer par les vrais.
-   ===================================================================== */
+/*
+  LIEUX - box de dépôt & pop-up
+  Pop-up : 17 bd Jean-Baptiste Lebas, Lille (Gare Saint-Sauveur).
+  Lille : lieux du brief (Grande Place, vieux-Lille, euralille, marché aux
+  livres) + gares, marchés, lieux culturels et quartiers étudiants.
+  Métropole : Villeneuve-d'Ascq, Mons, Marcq, Wasquehal, Croix, Hem, Roubaix.
+*/
 export const POPUP = {
   id: 'POP',
   type: 'popup',
@@ -17,10 +15,12 @@ export const POPUP = {
   lng: 3.07417,
   date: new Date('2027-03-20T00:00:00+01:00'),
   dateLabel: 'Samedi 20 mars 2027',
-  hours: 'Horaires communiqués prochainement'
+  endDate: new Date('2027-06-20T17:00:00+02:00'),
+  hours: '9h - 17h, du 20 mars au 20 juin 2027'
 };
 
 export const BOX_OPENING = new Date('2027-01-20T00:00:00+01:00');
+export const BOX_CLOSING = new Date('2027-03-20T23:59:59+01:00');
 
 export const BOXES = [
   {
@@ -32,7 +32,7 @@ export const BOXES = [
     lat: 50.63662,
     lng: 3.06352,
     fill: 0.42,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'VBO',
@@ -43,7 +43,7 @@ export const BOXES = [
     lat: 50.63703,
     lng: 3.06468,
     fill: 0.18,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'VXL',
@@ -54,7 +54,7 @@ export const BOXES = [
     lat: 50.64128,
     lng: 3.06238,
     fill: 0.71,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'EUR',
@@ -65,7 +65,7 @@ export const BOXES = [
     lat: 50.63655,
     lng: 3.07585,
     fill: 0.33,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'PUP',
@@ -76,7 +76,7 @@ export const BOXES = [
     lat: 50.62668,
     lng: 3.07368,
     fill: 0.09,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'LFL',
@@ -87,7 +87,7 @@ export const BOXES = [
     lat: 50.6366,
     lng: 3.0712,
     fill: 0.48,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'PBA',
@@ -98,7 +98,7 @@ export const BOXES = [
     lat: 50.63035,
     lng: 3.06291,
     fill: 0.27,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'WAZ',
@@ -109,7 +109,7 @@ export const BOXES = [
     lat: 50.62607,
     lng: 3.04974,
     fill: 0.83,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'MOU',
@@ -120,7 +120,107 @@ export const BOXES = [
     lat: 50.62296,
     lng: 3.06806,
     fill: 0.21,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
+  },
+  // entre Lille et Roubaix
+  {
+    id: 'VAH',
+    type: 'box',
+    name: 'Box Hôtel de Ville',
+    area: 'Villeneuve-d’Ascq',
+    address: 'Place Salvador-Allende, 59650 Villeneuve-d’Ascq',
+    lat: 50.64030,
+    lng: 3.14100,
+    fill: 0.33,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'VLM',
+    type: 'box',
+    name: 'Box LaM',
+    area: 'Villeneuve-d’Ascq',
+    address: '1 allée du Musée, 59650 Villeneuve-d’Ascq',
+    lat: 50.65040,
+    lng: 3.14870,
+    fill: 0.12,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'VPB',
+    type: 'box',
+    name: 'Box Pont de Bois',
+    area: 'Villeneuve-d’Ascq',
+    address: 'Métro Pont de Bois, 59650 Villeneuve-d’Ascq',
+    lat: 50.63060,
+    lng: 3.12720,
+    fill: 0.47,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'VCS',
+    type: 'box',
+    name: 'Box Cité scientifique',
+    area: 'Villeneuve-d’Ascq',
+    address: 'Avenue Paul-Langevin, 59650 Villeneuve-d’Ascq',
+    lat: 50.60930,
+    lng: 3.14050,
+    fill: 0.58,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'MON',
+    type: 'box',
+    name: 'Box Fort de Mons',
+    area: 'Mons-en-Barœul',
+    address: 'Métro Fort de Mons, 59370 Mons-en-Barœul',
+    lat: 50.64150,
+    lng: 3.10400,
+    fill: 0.26,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'MAR',
+    type: 'box',
+    name: 'Box Marcq-Centre',
+    area: 'Marcq-en-Barœul',
+    address: 'Rue Nationale, 59700 Marcq-en-Barœul',
+    lat: 50.67160,
+    lng: 3.09680,
+    fill: 0.39,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'WAS',
+    type: 'box',
+    name: 'Box Wasquehal',
+    area: 'Wasquehal',
+    address: 'Place de la République, 59290 Wasquehal',
+    lat: 50.67050,
+    lng: 3.13100,
+    fill: 0.21,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'CRX',
+    type: 'box',
+    name: 'Box Croix-Centre',
+    area: 'Croix',
+    address: 'Place des Martyrs-de-la-Résistance, 59170 Croix',
+    lat: 50.67850,
+    lng: 3.15150,
+    fill: 0.44,
+    accepts: ['PNE', 'FIL']
+  },
+  {
+    id: 'HEM',
+    type: 'box',
+    name: 'Box Hem',
+    area: 'Hem',
+    address: 'Place de la République, 59510 Hem',
+    lat: 50.65530,
+    lng: 3.18800,
+    fill: 0.17,
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RGP',
@@ -131,7 +231,7 @@ export const BOXES = [
     lat: 50.69045,
     lng: 3.17485,
     fill: 0.36,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RGA',
@@ -142,7 +242,7 @@ export const BOXES = [
     lat: 50.69585,
     lng: 3.16345,
     fill: 0.24,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RPI',
@@ -153,7 +253,7 @@ export const BOXES = [
     lat: 50.69229,
     lng: 3.16782,
     fill: 0.52,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RCP',
@@ -164,7 +264,7 @@ export const BOXES = [
     lat: 50.69074,
     lng: 3.18949,
     fill: 0.61,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RMA',
@@ -175,7 +275,7 @@ export const BOXES = [
     lat: 50.6828,
     lng: 3.196,
     fill: 0.15,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RBA',
@@ -186,7 +286,7 @@ export const BOXES = [
     lat: 50.67594,
     lng: 3.1615,
     fill: 0.12,
-    accepts: ['FIL', 'TEX']
+    accepts: ['PNE', 'FIL']
   },
   {
     id: 'RVE',
@@ -197,12 +297,12 @@ export const BOXES = [
     lat: 50.6781,
     lng: 3.2052,
     fill: 0.38,
-    accepts: ['FIL', 'PNE', 'TEX']
+    accepts: ['PNE', 'FIL']
   }
 ];
 
 export const ALL_PLACES = [...BOXES, POPUP];
-// anciens identifiants (la box du pop-up était à Roubaix, code RBX)
+
 const LEGACY = { RBX: 'PUP' };
 export const placeById = (id) => ALL_PLACES.find((p) => p.id === (LEGACY[id] || id));
 
@@ -210,7 +310,8 @@ export const placeById = (id) => ALL_PLACES.find((p) => p.id === (LEGACY[id] || 
 export const DEFAULT_POSITION = { lat: 50.6365, lng: 3.0635, approximate: true };
 
 export const MATERIALS = {
-  FIL: { label: 'Filets & tissus', short: 'Filets', mult: 2, color: '#18407f', hint: 'Filets de pêche, cordages, vieux tissus' },
-  PNE: { label: 'Pneus & chambres à air', short: 'Pneus', mult: 1.5, color: '#0F2926', hint: 'Pneus de vélo, chambres à air' },
-  TEX: { label: 'Textiles', short: 'Textiles', mult: 1, color: '#18407f', hint: 'Vêtements, linge, chutes de tissu' }
+  PNE: { label: 'Pneus usés', short: 'Pneus', mult: 1.5, color: '#0F2926', hint: 'Pneus et chambres à air' },
+  FIL: { label: 'Vieux tissus & filets', short: 'Tissus & filets', mult: 2, color: '#18407f', hint: 'Filets de pêche, cordages, vieux tissus' },
+  // anciens dépôts enregistrés avant la fusion des deux entrées
+  TEX: { label: 'Vieux tissus & filets', short: 'Tissus & filets', mult: 1, color: '#18407f', hint: 'Vieux tissus', legacy: true }
 };

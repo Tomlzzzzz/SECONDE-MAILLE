@@ -11,9 +11,7 @@ import RewardsScreen from './screens/RewardsScreen';
 import GameHub from './screens/GameHub';
 import GamePlay from './screens/GamePlay';
 
-/* ---------------------------------------------------------------------
-   Navigation : 5 onglets + sous-vues empilées (itinéraire, reçu)
-   --------------------------------------------------------------------- */
+/* Navigation : 5 onglets + sous-vues empilées (itinéraire, reçu) */
 const NavCtx = createContext(null);
 export const useNav = () => useContext(NavCtx);
 
@@ -120,10 +118,10 @@ function Shell() {
   );
 }
 
-/* ---------------------------------------------------------------------
-   Cadre téléphone : sur ordinateur l'appli s'affiche dans un téléphone,
-   sur mobile elle occupe tout l'écran.
-   --------------------------------------------------------------------- */
+/*
+  Cadre téléphone : sur ordinateur l'appli s'affiche dans un téléphone,
+  sur mobile elle occupe tout l'écran.
+*/
 function useIsPhone() {
   const q = '(max-width: 560px), (pointer: coarse) and (max-width: 900px)';
   const [m, setM] = useState(() => window.matchMedia(q).matches);
@@ -184,13 +182,15 @@ function DeviceFrame({ children }) {
   );
 }
 
-/* Sur téléphone : plein écran au premier toucher (masque la barre d'adresse
-   et la barre de navigation quand le navigateur le permet — Android, PWA). */
+/*
+  Sur téléphone : plein écran au premier toucher (masque la barre d'adresse
+  et la barre de navigation quand le navigateur le permet - Android, PWA).
+*/
 function useImmersive(on) {
   useEffect(() => {
     if (!on) return;
     const root = document.documentElement;
-    if (!root.requestFullscreen) return; // iPhone : passer par « Ajouter à l'écran d'accueil »
+    if (!root.requestFullscreen) return; // iPhone : passer par "Ajouter à l'écran d'accueil"
     let done = false;
     const go = () => {
       if (done || document.fullscreenElement) return;

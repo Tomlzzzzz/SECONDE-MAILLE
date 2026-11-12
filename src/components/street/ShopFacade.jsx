@@ -1,10 +1,10 @@
 import React from 'react';
 
-/**
- * Façade de la boutique éphémère (inspirée d'un bâtiment brique + verrière à structure bois).
- * Dessin en SVG intégré pour profiter des polices du site. Le logo est posé en HTML par-dessus
- * (voir StreetScene) pour rester net et facilement remplaçable.
- */
+/*
+  Façade de la boutique éphémère (inspirée d'un bâtiment brique + verrière à structure bois).
+  Dessin en SVG intégré pour profiter des polices du site. Le logo est posé en HTML par-dessus
+  (voir StreetScene) pour rester net et facilement remplaçable.
+*/
 const INK = '#0F2926';
 const BRICK = '#985B57';
 
@@ -29,7 +29,7 @@ export default function ShopFacade({ className = '' }) {
         </clipPath>
       </defs>
 
-      {/* ---------- bloc brique ---------- */}
+      {/* bloc brique */}
       <rect x="0" y="128" width="502" height="512" fill="url(#brick)" stroke={INK} strokeWidth="7" />
       {/* couvertine blanche légèrement inclinée */}
       <path d="M-14 132 L516 108 L516 128 L-14 152 Z" fill="#F5FBF9" stroke={INK} strokeWidth="6" strokeLinejoin="round" />
@@ -45,7 +45,7 @@ export default function ShopFacade({ className = '' }) {
       <path d="M260 600 L400 548 L420 548" fill="none" stroke="#C7DAD3" strokeWidth="7" strokeLinecap="round" />
       <path d="M262 600 v-14 M398 548 v14" stroke="#C7DAD3" strokeWidth="6" strokeLinecap="round" />
 
-      {/* ---------- verrière ---------- */}
+      {/* verrière */}
       <rect x="500" y="62" width="390" height="578" fill="url(#glassIn)" />
       <g clipPath="url(#glassClip)">
         {/* lumière intérieure (animée) */}

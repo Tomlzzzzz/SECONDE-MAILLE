@@ -1,5 +1,7 @@
-/* Fusion de deux sauvegardes (appareil + compte) sans rien perdre :
-   on additionne les listes (dépôts, parties, bons…) en dédoublonnant par id. */
+/*
+  Fusion de deux sauvegardes (appareil + compte) sans rien perdre :
+  on additionne les listes (dépôts, parties, bons...) en dédoublonnant par id.
+*/
 const byId = (a = [], b = []) => {
   const m = new Map();
   [...a, ...b].forEach((x) => x && x.id && m.set(x.id, { ...m.get(x.id), ...x }));

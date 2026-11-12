@@ -5,3 +5,8 @@ dist/
 .env
 .env.*
 
+
+# fichiers sources des productions (trop lourds pour GitHub)
+# -> les versions web sont dans public/media
+video/
+record/

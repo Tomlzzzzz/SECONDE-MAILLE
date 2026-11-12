@@ -1,26 +1,66 @@
-import React from 'react';
-import { Play } from 'lucide-react';
+import React, { useState } from 'react';
+import { Play, ExternalLink } from 'lucide-react';
 import StreetScene from '../components/street/StreetScene';
-import { Reveal, SplitText, TiltCard } from '../components/Motion';
+import { Reveal, SplitText } from '../components/Motion';
 import { SectionLabel, PageHeroCopy, PageLead, ExternalPill } from '../components/Blocks';
 import { VakitaLogo } from '../components/BrandLogos';
 import { Mascot } from '../components/Brand';
 import { SITE_PAGES, STORIES } from '../data/siteContent';
 
-function Screen({ big = false, label }) {
+// vidéo YouTube chargée seulement au clic (pas de cookies avant)
+function YouTubeScreen({ id, title, big = true }) {
+  const [on, setOn] = useState(false);
+  if (on)
+    return (
+      <div className="relative w-full aspect-video rounded-[24px] overflow-hidden bg-black">
+        <iframe
+          className="absolute inset-0 w-full h-full"
+          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowFullScreen
+        />
+      </div>
+    );
   return (
-    <div className={`relative w-full ${big ? 'h-[260px] sm:h-[400px]' : 'h-52 sm:h-56'} rounded-[24px] bg-[#0F2926] overflow-hidden group`} aria-hidden="true">
-      <div className="absolute inset-0 scan-lines" />
+    <button type="button" onClick={() => setOn(true)} className="block w-full text-left" aria-label={`Lire la vidéo : ${title}`} data-cursor="Lire">
+      <Screen big={big} label="Vidéo YouTube" title={title} image={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`} fallback={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} />
+    </button>
+  );
+}
+
+function Screen({ big = false, label, title, image, fallback }) {
+  return (
+    <div className={`relative w-full ${image ? 'aspect-video' : big ? 'h-[260px] sm:h-[400px]' : 'h-52 sm:h-56'} rounded-[24px] bg-[#0F2926] overflow-hidden group`} aria-hidden="true">
+      {image && (
+        <>
+          <img
+            src={image}
+            alt=""
+            loading="lazy"
+            onError={(e) => {
+              if (fallback && e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
+            }}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        </>
+      )}
+      {!image && <div className="absolute inset-0 scan-lines" />}
+      {!image && (
       <svg className="absolute bottom-0 left-0 w-[200%] h-1/2 wave-divider-anim opacity-70 transition-transform duration-1000 translate-y-1/3 group-hover:translate-y-0" viewBox="0 0 2400 200" preserveAspectRatio="none">
         <path d="M0,80 C200,30 400,30 600,80 C800,130 1000,130 1200,80 C1400,30 1600,30 1800,80 C2000,130 2200,130 2400,80 L2400,200 L0,200 Z" fill="#18407f" />
         <path d="M0,120 C200,80 400,80 600,120 C800,160 1000,160 1200,120 C1400,80 1600,80 1800,120 C2000,160 2200,160 2400,120 L2400,200 L0,200 Z" fill="#18407f" opacity=".6" />
       </svg>
-      <span className="absolute top-4 left-4 sm:top-5 sm:left-5 text-[11px] font-mono uppercase tracking-wider text-[#a5d2b2]">Vakita × Seconde Maille</span>
+      )}
+      {!image && <span className="absolute top-4 left-4 sm:top-5 sm:left-5 text-[11px] font-mono uppercase tracking-wider text-[#a5d2b2]">Vakita × Seconde Maille</span>}
       <span className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${big ? 'w-20 h-20 sm:w-24 sm:h-24' : 'w-14 h-14'} rounded-full bg-[#a5d2b2] text-[#0F2926] grid place-items-center transition-transform duration-500 group-hover:scale-110`}>
         <span className="play-ring" />
         <span className="play-ring" style={{ animationDelay: '1.2s' }} />
         <Play className={`${big ? 'w-8 h-8' : 'w-5 h-5'} fill-current ml-1`} />
       </span>
+      {title && !image && (
+        <span className="absolute top-12 left-4 right-4 sm:top-14 sm:left-5 sm:right-24 font-display uppercase text-white text-xl sm:text-3xl leading-[0.95]">{title}</span>
+      )}
       <span className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 px-2.5 py-1 rounded-full bg-white/90 text-[10px] font-extrabold uppercase tracking-wider text-[#0F2926]">{label}</span>
     </div>
   );
@@ -28,7 +68,6 @@ function Screen({ big = false, label }) {
 
 export default function ReportagesPage() {
   const page = SITE_PAGES[4];
-  const [first, ...rest] = STORIES;
 
   return (
     <>
@@ -43,42 +82,66 @@ export default function ReportagesPage() {
         </p>
       </PageLead>
 
-      <section className="bg-white pb-20 lg:pb-28">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 space-y-6">
-          <Reveal direction="clip">
-            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center p-4 sm:p-6 rounded-[32px] sm:rounded-[36px] bg-[#F5FBF9] border border-[#a5d2b2]">
-              <div className="lg:col-span-7">
-                <Screen big label="Contenu à venir" />
-              </div>
-              <div className="lg:col-span-5 lg:pr-4 pb-2 px-1">
-                <SectionLabel num="★">{first.tag}</SectionLabel>
-                <div className="flex items-center gap-4 mt-5">
-                  <h2 className="font-display uppercase text-[clamp(34px,4vw,56px)] leading-[0.95] text-[#0F2926]">{first.title}</h2>
-                  <Mascot className="w-14 sm:w-16 shrink-0 hover:rotate-12 transition-transform duration-500" />
-                </div>
-                <p className="text-slate-600 leading-relaxed mt-4">{first.text}</p>
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {rest.map((v, i) => (
-              <Reveal key={v.title} delay={i * 120}>
-                <TiltCard max={3} className="h-full p-4 sm:p-6 rounded-[32px] bg-white border border-[#a5d2b2] hover:border-[#18407f] flex flex-col gap-6">
-                  <Screen label="Contenu à venir" />
-                  <div className="px-1">
-                    <span className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#18407f]">{v.tag}</span>
-                    <h2 className="font-display uppercase text-3xl leading-[0.95] text-[#0F2926] mt-2">{v.title}</h2>
-                    <p className="text-sm text-slate-600 leading-relaxed mt-3">{v.text}</p>
-                  </div>
-                </TiltCard>
-              </Reveal>
-            ))}
+      {/* les deux vidéos, en vis-à-vis */}
+      <section className="bg-white pb-20 lg:pb-28 relative">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative">
+          {/* fil qui relie les deux vidéos */}
+          <svg className="hidden lg:block absolute left-1/2 top-24 -translate-x-1/2 w-40 h-24 text-[#a5d2b2]" viewBox="0 0 160 96" aria-hidden="true">
+            <path d="M4 10 C50 10 40 86 80 86 S110 30 156 60" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5 6" strokeLinecap="round" />
+          </svg>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+            {STORIES.map((v, i) => {
+              const dark = i % 2 === 1;
+              return (
+                <Reveal key={v.title} delay={i * 140} className={dark ? 'lg:mt-28' : ''}>
+                  <article
+                    className={`story-tv group/tv p-5 sm:p-7 rounded-[36px] ${
+                      dark ? 'bg-[#18407f] text-white' : 'bg-[#F5FBF9] border border-[#a5d2b2] text-[#0F2926]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-4 mb-5">
+                      <span
+                        className="font-display text-[56px] sm:text-[72px] leading-none text-transparent"
+                        style={{ WebkitTextStroke: `1.5px ${dark ? '#a5d2b2' : '#18407f'}` }}
+                        aria-hidden="true"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span
+                        className={`rounded-full px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.18em] ${
+                          dark ? 'bg-[#a5d2b2] text-[#0F2926]' : 'bg-[#18407f] text-white'
+                        }`}
+                      >
+                        {v.tag}
+                      </span>
+                    </div>
+                    <div className={`story-tv-screen rounded-[28px] p-1.5 ${dark ? 'bg-white/10' : 'bg-white'} ${i % 2 ? 'rotate-[1deg]' : 'rotate-[-1deg]'}`}>
+                      <YouTubeScreen id={v.video.youtube} title={v.video.title} big={false} />
+                    </div>
+                    <div className="flex items-center gap-3 mt-7">
+                      <h2 className="font-display uppercase text-[clamp(32px,3.6vw,52px)] leading-[0.95]">{v.title}</h2>
+                      {!dark && <Mascot className="w-12 shrink-0 hover:rotate-12 transition-transform duration-500" />}
+                    </div>
+                    <p className={`leading-relaxed mt-4 ${dark ? 'text-white/80' : 'text-slate-600'}`}>{v.text}</p>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${v.video.youtube}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-1.5 mt-5 text-sm font-extrabold underline decoration-2 underline-offset-4 ${
+                        dark ? 'text-white decoration-[#a5d2b2]' : 'text-[#18407f] decoration-[#a5d2b2]'
+                      }`}
+                    >
+                      Voir sur YouTube <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* POURQUOI VAKITA */}
+      {/* Pourquoi Vakita */}
       <section className="bg-[#18407f] text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7">

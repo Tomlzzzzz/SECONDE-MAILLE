@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { SIZE_GUIDES } from '../../data/shop';
 
-/* Schémas « comment mesurer » */
+/* Schémas "comment mesurer" */
 function TopDiagram() {
   return (
     <svg viewBox="0 0 220 200" className="w-full max-w-[220px]" aria-hidden="true">

@@ -4,7 +4,7 @@ import MapView from '../components/MapView';
 import { Avatar, Pill, timeAgo } from '../components/ui';
 import { useStore } from '../state/store';
 import { useNav } from '../App';
-import { ALL_PLACES, BOX_OPENING, MATERIALS, POPUP } from '../data/places';
+import { ALL_PLACES, BOX_OPENING, BOX_CLOSING, MATERIALS, POPUP } from '../data/places';
 import { MEMBERS } from '../data/members';
 import { distanceM, fmtDist, walkMin } from '../lib/geo';
 
@@ -31,6 +31,7 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
   const recent = MEMBERS.filter((m) => m.lastBox === p.id).sort((a, b) => a.lastAgoMin - b.lastAgoMin).slice(0, 4);
   const days = Math.max(0, Math.ceil((POPUP.date - Date.now()) / 864e5));
   const notOpen = !isPop && Date.now() < BOX_OPENING.getTime();
+  const closed = !isPop && Date.now() > BOX_CLOSING.getTime();
   return (
     <div className="sheet-detail">
       <div className="flex items-start gap-3">
@@ -51,7 +52,7 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
         <div className="mt-4 grid grid-cols-2 gap-2">
           <div className="p-3 rounded-2xl bg-[#F5FBF9] border border-[#a5d2b2]">
             <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#18407f] flex items-center gap-1">
-              <CalendarDays className="w-3 h-3" /> Inauguration
+              <CalendarDays className="w-3 h-3" /> Ouverture
             </p>
             <p className="font-display text-xl text-[#0F2926] mt-1">20.03.2027</p>
           </div>
@@ -59,7 +60,9 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
             <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#a5d2b2]">Compte à rebours</p>
             <p className="font-display text-xl mt-1">J-{days}</p>
           </div>
-          <p className="col-span-2 text-xs text-slate-600">Entrée : un matériau déposé. Tes points s’utilisent sur place (onglet Pass).</p>
+          <p className="col-span-2 text-xs text-slate-600">
+            Ouvert de 9h à 17h jusqu’au 20 juin. Sur place : le hub d’accueil, le café vegan (un café offert dès 100 pts), la boutique, l’atelier tote bag avec La Vie est Belt et la salle de masterclass Vakita.
+          </p>
         </div>
       ) : (
         <div className="mt-4 space-y-3">
@@ -74,6 +77,7 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
               </Pill>
             ))}
             {notOpen && <Pill tone="blue">Ouvre le 20.01.27</Pill>}
+            {closed && <Pill tone="blue">Collecte terminée le 20.03.27</Pill>}
           </div>
           {recent.length > 0 && (
             <div className="flex items-center gap-2.5">

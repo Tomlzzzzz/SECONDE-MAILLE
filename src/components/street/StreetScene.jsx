@@ -5,7 +5,7 @@ import { SecondeMailleLogo } from '../Brand';
 import ShopFacade from './ShopFacade';
 import DepositBox from './DepositBox';
 
-/* Calque avec profondeur (souris d) et traînée au scroll (k) — même système que la scène marine */
+/* Calque avec profondeur (souris d) et traînée au scroll (k) - même système que la scène marine */
 function Layer({ className = '', d = 0, k = 0, children, ...rest }) {
   return (
     <div className={`hero-layer ${className}`} style={{ '--d': d, '--k': k }} {...rest}>
@@ -150,7 +150,7 @@ export default function StreetScene({ bigTitle, variant = 'full', showBox = vari
         </Layer>
       )}
 
-      {/* motifs répétés en largeur, jamais recadrés en hauteur → toits toujours entiers */}
+      {/* motifs répétés en largeur, jamais recadrés en hauteur -> toits toujours entiers */}
       <Layer className="street-city" d={6} k={0.3} aria-hidden="true">
         <div className="street-tile" style={{ backgroundImage: `url("${S.city}")` }} />
       </Layer>

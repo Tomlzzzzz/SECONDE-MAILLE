@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { HERO_ASSETS as A } from '../config/heroAssets';
 import { useReduce } from './Motion';
 
-/**
- * Fond « plongée » : la scène marine de l'ancien header reste fixe derrière le contenu
- * et descend sous la surface au fil du scroll (surface → eaux profondes bleues).
- * --q (0 → 1) = profondeur, calculée à partir de la position de scroll dans la section.
- */
+/*
+  Fond "plongée" : la scène marine de l'ancien header reste fixe derrière le contenu
+  et descend sous la surface au fil du scroll (surface -> eaux profondes bleues).
+  --q (0 -> 1) = profondeur, calculée à partir de la position de scroll dans la section.
+*/
 function Drift({ asset, reverse = false }) {
   return (
     <div

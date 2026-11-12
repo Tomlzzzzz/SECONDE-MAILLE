@@ -1,16 +1,16 @@
-/* =====================================================================
-   COMPTES & SAUVEGARDE EN LIGNE — Supabase (gratuit), sans dépendance :
-   on parle directement à son API (auth + base de données) avec fetch.
-   Config : fichier .env.local à la racine de l'appli (voir .env.example).
-   Sans config, l'appli reste 100 % locale (comme avant).
-   ===================================================================== */
+/*
+  COMPTES & SAUVEGARDE EN LIGNE - Supabase (gratuit), sans dépendance :
+  on parle directement à son API (auth + base de données) avec fetch.
+  Config : fichier .env.local à la racine de l'appli (voir .env.example).
+  Sans config, l'appli reste 100 % locale (comme avant).
+*/
 const URL_ = (import.meta.env.VITE_SUPABASE_URL || '').replace(/\/$/, '');
 const KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 const SESSION_KEY = 'seconde-maille-session';
 
 export const cloudEnabled = Boolean(URL_ && KEY);
 
-/* ---------------- session ---------------- */
+/* session */
 export function readSession() {
   try {
     return JSON.parse(localStorage.getItem(SESSION_KEY)) || null;
@@ -37,7 +37,7 @@ const toSession = (d) =>
       }
     : null;
 
-/* ---------------- erreurs en français ---------------- */
+/* erreurs en français */
 function frError(body, status) {
   const m = `${body?.error_code || ''} ${body?.msg || body?.message || body?.error_description || body?.error || ''}`.toLowerCase();
   if (m.includes('invalid login') || m.includes('invalid_credentials')) return 'E-mail ou mot de passe incorrect.';
@@ -78,7 +78,7 @@ async function call(path, { method = 'GET', body, token, headers = {} } = {}) {
   return data;
 }
 
-/* ---------------- authentification ---------------- */
+/* authentification */
 export async function signUp(email, password, meta = {}) {
   const d = await call('/auth/v1/signup', { method: 'POST', body: { email, password, data: meta } });
   const s = toSession(d);
@@ -125,7 +125,7 @@ export async function validSession() {
   return refreshing;
 }
 
-/* ---------------- sauvegarde ---------------- */
+/* sauvegarde */
 export async function pullSave() {
   const s = await validSession();
   if (!s) return null;

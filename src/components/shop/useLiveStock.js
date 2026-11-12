@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { STOCK_URL, STOCK_REFRESH_MS } from '../../data/shop';
 
-/**
- * Stock en direct : relit /stock.json toutes les 15 s (et au retour sur l'onglet).
- * Pour brancher une vraie source plus tard (Google Sheet publié, API…),
- * il suffit de changer STOCK_URL dans src/data/shop.js : même format JSON.
- */
+/*
+  Stock en direct : relit /stock.json toutes les 15 s (et au retour sur l'onglet).
+  Pour brancher une vraie source plus tard (Google Sheet publié, API...),
+  il suffit de changer STOCK_URL dans src/data/shop.js : même format JSON.
+*/
 export default function useLiveStock() {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState('loading'); // loading | live | offline
@@ -54,7 +54,7 @@ export default function useLiveStock() {
   return { data, status, checkedAt, changed };
 }
 
-/* « il y a 12 s » qui se met à jour tout seul */
+/* "il y a 12 s" qui se met à jour tout seul */
 export function useAgo(ts) {
   const [, tick] = useState(0);
   useEffect(() => {

@@ -1,22 +1,23 @@
 import React, { useRef } from 'react';
-import { Waves, CircleDot, Shirt, Recycle, QrCode, MapPin, Award, Coffee, Ticket, Megaphone } from 'lucide-react';
+import { Waves, CircleDot, QrCode, MapPin, Award, Coffee, Ticket, Megaphone, ArrowUpRight } from 'lucide-react';
+import { StoryVideo } from '../components/Media';
+import { BOX_STORIES } from '../data/media';
 import StreetScene from '../components/street/StreetScene';
 import { Reveal, SplitText, TiltCard, CountUp, useElementProgress } from '../components/Motion';
 import { SectionLabel, PageHeroCopy, PageLead } from '../components/Blocks';
 import { Mascot, SecondeMailleLogo } from '../components/Brand';
-import { SITE_PAGES, EVENT } from '../data/siteContent';
+import { SITE_PAGES, EVENT, APP_URL } from '../data/siteContent';
 
+// les deux entrées de chaque box
 const MATERIALS = [
-  { icon: Waves, title: 'Filets de pêche', text: 'La matière au cœur de Seconde Maille.' },
-  { icon: CircleDot, title: 'Pneus', text: 'La matière fétiche de La Vie est Belt.' },
-  { icon: Shirt, title: 'Textiles', text: 'Vêtements et tissus pour la seconde main.' },
-  { icon: Recycle, title: 'Autres matériaux', text: 'Tout ce qui était destiné à être jeté et peut être transformé.' }
+  { icon: CircleDot, title: 'Pneus usés', text: 'Pneus et chambres à air : la matière fétiche de La Vie est Belt.' },
+  { icon: Waves, title: 'Vieux tissus & filets', text: 'Filets de pêche, cordages, vêtements et chutes de tissu.' }
 ];
 
 const TIMELINE = [
   { date: EVENT.boxDateLabel, icon: MapPin, title: 'Les box arrivent', text: 'Deux mois avant l’événement, les box de dépôt sont disponibles. Flyers et affiches annoncent le rendez-vous.' },
-  { date: 'Janvier → mars', icon: Coffee, title: 'Déposer, cumuler', text: 'Chaque dépôt rapporte des points, à échanger contre un café ou des goodies.' },
-  { date: EVENT.dateLabel, icon: Ticket, title: 'Inauguration du pop-up', text: 'Le billet d’entrée : un matériau déposé. Ateliers de création et boutique merch au programme.' }
+  { date: '20 janvier → 20 mars', icon: Coffee, title: 'Déposer, cumuler', text: 'Chaque dépôt rapporte des points : un café offert dès 100 points au café vegan du pop-up, des goodies, du merch.' },
+  { date: EVENT.dateLabel, icon: Ticket, title: 'Ouverture du pop-up', text: 'Le pop-up ouvre ses portes : hub, café vegan, boutique, atelier tote bag et masterclass. De 9h à 17h jusqu’au 20 juin.' }
 ];
 
 const daysUntil = (d) => Math.max(0, Math.ceil((d.getTime() - Date.now()) / 86400000));
@@ -78,16 +79,16 @@ export default function BoxPage() {
         }
       >
         <p>
-          Deux mois avant l’inauguration, <span className="marker-aqua font-bold">dès le 20 janvier 2027</span>, des box accueillent les matériaux destinés à être jetés.
+          Du <span className="marker-aqua font-bold">20 janvier au 20 mars 2027</span>, des box de dépôt sont installées dans la région lilloise, à côté de commerces partenaires ou en centre-ville. Chaque box a deux entrées : une pour les pneus usés, une pour les vieux tissus et les filets.
           Déposer, c’est faire le premier geste de Seconde Maille : la matière collectée devient le point de départ de nouveaux vêtements et accessoires.
         </p>
       </PageLead>
 
-      {/* QUOI DÉPOSER */}
+      {/* Quoi déposer */}
       <section className="bg-white pb-20 lg:pb-24">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <SectionLabel num="A">Ce que vous pouvez déposer</SectionLabel>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mt-8">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 mt-8">
             {MATERIALS.map((m, i) => {
               const Icon = m.icon;
               return (
@@ -106,7 +107,29 @@ export default function BoxPage() {
         </div>
       </section>
 
-      {/* CALENDRIER + APPLI */}
+      {/* la box en vidéo */}
+      <section className="bg-[#18407f] text-white py-20 lg:py-28 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5">
+            <SectionLabel num="★" light>En vidéo</SectionLabel>
+            <SplitText as="h2" text="De la box à la boutique." className="font-display uppercase text-[clamp(34px,5vw,72px)] leading-[0.95] mt-5" />
+            <Reveal>
+              <p className="text-white/80 leading-relaxed mt-6 max-w-md">
+                Deux formats courts, pensés pour Instagram et TikTok : comment déposer et gagner des points, puis ce que devient ce que vous déposez.
+              </p>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-6 [&_h3]:!text-white [&_p]:!text-white/75 [&_figcaption_span]:!text-[#a5d2b2]">
+            {BOX_STORIES.map((s, i) => (
+              <Reveal key={s.src} delay={i * 140} className={i === 1 ? 'mt-14' : ''}>
+                <StoryVideo {...s} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Calendrier + appli */}
       <section className="bg-[#F5FBF9] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-14 items-start">
           <div className="lg:col-span-7">
@@ -117,34 +140,52 @@ export default function BoxPage() {
               <div className="mt-8 p-5 sm:p-6 rounded-[24px] bg-white border border-dashed border-[#18407f]/40 flex gap-4 items-start">
                 <Megaphone className="w-5 h-5 text-[#18407f] shrink-0 mt-0.5" />
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  <strong className="text-[#0F2926]">Où trouver les box ?</strong> Les emplacements seront annoncés avant le 20 janvier 2027 — inscrivez-vous en bas de page pour être
-                  prévenu·e.
+                  <strong className="text-[#0F2926]">Où trouver les box ?</strong> Dans la région lilloise, à côté de commerces partenaires ou en centre-ville. Toutes les adresses sont sur la carte de l’appli.
                 </p>
               </div>
             </Reveal>
           </div>
 
-          {/* Emplacement réservé à l'application (sera retravaillé plus tard) */}
+          {/* l'appli */}
           <Reveal direction="right" delay={150} className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="mx-auto w-full max-w-[300px] aspect-[1/2] max-h-[600px] rounded-[48px] bg-[#0F2926] p-3 shadow-phone relative">
               <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-6 rounded-full bg-black/60" aria-hidden="true" />
-              <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-[#a5d2b2] to-[#F5FBF9] flex flex-col items-center justify-center text-center px-6 gap-4 overflow-hidden">
-                <Mascot className="w-20" />
-                <SecondeMailleLogo className="h-9" alt="" />
-                <p className="font-display uppercase text-2xl text-[#0F2926] leading-none">L’appli arrive</p>
-                <p className="text-sm text-[#0F2926]/70 leading-relaxed">L’application compagnon est en cours de conception.</p>
+              <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-[#a5d2b2] to-[#F5FBF9] flex flex-col items-center justify-center text-center px-5 gap-3 overflow-hidden">
+                <Mascot className="w-16" />
+                <SecondeMailleLogo className="h-8" alt="" />
+                <p className="font-display uppercase text-2xl text-[#0F2926] leading-none mt-1">L’appli est là</p>
+                <p className="text-sm text-[#0F2926]/70 leading-snug">Ta carte des box, ton scan et tes points, dans la poche.</p>
                 <div className="flex flex-col gap-2 w-full mt-1">
                   {[
                     [QrCode, 'Scanner un dépôt'],
                     [MapPin, 'Trouver une box'],
                     [Award, 'Suivre ses points']
                   ].map(([Icon, label]) => (
-                    <span key={label} className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/70 text-xs font-extrabold text-[#0F2926]">
+                    <a
+                      key={label}
+                      href={APP_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="app-row flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/70 text-xs font-extrabold text-[#0F2926] hover:bg-white"
+                    >
                       <Icon className="w-4 h-4 text-[#18407f]" /> {label}
-                    </span>
+                      <ArrowUpRight className="w-3.5 h-3.5 ml-auto opacity-40" />
+                    </a>
                   ))}
                 </div>
+                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ink btn-sm w-full justify-center mt-1" data-cursor="Ouvrir">
+                  Ouvrir l’appli <ArrowUpRight className="w-4 h-4" />
+                </a>
               </div>
+            </div>
+
+            {/* sur ordinateur : QR code pour l'ouvrir sur son téléphone */}
+            <div className="hidden lg:flex items-center gap-4 mx-auto max-w-[300px] mt-6 p-3 pr-4 rounded-[22px] bg-white border border-[#a5d2b2]">
+              <img src={`${import.meta.env?.BASE_URL ?? '/'}media/qr-appli.svg`} alt="QR code vers l’appli Seconde Maille" className="w-28 h-28 shrink-0" />
+              <p className="text-xs text-slate-600 leading-snug">
+                <strong className="block text-sm text-[#0F2926]">Sur ton téléphone</strong>
+                Scanne ce code pour ouvrir l’appli.
+              </p>
             </div>
           </Reveal>
         </div>

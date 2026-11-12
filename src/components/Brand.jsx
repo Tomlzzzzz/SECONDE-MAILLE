@@ -2,7 +2,7 @@ import React from 'react';
 
 const base = `${import.meta.env?.BASE_URL ?? '/'}brand/`;
 
-/* Logo de la collaboration « SECONDE MAILLE » (variante claire pour les fonds sombres) */
+/* Logo de la collaboration "SECONDE MAILLE" (variante claire pour les fonds sombres) */
 export function SecondeMailleLogo({ light = false, className = 'h-10', alt = 'Seconde Maille' }) {
   if (light)
     return <img src={`${base}seconde-maille-logo-light.png`} alt={alt} className={`w-auto select-none ${className}`} draggable="false" />;

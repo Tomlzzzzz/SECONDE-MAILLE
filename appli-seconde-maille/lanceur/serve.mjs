@@ -1,5 +1,7 @@
-/* Serveur local de l'appli (sans dépendance) — sert le dossier dist/ sur http://localhost:5180
-   localhost est considéré comme « sécurisé » : caméra et géolocalisation fonctionnent. */
+/*
+  Serveur local de l'appli (sans dépendance) - sert le dossier dist/ sur http://localhost:5180
+  localhost est considéré comme "sécurisé" : caméra et géolocalisation fonctionnent.
+*/
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';

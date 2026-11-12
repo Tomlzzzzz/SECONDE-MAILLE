@@ -1,10 +1,9 @@
-/* =====================================================================
-   MODE SOMBRE — « Seconde Maille, la nuit »
-   Activé par <html data-theme="dark"> (bouton lune/soleil dans la nav).
-   Principe : les surfaces claires deviennent des verts très profonds,
-   l'encre devient un vert d'eau très clair, l'aqua reste l'accent.
-   Les blocs aqua gardent un texte encre (contraste AA conservé).
-   ===================================================================== */
+/*
+  MODE SOMBRE - "Seconde Maille, la nuit"
+  Activé par <html data-theme="dark"> (bouton lune/soleil dans la nav).
+  Principe : les surfaces claires deviennent des verts très profonds,
+  l'encre devient un vert d'eau très clair, l'aqua reste l'accent.
+*/
 :root {
   --c-white: #FFFFFF;
   --c-sand: #F5FBF9;
@@ -12,7 +11,7 @@
 }
 html[data-theme='dark'] {
   --d-bg: #0A1715;        /* fond de page */
-  --d-sand: #0E1E1C;      /* sections « sable » */
+  --d-sand: #0E1E1C;      /* sections "sable" */
   --d-surface: #132A27;   /* cartes (ex-blanc) */
   --d-raised: #1A3632;    /* panneaux encre / boutons sombres */
   --d-text: #E4F2EC;      /* texte principal */
@@ -26,7 +25,7 @@ html[data-theme='dark'] {
   color-scheme: dark;
 }
 
-/* ---------- base ---------- */
+/* base */
 html[data-theme='dark'],
 html[data-theme='dark'] body { background-color: var(--d-bg); color: var(--d-text); }
 html[data-theme='dark'] ::selection { background: var(--aqua); color: #0F2926; }
@@ -34,7 +33,7 @@ html.theme-anim *,
 html.theme-anim *::before,
 html.theme-anim *::after { transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, fill 0.5s ease, filter 0.6s ease !important; }
 
-/* ---------- surfaces ---------- */
+/* surfaces */
 html[data-theme='dark'] .bg-white,
 html[data-theme='dark'] .bg-white\/95,
 html[data-theme='dark'] .bg-white\/92,
@@ -48,7 +47,7 @@ html[data-theme='dark'] .bg-\[\#0F2926\]\/75 { background-color: rgba(26, 54, 50
 html[data-theme='dark'] .to-\[\#F5FBF9\] { --tw-gradient-to: var(--d-sand) var(--tw-gradient-to-position); }
 html[data-theme='dark'] .from-\[\#0F2926\] { --tw-gradient-from: var(--d-raised) var(--tw-gradient-from-position); }
 
-/* ---------- textes ---------- */
+/* textes */
 html[data-theme='dark'] .text-\[\#0F2926\] { color: var(--d-text); }
 html[data-theme='dark'] .text-\[\#0F2926\]\/75,
 html[data-theme='dark'] .text-\[\#0F2926\]\/70 { color: rgba(228, 242, 236, 0.78); }
@@ -63,7 +62,7 @@ html[data-theme='dark'] .text-\[\#18407f\] { color: var(--d-blue); }
 html[data-theme='dark'] .text-\[\#18407f\] { color: var(--d-teal); }
 html[data-theme='dark'] .text-\[\#b45309\] { color: #F5B565; }
 
-/* ---------- bordures ---------- */
+/* bordures */
 html[data-theme='dark'] .border-\[\#a5d2b2\],
 html[data-theme='dark'] .border-\[\#a5d2b2\]\/90,
 html[data-theme='dark'] .border-\[\#a5d2b2\]\/60,
@@ -78,14 +77,14 @@ html[data-theme='dark'] .border-\[\#0F2926\]\/10 { border-color: var(--d-line); 
 html[data-theme='dark'] .border-\[\#18407f\] { border-color: var(--d-blue); }
 html[data-theme='dark'] .ring-\[\#0F2926\] { --tw-ring-color: var(--d-text); }
 
-/* ---------- les blocs aqua gardent un texte encre ---------- */
+/* les blocs aqua gardent un texte encre */
 html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua, .pack-sticker, .size-chip.is-on) { color: #0F2926; }
 html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua, .pack-sticker) :is(.text-\[\#0F2926\], .text-slate-500, .text-slate-600, .text-slate-700, .text-\[\#0F2926\]\/60, .text-\[\#0F2926\]\/70) { color: #0F2926; }
 html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua) .text-\[\#18407f\] { color: #18407f; }
 html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua) .text-\[\#18407f\] { color: #0B6E65; }
 html[data-theme='dark'] .bg-\[\#a5d2b2\]\/60 { background-color: rgba(169, 216, 196, 0.22); }
 
-/* ---------- navigation ---------- */
+/* navigation */
 html[data-theme='dark'] .site-nav-bar { background: rgba(10, 23, 21, 0.55); border-color: rgba(186, 227, 209, 0.14); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6); }
 html[data-theme='dark'] .site-nav.is-scrolled .site-nav-bar { background: rgba(13, 29, 27, 0.92); border-color: rgba(186, 227, 209, 0.2); }
 html[data-theme='dark'] .nav-pills { background: rgba(19, 42, 39, 0.85); border-color: rgba(186, 227, 209, 0.16); }
@@ -96,7 +95,7 @@ html[data-theme='dark'] .nav-indicator { background: var(--aqua); }
 html[data-theme='dark'] .nav-hover { background: rgba(186, 227, 209, 0.14); }
 html[data-theme='dark'] .mobile-menu { background: #081210; }
 
-/* ---------- boutons ---------- */
+/* boutons */
 html[data-theme='dark'] .btn-ink { background: var(--aqua); color: #0F2926; }
 html[data-theme='dark'] .btn-ink::before { background: #fff; }
 html[data-theme='dark'] .btn-ink:hover { color: #0F2926; }
@@ -106,7 +105,7 @@ html[data-theme='dark'] .btn-ghost { background: rgba(19, 42, 39, 0.6); color: v
 html[data-theme='dark'] .btn-ghost::before { background: var(--aqua); }
 html[data-theme='dark'] .btn-ghost:hover { color: #0F2926; }
 
-/* ---------- typographie géante ---------- */
+/* typographie géante */
 html[data-theme='dark'] .marquee-word { color: var(--d-text); }
 html[data-theme='dark'] .marquee-word.is-outline { color: transparent; -webkit-text-stroke-color: var(--d-text); }
 html[data-theme='dark'] .hero-title { color: var(--d-text); }
@@ -114,7 +113,7 @@ html[data-theme='dark'] .index-row:hover .index-arrow { background: var(--aqua);
 html[data-theme='dark'] .next-band:hover .next-title,
 html[data-theme='dark'] .next-band:hover .next-sub { color: #0F2926; }
 
-/* ---------- formulaires & boutique ---------- */
+/* formulaires & boutique */
 html[data-theme='dark'] .email-field:focus-within { border-color: var(--aqua); box-shadow: 0 0 0 4px rgba(186, 227, 209, 0.2); }
 html[data-theme='dark'] input,
 html[data-theme='dark'] select,
@@ -128,11 +127,11 @@ html[data-theme='dark'] .merch-arrow { background: rgba(19, 42, 39, 0.9); color:
 html[data-theme='dark'] .product-media,
 html[data-theme='dark'] [data-keep-light] { background-color: #EEF5F2 !important; color: #0F2926; }
 
-/* ---------- ombres plus profondes ---------- */
+/* ombres plus profondes */
 html[data-theme='dark'] .shadow-soft { box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5); }
 html[data-theme='dark'] .shadow-soft-lg { box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6); }
 
-/* ---------- la rue la nuit ---------- */
+/* la rue la nuit */
 html[data-theme='dark'] .street-sky img { filter: brightness(0.32) saturate(1.2) hue-rotate(28deg); }
 /* le haut du ciel rejoint la couleur de la barre du navigateur (theme-color) */
 html[data-theme='dark'] .street-sky::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#0A1715 8%, rgba(10, 23, 21, 0) 55%); pointer-events: none; }
@@ -147,15 +146,13 @@ html[data-theme='dark'] .street-birds { opacity: 0.25; }
 html[data-theme='dark'] .street-lamp-glow { opacity: 1; filter: brightness(1.25) saturate(1.2); }
 html[data-theme='dark'] .street-title .hero-title-word:nth-child(2) .hero-letter { -webkit-text-stroke-color: var(--d-text); }
 
-/* ---------- carte Leaflet ---------- */
+/* carte Leaflet */
 html[data-theme='dark'] .leaflet-tile-pane { filter: invert(0.92) hue-rotate(180deg) brightness(0.9) saturate(0.6); }
 html[data-theme='dark'] .leaflet-container { background: #0E1E1C; }
 html[data-theme='dark'] .leaflet-control-attribution { background: rgba(10, 23, 21, 0.8) !important; color: var(--d-muted); }
 html[data-theme='dark'] .leaflet-control-attribution a { color: var(--d-blue); }
 
-/* =====================================================================
-   BOUTON DE THÈME (lune / soleil)
-   ===================================================================== */
+/* BOUTON DE THÈME (lune / soleil) */
 .theme-toggle {
   position: relative;
   width: 40px;
@@ -180,13 +177,11 @@ html[data-theme='dark'] .theme-toggle .ic-moon { transform: translateY(-140%) ro
 html[data-theme='dark'] .theme-toggle .ic-sun { transform: none; opacity: 1; }
 html[data-theme='dark'] { background-image: linear-gradient(#0A1715 0 50%, #0E1E1C 50%); }
 
-/* ---------- logos, badges, contours ---------- */
+/* logos, badges, contours */
 .logo-on-dark { display: none !important; }
 html[data-theme='dark'] .logo-on-light { display: none !important; }
 html[data-theme='dark'] .logo-on-dark { display: inline-block !important; }
 html[data-theme='dark'] [style*='text-stroke'] { -webkit-text-stroke-color: var(--d-blue) !important; }
-html[data-theme='dark'] .footer-mark { -webkit-text-stroke-color: rgba(228, 242, 236, 0.16); }
-html[data-theme='dark'] .footer-mark span:hover { -webkit-text-stroke-color: var(--aqua); color: transparent; }
 html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter {
   -webkit-text-stroke-color: var(--d-text);
   background-image:
@@ -195,6 +190,6 @@ html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter {
 }
 html[data-theme='dark'] .hero-title-word:nth-child(2) .hero-letter:hover { background-image: none; color: var(--d-blue); -webkit-text-stroke-color: var(--d-blue); }
 
-/* ---------- plongée océan : ciel de nuit ---------- */
+/* plongée océan : ciel de nuit */
 html[data-theme='dark'] .ow-sky img { filter: brightness(0.32) saturate(1.2) hue-rotate(28deg); }
 html[data-theme='dark'] .ow-clouds { opacity: 0.18; }
