@@ -156,6 +156,10 @@ export function TiltCard({ children, className = '', max = 6, ...rest }) {
 }
 
 /* Séparateur en forme de vague (top = la vague est en haut de la section suivante) */
+// en mode sombre, le blanc et le sable deviennent les fonds sombres (variables CSS)
+const THEMED = { '#ffffff': 'var(--c-white)', '#fff': 'var(--c-white)', '#f5fbf9': 'var(--c-sand)' };
+export const themedFill = (c) => THEMED[String(c).toLowerCase()] || c;
+
 export function WaveDivider({ color = '#FFFFFF', className = '', flip = false, animated = true }) {
   // motif périodique sur 1200 px, dupliqué sur 2400 → défilement sans couture
   const d =
@@ -163,7 +167,7 @@ export function WaveDivider({ color = '#FFFFFF', className = '', flip = false, a
   return (
     <div className={`wave-divider ${flip ? 'rotate-180' : ''} ${className}`} aria-hidden="true">
       <svg viewBox="0 0 2400 80" preserveAspectRatio="none" className={animated ? 'wave-divider-anim' : ''}>
-        <path d={d} fill={color} />
+        <path d={d} style={{ fill: themedFill(color) }} />
       </svg>
     </div>
   );

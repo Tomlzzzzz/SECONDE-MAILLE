@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Accessibility, MapPin, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Accessibility, MapPin, Menu, X, ArrowUpRight, Moon, Sun } from 'lucide-react';
 import { CollabBadge } from './BrandLogos';
 import { SecondeMailleLogo } from './Brand';
 import { SITE_PAGES } from '../data/siteContent';
@@ -7,6 +7,8 @@ import { SITE_PAGES } from '../data/siteContent';
 export default function SiteNav({
   activePage,
   onNavigate,
+  theme = 'light',
+  onToggleTheme,
   a11y: { largeText, setLargeText, dyslexicSpacing, setDyslexicSpacing, reduceMotion, setReduceMotion }
 }) {
   const [scrolled, setScrolled] = useState(false);
@@ -102,6 +104,17 @@ export default function SiteNav({
             </nav>
 
             <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={onToggleTheme}
+                className="theme-toggle"
+                aria-pressed={theme === 'dark'}
+                title={theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre'}
+              >
+                <Moon className="ic-moon w-4 h-4" aria-hidden="true" />
+                <Sun className="ic-sun w-4 h-4" aria-hidden="true" />
+                <span className="sr-only">{theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'}</span>
+              </button>
               <button
                 onClick={() => setA11yOpen((v) => !v)}
                 aria-expanded={a11yOpen}

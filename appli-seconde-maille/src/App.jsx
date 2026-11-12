@@ -69,6 +69,24 @@ function Shell() {
     return () => clearTimeout(t);
   }, [toast]);
 
+  // Les barres du navigateur / du téléphone prennent la couleur du haut de l'écran affiché
+  useEffect(() => {
+    const paint = () => {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (!meta) return;
+      let el = document.elementFromPoint(window.innerWidth / 2, 2);
+      let color = '';
+      while (el && el !== document.documentElement) {
+        const c = getComputedStyle(el).backgroundColor;
+        if (c && c !== 'transparent' && !/rgba\(.*,\s*0\)$/.test(c)) { color = c; break; }
+        el = el.parentElement;
+      }
+      meta.setAttribute('content', color || '#F5FBF9');
+    };
+    const ids = [requestAnimationFrame(paint), setTimeout(paint, 450), setTimeout(paint, 1200)];
+    return () => { cancelAnimationFrame(ids[0]); clearTimeout(ids[1]); clearTimeout(ids[2]); };
+  }, [tab, stack.length, state.onboarded, state.geoChoice]);
+
   // geoChoice vide = compte retrouvé sur un nouvel appareil : on demande encore la localisation
   if (!state.onboarded || !state.geoChoice) return <Onboarding />;
 
@@ -166,8 +184,28 @@ function DeviceFrame({ children }) {
   );
 }
 
+/* Sur téléphone : plein écran au premier toucher (masque la barre d'adresse
+   et la barre de navigation quand le navigateur le permet — Android, PWA). */
+function useImmersive(on) {
+  useEffect(() => {
+    if (!on) return;
+    const root = document.documentElement;
+    if (!root.requestFullscreen) return; // iPhone : passer par « Ajouter à l'écran d'accueil »
+    let done = false;
+    const go = () => {
+      if (done || document.fullscreenElement) return;
+      done = true;
+      root.requestFullscreen({ navigationUI: 'hide' }).catch(() => {});
+      try { screen.orientation?.lock?.('portrait').catch(() => {}); } catch {}
+    };
+    window.addEventListener('pointerup', go, { once: true });
+    return () => window.removeEventListener('pointerup', go);
+  }, [on]);
+}
+
 export default function App() {
   const phone = useIsPhone();
+  useImmersive(phone);
   const app = (
     <StoreProvider>
       <div className="app">

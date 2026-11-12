@@ -2,10 +2,22 @@
 <html lang="fr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Seconde Maille — Vakita × La Vie est Belt · Pop-Up le 20 mars 2027 à Lille</title>
     <meta name="description" content="Seconde Maille : la collaboration de Vakita et La Vie est Belt qui donne une seconde vie aux filets de pêche. Box de dépôt dès le 20 janvier, pop-up store le 20 mars 2027 au 17 boulevard Jean-Baptiste Lebas, Lille." />
-    <meta name="theme-color" content="#0F2926" />
+    <meta name="theme-color" content="#BFE5D5" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Thème appliqué avant l'affichage (évite le flash blanc en mode sombre) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('sm-theme');
+          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#0A1715' : '#BFE5D5');
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/brand/favicon.png" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +25,7 @@
     <!-- Polices de secours si Apparat / Gilroy ne sont pas présentes dans /public/fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-white text-[#0F2926] antialiased">
+  <body class="antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

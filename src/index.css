@@ -51,6 +51,8 @@
 @layer base {
   html {
     background-color: #FFFFFF;
+    /* sous les barres du navigateur mobile (rebond du scroll) : même teinte que le haut de page */
+    background-image: linear-gradient(#BFE5D5 0 50%, #F5FBF9 50%);
     color: var(--ink);
     font-family: 'Gilroy', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-weight: 500;
@@ -838,7 +840,7 @@ html.a11y-dyslexic-spacing {
    ===================================================================== */
 .site-nav {
   position: fixed;
-  top: 12px;
+  top: max(12px, calc(env(safe-area-inset-top) + 6px));
   left: 0;
   right: 0;
   z-index: 50;
@@ -1428,7 +1430,7 @@ html.a11y-dyslexic-spacing {
 .mascot-top {
   position: fixed;
   right: max(14px, env(safe-area-inset-right));
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom);
   z-index: 55;
   width: 66px;
   transform: translate3d(0, 130%, 0);

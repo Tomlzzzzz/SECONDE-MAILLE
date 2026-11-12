@@ -83,6 +83,32 @@ export default function App() {
   const prefersReduced = usePrefersReducedMotion();
   const reduce = reduceMotion || prefersReduced;
 
+  // Thème clair / sombre (mémorisé ; par défaut celui du système)
+  const [theme, setTheme] = useState(() => {
+    const set = document.documentElement.dataset.theme;
+    if (set === 'dark' || set === 'light') return set;
+    try {
+      const saved = localStorage.getItem('sm-theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
+  });
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.theme = theme;
+    try { localStorage.setItem('sm-theme', theme); } catch { /* stockage indisponible */ }
+    // barres du navigateur mobile (haut / bas) assorties au haut de page
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0A1715' : '#BFE5D5');
+  }, [theme]);
+  const toggleTheme = () => {
+    const root = document.documentElement;
+    root.classList.add('theme-anim');
+    setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+    window.setTimeout(() => root.classList.remove('theme-anim'), 650);
+  };
+
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('a11y-large-text', largeText);
@@ -184,6 +210,8 @@ export default function App() {
           activePage={activePage}
           onNavigate={navigateToPage}
           a11y={{ largeText, setLargeText, dyslexicSpacing, setDyslexicSpacing, reduceMotion, setReduceMotion }}
+          theme={theme}
+          onToggleTheme={toggleTheme}
         />
 
         <main id="main-content" role="main" key={activePage} className="flex-1">

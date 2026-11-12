@@ -57,7 +57,9 @@ button { -webkit-user-select: none; user-select: none; }
 ::-webkit-scrollbar { width: 0; height: 0; }
 
 /* ---------------------------------------------------------------- cadre */
-.app-fullscreen { position: fixed; inset: 0; height: 100dvh; background: var(--sand); }
+.app-fullscreen { position: fixed; inset: 0; width: 100%; height: 100vh; height: 100dvh; background: var(--sand); overflow: hidden; overscroll-behavior: none; }
+html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overflow: hidden; overscroll-behavior: none; background: var(--sand); }
+:fullscreen .app-fullscreen, .app-fullscreen:fullscreen { height: 100vh; }
 .desk {
   min-height: 100vh;
   display: flex;
