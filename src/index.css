@@ -1668,3 +1668,13 @@ html.a11y-reduce-motion .split-word {
     clip-path: none !important;
   }
 }
+
+/* icônes réseaux sociaux du footer (sans lien pour l'instant) */
+.social-icon {
+  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9999px;
+  background: #0F2926; color: #bae3d1; cursor: default;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background-color .3s;
+}
+.social-icon:hover { transform: translateY(-2px) rotate(-6deg); background: #0D9488; color: #fff; }
+html[data-theme='dark'] .social-icon { background: #bae3d1; color: #0F2926; }
+html[data-theme='dark'] .social-icon:hover { background: #45C9B7; color: #0F2926; }

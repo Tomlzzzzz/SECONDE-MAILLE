@@ -152,6 +152,24 @@ export default function SiteFooter({ onNavigate, onLegal }) {
                 </a>
               ))}
             </div>
+            <div className="mt-6 pt-5 border-t border-[#0F2926]/10">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0F2926]/60 mb-3">Suivez-nous</p>
+              <div className="flex items-center gap-2.5">
+                  <span className="social-icon" role="img" aria-label="Instagram" title="Instagram — bientôt">
+                  <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+                  </svg>
+                </span>
+                <span className="social-icon" role="img" aria-label="TikTok" title="TikTok — bientôt">
+                  <svg viewBox="0 0 24 24" className="w-[18px] h-[18px]" fill="currentColor" aria-hidden="true">
+                    <path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.4 6.4 0 1 0 5.4 6.3V8.6a8 8 0 0 0 4.4 1.4V6.6a4.6 4.6 0 0 1-4.4-4.6Z" />
+                  </svg>
+                </span>
+                <span className="ml-1 text-xs text-slate-500 leading-tight">Comptes bientôt<br />en ligne</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
