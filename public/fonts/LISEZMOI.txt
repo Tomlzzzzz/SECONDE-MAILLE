@@ -1,10 +1,10 @@
-Déposez ici les fichiers de police (licences Apparat et Gilroy non incluses) :
+Polices de la charte graphique Seconde Maille (licences non incluses) — déposez les fichiers ici :
 
-  Apparat-SemiCondensed-Bold.woff2      → titres (graisse 700-800)
-  Gilroy-Medium.woff2                   → texte courant (500)
-  Gilroy-Bold.woff2                     → texte en gras (700-800)  [optionnel]
+  ApparatSemiCond-Black.woff2         → titres
+  ApparatSemiCond-BlackItalic.woff2   → sous-titres
+  Gilroy-Medium.woff2                 → texte courant
+  Gilroy-Bold.woff2                   → texte en gras [optionnel]
 
-Les noms doivent correspondre exactement (sinon modifiez les @font-face en haut de src/index.css).
-Formats .woff ou .otf acceptés aussi : changez simplement l'extension dans src/index.css.
+Les fichiers .otf du même nom marchent aussi.
 Tant que les fichiers sont absents, le site utilise Barlow Semi Condensed (titres) et Plus Jakarta Sans (texte).
-Si les polices sont installées sur l'ordinateur, elles sont aussi détectées automatiquement.
+Si les polices sont installées sur l'ordinateur, elles sont détectées automatiquement.

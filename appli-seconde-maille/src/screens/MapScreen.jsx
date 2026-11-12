@@ -15,7 +15,7 @@ const FILTERS = [
 ];
 
 function FillGauge({ fill }) {
-  const tone = fill > 0.85 ? '#b45309' : fill > 0.6 ? '#194080' : '#0D9488';
+  const tone = fill > 0.85 ? '#b45309' : fill > 0.6 ? '#18407f' : '#18407f';
   return (
     <div className="flex items-center gap-2">
       <div className="flex-1 h-2 rounded-full bg-[#e3f1eb] overflow-hidden">
@@ -34,7 +34,7 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
   return (
     <div className="sheet-detail">
       <div className="flex items-start gap-3">
-        <span className={`w-12 h-12 rounded-2xl grid place-items-center shrink-0 ${isPop ? 'bg-[#bae3d1]' : 'bg-[#0F2926] text-[#bae3d1]'}`}>
+        <span className={`w-12 h-12 rounded-2xl grid place-items-center shrink-0 ${isPop ? 'bg-[#a5d2b2]' : 'bg-[#0F2926] text-[#a5d2b2]'}`}>
           {isPop ? <img src="/brand/vaquita-mascotte.png" alt="" className="w-9" /> : <Package className="w-5 h-5" />}
         </span>
         <div className="min-w-0 flex-1">
@@ -42,21 +42,21 @@ function PlaceDetail({ p, d, onRoute, onScan }) {
           <p className="text-xs text-slate-500 mt-1 truncate">{p.address}</p>
         </div>
         <div className="text-right shrink-0">
-          <p className="font-display text-2xl leading-none text-[#194080]">{fmtDist(d)}</p>
+          <p className="font-display text-2xl leading-none text-[#18407f]">{fmtDist(d)}</p>
           <p className="text-[11px] font-bold text-slate-500 mt-1">~{walkMin(d)} min à pied</p>
         </div>
       </div>
 
       {isPop ? (
         <div className="mt-4 grid grid-cols-2 gap-2">
-          <div className="p-3 rounded-2xl bg-[#F5FBF9] border border-[#bae3d1]">
-            <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#194080] flex items-center gap-1">
+          <div className="p-3 rounded-2xl bg-[#F5FBF9] border border-[#a5d2b2]">
+            <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#18407f] flex items-center gap-1">
               <CalendarDays className="w-3 h-3" /> Inauguration
             </p>
             <p className="font-display text-xl text-[#0F2926] mt-1">20.03.2027</p>
           </div>
-          <div className="p-3 rounded-2xl bg-[#194080] text-white">
-            <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#bae3d1]">Compte à rebours</p>
+          <div className="p-3 rounded-2xl bg-[#18407f] text-white">
+            <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#a5d2b2]">Compte à rebours</p>
             <p className="font-display text-xl mt-1">J-{days}</p>
           </div>
           <p className="col-span-2 text-xs text-slate-600">Entrée : un matériau déposé. Tes points s’utilisent sur place (onglet Pass).</p>
@@ -163,10 +163,10 @@ export default function MapScreen() {
               <p className="text-[11px] text-slate-500 leading-none">Salut</p>
               <p className="font-extrabold text-[#0F2926] text-sm truncate">{state.profile.pseudo}</p>
             </div>
-            <button onClick={() => goTab('rewards')} className="px-2.5 py-1.5 rounded-xl bg-[#0F2926] text-[#bae3d1] text-xs font-extrabold tabular-nums">
+            <button onClick={() => goTab('rewards')} className="px-2.5 py-1.5 rounded-xl bg-[#0F2926] text-[#a5d2b2] text-xs font-extrabold tabular-nums">
               {balance} pts
             </button>
-            <button onClick={() => goTab('leagues')} className="px-2.5 py-1.5 rounded-xl text-xs font-extrabold text-white" style={{ background: league.color === '#bae3d1' ? '#0D9488' : league.color }}>
+            <button onClick={() => goTab('leagues')} className="px-2.5 py-1.5 rounded-xl text-xs font-extrabold text-white" style={{ background: league.color === '#a5d2b2' ? '#18407f' : league.color }}>
               {league.name}
             </button>
           </div>
@@ -203,7 +203,7 @@ export default function MapScreen() {
         </button>
         {selected && open ? (
           <div className="px-4 pb-4">
-            <button onClick={() => setSel(null)} className="text-xs font-extrabold text-[#194080] mb-3">
+            <button onClick={() => setSel(null)} className="text-xs font-extrabold text-[#18407f] mb-3">
               ← Toutes les box
             </button>
             <PlaceDetail p={selected.p} d={selected.d} onRoute={() => push('route', { placeId: selected.p.id })} onScan={() => goTab('scan')} />
@@ -212,11 +212,11 @@ export default function MapScreen() {
           <div className="px-4 pb-4">
             {nearestBox && (
               <button onClick={() => onSelect(nearestBox.p.id)} className="w-full text-left flex items-center gap-3 p-3 rounded-2xl bg-[#0F2926] text-white">
-                <span className="w-10 h-10 rounded-xl bg-[#bae3d1] text-[#0F2926] grid place-items-center">
+                <span className="w-10 h-10 rounded-xl bg-[#a5d2b2] text-[#0F2926] grid place-items-center">
                   <Navigation className="w-5 h-5" />
                 </span>
                 <span className="flex-1 min-w-0">
-                  <span className="block text-[11px] text-[#bae3d1] font-bold">Box la plus proche</span>
+                  <span className="block text-[11px] text-[#a5d2b2] font-bold">Box la plus proche</span>
                   <span className="block font-extrabold truncate">{nearestBox.p.name}</span>
                 </span>
                 <span className="font-display text-2xl">{fmtDist(nearestBox.d)}</span>
@@ -232,7 +232,7 @@ export default function MapScreen() {
               {list.map(({ p, d }) => (
                 <li key={p.id}>
                   <button onClick={() => onSelect(p.id)} className="place-row">
-                    <span className={`w-9 h-9 rounded-xl grid place-items-center shrink-0 ${p.type === 'popup' ? 'bg-[#bae3d1]' : 'bg-[#F5FBF9] text-[#0F2926]'}`}>
+                    <span className={`w-9 h-9 rounded-xl grid place-items-center shrink-0 ${p.type === 'popup' ? 'bg-[#a5d2b2]' : 'bg-[#F5FBF9] text-[#0F2926]'}`}>
                       {p.type === 'popup' ? <Store className="w-4 h-4" /> : <Package className="w-4 h-4" />}
                     </span>
                     <span className="flex-1 min-w-0 text-left">
@@ -240,7 +240,7 @@ export default function MapScreen() {
                       <span className="block text-[11px] text-slate-500 truncate">{p.type === 'popup' ? '20 mars 2027 · Lille' : `${p.area} · rempli à ${Math.round(p.fill * 100)} %`}</span>
                     </span>
                     <span className="text-right">
-                      <span className="block font-extrabold text-sm text-[#194080] tabular-nums">{fmtDist(d)}</span>
+                      <span className="block font-extrabold text-sm text-[#18407f] tabular-nums">{fmtDist(d)}</span>
                       <span className="block text-[10px] text-slate-400">{walkMin(d)} min</span>
                     </span>
                   </button>

@@ -23,7 +23,7 @@ export default function ProductDetailModal({ product, onClose }) {
         {/* Barre supérieure épurée */}
         <div className="bg-white px-6 py-4 flex items-center justify-between border-b border-teal-100/70">
           <div className="flex items-center gap-2.5">
-            <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
+            <span className="bg-[#a5d2b2] text-[#0F2926] font-extrabold text-xs px-2.5 py-1 rounded-full">
               Traçabilité • {product.id}
             </span>
             <span className="text-xs font-semibold text-slate-400 hidden sm:inline">
@@ -32,7 +32,7 @@ export default function ProductDetailModal({ product, onClose }) {
           </div>
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-teal-50 hover:bg-[#bae3d1] text-[#0F2926] flex items-center justify-center transition"
+            className="w-9 h-9 rounded-full bg-teal-50 hover:bg-[#a5d2b2] text-[#0F2926] flex items-center justify-center transition"
             aria-label="Fermer"
           >
             <X className="w-4 h-4" />
@@ -48,7 +48,7 @@ export default function ProductDetailModal({ product, onClose }) {
 
               {/* Profil Artisan de La Belterie / AlterEos */}
               <div className="p-6">
-                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#0D9488]">
+                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#18407f]">
                   <Hammer className="w-4 h-4" />
                   <span>Profil Artisan & Préparation (59)</span>
                 </div>
@@ -66,14 +66,14 @@ export default function ProductDetailModal({ product, onClose }) {
 
             {/* Impact Écologique */}
             <div className="p-6 bg-[#0F2926] text-white">
-              <div className="flex items-center gap-2 text-[#bae3d1] text-xs font-extrabold uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-[#a5d2b2] text-xs font-extrabold uppercase tracking-wider">
                 <Recycle className="w-4 h-4" />
                 <span>Impact Matière Revalorisée</span>
               </div>
               <p className="text-xs text-teal-100/90 mt-1.5 leading-relaxed">
                 {product.impact}
               </p>
-              <div className="mt-3 pt-3 border-t border-white/10 text-[11px] font-semibold text-[#bae3d1]">
+              <div className="mt-3 pt-3 border-t border-white/10 text-[11px] font-semibold text-[#a5d2b2]">
                 Origine : {product.origin}
               </div>
             </div>
@@ -83,10 +83,10 @@ export default function ProductDetailModal({ product, onClose }) {
           <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-white">
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <span className="bg-teal-50 text-[#0D9488] font-bold text-xs px-3 py-1 rounded-full">
+                <span className="bg-teal-50 text-[#18407f] font-bold text-xs px-3 py-1 rounded-full">
                   {product.category}
                 </span>
-                <span className="bg-[#bae3d1] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
+                <span className="bg-[#a5d2b2] text-[#0F2926] font-extrabold text-xs px-3 py-1 rounded-full">
                   {totalPopUpStock} exemplaires dispo au Pop-Up
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function ProductDetailModal({ product, onClose }) {
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
                     Avantage Donateur Box QR
                   </span>
-                  <span className="font-extrabold text-sm text-[#0D9488]">
+                  <span className="font-extrabold text-sm text-[#18407f]">
                     {product.pointsEquivalent}
                   </span>
                 </div>
@@ -126,11 +126,11 @@ export default function ProductDetailModal({ product, onClose }) {
               <div className="mt-6">
                 <div className="flex items-center justify-between mb-2.5">
                   <label className="font-extrabold text-xs uppercase tracking-wider text-[#0F2926] flex items-center gap-1.5">
-                    <Ruler className="w-4 h-4 text-[#0D9488]" />
+                    <Ruler className="w-4 h-4 text-[#18407f]" />
                     <span>Tailles & Suivi de Stock en Direct (Pop-Up Lille)</span>
                   </label>
-                  <span className="text-[11px] font-bold text-[#0D9488] flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#bae3d1] animate-ping" />
+                  <span className="text-[11px] font-bold text-[#18407f] flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#a5d2b2] animate-ping" />
                     Temps réel
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export default function ProductDetailModal({ product, onClose }) {
                         onClick={() => setSelectedSizeIndex(idx)}
                         className={`p-3 rounded-2xl border text-left transition flex items-center justify-between ${
                           isSelected
-                            ? 'bg-teal-50 border-[#0D9488] ring-1 ring-[#0D9488]'
+                            ? 'bg-teal-50 border-[#18407f] ring-1 ring-[#18407f]'
                             : 'bg-white border-slate-200 hover:border-teal-300'
                         }`}
                       >
@@ -156,7 +156,7 @@ export default function ProductDetailModal({ product, onClose }) {
                             {sizeObj.status}
                           </div>
                         </div>
-                        <span className="bg-[#0F2926] text-[#bae3d1] font-extrabold text-xs px-2.5 py-1 rounded-full">
+                        <span className="bg-[#0F2926] text-[#a5d2b2] font-extrabold text-xs px-2.5 py-1 rounded-full">
                           {sizeObj.stockPopUp} dispo
                         </span>
                       </button>
@@ -173,7 +173,7 @@ export default function ProductDetailModal({ product, onClose }) {
                 <ul className="space-y-1.5 text-xs text-slate-700">
                   {product.materials.map((mat, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#18407f] shrink-0" />
                       <span>{mat}</span>
                     </li>
                   ))}
@@ -184,11 +184,11 @@ export default function ProductDetailModal({ product, onClose }) {
             {/* Encart Zéro Commande en Ligne */}
             <div className="bg-teal-50 border border-teal-200 rounded-2xl p-4 text-[#0F2926]">
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#0F2926] text-[#bae3d1] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-[#0F2926] text-[#a5d2b2] flex items-center justify-center shrink-0">
                   <Store className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="font-extrabold text-xs uppercase tracking-wide text-[#0D9488]">
+                  <div className="font-extrabold text-xs uppercase tracking-wide text-[#18407f]">
                     Pas de commande en ligne — Exclusivité Boutique Éphémère
                   </div>
                   <p className="text-xs text-slate-700 mt-1 leading-relaxed">

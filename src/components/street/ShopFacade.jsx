@@ -62,7 +62,7 @@ export default function ShopFacade({ className = '' }) {
           <g key={x}>
             <path d={`M${x} 452 H${x + 110}`} stroke={INK} strokeWidth="5" />
             <path d={`M${x + 6} 452 V560 M${x + 104} 452 V560`} stroke={INK} strokeWidth="4" />
-            {['#194080', '#a4d2b3', '#0F2926', '#bae3d1', '#0D9488'].slice(k, k + 4).map((c, i) => (
+            {['#18407f', '#a5d2b2', '#0F2926', '#a5d2b2', '#18407f'].slice(k, k + 4).map((c, i) => (
               <g key={i} className="shop-garment" style={{ animationDelay: `${i * 0.4 + k}s` }}>
                 <path d={`M${x + 16 + i * 24} 452 v8`} stroke={INK} strokeWidth="2" />
                 <path d={`M${x + 6 + i * 24} 462 h20 l4 14 h-4 v46 h-20 v-46 h-4 Z`} fill={c} stroke={INK} strokeWidth="2.5" strokeLinejoin="round" />
@@ -94,7 +94,7 @@ export default function ShopFacade({ className = '' }) {
         <text x="695" y="240" textAnchor="middle" fontFamily="'Apparat Semi Condensed','Barlow Semi Condensed','Arial Narrow',sans-serif" fontWeight="800" fontSize="38" fill={INK}>
           POP-UP STORE
         </text>
-        <text x="695" y="278" textAnchor="middle" fontFamily="'Apparat Semi Condensed','Barlow Semi Condensed','Arial Narrow',sans-serif" fontWeight="800" fontSize="30" fill="#194080">
+        <text x="695" y="278" textAnchor="middle" fontFamily="'Apparat Semi Condensed','Barlow Semi Condensed','Arial Narrow',sans-serif" fontWeight="800" fontSize="30" fill="#18407f">
           20.03.2027
         </text>
       </g>

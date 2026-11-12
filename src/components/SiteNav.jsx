@@ -122,8 +122,8 @@ export default function SiteNav({
                 title="Options d'accessibilité"
                 className={`w-10 h-10 rounded-full grid place-items-center border transition-colors duration-300 ${
                   a11yOpen || a11yActive
-                    ? 'bg-[#0F2926] text-[#bae3d1] border-[#0F2926]'
-                    : 'bg-white/70 text-[#0F2926] border-[#bae3d1] hover:bg-[#bae3d1]'
+                    ? 'bg-[#0F2926] text-[#a5d2b2] border-[#0F2926]'
+                    : 'bg-white/70 text-[#0F2926] border-[#a5d2b2] hover:bg-[#a5d2b2]'
                 }`}
               >
                 <Accessibility className="w-4 h-4" aria-hidden="true" />
@@ -141,7 +141,7 @@ export default function SiteNav({
                 onClick={() => setMenuOpen((v) => !v)}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
-                className="xl:hidden w-10 h-10 rounded-full grid place-items-center bg-[#0F2926] text-[#bae3d1] relative z-[60]"
+                className="xl:hidden w-10 h-10 rounded-full grid place-items-center bg-[#0F2926] text-[#a5d2b2] relative z-[60]"
               >
                 {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
                 <span className="sr-only">{menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}</span>
@@ -155,7 +155,7 @@ export default function SiteNav({
               id="a11y-toolbar"
               role="region"
               aria-label="Paramètres de confort visuel et d'accessibilité"
-              className="modal-panel mt-2 rounded-3xl bg-white/95 backdrop-blur border border-[#bae3d1] shadow-soft-lg px-4 py-3 flex flex-wrap items-center justify-between gap-3"
+              className="modal-panel mt-2 rounded-3xl bg-white/95 backdrop-blur border border-[#a5d2b2] shadow-soft-lg px-4 py-3 flex flex-wrap items-center justify-between gap-3"
             >
               <p className="text-xs font-extrabold text-[#0F2926] flex items-center gap-2">
                 <Accessibility className="w-4 h-4" aria-hidden="true" />
@@ -172,7 +172,7 @@ export default function SiteNav({
                     onClick={() => set((v) => !v)}
                     aria-pressed={on}
                     className={`px-3.5 py-2 rounded-full text-xs font-extrabold border transition-colors duration-300 ${
-                      on ? 'bg-[#0F2926] text-[#bae3d1] border-[#0F2926]' : 'bg-white text-[#0F2926] border-slate-300 hover:border-[#0F2926]'
+                      on ? 'bg-[#0F2926] text-[#a5d2b2] border-[#0F2926]' : 'bg-white text-[#0F2926] border-slate-300 hover:border-[#0F2926]'
                     }`}
                   >
                     {label} {on ? '✓' : ''}
@@ -196,8 +196,8 @@ export default function SiteNav({
               className="mobile-menu-link text-left flex items-baseline gap-4 py-2 group"
               style={{ transitionDelay: menuOpen ? `${250 + i * 70}ms` : '0ms' }}
             >
-              <span className="font-display text-sm text-[#bae3d1]/60">{page.num}</span>
-              <span className={`font-display text-[clamp(34px,9vw,56px)] leading-none uppercase ${activePage === page.id ? 'text-[#bae3d1]' : 'text-white'}`}>
+              <span className="font-display text-sm text-[#a5d2b2]/60">{page.num}</span>
+              <span className={`font-display text-[clamp(34px,9vw,56px)] leading-none uppercase ${activePage === page.id ? 'text-[#a5d2b2]' : 'text-white'}`}>
                 {page.label}
               </span>
             </button>

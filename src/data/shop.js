@@ -228,7 +228,7 @@ export const STARTER_PACK = {
       name: 'Le gobelet réutilisable',
       role: 'Le café à emporter, sans déchet',
       text: 'Gobelet menthe avec couvercle, mascotte en façade. Ton café du pop-up, puis tous les autres.',
-      variants: [{ label: 'Menthe', src: img('ecocup'), swatch: '#BAE3D1' }]
+      variants: [{ label: 'Menthe', src: img('ecocup'), swatch: '#a5d2b2' }]
     },
     {
       id: 'stylo',

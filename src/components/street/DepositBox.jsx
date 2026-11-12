@@ -53,8 +53,8 @@ export default function DepositBox({ className = '' }) {
 
       {/* panneau latéral sombre */}
       <path d="M440 148 L520 122 L520 418 L440 444 Z" fill={INK} stroke={INK} strokeWidth="6" strokeLinejoin="round" />
-      <path d="M440 148 L520 122 L520 170 Q480 150 440 190 Z" fill="#bae3d1" />
-      <path d="M440 410 Q480 380 520 392 L520 418 L440 444 Z" fill="#194080" />
+      <path d="M440 148 L520 122 L520 170 Q480 150 440 190 Z" fill="#a5d2b2" />
+      <path d="M440 410 Q480 380 520 392 L520 418 L440 444 Z" fill="#18407f" />
       <rect x="456" y="226" width="68" height="68" rx="8" fill="#FFFFFF" transform="skewY(-18) translate(0 150)" />
       <g transform="skewY(-18) translate(0 150)">{qr}</g>
       <g transform="skewY(-18) translate(0 150)">
@@ -94,8 +94,8 @@ export default function DepositBox({ className = '' }) {
               </g>
             ) : (
               <g transform={`translate(${x + 75} 150)`}>
-                <path d="M-22 -10 h44 l-6 24 h-32 Z" fill="#194080" stroke={INK} strokeWidth="3" />
-                <path d="M-14 -10 l8 24 M0 -10 v24 M14 -10 l-8 24" stroke="#bae3d1" strokeWidth="2" />
+                <path d="M-22 -10 h44 l-6 24 h-32 Z" fill="#18407f" stroke={INK} strokeWidth="3" />
+                <path d="M-14 -10 l8 24 M0 -10 v24 M14 -10 l-8 24" stroke="#a5d2b2" strokeWidth="2" />
               </g>
             )}
           </g>
@@ -122,7 +122,7 @@ export default function DepositBox({ className = '' }) {
         <ellipse rx="34" ry="40" fill="none" stroke={INK} strokeWidth="7" />
         <ellipse rx="16" ry="22" fill="none" stroke={INK} strokeWidth="5" />
         <path d="M-30 -18 h-8 M-34 0 h-8 M-30 18 h-8 M30 -18 h8 M34 0 h8 M30 18 h8" stroke={INK} strokeWidth="5" strokeLinecap="round" />
-        <ellipse rx="34" ry="40" fill="none" stroke="#bae3d1" strokeWidth="2" />
+        <ellipse rx="34" ry="40" fill="none" stroke="#a5d2b2" strokeWidth="2" />
       </g>
       <g transform="translate(337 360)">
         <circle cx="-14" cy="-10" r="24" fill="#FFFFFF" stroke={INK} strokeWidth="4" />
@@ -140,7 +140,7 @@ export default function DepositBox({ className = '' }) {
       {/* enseigne */}
       <rect x="84" y="16" width="340" height="120" fill={INK} />
       <rect x="84" y="16" width="340" height="56" fill="#F5FBF9" stroke={INK} strokeWidth="6" />
-      <rect x="110" y="25" width="288" height="38" fill="#a4d2b3" />
+      <rect x="110" y="25" width="288" height="38" fill="#a5d2b2" />
       <text x="254" y="56" textAnchor="middle" fontFamily={FONT} fontWeight="800" fontSize="32" fill={INK}>
         SECONDE MAILLE
       </text>

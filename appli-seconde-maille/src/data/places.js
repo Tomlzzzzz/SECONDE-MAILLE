@@ -210,7 +210,7 @@ export const placeById = (id) => ALL_PLACES.find((p) => p.id === (LEGACY[id] || 
 export const DEFAULT_POSITION = { lat: 50.6365, lng: 3.0635, approximate: true };
 
 export const MATERIALS = {
-  FIL: { label: 'Filets & tissus', short: 'Filets', mult: 2, color: '#194080', hint: 'Filets de pêche, cordages, vieux tissus' },
+  FIL: { label: 'Filets & tissus', short: 'Filets', mult: 2, color: '#18407f', hint: 'Filets de pêche, cordages, vieux tissus' },
   PNE: { label: 'Pneus & chambres à air', short: 'Pneus', mult: 1.5, color: '#0F2926', hint: 'Pneus de vélo, chambres à air' },
-  TEX: { label: 'Textiles', short: 'Textiles', mult: 1, color: '#0D9488', hint: 'Vêtements, linge, chutes de tissu' }
+  TEX: { label: 'Textiles', short: 'Textiles', mult: 1, color: '#18407f', hint: 'Vêtements, linge, chutes de tissu' }
 };

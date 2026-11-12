@@ -16,7 +16,7 @@ function Confetti() {
         delay: Math.random() * 0.4,
         dur: 1.4 + Math.random() * 1.1,
         rot: Math.random() * 360,
-        c: ['#bae3d1', '#194080', '#0D9488', '#a4d2b3', '#0F2926'][i % 5]
+        c: ['#a5d2b2', '#18407f', '#18407f', '#a5d2b2', '#0F2926'][i % 5]
       })),
     []
   );
@@ -98,7 +98,7 @@ export default function ReceiptScreen({ depositId, fresh }) {
             <span className="text-[10px] font-mono text-slate-400">#{d.nonce}</span>
           </div>
           <div className="text-center mt-5">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#194080]">Points gagnés</p>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#18407f]">Points gagnés</p>
             <p className="font-display text-[64px] leading-none text-[#0F2926] mt-1">
               +{fresh ? <Counter value={d.points} duration={1200} /> : d.points}
             </p>
@@ -146,17 +146,17 @@ export default function ReceiptScreen({ depositId, fresh }) {
         </div>
 
         {promoted && (
-          <div className="mt-4 p-4 rounded-3xl bg-[#194080] text-white flex items-center gap-3 pop-in">
-            <Trophy className="w-8 h-8 text-[#bae3d1]" />
+          <div className="mt-4 p-4 rounded-3xl bg-[#18407f] text-white flex items-center gap-3 pop-in">
+            <Trophy className="w-8 h-8 text-[#a5d2b2]" />
             <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#bae3d1]">Promotion !</p>
+              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#a5d2b2]">Promotion !</p>
               <p className="font-display uppercase text-2xl leading-none">Ligue {lAfter.name}</p>
               <p className="text-xs text-white/70 mt-1">Tes prochains dépôts rapportent ×{String(lAfter.mult).replace('.', ',')}.</p>
             </div>
           </div>
         )}
 
-        <section className="mt-4 p-4 rounded-3xl bg-white border border-[#bae3d1]">
+        <section className="mt-4 p-4 rounded-3xl bg-white border border-[#a5d2b2]">
           <div className="flex items-baseline justify-between">
             <p className="text-xs font-extrabold text-[#0F2926]">Frise des points</p>
             <p className="text-xs text-slate-500">
@@ -166,7 +166,7 @@ export default function ReceiptScreen({ depositId, fresh }) {
           <PointsFrieze before={Math.max(0, balBefore)} after={Math.max(0, balAfter)} />
         </section>
 
-        <section className="mt-4 p-4 rounded-3xl bg-white border border-[#bae3d1]">
+        <section className="mt-4 p-4 rounded-3xl bg-white border border-[#a5d2b2]">
           <div className="flex items-center justify-between">
             <p className="text-xs font-extrabold text-[#0F2926]">Ligue {lAfter.name}</p>
             <p className="text-[11px] text-slate-500">{lAfter.next ? `${lAfter.toNext} pts avant ${lAfter.next.name}` : 'Ligue maximale'}</p>
@@ -176,7 +176,7 @@ export default function ReceiptScreen({ depositId, fresh }) {
           </div>
           <div className="flex justify-between mt-2">
             {LEAGUES.map((l) => (
-              <span key={l.id} className={`text-[9px] font-bold ${LEAGUES.indexOf(l) <= lAfter.index ? 'text-[#194080]' : 'text-slate-300'}`}>
+              <span key={l.id} className={`text-[9px] font-bold ${LEAGUES.indexOf(l) <= lAfter.index ? 'text-[#18407f]' : 'text-slate-300'}`}>
                 {l.name}
               </span>
             ))}

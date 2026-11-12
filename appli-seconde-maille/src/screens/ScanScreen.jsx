@@ -102,7 +102,7 @@ export default function ScanScreen({ active }) {
             {cam === 'on' && <span className="vf-line" />}
             {cam !== 'on' && (
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 gap-3">
-                {cam === 'denied' || cam === 'error' ? <CameraOff className="w-9 h-9 text-[#bae3d1]" /> : <QrCode className="w-10 h-10 text-[#bae3d1]" />}
+                {cam === 'denied' || cam === 'error' ? <CameraOff className="w-9 h-9 text-[#a5d2b2]" /> : <QrCode className="w-10 h-10 text-[#a5d2b2]" />}
                 <p className="text-white font-extrabold">
                   {cam === 'denied' ? 'Accès à la caméra refusé' : cam === 'error' ? 'Caméra indisponible' : 'Scanne le QR code de la box'}
                 </p>
@@ -155,7 +155,7 @@ export default function ScanScreen({ active }) {
             <div className="panel-dark mt-3 pop-in">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-extrabold text-white flex items-center gap-1.5">
-                  <FlaskConical className="w-3.5 h-3.5 text-[#bae3d1]" /> Mode démo — simuler une pesée
+                  <FlaskConical className="w-3.5 h-3.5 text-[#a5d2b2]" /> Mode démo — simuler une pesée
                 </p>
                 <button onClick={() => setPanel(null)} aria-label="Fermer" className="text-white/60">
                   <X className="w-4 h-4" />
@@ -185,7 +185,7 @@ export default function ScanScreen({ active }) {
                 Poids affiché par la balance : <span className="text-white">{fmtKg(demo.grams)}</span>
                 <input type="range" min="100" max="5000" step="50" value={demo.grams} onChange={(e) => setDemo({ ...demo, grams: +e.target.value })} className="range mt-2 w-full" />
               </label>
-              <p className="text-xs text-[#bae3d1] mt-2">≈ {preview.total} points</p>
+              <p className="text-xs text-[#a5d2b2] mt-2">≈ {preview.total} points</p>
               <button onClick={() => handle(demoQR)} className="app-btn app-btn-aqua w-full mt-3">
                 <Scale className="w-4 h-4" /> Simuler le scan
               </button>
@@ -195,7 +195,7 @@ export default function ScanScreen({ active }) {
 
         {/* comment ça marche */}
         <div className="px-4 mt-6">
-          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#bae3d1]">Comment ça marche</p>
+          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#a5d2b2]">Comment ça marche</p>
           <ol className="grid grid-cols-3 gap-2 mt-2">
             {[
               ['01', 'Dépose', 'dans la bonne trappe'],
@@ -203,14 +203,14 @@ export default function ScanScreen({ active }) {
               ['03', 'Scanne', 'tes points arrivent']
             ].map(([n, t, s]) => (
               <li key={n} className="p-3 rounded-2xl bg-white/[0.06] border border-white/10">
-                <span className="font-display text-xl text-[#bae3d1]">{n}</span>
+                <span className="font-display text-xl text-[#a5d2b2]">{n}</span>
                 <p className="text-xs font-extrabold text-white mt-1">{t}</p>
                 <p className="text-[10px] text-white/55 leading-tight">{s}</p>
               </li>
             ))}
           </ol>
           <div className="mt-2 p-3 rounded-2xl bg-white/[0.06] border border-white/10 text-[11px] text-white/70 flex gap-2">
-            <Sparkles className="w-4 h-4 text-[#bae3d1] shrink-0" />
+            <Sparkles className="w-4 h-4 text-[#a5d2b2] shrink-0" />
             <span>
               1 pt / 10 g · filets ×2 · pneus ×1,5 · ligue <strong className="text-white">{league.name}</strong> ×{String(league.mult).replace('.', ',')}
             </span>
@@ -236,7 +236,7 @@ export default function ScanScreen({ active }) {
                         {fmtKg(d.grams)} · {MATERIALS[d.material].short} · {timeAgo(d.date)}
                       </span>
                     </span>
-                    <span className="font-extrabold text-[#194080] text-sm">+{d.points}</span>
+                    <span className="font-extrabold text-[#18407f] text-sm">+{d.points}</span>
                     <ChevronRight className="w-4 h-4 text-slate-300" />
                   </button>
                 </li>

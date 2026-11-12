@@ -80,9 +80,9 @@ export default function LeaguesScreen() {
               <span className="font-bold">{league.name}</span>
               <span className="text-white/60">{league.next ? `${league.toNext} pts → ${league.next.name} (×${String(league.next.mult).replace('.', ',')})` : 'Ligue maximale'}</span>
             </div>
-            <ProgressBar value={league.progress} tone="#bae3d1" track="rgba(255,255,255,.12)" />
+            <ProgressBar value={league.progress} tone="#a5d2b2" track="rgba(255,255,255,.12)" />
           </div>
-          <p className="relative text-xs text-[#bae3d1] font-semibold mt-3">
+          <p className="relative text-xs text-[#a5d2b2] font-semibold mt-3">
             Tu es devant {ahead} % des membres Seconde Maille.
           </p>
         </section>
@@ -91,7 +91,7 @@ export default function LeaguesScreen() {
         <section className="mx-4 mt-4">
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs font-extrabold text-[#0F2926] flex items-center gap-1.5">
-              <Target className="w-4 h-4 text-[#194080]" /> Défis de la semaine
+              <Target className="w-4 h-4 text-[#18407f]" /> Défis de la semaine
             </p>
             <span className="text-[11px] text-slate-500 flex items-center gap-1">
               <Clock className="w-3 h-3" /> {hoursLeft > 48 ? `${Math.round(hoursLeft / 24)} j` : `${hoursLeft} h`} restants
@@ -103,22 +103,22 @@ export default function LeaguesScreen() {
               const done = prog >= c.goal;
               const claimed = state.bonuses.some((b) => b.challengeId === c.id && b.week === wk);
               return (
-                <li key={c.id} className="p-3 rounded-2xl bg-white border border-[#bae3d1] flex items-center gap-3">
+                <li key={c.id} className="p-3 rounded-2xl bg-white border border-[#a5d2b2] flex items-center gap-3">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-extrabold text-[#0F2926]">{c.title}</p>
                     <div className="mt-1.5">
-                      <ProgressBar value={Math.min(1, prog / c.goal)} height={6} tone={done ? '#0D9488' : '#194080'} />
+                      <ProgressBar value={Math.min(1, prog / c.goal)} height={6} tone={done ? '#18407f' : '#18407f'} />
                     </div>
                     <p className="text-[10px] text-slate-500 mt-1 tabular-nums">
                       {Math.min(prog, c.goal).toLocaleString('fr-FR')} / {c.goal.toLocaleString('fr-FR')} {c.unit}
                     </p>
                   </div>
                   {claimed ? (
-                    <span className="px-3 py-2 rounded-xl bg-[#F5FBF9] text-[#0D9488] text-xs font-extrabold flex items-center gap-1">
+                    <span className="px-3 py-2 rounded-xl bg-[#F5FBF9] text-[#18407f] text-xs font-extrabold flex items-center gap-1">
                       <Check className="w-3.5 h-3.5" /> Reçu
                     </span>
                   ) : (
-                    <button onClick={() => claim(c)} disabled={!done} className={`px-3 py-2 rounded-xl text-xs font-extrabold ${done ? 'bg-[#194080] text-white claim-pulse' : 'bg-[#F5FBF9] text-slate-400'}`}>
+                    <button onClick={() => claim(c)} disabled={!done} className={`px-3 py-2 rounded-xl text-xs font-extrabold ${done ? 'bg-[#18407f] text-white claim-pulse' : 'bg-[#F5FBF9] text-slate-400'}`}>
                       +{c.reward}
                     </button>
                   )}
@@ -129,10 +129,10 @@ export default function LeaguesScreen() {
         </section>
 
         {/* onglets */}
-        <div className="mx-4 mt-5 grid grid-cols-3 gap-1 p-1 rounded-2xl bg-white border border-[#bae3d1] relative" role="tablist">
+        <div className="mx-4 mt-5 grid grid-cols-3 gap-1 p-1 rounded-2xl bg-white border border-[#a5d2b2] relative" role="tablist">
           <span className="seg-blob" style={{ transform: `translateX(${TABS.findIndex((t) => t.id === tab) * 100}%)` }} aria-hidden="true" />
           {TABS.map((t) => (
-            <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} className={`relative z-10 py-2 rounded-xl text-xs font-extrabold transition-colors ${tab === t.id ? 'text-[#bae3d1]' : 'text-[#0F2926]/60'}`}>
+            <button key={t.id} role="tab" aria-selected={tab === t.id} onClick={() => setTab(t.id)} className={`relative z-10 py-2 rounded-xl text-xs font-extrabold transition-colors ${tab === t.id ? 'text-[#a5d2b2]' : 'text-[#0F2926]/60'}`}>
               {t.label}
             </button>
           ))}
@@ -140,14 +140,14 @@ export default function LeaguesScreen() {
 
         {tab === 'group' && (
           <section key="g" className="mx-4 mt-3 tab-in">
-            <div className="p-3 rounded-2xl bg-[#194080] text-white flex items-center gap-3">
-              <Flame className="w-6 h-6 text-[#bae3d1]" />
+            <div className="p-3 rounded-2xl bg-[#18407f] text-white flex items-center gap-3">
+              <Flame className="w-6 h-6 text-[#a5d2b2]" />
               <p className="text-xs leading-snug">
                 Tu es <strong>{myRank}e</strong> de ton groupe cette semaine. Top {PROMOTION_ZONE} : bonus de fin de semaine (
                 {WEEKLY_REWARDS.map((w) => `+${w.bonus}`).join(' / ')} pour le podium).
               </p>
             </div>
-            <ol className="mt-2 rounded-3xl bg-white border border-[#bae3d1] overflow-hidden">
+            <ol className="mt-2 rounded-3xl bg-white border border-[#a5d2b2] overflow-hidden">
               {group.map((m, i) => {
                 const zone = i < PROMOTION_ZONE ? 'up' : i >= group.length - 3 ? 'down' : '';
                 return (
@@ -159,7 +159,7 @@ export default function LeaguesScreen() {
                       <span className="block text-[10px] text-slate-500">{m.me ? leagueFor(m.total).name : `${leagueFor(m.total).name} · ${m.area}`}</span>
                     </span>
                     <span className="text-sm font-extrabold tabular-nums text-[#0F2926]">{m.week}</span>
-                    {zone === 'up' ? <ChevronUp className="w-4 h-4 text-[#0D9488]" /> : zone === 'down' ? <ChevronDown className="w-4 h-4 text-slate-300" /> : <span className="w-4" />}
+                    {zone === 'up' ? <ChevronUp className="w-4 h-4 text-[#18407f]" /> : zone === 'down' ? <ChevronDown className="w-4 h-4 text-slate-300" /> : <span className="w-4" />}
                   </li>
                 );
               })}
@@ -170,8 +170,8 @@ export default function LeaguesScreen() {
 
         {tab === 'around' && (
           <section key="a" className="mx-4 mt-3 tab-in">
-            <div className="p-3 rounded-2xl bg-white border border-[#bae3d1] flex items-center gap-3">
-              <Users className="w-5 h-5 text-[#194080]" />
+            <div className="p-3 rounded-2xl bg-white border border-[#a5d2b2] flex items-center gap-3">
+              <Users className="w-5 h-5 text-[#18407f]" />
               <p className="text-xs text-slate-600 leading-snug">
                 Ce que font les membres près de chez toi. Comme sur Waze, ce n’est pas du direct : les activités sont regroupées et légèrement décalées.
               </p>

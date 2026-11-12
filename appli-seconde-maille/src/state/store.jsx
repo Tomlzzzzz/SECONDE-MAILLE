@@ -14,7 +14,7 @@ const KEY = 'seconde-maille-app-v1';
 const initial = {
   onboarded: false,
   geoChoice: null, // 'granted' | 'skipped'
-  profile: { pseudo: '', color: '#194080' },
+  profile: { pseudo: '', color: '#18407f' },
   deposits: [], // { id, boxId, grams, material, points, date, nonce }
   spent: 0,
   vouchers: [], // { id, rewardId, title, cost, code, date }

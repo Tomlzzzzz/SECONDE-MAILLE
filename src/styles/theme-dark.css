@@ -59,31 +59,31 @@ html[data-theme='dark'] .text-slate-700 { color: #C9DBD5; }
 html[data-theme='dark'] .text-slate-600 { color: var(--d-muted); }
 html[data-theme='dark'] .text-slate-500 { color: var(--d-muted); }
 html[data-theme='dark'] .text-slate-400 { color: var(--d-faint); }
-html[data-theme='dark'] .text-\[\#194080\] { color: var(--d-blue); }
-html[data-theme='dark'] .text-\[\#0D9488\] { color: var(--d-teal); }
+html[data-theme='dark'] .text-\[\#18407f\] { color: var(--d-blue); }
+html[data-theme='dark'] .text-\[\#18407f\] { color: var(--d-teal); }
 html[data-theme='dark'] .text-\[\#b45309\] { color: #F5B565; }
 
 /* ---------- bordures ---------- */
-html[data-theme='dark'] .border-\[\#bae3d1\],
-html[data-theme='dark'] .border-\[\#bae3d1\]\/90,
-html[data-theme='dark'] .border-\[\#bae3d1\]\/60,
-html[data-theme='dark'] .border-\[\#bae3d1\]\/40,
+html[data-theme='dark'] .border-\[\#a5d2b2\],
+html[data-theme='dark'] .border-\[\#a5d2b2\]\/90,
+html[data-theme='dark'] .border-\[\#a5d2b2\]\/60,
+html[data-theme='dark'] .border-\[\#a5d2b2\]\/40,
 html[data-theme='dark'] .border-slate-200,
 html[data-theme='dark'] .border-slate-300,
-html[data-theme='dark'] .border-\[\#a4d2b3\] { border-color: var(--d-line); }
+html[data-theme='dark'] .border-\[\#a5d2b2\] { border-color: var(--d-line); }
 html[data-theme='dark'] .border-\[\#0F2926\] { border-color: rgba(228, 242, 236, 0.55); }
 html[data-theme='dark'] .border-\[\#0F2926\]\/20,
 html[data-theme='dark'] .border-\[\#0F2926\]\/15,
 html[data-theme='dark'] .border-\[\#0F2926\]\/10 { border-color: var(--d-line); }
-html[data-theme='dark'] .border-\[\#194080\] { border-color: var(--d-blue); }
+html[data-theme='dark'] .border-\[\#18407f\] { border-color: var(--d-blue); }
 html[data-theme='dark'] .ring-\[\#0F2926\] { --tw-ring-color: var(--d-text); }
 
 /* ---------- les blocs aqua gardent un texte encre ---------- */
-html[data-theme='dark'] :is(.bg-\[\#bae3d1\], .btn-aqua, .pack-sticker, .size-chip.is-on) { color: #0F2926; }
-html[data-theme='dark'] :is(.bg-\[\#bae3d1\], .btn-aqua, .pack-sticker) :is(.text-\[\#0F2926\], .text-slate-500, .text-slate-600, .text-slate-700, .text-\[\#0F2926\]\/60, .text-\[\#0F2926\]\/70) { color: #0F2926; }
-html[data-theme='dark'] :is(.bg-\[\#bae3d1\], .btn-aqua) .text-\[\#194080\] { color: #194080; }
-html[data-theme='dark'] :is(.bg-\[\#bae3d1\], .btn-aqua) .text-\[\#0D9488\] { color: #0B6E65; }
-html[data-theme='dark'] .bg-\[\#bae3d1\]\/60 { background-color: rgba(169, 216, 196, 0.22); }
+html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua, .pack-sticker, .size-chip.is-on) { color: #0F2926; }
+html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua, .pack-sticker) :is(.text-\[\#0F2926\], .text-slate-500, .text-slate-600, .text-slate-700, .text-\[\#0F2926\]\/60, .text-\[\#0F2926\]\/70) { color: #0F2926; }
+html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua) .text-\[\#18407f\] { color: #18407f; }
+html[data-theme='dark'] :is(.bg-\[\#a5d2b2\], .btn-aqua) .text-\[\#18407f\] { color: #0B6E65; }
+html[data-theme='dark'] .bg-\[\#a5d2b2\]\/60 { background-color: rgba(169, 216, 196, 0.22); }
 
 /* ---------- navigation ---------- */
 html[data-theme='dark'] .site-nav-bar { background: rgba(10, 23, 21, 0.55); border-color: rgba(186, 227, 209, 0.14); box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6); }
@@ -164,12 +164,12 @@ html[data-theme='dark'] .leaflet-control-attribution a { color: var(--d-blue); }
   display: grid;
   place-items: center;
   overflow: hidden;
-  border: 1px solid #bae3d1;
+  border: 1px solid #a5d2b2;
   background: rgba(255, 255, 255, 0.7);
   color: #0F2926;
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease);
 }
-.theme-toggle:hover { background: #bae3d1; }
+.theme-toggle:hover { background: #a5d2b2; }
 .theme-toggle:active { transform: scale(0.92); }
 .theme-toggle svg { position: absolute; transition: transform 0.6s var(--ease), opacity 0.4s ease; }
 .theme-toggle .ic-moon { transform: translateY(0) rotate(0); opacity: 1; }

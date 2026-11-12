@@ -8,9 +8,9 @@ export function SectionLabel({ num, children, light = false, className = '' }) {
   const [ref, inView] = useInView({ threshold: 0.6 });
   return (
     <div ref={ref} className={`flex items-center gap-3 ${className}`}>
-      <span className={`font-display text-sm ${light ? 'text-[#bae3d1]' : 'text-[#0D9488]'}`}>{num}</span>
+      <span className={`font-display text-sm ${light ? 'text-[#a5d2b2]' : 'text-[#18407f]'}`}>{num}</span>
       <svg className={`rope-line ${inView ? 'is-in' : ''} w-14 h-2 shrink-0`} viewBox="0 0 56 8" aria-hidden="true">
-        <path d="M1 4 Q8 0 14 4 T28 4 T42 4 T55 4" pathLength="1" fill="none" stroke={light ? '#bae3d1' : '#0F2926'} strokeWidth="1.6" />
+        <path d="M1 4 Q8 0 14 4 T28 4 T42 4 T55 4" pathLength="1" fill="none" stroke={light ? '#a5d2b2' : '#0F2926'} strokeWidth="1.6" />
       </svg>
       <span className={`text-[11px] font-extrabold uppercase tracking-[0.2em] ${light ? 'text-white/80' : 'text-[#0F2926]/70'}`}>
         {children}
@@ -68,7 +68,7 @@ export function NextBand({ activePage, onNavigate }) {
   const next = SITE_PAGES[(idx + 1) % SITE_PAGES.length];
   const isLoop = idx === SITE_PAGES.length - 1;
   return (
-    <section className="bg-[#194080]">
+    <section className="bg-[#18407f]">
       <button
         onClick={() => onNavigate(next.id)}
         className="next-band w-full text-left block"
@@ -76,20 +76,20 @@ export function NextBand({ activePage, onNavigate }) {
       >
         <div className="next-band-fill" aria-hidden="true">
           <svg viewBox="0 0 1200 50" preserveAspectRatio="none">
-            <path d="M0,50 L0,25 C200,0 400,0 600,25 C800,50 1000,50 1200,25 L1200,50 Z" fill="#bae3d1" />
+            <path d="M0,50 L0,25 C200,0 400,0 600,25 C800,50 1000,50 1200,25 L1200,50 Z" fill="#a5d2b2" />
           </svg>
           <div />
         </div>
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-16 pb-10 lg:pt-24 lg:pb-14 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div>
-            <p className="next-sub text-xs font-extrabold uppercase tracking-[0.2em] text-[#bae3d1] transition-colors duration-500">
+            <p className="next-sub text-xs font-extrabold uppercase tracking-[0.2em] text-[#a5d2b2] transition-colors duration-500">
               {isLoop ? 'Retour au début' : 'Page suivante'} — {next.num}
             </p>
             <p className="next-title font-display uppercase text-white text-[clamp(44px,8.5vw,128px)] leading-[0.9] mt-3">
               {next.label}
             </p>
           </div>
-          <span className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border-2 border-current text-[#bae3d1] grid place-items-center shrink-0 next-sub transition-colors duration-500">
+          <span className="w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 rounded-full border-2 border-current text-[#a5d2b2] grid place-items-center shrink-0 next-sub transition-colors duration-500">
             <ArrowRight className="w-8 h-8" />
           </span>
         </div>
@@ -103,8 +103,8 @@ export function NextBand({ activePage, onNavigate }) {
 /* Petite carte statistique */
 export function StatTile({ value, label, light = false }) {
   return (
-    <div className={`p-6 rounded-[28px] ${light ? 'bg-white/[0.06] border border-white/10' : 'bg-[#F5FBF9] border border-[#bae3d1]'}`}>
-      <div className={`font-display text-5xl lg:text-6xl leading-none ${light ? 'text-[#bae3d1]' : 'text-[#0F2926]'}`}>{value}</div>
+    <div className={`p-6 rounded-[28px] ${light ? 'bg-white/[0.06] border border-white/10' : 'bg-[#F5FBF9] border border-[#a5d2b2]'}`}>
+      <div className={`font-display text-5xl lg:text-6xl leading-none ${light ? 'text-[#a5d2b2]' : 'text-[#0F2926]'}`}>{value}</div>
       <p className={`text-sm mt-3 leading-snug ${light ? 'text-white/70' : 'text-slate-600'}`}>{label}</p>
     </div>
   );

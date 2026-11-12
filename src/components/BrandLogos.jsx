@@ -9,7 +9,7 @@ export function VakitaLogo({ size = "md", dark = false, blueBox = true }) {
   return (
     <div
       className={`inline-flex items-center select-none transition-transform duration-300 hover:-rotate-1 ${
-        blueBox ? 'bg-[#bae3d1] px-2.5 py-1 rounded-sm' : ''
+        blueBox ? 'bg-[#a5d2b2] px-2.5 py-1 rounded-sm' : ''
       }`}
     >
       <img
@@ -36,9 +36,9 @@ export function LaVieEstBeltLogo({ size = "md", variant = "aqua" }) {
 
 export function CollabBadge({ size = "md" }) {
   return (
-    <div data-keep-light className="inline-flex items-center gap-3 sm:gap-4 bg-white border border-teal-200/90 rounded-full px-3.5 py-1.5 shadow-soft hover:border-[#bae3d1] transition">
+    <div data-keep-light className="inline-flex items-center gap-3 sm:gap-4 bg-white border border-teal-200/90 rounded-full px-3.5 py-1.5 shadow-soft hover:border-[#a5d2b2] transition">
       <VakitaLogo size={size} blueBox={true} />
-      <span className="w-5 h-5 rounded-full bg-teal-50 text-[#0D9488] font-extrabold text-xs flex items-center justify-center">
+      <span className="w-5 h-5 rounded-full bg-teal-50 text-[#18407f] font-extrabold text-xs flex items-center justify-center">
         ×
       </span>
       <LaVieEstBeltLogo size={size} variant="aqua" />

@@ -9,7 +9,7 @@ const NAMES = [
   'Camille', 'Rayan', 'Louise', 'Gabin', 'Anaïs', 'Ilyes', 'Margaux', 'Tom', 'Sarah', 'Liam', 'Elsa', 'Maël', 'Nina', 'Axel', 'Lou', 'Eden'
 ];
 const AREAS = ['Lille-Centre', 'Vieux-Lille', 'Euralille', 'Roubaix', 'Wazemmes', 'Fives', 'Tourcoing', 'Villeneuve-d’Ascq'];
-const COLORS = ['#194080', '#0D9488', '#0F2926', '#5fbfa6', '#2c5aa8', '#a4d2b3', '#115E59', '#7fb6e0'];
+const COLORS = ['#18407f', '#18407f', '#0F2926', '#5fbfa6', '#2c5aa8', '#a5d2b2', '#115E59', '#7fb6e0'];
 
 function rng(seed) {
   let s = seed;

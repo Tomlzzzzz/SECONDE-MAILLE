@@ -73,7 +73,7 @@ export default function BrandsPage({ onNavigate }) {
               direction="left"
               brand={BRANDS.vakita}
               logo={<VakitaLogo size="lg" />}
-              accent="#0D9488"
+              accent="#18407f"
               soft="#F2FBF7"
               title="Informer et sensibiliser"
               cta="Visiter vakita.fr"
@@ -84,7 +84,7 @@ export default function BrandsPage({ onNavigate }) {
               direction="right"
               brand={BRANDS.belt}
               logo={<LaVieEstBeltLogo size="lg" />}
-              accent="#194080"
+              accent="#18407f"
               soft="#F3F6FC"
               title="Transformer ce qui devait être jeté"
               cta="Visiter lavieestbelt.fr"
@@ -100,7 +100,7 @@ export default function BrandsPage({ onNavigate }) {
       </section>
 
       {/* COMPLÉMENTARITÉ */}
-      <section className="relative bg-gradient-to-b from-[#0F2926] to-[#194080] text-white overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#0F2926] to-[#18407f] text-white overflow-hidden">
         <WaveDivider color="#FFFFFF" flip />
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
@@ -119,14 +119,14 @@ export default function BrandsPage({ onNavigate }) {
             <Reveal>
               <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-5 p-6 sm:p-8 rounded-[28px] bg-white/[0.06] border border-white/10">
                 <div className="text-center">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#bae3d1]">Vakita</p>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#a5d2b2]">Vakita</p>
                   <p className="font-display uppercase text-xl sm:text-3xl mt-2">Filet de pêche</p>
                 </div>
-                <span className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#bae3d1] text-[#0F2926] grid place-items-center">
+                <span className="w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-[#a5d2b2] text-[#0F2926] grid place-items-center">
                   <ArrowRight className="w-5 h-5" />
                 </span>
                 <div className="text-center">
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#bae3d1]">La Vie est Belt</p>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#a5d2b2]">La Vie est Belt</p>
                   <p className="font-display uppercase text-xl sm:text-3xl mt-2">Pneu</p>
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function BrandsPage({ onNavigate }) {
                 <SecondeMailleLogo className="h-14 sm:h-16 self-start" />
                 <ul className="flex flex-wrap gap-2">
                   {VALUES.map((v) => (
-                    <li key={v} className="px-3 py-1.5 rounded-full bg-[#F5FBF9] border border-[#bae3d1] text-xs font-bold hover:bg-[#194080] hover:text-white hover:border-[#194080] transition-colors duration-300">
+                    <li key={v} className="px-3 py-1.5 rounded-full bg-[#F5FBF9] border border-[#a5d2b2] text-xs font-bold hover:bg-[#18407f] hover:text-white hover:border-[#18407f] transition-colors duration-300">
                       {v}
                     </li>
                   ))}

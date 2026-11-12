@@ -13,7 +13,7 @@ export function LiveBadge({ status, checkedAt, dark = false }) {
   return (
     <span
       className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-extrabold ${
-        dark ? 'bg-white/10 text-white' : 'bg-white border border-[#bae3d1] text-[#0F2926]'
+        dark ? 'bg-white/10 text-white' : 'bg-white border border-[#a5d2b2] text-[#0F2926]'
       }`}
       aria-live="polite"
     >
@@ -50,7 +50,7 @@ function Gallery({ slides, productName }) {
   return (
     <div className="select-none">
       <div
-        className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-[#F5FBF9] border border-[#bae3d1] touch-pan-y"
+        className="relative aspect-[4/3] rounded-[28px] overflow-hidden bg-[#F5FBF9] border border-[#a5d2b2] touch-pan-y"
         onPointerDown={onDown}
         onPointerUp={onUp}
         onPointerCancel={() => (start.current = null)}
@@ -155,7 +155,7 @@ export default function MerchShowcase() {
 
         {/* onglets produits */}
         <div className="overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0 mb-8 scrollbar-none">
-          <div ref={tabsRef} role="tablist" aria-label="Pièces du merch" className="relative inline-flex gap-1 p-1.5 rounded-full bg-white border border-[#bae3d1]">
+          <div ref={tabsRef} role="tablist" aria-label="Pièces du merch" className="relative inline-flex gap-1 p-1.5 rounded-full bg-white border border-[#a5d2b2]">
             <span className="absolute top-1.5 bottom-1.5 rounded-full bg-[#0F2926] transition-all duration-500" style={{ left: pill.left, width: pill.width, transitionTimingFunction: 'cubic-bezier(0.22,1,0.36,1)' }} aria-hidden="true" />
             {MERCH.map((p) => (
               <button
@@ -165,7 +165,7 @@ export default function MerchShowcase() {
                 aria-selected={p.id === pid}
                 onClick={() => pickProduct(p.id)}
                 className={`relative z-10 px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold whitespace-nowrap transition-colors duration-300 ${
-                  p.id === pid ? 'text-[#bae3d1]' : 'text-[#0F2926]/70 hover:text-[#0F2926]'
+                  p.id === pid ? 'text-[#a5d2b2]' : 'text-[#0F2926]/70 hover:text-[#0F2926]'
                 }`}
               >
                 {p.name.replace(/^(Le|La|Les) /, '')}
@@ -180,7 +180,7 @@ export default function MerchShowcase() {
           </div>
 
           <div className="lg:col-span-5 min-w-0">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#194080]">{product.tagline}</p>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#18407f]">{product.tagline}</p>
             <h3 className="font-display uppercase text-[clamp(36px,4vw,56px)] leading-[0.92] text-[#0F2926] mt-2">{product.name}</h3>
             <p className="text-slate-700 leading-relaxed mt-4">{product.description}</p>
 
@@ -199,7 +199,7 @@ export default function MerchShowcase() {
                     }}
                     aria-label={`Coloris ${c.label}`}
                     aria-pressed={c.id === color.id}
-                    className={`w-10 h-10 rounded-full border-2 transition-transform duration-300 hover:scale-110 ${c.id === color.id ? 'border-[#0F2926] ring-4 ring-[#bae3d1]' : 'border-[#0F2926]/20'}`}
+                    className={`w-10 h-10 rounded-full border-2 transition-transform duration-300 hover:scale-110 ${c.id === color.id ? 'border-[#0F2926] ring-4 ring-[#a5d2b2]' : 'border-[#0F2926]/20'}`}
                     style={{ background: c.swatch }}
                   />
                 ))}
@@ -212,7 +212,7 @@ export default function MerchShowcase() {
                 <p className="text-xs font-extrabold text-[#0F2926]">
                   Tailles disponibles{total != null && <span className="font-semibold text-slate-500"> · {total} pièces au total</span>}
                 </p>
-                <button onClick={() => setGuide(true)} className="text-xs font-extrabold text-[#194080] inline-flex items-center gap-1.5 link-line">
+                <button onClick={() => setGuide(true)} className="text-xs font-extrabold text-[#18407f] inline-flex items-center gap-1.5 link-line">
                   <Ruler className="w-3.5 h-3.5" /> Guide des tailles
                 </button>
               </div>
@@ -234,12 +234,12 @@ export default function MerchShowcase() {
                   );
                 })}
                 {!sizes &&
-                  [0, 1, 2, 3].map((k) => <span key={k} className="h-[54px] rounded-2xl bg-white border border-[#bae3d1] animate-pulse" />)}
+                  [0, 1, 2, 3].map((k) => <span key={k} className="h-[54px] rounded-2xl bg-white border border-[#a5d2b2] animate-pulse" />)}
               </div>
               <div className="min-h-[52px] mt-3" aria-live="polite">
                 {size && sel != null && (
-                  <p key={size} className="tab-panel-enter text-sm text-[#0F2926] flex items-start gap-2 p-3 rounded-2xl bg-white border border-[#bae3d1]">
-                    <Store className="w-4 h-4 mt-0.5 shrink-0 text-[#194080]" />
+                  <p key={size} className="tab-panel-enter text-sm text-[#0F2926] flex items-start gap-2 p-3 rounded-2xl bg-white border border-[#a5d2b2]">
+                    <Store className="w-4 h-4 mt-0.5 shrink-0 text-[#18407f]" />
                     {sel <= 0 ? (
                       <span>
                         Taille <strong>{size}</strong> épuisée pour le moment — le stock peut être réassorti, reviens vérifier ici.
@@ -256,7 +256,7 @@ export default function MerchShowcase() {
             </div>
 
             {/* fabrication */}
-            <div className="mt-4 rounded-[22px] bg-white border border-[#bae3d1] overflow-hidden">
+            <div className="mt-4 rounded-[22px] bg-white border border-[#a5d2b2] overflow-hidden">
               <button onClick={() => setFabOpen((v) => !v)} aria-expanded={fabOpen} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left">
                 <span className="font-extrabold text-[#0F2926]">Comment c’est fait</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-500 ${fabOpen ? 'rotate-180' : ''}`} />
@@ -265,7 +265,7 @@ export default function MerchShowcase() {
                 <ol className="overflow-hidden px-5">
                   {product.fabrication.map((f, k) => (
                     <li key={k} className="flex gap-3 pb-4 text-sm text-slate-700 leading-relaxed">
-                      <span className="font-display text-lg text-[#194080] leading-none mt-0.5">0{k + 1}</span>
+                      <span className="font-display text-lg text-[#18407f] leading-none mt-0.5">0{k + 1}</span>
                       {f}
                     </li>
                   ))}

@@ -11,7 +11,7 @@ import { EVENT } from '../data/siteContent';
    ===================================================================== */
 
 const DEST = { lat: EVENT.lat, lng: EVENT.lng };
-const BRAND_BLUE = '#194080';
+const BRAND_BLUE = '#18407f';
 const LEAFLET_VERSION = '1.9.4';
 const MASCOT = `${import.meta.env?.BASE_URL ?? '/'}brand/vaquita-mascotte.png`;
 
@@ -190,7 +190,7 @@ export default function LocationMap() {
     if (!L || !map.current || !nearby) return;
     layers.current.nearby?.remove();
     const g = L.layerGroup();
-    const colors = { transit: BRAND_BLUE, bus: '#0D9488', bike: '#115E59', parking: '#0F2926' };
+    const colors = { transit: BRAND_BLUE, bus: '#18407f', bike: '#115E59', parking: '#0F2926' };
     Object.entries(nearby).forEach(([cat, items]) =>
       items.forEach((it) =>
         L.circleMarker([it.lat, it.lng], { radius: 7, color: '#fff', weight: 2, fillColor: colors[cat], fillOpacity: 1 })
@@ -302,7 +302,7 @@ export default function LocationMap() {
       {/* PANNEAU */}
       <div className="lg:col-span-5 space-y-5 min-w-0">
         <div>
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#bae3d1]">Adresse</p>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2]">Adresse</p>
           <p className="font-display uppercase text-[clamp(26px,3vw,38px)] leading-[0.95] mt-2">{EVENT.street}</p>
           <p className="text-white/70 font-semibold">{EVENT.city}</p>
           <div className="flex flex-wrap gap-2 mt-4">
@@ -334,7 +334,7 @@ export default function LocationMap() {
             </p>
           )}
           {geoMessage && (
-            <p role="alert" className="text-xs text-[#bae3d1] leading-relaxed mt-3">
+            <p role="alert" className="text-xs text-[#a5d2b2] leading-relaxed mt-3">
               {geoMessage}
             </p>
           )}
@@ -356,7 +356,7 @@ export default function LocationMap() {
                       role="tab"
                       aria-selected={on}
                       onClick={() => setMode(m.id)}
-                      className={`p-3 rounded-2xl text-left border transition-all duration-300 min-w-0 ${on ? 'bg-[#bae3d1] text-[#0F2926] border-[#bae3d1]' : 'border-white/15 hover:border-white/40'}`}
+                      className={`p-3 rounded-2xl text-left border transition-all duration-300 min-w-0 ${on ? 'bg-[#a5d2b2] text-[#0F2926] border-[#a5d2b2]' : 'border-white/15 hover:border-white/40'}`}
                     >
                       <Icon className="w-4 h-4" />
                       <span className="block text-[11px] font-bold mt-1.5 opacity-80">{m.label}</span>
@@ -366,7 +366,7 @@ export default function LocationMap() {
                   );
                 })}
               </div>
-              {routeErr && <p className="text-xs text-[#bae3d1]">Le calcul d’itinéraire est momentanément indisponible ; utilisez les liens ci-dessous.</p>}
+              {routeErr && <p className="text-xs text-[#a5d2b2]">Le calcul d’itinéraire est momentanément indisponible ; utilisez les liens ci-dessous.</p>}
               <div className="flex flex-wrap gap-2">
                 <a href={gmaps(MODES.find((m) => m.id === mode).gmaps)} target="_blank" rel="noreferrer" className="btn btn-aqua btn-sm">
                   <Navigation className="w-3.5 h-3.5" /> Lancer le guidage
@@ -388,7 +388,7 @@ export default function LocationMap() {
 
         {/* À proximité */}
         <div>
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#bae3d1] flex items-center gap-2">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2] flex items-center gap-2">
             <MapPin className="w-3.5 h-3.5" /> À proximité du lieu
           </p>
           {nearbyState === 'loading' && <p className="text-xs text-white/60 mt-3">Recherche des arrêts et stations autour…</p>}
@@ -400,7 +400,7 @@ export default function LocationMap() {
                 return (
                   <li key={g.id} className="py-3 flex gap-3">
                     <span className="w-8 h-8 rounded-full bg-white/10 grid place-items-center shrink-0">
-                      <Icon className="w-4 h-4 text-[#bae3d1]" />
+                      <Icon className="w-4 h-4 text-[#a5d2b2]" />
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="text-[11px] font-bold uppercase tracking-wider text-white/50">{g.label}</p>

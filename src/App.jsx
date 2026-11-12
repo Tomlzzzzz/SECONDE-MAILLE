@@ -26,19 +26,19 @@ function PageCurtain({ phase, label }) {
   return (
     <div className={`page-curtain ${phase ? `is-active is-${phase}` : ''}`} aria-hidden="true">
       <div className="curtain-layer curtain-layer--aqua">
-        {wave('#bae3d1')}
-        <div className="curtain-body bg-[#bae3d1]" />
-        {waveBottom('#bae3d1')}
+        {wave('#a5d2b2')}
+        <div className="curtain-body bg-[#a5d2b2]" />
+        {waveBottom('#a5d2b2')}
       </div>
       <div className="curtain-layer curtain-layer--ink">
-        {wave('#194080')}
-        <div className="curtain-body bg-[#194080]" />
-        {waveBottom('#194080')}
+        {wave('#18407f')}
+        <div className="curtain-body bg-[#18407f]" />
+        {waveBottom('#18407f')}
         {label && (
           <div className="curtain-label">
             <div className="text-center flex flex-col items-center px-6">
               <Mascot className="w-20 sm:w-24 mb-5 curtain-mascot" />
-              <p className="font-display text-xl text-[#bae3d1]/60">{label.num}</p>
+              <p className="font-display text-xl text-[#a5d2b2]/60">{label.num}</p>
               <p className="font-display uppercase text-[clamp(40px,8vw,120px)] leading-none">{label.label}</p>
               <SecondeMailleLogo light className="h-8 sm:h-10 mt-6 opacity-90" alt="" />
             </div>
@@ -66,7 +66,7 @@ function BackToSurface({ reduce }) {
       aria-label="Remonter en haut de la page"
       tabIndex={show ? 0 : -1}
     >
-      <span className="mascot-tip px-3 py-1.5 rounded-full bg-[#0F2926] text-[#bae3d1] text-xs font-bold">Remonter à la surface</span>
+      <span className="mascot-tip px-3 py-1.5 rounded-full bg-[#0F2926] text-[#a5d2b2] text-xs font-bold">Remonter à la surface</span>
       <Mascot alt="" />
     </button>
   );

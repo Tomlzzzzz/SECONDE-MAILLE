@@ -91,7 +91,7 @@ export default function MapView({ places = [], me, selectedId, onSelect, route, 
     if (!route?.coords?.length) return;
     const g = L.layerGroup([
       L.polyline(route.coords, { color: '#ffffff', weight: 9, opacity: 0.9, lineCap: 'round' }),
-      L.polyline(route.coords, { color: '#194080', weight: 5, opacity: 1, lineCap: 'round', dashArray: route.mode === 'foot' ? '1 10' : null })
+      L.polyline(route.coords, { color: '#18407f', weight: 5, opacity: 1, lineCap: 'round', dashArray: route.mode === 'foot' ? '1 10' : null })
     ]).addTo(m);
     layers.current.route = g;
   }, [route]);

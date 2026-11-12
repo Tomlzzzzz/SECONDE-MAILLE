@@ -20,7 +20,7 @@ function QrModal({ title, sub, code, onClose }) {
         <button onClick={onClose} className="absolute right-3 top-3 icon-btn" aria-label="Fermer">
           <X className="w-5 h-5" />
         </button>
-        <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">À présenter en caisse</p>
+        <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#18407f]">À présenter en caisse</p>
         <p className="font-display uppercase text-2xl leading-none text-[#0F2926] mt-1 pr-10">{title}</p>
         {sub && <p className="text-xs text-slate-500 mt-1">{sub}</p>}
         <div className="flex justify-center mt-5">
@@ -50,7 +50,7 @@ function AccountCard({ onAuth }) {
     return (
       <section className="mx-4 mt-5 p-4 rounded-3xl bg-[#0F2926] text-white">
         <div className="flex items-start gap-3">
-          <span className="w-10 h-10 rounded-2xl bg-[#bae3d1] text-[#0F2926] grid place-items-center shrink-0">
+          <span className="w-10 h-10 rounded-2xl bg-[#a5d2b2] text-[#0F2926] grid place-items-center shrink-0">
             <CloudUpload className="w-5 h-5" />
           </span>
           <div>
@@ -64,7 +64,7 @@ function AccountCard({ onAuth }) {
       </section>
     );
   return (
-    <section className="mx-4 mt-5 p-4 rounded-3xl bg-white border border-[#bae3d1]">
+    <section className="mx-4 mt-5 p-4 rounded-3xl bg-white border border-[#a5d2b2]">
       <p className="text-xs font-extrabold text-[#0F2926]">Mon compte</p>
       <p className="text-sm text-[#0F2926] mt-1 truncate">{user.email}</p>
       <div className="flex items-center gap-2 mt-2 text-[12px] text-slate-600">
@@ -113,7 +113,7 @@ export default function RewardsScreen() {
           <button onClick={() => setShow({ title: 'Pass Membre', sub: `${state.profile.pseudo} · ${state.memberId}`, code: passCode })} className="pass-card w-full text-left">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#bae3d1]">Pass Membre</p>
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#a5d2b2]">Pass Membre</p>
                 <img src="/brand/seconde-maille-logo-light.png" alt="Seconde Maille" className="h-10 mt-2" />
               </div>
               <Avatar pseudo={state.profile.pseudo} color={state.profile.color} size={40} ring />
@@ -121,10 +121,10 @@ export default function RewardsScreen() {
             <div className="flex items-end justify-between gap-3 mt-5">
               <div className="space-y-1.5 text-xs min-w-0">
                 <p className="flex items-center gap-1.5">
-                  <CalendarDays className="w-3.5 h-3.5 text-[#bae3d1]" /> {POPUP.dateLabel} · J-{days}
+                  <CalendarDays className="w-3.5 h-3.5 text-[#a5d2b2]" /> {POPUP.dateLabel} · J-{days}
                 </p>
                 <p className="flex items-center gap-1.5 truncate">
-                  <MapPin className="w-3.5 h-3.5 text-[#bae3d1] shrink-0" /> 17 bd Jean-Baptiste Lebas, Lille
+                  <MapPin className="w-3.5 h-3.5 text-[#a5d2b2] shrink-0" /> 17 bd Jean-Baptiste Lebas, Lille
                 </p>
                 <p className="text-white/60">Entrée : un matériau déposé</p>
               </div>
@@ -138,9 +138,9 @@ export default function RewardsScreen() {
         </section>
 
         {/* solde */}
-        <section className="mx-4 mt-4 p-4 rounded-3xl bg-white border border-[#bae3d1] flex items-center justify-between">
+        <section className="mx-4 mt-4 p-4 rounded-3xl bg-white border border-[#a5d2b2] flex items-center justify-between">
           <div>
-            <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">Mon solde</p>
+            <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#18407f]">Mon solde</p>
             <p className="font-display text-5xl leading-none text-[#0F2926] mt-1">
               <Counter value={balance} /> <span className="text-xl">pts</span>
             </p>
@@ -183,7 +183,7 @@ export default function RewardsScreen() {
         <section className="mx-4 mt-5">
           <p className="text-xs font-extrabold text-[#0F2926] mb-2">Mes récompenses</p>
           {state.vouchers.length === 0 ? (
-            <p className="text-xs text-slate-500 p-4 rounded-2xl bg-white border border-dashed border-[#bae3d1] text-center">
+            <p className="text-xs text-slate-500 p-4 rounded-2xl bg-white border border-dashed border-[#a5d2b2] text-center">
               Échange tes points : la récompense apparaît ici avec son QR code, à montrer en caisse le jour du pop-up.
             </p>
           ) : (
@@ -191,7 +191,7 @@ export default function RewardsScreen() {
               {state.vouchers.map((v) => (
                 <li key={v.id}>
                   <button onClick={() => setShow({ title: v.title, sub: `Valable au pop-up · ${POPUP.dateLabel}`, code: v.code })} className="voucher">
-                    <QrCode className="w-6 h-6 text-[#194080]" />
+                    <QrCode className="w-6 h-6 text-[#18407f]" />
                     <span className="flex-1 min-w-0 text-left">
                       <span className="block text-sm font-extrabold text-[#0F2926] truncate">{v.title}</span>
                       <span className="block text-[10px] font-mono text-slate-500">{v.code}</span>
@@ -224,7 +224,7 @@ export default function RewardsScreen() {
         <Portal>
         <div className="modal" role="dialog" aria-modal="true" onClick={() => setConfirm(null)}>
           <div className="modal-card pop-in" onClick={(e) => e.stopPropagation()}>
-            <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">Confirmer l’échange</p>
+            <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#18407f]">Confirmer l’échange</p>
             <p className="font-display uppercase text-2xl leading-none text-[#0F2926] mt-1">{confirm.title}</p>
             <p className="text-sm text-slate-600 mt-3">
               <strong>{confirm.cost} pts</strong> seront retirés de ton solde ({balance} → {balance - confirm.cost}). Ta ligue ne change pas.
@@ -249,7 +249,7 @@ export default function RewardsScreen() {
               <button onClick={() => setAuth(false)} className="absolute right-3 top-3 icon-btn" aria-label="Fermer">
                 <X className="w-5 h-5" />
               </button>
-              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">Sauvegarder ma progression</p>
+              <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#18407f]">Sauvegarder ma progression</p>
               <p className="font-display uppercase text-2xl leading-none text-[#0F2926] mt-1 mb-4 pr-10">Mon compte</p>
               <AuthForm pseudo={state.profile.pseudo} onDone={() => setAuth(false)} />
               <p className="text-[11px] text-slate-500 mt-3">Tes points actuels sont ajoutés à ton compte, rien n’est perdu.</p>

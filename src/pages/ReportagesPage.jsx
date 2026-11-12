@@ -12,11 +12,11 @@ function Screen({ big = false, label }) {
     <div className={`relative w-full ${big ? 'h-[260px] sm:h-[400px]' : 'h-52 sm:h-56'} rounded-[24px] bg-[#0F2926] overflow-hidden group`} aria-hidden="true">
       <div className="absolute inset-0 scan-lines" />
       <svg className="absolute bottom-0 left-0 w-[200%] h-1/2 wave-divider-anim opacity-70 transition-transform duration-1000 translate-y-1/3 group-hover:translate-y-0" viewBox="0 0 2400 200" preserveAspectRatio="none">
-        <path d="M0,80 C200,30 400,30 600,80 C800,130 1000,130 1200,80 C1400,30 1600,30 1800,80 C2000,130 2200,130 2400,80 L2400,200 L0,200 Z" fill="#194080" />
-        <path d="M0,120 C200,80 400,80 600,120 C800,160 1000,160 1200,120 C1400,80 1600,80 1800,120 C2000,160 2200,160 2400,120 L2400,200 L0,200 Z" fill="#0D9488" opacity=".6" />
+        <path d="M0,80 C200,30 400,30 600,80 C800,130 1000,130 1200,80 C1400,30 1600,30 1800,80 C2000,130 2200,130 2400,80 L2400,200 L0,200 Z" fill="#18407f" />
+        <path d="M0,120 C200,80 400,80 600,120 C800,160 1000,160 1200,120 C1400,80 1600,80 1800,120 C2000,160 2200,160 2400,120 L2400,200 L0,200 Z" fill="#18407f" opacity=".6" />
       </svg>
-      <span className="absolute top-4 left-4 sm:top-5 sm:left-5 text-[11px] font-mono uppercase tracking-wider text-[#bae3d1]">Vakita × Seconde Maille</span>
-      <span className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${big ? 'w-20 h-20 sm:w-24 sm:h-24' : 'w-14 h-14'} rounded-full bg-[#bae3d1] text-[#0F2926] grid place-items-center transition-transform duration-500 group-hover:scale-110`}>
+      <span className="absolute top-4 left-4 sm:top-5 sm:left-5 text-[11px] font-mono uppercase tracking-wider text-[#a5d2b2]">Vakita × Seconde Maille</span>
+      <span className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${big ? 'w-20 h-20 sm:w-24 sm:h-24' : 'w-14 h-14'} rounded-full bg-[#a5d2b2] text-[#0F2926] grid place-items-center transition-transform duration-500 group-hover:scale-110`}>
         <span className="play-ring" />
         <span className="play-ring" style={{ animationDelay: '1.2s' }} />
         <Play className={`${big ? 'w-8 h-8' : 'w-5 h-5'} fill-current ml-1`} />
@@ -46,7 +46,7 @@ export default function ReportagesPage() {
       <section className="bg-white pb-20 lg:pb-28">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 space-y-6">
           <Reveal direction="clip">
-            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center p-4 sm:p-6 rounded-[32px] sm:rounded-[36px] bg-[#F5FBF9] border border-[#bae3d1]">
+            <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 items-center p-4 sm:p-6 rounded-[32px] sm:rounded-[36px] bg-[#F5FBF9] border border-[#a5d2b2]">
               <div className="lg:col-span-7">
                 <Screen big label="Contenu à venir" />
               </div>
@@ -64,10 +64,10 @@ export default function ReportagesPage() {
           <div className="grid md:grid-cols-2 gap-6">
             {rest.map((v, i) => (
               <Reveal key={v.title} delay={i * 120}>
-                <TiltCard max={3} className="h-full p-4 sm:p-6 rounded-[32px] bg-white border border-[#bae3d1] hover:border-[#194080] flex flex-col gap-6">
+                <TiltCard max={3} className="h-full p-4 sm:p-6 rounded-[32px] bg-white border border-[#a5d2b2] hover:border-[#18407f] flex flex-col gap-6">
                   <Screen label="Contenu à venir" />
                   <div className="px-1">
-                    <span className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#194080]">{v.tag}</span>
+                    <span className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#18407f]">{v.tag}</span>
                     <h2 className="font-display uppercase text-3xl leading-[0.95] text-[#0F2926] mt-2">{v.title}</h2>
                     <p className="text-sm text-slate-600 leading-relaxed mt-3">{v.text}</p>
                   </div>
@@ -79,7 +79,7 @@ export default function ReportagesPage() {
       </section>
 
       {/* POURQUOI VAKITA */}
-      <section className="bg-[#194080] text-white overflow-hidden">
+      <section className="bg-[#18407f] text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7">
             <SectionLabel num="?" light>

@@ -6,7 +6,7 @@ import { POPUP } from '../data/places';
 import AuthForm from '../components/AuthForm';
 import { cloudEnabled } from '../lib/cloud';
 
-const COLORS = ['#194080', '#0D9488', '#0F2926', '#2c5aa8', '#5fbfa6', '#115E59'];
+const COLORS = ['#18407f', '#18407f', '#0F2926', '#2c5aa8', '#5fbfa6', '#115E59'];
 
 export default function Onboarding() {
   const { state, dispatch, account } = useStore();
@@ -76,7 +76,7 @@ export default function Onboarding() {
       {step === 1 && (
         <section key="s-acc" className="onb-step">
           <div className="flex flex-col items-center mt-4">
-            <span className="w-20 h-20 rounded-[28px] bg-[#0F2926] text-[#bae3d1] grid place-items-center">
+            <span className="w-20 h-20 rounded-[28px] bg-[#0F2926] text-[#a5d2b2] grid place-items-center">
               <CloudUpload className="w-9 h-9" />
             </span>
             <h1 className="font-display uppercase text-[34px] leading-[0.95] text-[#0F2926] text-center mt-5">Ton compte</h1>
@@ -113,8 +113,8 @@ export default function Onboarding() {
               [MapPin, 'Être guidé·e pas à pas jusqu’à une box ou au pop-up de Lille'],
               [ShieldCheck, 'Ta position reste sur ton téléphone : elle n’est ni partagée ni enregistrée']
             ].map(([Icon, t]) => (
-              <li key={t} className="flex gap-3 items-start p-3 rounded-2xl bg-white border border-[#bae3d1]">
-                <span className="w-9 h-9 rounded-xl bg-[#F5FBF9] text-[#194080] grid place-items-center shrink-0">
+              <li key={t} className="flex gap-3 items-start p-3 rounded-2xl bg-white border border-[#a5d2b2]">
+                <span className="w-9 h-9 rounded-xl bg-[#F5FBF9] text-[#18407f] grid place-items-center shrink-0">
                   <Icon className="w-4 h-4" />
                 </span>
                 <span className="text-sm font-semibold text-[#0F2926] leading-snug pt-1">{t}</span>
@@ -122,11 +122,11 @@ export default function Onboarding() {
             ))}
           </ul>
           {geo === 'denied' && (
-            <p role="alert" className="text-xs text-[#194080] font-semibold mt-4 text-center leading-relaxed">
+            <p role="alert" className="text-xs text-[#18407f] font-semibold mt-4 text-center leading-relaxed">
               Localisation refusée. Tu peux continuer : les distances seront calculées depuis Lille-Centre. Tu pourras l’activer plus tard dans les réglages.
             </p>
           )}
-          {geo === 'unsupported' && <p className="text-xs text-[#194080] font-semibold mt-4 text-center">La localisation n’est pas disponible sur cet appareil.</p>}
+          {geo === 'unsupported' && <p className="text-xs text-[#18407f] font-semibold mt-4 text-center">La localisation n’est pas disponible sur cet appareil.</p>}
           <div className="mt-auto space-y-2.5 pt-4">
             {geo !== 'denied' && geo !== 'unsupported' ? (
               <button onClick={askGeo} disabled={geo === 'asking' || geo === 'granted'} className="app-btn app-btn-ink w-full">
@@ -173,7 +173,7 @@ export default function Onboarding() {
                   onClick={() => setColor(c)}
                   aria-label={`Couleur ${c}`}
                   aria-pressed={c === color}
-                  className={`w-10 h-10 rounded-full transition-transform ${c === color ? 'ring-4 ring-[#bae3d1] scale-110' : ''}`}
+                  className={`w-10 h-10 rounded-full transition-transform ${c === color ? 'ring-4 ring-[#a5d2b2] scale-110' : ''}`}
                   style={{ background: c }}
                 />
               ))}

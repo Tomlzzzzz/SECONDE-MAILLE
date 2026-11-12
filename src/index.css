@@ -3,16 +3,26 @@
 @tailwind utilities;
 
 /* =====================================================================
-   TYPOGRAPHIES — Titre : Apparat Semi Condensed · Texte : Gilroy Medium
+   TYPOGRAPHIES (charte) — Titre : ApparatSemiCond Black · Sous-titre : ApparatSemiCond Black Italic · Texte : Gilroy Medium
    Déposez les fichiers dans /public/fonts (voir LISEZMOI.txt).
    Sans fichier, repli automatique sur Barlow Semi Condensed / Plus Jakarta Sans.
    ===================================================================== */
 @font-face {
   font-family: 'Apparat Semi Condensed';
-  src: local('Apparat Semi Condensed Bold'), local('ApparatSemiCondensed-Bold'), local('Apparat SemiCond Bold'),
-    url('/fonts/Apparat-SemiCondensed-Bold.woff2') format('woff2');
+  src: local('ApparatSemiCond Black'), local('ApparatSemiCond-Black'), local('Apparat SemiCond Black'),
+    local('Apparat Semi Condensed Black'), url('/fonts/ApparatSemiCond-Black.woff2') format('woff2'),
+    url('/fonts/ApparatSemiCond-Black.otf') format('opentype');
   font-weight: 600 900;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apparat Semi Condensed';
+  src: local('ApparatSemiCond Black Italic'), local('ApparatSemiCond-BlackItalic'), local('Apparat SemiCond Black Italic'),
+    local('Apparat Semi Condensed Black Italic'), url('/fonts/ApparatSemiCond-BlackItalic.woff2') format('woff2'),
+    url('/fonts/ApparatSemiCond-BlackItalic.otf') format('opentype');
+  font-weight: 600 900;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
@@ -32,17 +42,17 @@
 
 /* =====================================================================
    SECONDE MAILLE — Design system
-   Palette conservée : encre #0F2926 · aqua #bae3d1 · teal #0D9488
-   · navy #115E59 · sable #F5FBF9 · secondaire bleu #194080
+   Palette (charte) : vert #a5d2b2 · bleu #18407f · encre #0F2926 (texte)
+   · sable #F5FBF9 (fond clair)
    ===================================================================== */
 :root {
   --ink: #0F2926;
-  --aqua: #bae3d1;
-  --deep: #0D9488;
+  --aqua: #a5d2b2;
+  --deep: #18407f;
   --navy: #115E59;
   --sand: #F5FBF9;
-  --blue: #194080;
-  --logo-green: #a4d2b3;
+  --blue: #18407f;
+  --logo-green: #a5d2b2;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
   --nav-h: 84px;
@@ -80,12 +90,14 @@
 
 .font-display {
   font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.01em;
   overflow-wrap: normal;
   hyphens: manual;
   text-wrap: balance;
 }
+/* charte : sous-titres en ApparatSemiCond Black Italic */
+h3.font-display, .font-subtitle { font-style: italic; }
 
 /* Lien d'évitement RGAA */
 .skip-link {
@@ -775,7 +787,7 @@ html.a11y-dyslexic-spacing {
 .ow-deep {
   top: 100vh;
   height: 162vh;
-  background: linear-gradient(180deg, #0F2926 0%, #10345e 40%, #194080 75%, #1b4688 100%);
+  background: linear-gradient(180deg, #0F2926 0%, #10345e 40%, #18407f 75%, #1b4688 100%);
 }
 .ow-rays { top: 100vh; height: 100vh; overflow: hidden; pointer-events: none; }
 .ow-rays span {
@@ -828,7 +840,7 @@ html.a11y-dyslexic-spacing {
 /* animations réduites : pas de fond fixe, simple dégradé surface → profondeur */
 .ocean-dive.is-static .ocean-track { display: none; }
 .ocean-dive.is-static {
-  background: linear-gradient(180deg, #CFEDE0 0, #E4F5EE 420px, #0F2926 820px, #12305f 60%, #194080 100%);
+  background: linear-gradient(180deg, #CFEDE0 0, #E4F5EE 420px, #0F2926 820px, #12305f 60%, #18407f 100%);
 }
 /* cartes du récit : verre sombre lisible sur le ciel comme sous l'eau */
 .story-card {
@@ -1669,9 +1681,9 @@ html.a11y-reduce-motion .split-word {
 /* icônes réseaux sociaux du footer (sans lien pour l'instant) */
 .social-icon {
   width: 38px; height: 38px; display: grid; place-items: center; border-radius: 9999px;
-  background: #0F2926; color: #bae3d1; cursor: default;
+  background: #0F2926; color: #a5d2b2; cursor: default;
   transition: transform .3s cubic-bezier(.34,1.56,.64,1), background-color .3s;
 }
-.social-icon:hover { transform: translateY(-2px) rotate(-6deg); background: #0D9488; color: #fff; }
-html[data-theme='dark'] .social-icon { background: #bae3d1; color: #0F2926; }
+.social-icon:hover { transform: translateY(-2px) rotate(-6deg); background: #18407f; color: #fff; }
+html[data-theme='dark'] .social-icon { background: #a5d2b2; color: #0F2926; }
 html[data-theme='dark'] .social-icon:hover { background: #45C9B7; color: #0F2926; }

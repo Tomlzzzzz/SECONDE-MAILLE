@@ -27,8 +27,8 @@ function TimelineRope() {
   const fill = Math.max(0, Math.min(1, (p - 0.2) / 0.45));
   return (
     <div ref={ref} className="relative">
-      <div className="absolute left-[27px] top-4 bottom-4 w-[3px] rounded-full bg-[#bae3d1]/60" aria-hidden="true">
-        <div className="w-full bg-gradient-to-b from-[#0D9488] to-[#194080] rounded-full origin-top" style={{ height: '100%', transform: `scaleY(${fill})` }} />
+      <div className="absolute left-[27px] top-4 bottom-4 w-[3px] rounded-full bg-[#a5d2b2]/60" aria-hidden="true">
+        <div className="w-full bg-gradient-to-b from-[#18407f] to-[#18407f] rounded-full origin-top" style={{ height: '100%', transform: `scaleY(${fill})` }} />
       </div>
       <ol className="space-y-6">
         {TIMELINE.map((s, i) => {
@@ -38,14 +38,14 @@ function TimelineRope() {
             <li key={s.title} className="relative pl-[76px]">
               <span
                 className={`absolute left-0 top-1 w-14 h-14 rounded-full grid place-items-center border-[3px] transition-all duration-500 ${
-                  active ? 'bg-[#194080] text-white border-[#194080]' : 'bg-white text-[#0F2926] border-[#bae3d1] scale-90'
+                  active ? 'bg-[#18407f] text-white border-[#18407f]' : 'bg-white text-[#0F2926] border-[#a5d2b2] scale-90'
                 }`}
               >
                 <Icon className="w-5 h-5" />
               </span>
               <Reveal direction="left" delay={i * 80}>
-                <div className="p-5 sm:p-6 rounded-[24px] bg-white border border-[#bae3d1] hover:border-[#194080] transition-colors duration-500">
-                  <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#194080]">{s.date}</p>
+                <div className="p-5 sm:p-6 rounded-[24px] bg-white border border-[#a5d2b2] hover:border-[#18407f] transition-colors duration-500">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#18407f]">{s.date}</p>
                   <h3 className="text-lg font-extrabold text-[#0F2926] mt-1">{s.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mt-1.5">{s.text}</p>
                 </div>
@@ -68,8 +68,8 @@ export default function BoxPage() {
 
       <PageLead
         aside={
-          <div className="p-6 rounded-[28px] bg-[#194080] text-white min-w-[230px]">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#bae3d1]">Disponibles dès le</p>
+          <div className="p-6 rounded-[28px] bg-[#18407f] text-white min-w-[230px]">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#a5d2b2]">Disponibles dès le</p>
             <p className="font-display text-5xl leading-none mt-2">20.01.27</p>
             <p className="text-sm text-white/70 mt-2">
               dans <CountUp to={daysUntil(EVENT.boxDate)} /> jours
@@ -92,8 +92,8 @@ export default function BoxPage() {
               const Icon = m.icon;
               return (
                 <Reveal key={m.title} delay={i * 90}>
-                  <TiltCard className="h-full p-6 sm:p-7 rounded-[28px] bg-[#F5FBF9] border border-[#bae3d1] group">
-                    <span className="w-12 h-12 rounded-2xl bg-[#0F2926] text-[#bae3d1] grid place-items-center transition-all duration-500 group-hover:bg-[#194080] group-hover:rotate-6">
+                  <TiltCard className="h-full p-6 sm:p-7 rounded-[28px] bg-[#F5FBF9] border border-[#a5d2b2] group">
+                    <span className="w-12 h-12 rounded-2xl bg-[#0F2926] text-[#a5d2b2] grid place-items-center transition-all duration-500 group-hover:bg-[#18407f] group-hover:rotate-6">
                       <Icon className="w-5 h-5" />
                     </span>
                     <h3 className="font-display uppercase text-2xl text-[#0F2926] mt-6">{m.title}</h3>
@@ -114,8 +114,8 @@ export default function BoxPage() {
             <SplitText as="h2" text="Déposer, cumuler, se retrouver." className="font-display uppercase text-[clamp(34px,5vw,72px)] leading-[0.95] text-[#0F2926] mt-6 mb-10" />
             <TimelineRope />
             <Reveal delay={150}>
-              <div className="mt-8 p-5 sm:p-6 rounded-[24px] bg-white border border-dashed border-[#194080]/40 flex gap-4 items-start">
-                <Megaphone className="w-5 h-5 text-[#194080] shrink-0 mt-0.5" />
+              <div className="mt-8 p-5 sm:p-6 rounded-[24px] bg-white border border-dashed border-[#18407f]/40 flex gap-4 items-start">
+                <Megaphone className="w-5 h-5 text-[#18407f] shrink-0 mt-0.5" />
                 <p className="text-sm text-slate-700 leading-relaxed">
                   <strong className="text-[#0F2926]">Où trouver les box ?</strong> Les emplacements seront annoncés avant le 20 janvier 2027 — inscrivez-vous en bas de page pour être
                   prévenu·e.
@@ -128,7 +128,7 @@ export default function BoxPage() {
           <Reveal direction="right" delay={150} className="lg:col-span-5 lg:sticky lg:top-28">
             <div className="mx-auto w-full max-w-[300px] aspect-[1/2] max-h-[600px] rounded-[48px] bg-[#0F2926] p-3 shadow-phone relative">
               <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-6 rounded-full bg-black/60" aria-hidden="true" />
-              <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-[#bae3d1] to-[#F5FBF9] flex flex-col items-center justify-center text-center px-6 gap-4 overflow-hidden">
+              <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-[#a5d2b2] to-[#F5FBF9] flex flex-col items-center justify-center text-center px-6 gap-4 overflow-hidden">
                 <Mascot className="w-20" />
                 <SecondeMailleLogo className="h-9" alt="" />
                 <p className="font-display uppercase text-2xl text-[#0F2926] leading-none">L’appli arrive</p>
@@ -140,7 +140,7 @@ export default function BoxPage() {
                     [Award, 'Suivre ses points']
                   ].map(([Icon, label]) => (
                     <span key={label} className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/70 text-xs font-extrabold text-[#0F2926]">
-                      <Icon className="w-4 h-4 text-[#194080]" /> {label}
+                      <Icon className="w-4 h-4 text-[#18407f]" /> {label}
                     </span>
                   ))}
                 </div>

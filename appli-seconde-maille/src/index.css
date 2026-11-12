@@ -4,12 +4,24 @@
 
 /* =====================================================================
    SECONDE MAILLE — L'APPLI · même DA que le site
-   encre #0F2926 · aqua #bae3d1 · teal #0D9488 · bleu #194080 · sable #F5FBF9
+   encre #0F2926 · aqua #a5d2b2 · teal #18407f · bleu #18407f · sable #F5FBF9
    ===================================================================== */
 @font-face {
   font-family: 'Apparat Semi Condensed';
-  src: local('Apparat Semi Condensed Bold'), local('ApparatSemiCondensed-Bold'), url('/fonts/Apparat-SemiCondensed-Bold.woff2') format('woff2');
+  src: local('ApparatSemiCond Black'), local('ApparatSemiCond-Black'), local('Apparat SemiCond Black'),
+    local('Apparat Semi Condensed Black'), url('/fonts/ApparatSemiCond-Black.woff2') format('woff2'),
+    url('/fonts/ApparatSemiCond-Black.otf') format('opentype');
   font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Apparat Semi Condensed';
+  src: local('ApparatSemiCond Black Italic'), local('ApparatSemiCond-BlackItalic'), local('Apparat SemiCond Black Italic'),
+    local('Apparat Semi Condensed Black Italic'), url('/fonts/ApparatSemiCond-BlackItalic.woff2') format('woff2'),
+    url('/fonts/ApparatSemiCond-BlackItalic.otf') format('opentype');
+  font-weight: 600 900;
+  font-style: italic;
   font-display: swap;
 }
 @font-face {
@@ -27,9 +39,9 @@
 
 :root {
   --ink: #0F2926;
-  --aqua: #bae3d1;
-  --deep: #0D9488;
-  --blue: #194080;
+  --aqua: #a5d2b2;
+  --deep: #18407f;
+  --blue: #18407f;
   --sand: #F5FBF9;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --tabbar: calc(74px + env(safe-area-inset-bottom));
@@ -49,9 +61,11 @@ body {
 }
 .font-display {
   font-family: 'Apparat Semi Condensed', 'Barlow Semi Condensed', 'Arial Narrow', sans-serif;
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.005em;
 }
+/* charte : sous-titres en ApparatSemiCond Black Italic */
+h3.font-display, .font-subtitle { font-style: italic; }
 button { -webkit-user-select: none; user-select: none; }
 *:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 ::-webkit-scrollbar { width: 0; height: 0; }
@@ -299,8 +313,8 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 }
 .mesh-bg {
   background-image:
-    repeating-linear-gradient(45deg, #bae3d1 0 1.5px, transparent 1.5px 22px),
-    repeating-linear-gradient(-45deg, #bae3d1 0 1.5px, transparent 1.5px 22px);
+    repeating-linear-gradient(45deg, #a5d2b2 0 1.5px, transparent 1.5px 22px),
+    repeating-linear-gradient(-45deg, #a5d2b2 0 1.5px, transparent 1.5px 22px);
 }
 
 /* ---------------------------------------------------------------- onboarding */
@@ -332,7 +346,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
   position: absolute;
   inset: 30px 10px 20px;
   border-radius: 50%;
-  background: radial-gradient(circle, #bae3d1, rgba(186, 227, 209, 0) 70%);
+  background: radial-gradient(circle, #a5d2b2, rgba(186, 227, 209, 0) 70%);
   animation: pulse-soft 3s ease-in-out infinite;
 }
 .onb-mascot { position: relative; width: 170px; animation: float 3.4s ease-in-out infinite; filter: drop-shadow(0 18px 20px rgba(15, 41, 38, 0.25)); }
@@ -649,7 +663,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
   background:
     repeating-linear-gradient(45deg, rgba(186, 227, 209, 0.07) 0 1.5px, transparent 1.5px 22px),
     repeating-linear-gradient(-45deg, rgba(186, 227, 209, 0.07) 0 1.5px, transparent 1.5px 22px),
-    linear-gradient(135deg, #0F2926, #194080);
+    linear-gradient(135deg, #0F2926, #18407f);
   box-shadow: 0 24px 40px -24px rgba(25, 64, 128, 0.8);
   transition: transform 0.4s var(--ease);
 }
@@ -774,7 +788,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .gh-sky { inset: 0 0 auto 0; width: 100%; height: 34%; object-fit: cover; }
 .gh-city { left: 0; top: 18%; width: 240%; height: 15%; animation: gh-slide 60s linear infinite; }
 .gh-boat { right: 6%; top: 17%; width: 30%; animation: gh-bob 3.2s ease-in-out infinite; }
-.gh-water { position: absolute; left: 0; right: 0; top: 32%; bottom: 0; background: linear-gradient(180deg, #2aa79a, #0D9488 30%, #0F2926 85%); }
+.gh-water { position: absolute; left: 0; right: 0; top: 32%; bottom: 0; background: linear-gradient(180deg, #2aa79a, #18407f 30%, #0F2926 85%); }
 .gh-net { left: 58%; top: 38%; width: 30%; opacity: 0.9; animation: gh-drift 9s ease-in-out infinite; }
 .gh-vaquita { left: 10%; top: 37%; width: 34%; transform: scaleX(-1); animation: gh-swim 3.6s ease-in-out infinite; }
 .gh-bub { position: absolute; bottom: 30%; width: 10px; height: 10px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.7); animation: gh-bub 3.6s ease-in infinite; }
@@ -789,7 +803,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .streak li { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .streak-dot {
   width: 34px; height: 34px; border-radius: 12px; display: grid; place-items: center;
-  font-size: 12px; font-weight: 800; color: #6b8a84; background: #eef8f4; border: 1.5px dashed #bae3d1;
+  font-size: 12px; font-weight: 800; color: #6b8a84; background: #eef8f4; border: 1.5px dashed #a5d2b2;
 }
 .streak li.is-on .streak-dot { background: var(--blue); color: #fff; border: 1.5px solid var(--blue); }
 .streak li.is-today .streak-dot { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--aqua); }
@@ -822,7 +836,7 @@ html:has(.app-fullscreen), html:has(.app-fullscreen) body { height: 100%; overfl
 .auth-msg--err { background: #e8eefb; color: var(--blue); }
 .auth-link { font-size: 12px; font-weight: 800; color: var(--blue); align-self: center; padding: 4px; }
 .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: #9bb3ae; flex: none; }
-.sync-dot.is-saved { background: #0D9488; }
+.sync-dot.is-saved { background: #18407f; }
 .sync-dot.is-syncing { background: var(--blue); animation: sync-pulse 1s ease-in-out infinite; }
 .sync-dot.is-offline, .sync-dot.is-error { background: #c9a227; }
 @keyframes sync-pulse { 50% { opacity: 0.3; } }

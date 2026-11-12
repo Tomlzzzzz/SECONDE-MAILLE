@@ -55,10 +55,10 @@ export default function ProductVisual({ type, className = "w-full h-64" }) {
 
       {/* Signature matière surlignée en vert d'eau Vakita × La Vie est Belt */}
       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-        <span className="bg-[#bae3d1] text-[#0F2926] text-[11px] font-extrabold px-2.5 py-1 rounded-sm tracking-tight shadow-xs">
+        <span className="bg-[#a5d2b2] text-[#0F2926] text-[11px] font-extrabold px-2.5 py-1 rounded-sm tracking-tight shadow-xs">
           {media.tag}
         </span>
-        <span className="bg-[#0F2926]/85 backdrop-blur-xs text-[#bae3d1] text-[10px] font-bold px-2 py-1 rounded">
+        <span className="bg-[#0F2926]/85 backdrop-blur-xs text-[#a5d2b2] text-[10px] font-bold px-2 py-1 rounded">
           59 × VAKITA
         </span>
       </div>

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { initials } from '../data/members';
 
-export function Avatar({ pseudo = '?', color = '#194080', size = 40, ring = false, me = false }) {
+export function Avatar({ pseudo = '?', color = '#18407f', size = 40, ring = false, me = false }) {
   return (
     <span
-      className={`inline-grid place-items-center rounded-full font-extrabold text-white shrink-0 ${ring ? 'ring-[3px] ring-white' : ''} ${me ? 'outline outline-2 outline-offset-2 outline-[#194080]' : ''}`}
+      className={`inline-grid place-items-center rounded-full font-extrabold text-white shrink-0 ${ring ? 'ring-[3px] ring-white' : ''} ${me ? 'outline outline-2 outline-offset-2 outline-[#18407f]' : ''}`}
       style={{ width: size, height: size, background: color, fontSize: size * 0.36 }}
       aria-hidden="true"
     >
@@ -32,16 +32,16 @@ export function TopBar({ title, onBack, right, dark = false, transparent = false
 
 export function Pill({ children, tone = 'aqua', className = '' }) {
   const tones = {
-    aqua: 'bg-[#bae3d1] text-[#0F2926]',
-    ink: 'bg-[#0F2926] text-[#bae3d1]',
-    blue: 'bg-[#194080] text-white',
-    white: 'bg-white text-[#0F2926] border border-[#bae3d1]',
+    aqua: 'bg-[#a5d2b2] text-[#0F2926]',
+    ink: 'bg-[#0F2926] text-[#a5d2b2]',
+    blue: 'bg-[#18407f] text-white',
+    white: 'bg-white text-[#0F2926] border border-[#a5d2b2]',
     ghost: 'bg-white/10 text-white'
   };
   return <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold ${tones[tone]} ${className}`}>{children}</span>;
 }
 
-export function ProgressBar({ value, tone = '#194080', track = '#e3f1eb', height = 10, animate = true }) {
+export function ProgressBar({ value, tone = '#18407f', track = '#e3f1eb', height = 10, animate = true }) {
   const [w, setW] = useState(animate ? 0 : value);
   useEffect(() => {
     const t = requestAnimationFrame(() => setW(value));
@@ -77,7 +77,7 @@ export function Empty({ icon: Icon, title, text, action }) {
   return (
     <div className="flex flex-col items-center text-center px-8 py-10 gap-3">
       {Icon && (
-        <span className="w-14 h-14 rounded-2xl bg-[#F5FBF9] border border-[#bae3d1] grid place-items-center text-[#194080]">
+        <span className="w-14 h-14 rounded-2xl bg-[#F5FBF9] border border-[#a5d2b2] grid place-items-center text-[#18407f]">
           <Icon className="w-6 h-6" />
         </span>
       )}

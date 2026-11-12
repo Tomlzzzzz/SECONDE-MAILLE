@@ -62,13 +62,13 @@ export default function GameHub() {
             <img src="/game/boat.svg" alt="" className="gh-boat" />
             <div className="gh-water" />
             <img src="/game/net-drift.svg" alt="" className="gh-net" />
-            <img src="/game/vaquita.svg" alt="" className="gh-vaquita" />
+            <img src="/game/vaquita.png" alt="" className="gh-vaquita" />
             <span className="gh-bub" style={{ left: '62%', animationDelay: '0s' }} />
             <span className="gh-bub" style={{ left: '74%', animationDelay: '1.2s' }} />
             <span className="gh-bub" style={{ left: '40%', animationDelay: '2.1s' }} />
           </div>
           <div className="relative p-4 pt-3">
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#bae3d1]">{status.kicker}</p>
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#a5d2b2]">{status.kicker}</p>
             <p className="font-display uppercase text-[40px] leading-[0.88] text-white mt-1">{GAME_NAME}</p>
             <p className="text-[12px] text-white/75 mt-2 max-w-[260px]">{status.text}</p>
             <button onClick={() => push('game')} className="app-btn app-btn-aqua w-full mt-4">
@@ -79,10 +79,10 @@ export default function GameHub() {
         </section>
 
         {/* série */}
-        <section className="mx-4 mt-4 p-4 rounded-3xl bg-white border border-[#bae3d1]">
+        <section className="mx-4 mt-4 p-4 rounded-3xl bg-white border border-[#a5d2b2]">
           <div className="flex items-center justify-between">
             <p className="text-xs font-extrabold text-[#0F2926] inline-flex items-center gap-1.5">
-              <Flame className="w-4 h-4 text-[#194080]" /> Ma série
+              <Flame className="w-4 h-4 text-[#18407f]" /> Ma série
             </p>
             <p className="text-[11px] text-slate-500">+{STREAK_STEP} pts / jour d’affilée (max +{STREAK_MAX})</p>
           </div>
@@ -99,19 +99,19 @@ export default function GameHub() {
         {/* stats */}
         <section className="mx-4 mt-3 grid grid-cols-3 gap-2">
           <div className="game-tile">
-            <Trophy className="w-4 h-4 text-[#194080]" />
+            <Trophy className="w-4 h-4 text-[#18407f]" />
             <p className="font-display text-2xl leading-none mt-1">{best}</p>
             <p className="text-[10px] text-slate-500">record</p>
           </div>
           <div className="game-tile">
-            <Waves className="w-4 h-4 text-[#194080]" />
+            <Waves className="w-4 h-4 text-[#18407f]" />
             <p className="font-display text-2xl leading-none mt-1">
               <Counter value={gamePts} />
             </p>
             <p className="text-[10px] text-slate-500">pts gagnés</p>
           </div>
           <div className="game-tile">
-            <CalendarDays className="w-4 h-4 text-[#194080]" />
+            <CalendarDays className="w-4 h-4 text-[#18407f]" />
             <p className="font-display text-2xl leading-none mt-1">
               {real.length}
             </p>
@@ -145,19 +145,19 @@ export default function GameHub() {
 
         {/* règles */}
         <section className="mx-4 mt-5 p-4 rounded-3xl bg-[#0F2926] text-white">
-          <p className="text-xs font-extrabold text-[#bae3d1] mb-2">Comment ça rapporte</p>
+          <p className="text-xs font-extrabold text-[#a5d2b2] mb-2">Comment ça rapporte</p>
           <ul className="space-y-2 text-[12px] text-white/80">
             <li className="flex gap-2">
-              <Timer className="w-4 h-4 shrink-0 text-[#bae3d1]" /> 1 pt toutes les 2 secondes de survie
+              <Timer className="w-4 h-4 shrink-0 text-[#a5d2b2]" /> 1 pt toutes les 2 secondes de survie
             </li>
             <li className="flex gap-2">
-              <Droplets className="w-4 h-4 shrink-0 text-[#bae3d1]" /> 1 pt par bulle d’air attrapée (max {MAX_GAME_POINTS} pts par partie)
+              <Droplets className="w-4 h-4 shrink-0 text-[#a5d2b2]" /> 1 pt par bulle d’air attrapée (max {MAX_GAME_POINTS} pts par partie)
             </li>
             <li className="flex gap-2">
-              <Flame className="w-4 h-4 shrink-0 text-[#bae3d1]" /> Bonus de série : +{STREAK_STEP} pts par jour consécutif, jusqu’à +{STREAK_MAX}
+              <Flame className="w-4 h-4 shrink-0 text-[#a5d2b2]" /> Bonus de série : +{STREAK_STEP} pts par jour consécutif, jusqu’à +{STREAK_MAX}
             </li>
             <li className="flex gap-2">
-              <CalendarDays className="w-4 h-4 shrink-0 text-[#bae3d1]" /> Une partie comptée par jour, jusqu’au 20 mars 2027 (jour du pop-up)
+              <CalendarDays className="w-4 h-4 shrink-0 text-[#a5d2b2]" /> Une partie comptée par jour, jusqu’au 20 mars 2027 (jour du pop-up)
             </li>
           </ul>
           <p className="text-[11px] text-white/50 mt-3">Les points du jeu s’ajoutent à ceux de tes dépôts : même solde, mêmes ligues, même Pass. Pour comparer, 1 kg déposé = 100 pts.</p>

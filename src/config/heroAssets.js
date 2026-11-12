@@ -22,7 +22,7 @@ export const HERO_ASSETS = {
   boat: { src: `${base}boat.svg`, alt: 'Bateau de pêche remontant un filet' },
   netHauled: { src: `${base}net-hauled.svg`, alt: '' },
   netDrift: { src: `${base}net-drift.svg`, alt: '' },
-  vaquita: { src: `${base}vaquita.svg`, alt: 'Un vaquita flotte à la surface' } // image temporaire
+  vaquita: { src: `${base}vaquita.png`, alt: 'Un vaquita flotte à la surface' }
 };
 
 /**

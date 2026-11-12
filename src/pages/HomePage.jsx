@@ -32,14 +32,14 @@ function useMedia(query) {
 /* ---------- Ticker incliné ---------- */
 function TickerBand() {
   return (
-    <div className="relative -mx-[3%] -rotate-2 bg-[#bae3d1] text-[#0F2926] py-3 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]" role="region" aria-label="Annonces Seconde Maille">
+    <div className="relative -mx-[3%] -rotate-2 bg-[#a5d2b2] text-[#0F2926] py-3 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]" role="region" aria-label="Annonces Seconde Maille">
       <div className="overflow-hidden">
         <div className="animate-ticker">
           {[0, 1].map((dup) => (
             <div key={dup} className="flex items-center shrink-0" aria-hidden={dup === 1 ? 'true' : undefined}>
               {TICKER_ITEMS.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 px-6 whitespace-nowrap">
-                  <span className="px-2.5 py-0.5 rounded-full bg-[#194080] text-white font-extrabold text-[10px] tracking-wider uppercase">{item.badge}</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#18407f] text-white font-extrabold text-[10px] tracking-wider uppercase">{item.badge}</span>
                   <span className="text-xs font-bold tracking-wide">{item.text}</span>
                   <span className="text-[#0F2926]/40" aria-hidden="true">✺</span>
                 </div>
@@ -82,7 +82,7 @@ function StoryLine() {
     <div ref={ref} className="relative">
       {/* fil (à gauche sur mobile, au centre sur grand écran) */}
       <div className="absolute top-0 bottom-0 left-[27px] md:left-1/2 w-[3px] -ml-[1.5px] rounded-full bg-white/10" aria-hidden="true">
-        <div className="w-full rounded-full bg-gradient-to-b from-[#bae3d1] to-[#5b7fc4] origin-top" style={{ height: '100%', transform: `scaleY(${p})` }} />
+        <div className="w-full rounded-full bg-gradient-to-b from-[#a5d2b2] to-[#5b7fc4] origin-top" style={{ height: '100%', transform: `scaleY(${p})` }} />
       </div>
       <div className="story-swimmer hidden md:block" style={{ top: `calc(${p * 100}% - 28px)` }} aria-hidden="true">
         <Mascot />
@@ -98,14 +98,14 @@ function StoryLine() {
             <li key={c.num} className="relative grid md:grid-cols-2 md:gap-16 pl-16 md:pl-0">
               <span
                 className={`absolute left-[27px] md:left-1/2 top-6 w-4 h-4 -ml-2 rounded-full border-[3px] transition-colors duration-500 ${
-                  p > (i + 0.3) / STORY_CHAPTERS.length ? 'bg-[#bae3d1] border-[#bae3d1]' : 'bg-[#0F2926] border-white/30'
+                  p > (i + 0.3) / STORY_CHAPTERS.length ? 'bg-[#a5d2b2] border-[#a5d2b2]' : 'bg-[#0F2926] border-white/30'
                 }`}
                 aria-hidden="true"
               />
               <Reveal direction={left ? 'left' : 'right'} className={left ? 'md:col-start-1' : 'md:col-start-2'}>
                 <div className="story-card p-6 sm:p-8 rounded-[28px]">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="font-display text-4xl sm:text-5xl text-[#bae3d1]">{c.num}</span>
+                    <span className="font-display text-4xl sm:text-5xl text-[#a5d2b2]">{c.num}</span>
                     <h3 className="font-display uppercase text-xl min-[380px]:text-2xl sm:text-3xl text-white">{c.title}</h3>
                   </div>
                   <p className="text-white/75 leading-relaxed mt-4">{c.text}</p>
@@ -122,18 +122,18 @@ function StoryLine() {
 /* ---------- Les 5 temps : défilement horizontal piloté par le scroll ---------- */
 function StepCard({ step }) {
   return (
-    <TiltCard className="w-[78vw] max-w-[360px] sm:w-[380px] sm:max-w-none lg:w-[400px] h-full rounded-[32px] bg-white border border-[#bae3d1] p-7 sm:p-8 flex flex-col justify-between overflow-hidden">
+    <TiltCard className="w-[78vw] max-w-[360px] sm:w-[380px] sm:max-w-none lg:w-[400px] h-full rounded-[32px] bg-white border border-[#a5d2b2] p-7 sm:p-8 flex flex-col justify-between overflow-hidden">
       <div>
         <div className="flex items-start justify-between gap-3">
-          <span className="font-display text-[clamp(64px,8vh,96px)] leading-[0.8] text-transparent" style={{ WebkitTextStroke: '1.5px #194080' }} aria-hidden="true">
+          <span className="font-display text-[clamp(64px,8vh,96px)] leading-[0.8] text-transparent" style={{ WebkitTextStroke: '1.5px #18407f' }} aria-hidden="true">
             {step.number}
           </span>
-          <span className="px-3 py-1 rounded-full bg-[#F5FBF9] border border-[#bae3d1] text-[10px] font-extrabold uppercase tracking-wider text-[#194080] text-right">
+          <span className="px-3 py-1 rounded-full bg-[#F5FBF9] border border-[#a5d2b2] text-[10px] font-extrabold uppercase tracking-wider text-[#18407f] text-right">
             {step.tag}
           </span>
         </div>
         <p className="font-display uppercase text-4xl text-[#0F2926] mt-5">{step.verb}</p>
-        <h3 className="text-lg font-extrabold text-[#0D9488] mt-1">{step.title}</h3>
+        <h3 className="text-lg font-extrabold text-[#18407f] mt-1">{step.title}</h3>
       </div>
       <p className="text-sm text-slate-600 leading-relaxed mt-5">{step.description}</p>
     </TiltCard>
@@ -174,8 +174,8 @@ function StepsRiver() {
       {pinned && (
         <div className="flex items-center gap-3 text-xs font-extrabold text-[#0F2926]/60 shrink-0" aria-hidden="true">
           <span>Faites défiler</span>
-          <div className="w-32 h-[3px] rounded-full bg-[#bae3d1] overflow-hidden">
-            <div className="h-full bg-[#194080] origin-left" style={{ transform: `scaleX(${p})` }} />
+          <div className="w-32 h-[3px] rounded-full bg-[#a5d2b2] overflow-hidden">
+            <div className="h-full bg-[#18407f] origin-left" style={{ transform: `scaleX(${p})` }} />
           </div>
         </div>
       )}
@@ -209,7 +209,7 @@ function StepsRiver() {
             <path
               d="M0 50 C 100 10, 200 90, 300 50 S 500 10, 600 50 S 800 90, 900 50 S 1100 10, 1200 50 S 1400 90, 1500 50 S 1700 10, 1800 50 S 1950 80, 2000 50"
               fill="none"
-              stroke="#194080"
+              stroke="#18407f"
               strokeWidth="2"
               strokeDasharray="1"
               pathLength="1"
@@ -254,21 +254,21 @@ export default function HomePage({ onNavigate }) {
             </h1>
             <ul data-title-anchor className="hero-intro mt-4 sm:mt-5 space-y-1.5 sm:space-y-2 text-[15px] sm:text-base text-[#0F2926]" style={{ animationDelay: '450ms' }}>
               <li className="flex items-start gap-2.5">
-                <CalendarDays className="w-4 h-4 mt-1 shrink-0 text-[#194080]" />
+                <CalendarDays className="w-4 h-4 mt-1 shrink-0 text-[#18407f]" />
                 <span>
-                  <strong>{EVENT.dateLabel}</strong> <span className="text-[#194080] font-bold">· J-{daysUntil(EVENT.date)}</span>
+                  <strong>{EVENT.dateLabel}</strong> <span className="text-[#18407f] font-bold">· J-{daysUntil(EVENT.date)}</span>
                 </span>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 mt-1 shrink-0 text-[#194080]" />
+                <MapPin className="w-4 h-4 mt-1 shrink-0 text-[#18407f]" />
                 <span>{EVENT.street}, <span className="whitespace-nowrap">{EVENT.city}</span></span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 mt-1 shrink-0 text-[#194080]" />
+                <Clock className="w-4 h-4 mt-1 shrink-0 text-[#18407f]" />
                 <span>{EVENT.hours}</span>
               </li>
               <li className="flex items-start gap-2.5">
-                <Ticket className="w-4 h-4 mt-1 shrink-0 text-[#194080]" />
+                <Ticket className="w-4 h-4 mt-1 shrink-0 text-[#18407f]" />
                 <span>Entrée : <strong>un matériau déposé</strong></span>
               </li>
             </ul>
@@ -338,8 +338,8 @@ export default function HomePage({ onNavigate }) {
               const Icon = s.icon;
               return (
                 <Reveal key={i} delay={i * 110}>
-                  <div className="h-full p-6 sm:p-7 rounded-[28px] bg-white/[0.06] border border-white/10 hover:border-[#bae3d1]/40 transition-colors duration-500">
-                    <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#bae3d1] flex items-center gap-2">
+                  <div className="h-full p-6 sm:p-7 rounded-[28px] bg-white/[0.06] border border-white/10 hover:border-[#a5d2b2]/40 transition-colors duration-500">
+                    <p className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#a5d2b2] flex items-center gap-2">
                       <Icon className="w-4 h-4" /> {s.top}
                     </p>
                     <p className="font-display text-[clamp(36px,4vw,56px)] leading-none mt-4">{s.value}</p>
@@ -374,12 +374,12 @@ export default function HomePage({ onNavigate }) {
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
             {NAME_ORIGIN.map((n, i) => (
               <Reveal key={n.word} delay={i * 140}>
-                <TiltCard max={4} className={`h-full p-7 sm:p-8 rounded-[32px] border ${i === 1 ? 'bg-[#a4d2b3]/35 border-[#a4d2b3]' : 'bg-[#F5FBF9] border-[#bae3d1]'}`}>
+                <TiltCard max={4} className={`h-full p-7 sm:p-8 rounded-[32px] border ${i === 1 ? 'bg-[#a5d2b2]/35 border-[#a5d2b2]' : 'bg-[#F5FBF9] border-[#a5d2b2]'}`}>
                   <p className="font-display uppercase text-[clamp(36px,3.6vw,56px)] leading-none text-[#0F2926]">{n.word}</p>
                   <ul className="mt-6 space-y-3">
                     {n.meanings.map((m) => (
                       <li key={m} className="flex items-start gap-3 text-[#0F2926] font-bold">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-[#194080] shrink-0" />
+                        <span className="mt-2 w-2 h-2 rounded-full bg-[#18407f] shrink-0" />
                         {m}
                       </li>
                     ))}
@@ -388,12 +388,12 @@ export default function HomePage({ onNavigate }) {
               </Reveal>
             ))}
             <Reveal delay={260} className="sm:col-span-2">
-              <div className="p-6 sm:p-7 rounded-[28px] bg-[#194080] text-white">
-                <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#bae3d1]">Nos objectifs</p>
+              <div className="p-6 sm:p-7 rounded-[28px] bg-[#18407f] text-white">
+                <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#a5d2b2]">Nos objectifs</p>
                 <ul className="grid sm:grid-cols-3 gap-4 mt-4">
                   {OBJECTIVES.map((o, i) => (
                     <li key={o} className="flex gap-3">
-                      <span className="font-display text-2xl text-[#bae3d1] leading-none">0{i + 1}</span>
+                      <span className="font-display text-2xl text-[#a5d2b2] leading-none">0{i + 1}</span>
                       <span className="text-sm font-semibold leading-snug">{o}</span>
                     </li>
                   ))}
@@ -419,7 +419,7 @@ export default function HomePage({ onNavigate }) {
           <div className="grid md:grid-cols-2 gap-5">
             {[
               { k: 'merch', title: 'Le merch', sub: 'T-shirt, sweat, casquette, chaussettes', img: `${import.meta.env?.BASE_URL ?? '/'}products/tshirt-blanc-1.webp`, tone: 'bg-[#F5FBF9] text-[#0F2926]' },
-              { k: 'starter-pack', title: 'Le starter pack', sub: '7 objets pour remplacer le jetable', img: `${import.meta.env?.BASE_URL ?? '/'}products/tote-bag.webp`, tone: 'bg-[#194080] text-white' }
+              { k: 'starter-pack', title: 'Le starter pack', sub: '7 objets pour remplacer le jetable', img: `${import.meta.env?.BASE_URL ?? '/'}products/tote-bag.webp`, tone: 'bg-[#18407f] text-white' }
             ].map((c, i) => (
               <Reveal key={c.k} delay={i * 120} className="h-full">
                 <button onClick={() => onNavigate('popup-merch', c.k)} className={`group w-full h-full text-left rounded-[32px] overflow-hidden grid grid-cols-5 ${c.tone}`} data-cursor="Voir">
@@ -446,7 +446,7 @@ export default function HomePage({ onNavigate }) {
       <StepsRiver />
 
       {/* ==================== BANDEAU GÉANT ==================== */}
-      <section className="bg-white py-14 lg:py-20 border-y border-[#bae3d1]/60">
+      <section className="bg-white py-14 lg:py-20 border-y border-[#a5d2b2]/60">
         <VelocityMarquee items={['Déposer', 'Fabriquer', 'Transmettre', 'Seconde Maille']} />
       </section>
 
@@ -467,7 +467,7 @@ export default function HomePage({ onNavigate }) {
                   onClick={() => onNavigate(page.id)}
                   className="index-row w-full text-left border-t border-[#0F2926]/15 px-2 sm:px-4 py-6 lg:py-8 grid grid-cols-12 items-center gap-3 sm:gap-4"
                 >
-                  <span className="col-span-2 sm:col-span-1 font-display text-lg text-[#194080]">{page.num}</span>
+                  <span className="col-span-2 sm:col-span-1 font-display text-lg text-[#18407f]">{page.num}</span>
                   <span className="index-title col-span-10 sm:col-span-5 font-display uppercase text-[clamp(28px,4vw,52px)] leading-none text-[#0F2926]">{page.label}</span>
                   <span className="col-span-10 col-start-3 sm:col-start-auto sm:col-span-5 text-sm text-slate-600 leading-relaxed">{PAGE_BLURBS[page.id]}</span>
                   <span className="hidden sm:flex col-span-1 justify-end">

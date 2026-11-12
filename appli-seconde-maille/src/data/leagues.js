@@ -3,12 +3,12 @@
    La ligue dépend des points GAGNÉS au total (dépenser ses points ne fait pas descendre).
    ===================================================================== */
 export const LEAGUES = [
-  { id: 'plancton', name: 'Plancton', min: 0, mult: 1, color: '#bae3d1', emoji: '·' },
+  { id: 'plancton', name: 'Plancton', min: 0, mult: 1, color: '#a5d2b2', emoji: '·' },
   { id: 'crevette', name: 'Crevette', min: 150, mult: 1.1, color: '#9fd8c4', emoji: '◦' },
   { id: 'hippocampe', name: 'Hippocampe', min: 400, mult: 1.2, color: '#5fbfa6', emoji: '∿' },
-  { id: 'tortue', name: 'Tortue', min: 800, mult: 1.3, color: '#0D9488', emoji: '◍' },
+  { id: 'tortue', name: 'Tortue', min: 800, mult: 1.3, color: '#18407f', emoji: '◍' },
   { id: 'dauphin', name: 'Dauphin', min: 1500, mult: 1.4, color: '#2c5aa8', emoji: '≋' },
-  { id: 'vaquita', name: 'Vaquita', min: 3000, mult: 1.5, color: '#194080', emoji: '★' }
+  { id: 'vaquita', name: 'Vaquita', min: 3000, mult: 1.5, color: '#18407f', emoji: '★' }
 ];
 
 export function leagueFor(totalEarned) {

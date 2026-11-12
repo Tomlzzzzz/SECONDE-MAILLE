@@ -10,7 +10,7 @@ const SRC = {
   clouds: '/game/clouds.svg',
   city: '/game/city.svg',
   net: '/game/net-drift.svg',
-  vaquita: '/game/vaquita.svg',
+  vaquita: '/game/vaquita.png',
   boat: '/game/boat.svg'
 };
 
@@ -68,7 +68,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     canvas.height = Math.round(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     S.v.w = clamp(W * 0.22, 70, 110);
-    S.v.h = S.v.w * (200 / 360);
+    S.v.h = S.v.w * (363 / 560); // proportions de l'illustration
     S.v.x = W * 0.24;
     if (!S.v.y) S.v.y = S.v.target = (top() + bottom()) / 2;
     if (!S.deco.length)
@@ -214,7 +214,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
       if (!b.got && ddx * ddx + ddy * ddy < 1) {
         b.got = true;
         S.bubbles += 1;
-        for (let i = 0; i < 6; i++) S.fx.push({ x: b.x, y: by, vx: rand(-60, 60), vy: rand(-90, 10), life: 0.5, r: rand(2, 4), c: '#bae3d1' });
+        for (let i = 0; i < 6; i++) S.fx.push({ x: b.x, y: by, vx: rand(-60, 60), vy: rand(-90, 10), life: 0.5, r: rand(2, 4), c: '#a5d2b2' });
       }
     }
     S.bubs = S.bubs.filter((b) => b.x > -30 && !b.got);
@@ -290,7 +290,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     ctx.stroke();
     for (let i = 0; i <= cols; i += 2) {
       const [px] = P(i, fromTop ? 0 : rows);
-      ctx.fillStyle = fromTop ? '#194080' : '#0F2926';
+      ctx.fillStyle = fromTop ? '#18407f' : '#0F2926';
       ctx.beginPath();
       if (fromTop) ctx.ellipse(px, ry, 7, 5, 0, 0, Math.PI * 2);
       else ctx.rect(px - 5, ry - 6, 10, 8);
@@ -328,7 +328,7 @@ export function createGame(canvas, assets, { lives = 3, onHud, onOver, reducedMo
     // eau
     const g = ctx.createLinearGradient(0, hz, 0, H);
     g.addColorStop(0, '#2aa79a');
-    g.addColorStop(0.35, '#0D9488');
+    g.addColorStop(0.35, '#18407f');
     g.addColorStop(0.75, '#0e5e63');
     g.addColorStop(1, '#0F2926');
     ctx.fillStyle = g;

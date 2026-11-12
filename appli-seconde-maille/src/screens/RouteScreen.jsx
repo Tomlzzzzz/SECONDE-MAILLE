@@ -83,7 +83,7 @@ export default function RouteScreen({ placeId }) {
         <MapView places={[place]} me={me} selectedId={place.id} route={route} fit={route ? 'route' : 'focus'} focusKey={place.id} className="absolute inset-0" />
         {guiding && nextStep && (
           <div className="absolute left-3 right-3 top-3 z-[500] rounded-2xl bg-[#0F2926] text-white p-3.5 flex items-center gap-3 shadow-lg guide-card">
-            <span className="w-11 h-11 rounded-xl bg-[#bae3d1] text-[#0F2926] grid place-items-center shrink-0">
+            <span className="w-11 h-11 rounded-xl bg-[#a5d2b2] text-[#0F2926] grid place-items-center shrink-0">
               <StepIcon type={nextStep.type} modifier={nextStep.modifier} />
             </span>
             <div className="min-w-0">
@@ -96,7 +96,7 @@ export default function RouteScreen({ placeId }) {
 
       <div className="flex-1 overflow-y-auto">
         <div className="p-4 border-b border-[#e3f1eb]">
-          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#194080]">Destination</p>
+          <p className="text-[11px] font-extrabold uppercase tracking-wider text-[#18407f]">Destination</p>
           <p className="font-display uppercase text-2xl leading-none text-[#0F2926] mt-1">{place.name}</p>
           <p className="text-xs text-slate-500 mt-1">{place.address}</p>
 
@@ -130,7 +130,7 @@ export default function RouteScreen({ placeId }) {
             </div>
           )}
           {state === 'error' && (
-            <div className="mt-4 p-3 rounded-2xl bg-[#F5FBF9] border border-[#bae3d1]">
+            <div className="mt-4 p-3 rounded-2xl bg-[#F5FBF9] border border-[#a5d2b2]">
               <p className="text-sm font-semibold text-[#0F2926]">Itinéraire indisponible pour le moment.</p>
               <p className="text-xs text-slate-500 mt-1">
                 À vol d’oiseau : {fmtDist(left)}, direction {Math.round(bearing(me, place))}°.
@@ -138,12 +138,12 @@ export default function RouteScreen({ placeId }) {
             </div>
           )}
           {me.approximate && (
-            <p className="text-[11px] text-[#194080] font-semibold mt-3">Position approximative (Lille-Centre) : active la localisation pour un guidage précis.</p>
+            <p className="text-[11px] text-[#18407f] font-semibold mt-3">Position approximative (Lille-Centre) : active la localisation pour un guidage précis.</p>
           )}
         </div>
 
         {arrived && (
-          <div className="m-4 p-4 rounded-2xl bg-[#bae3d1] flex items-center gap-3 pop-in">
+          <div className="m-4 p-4 rounded-2xl bg-[#a5d2b2] flex items-center gap-3 pop-in">
             <img src="/brand/vaquita-mascotte.png" alt="" className="w-12" />
             <div className="flex-1">
               <p className="font-extrabold text-[#0F2926]">Tu es arrivé·e !</p>

@@ -58,7 +58,7 @@ export function LegalModal({ id, onClose }) {
       <div className="modal-panel bg-white rounded-[36px] max-w-2xl w-full p-7 sm:p-9 shadow-2xl max-h-[85vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between gap-4">
           <h3 id="legal-modal-title" className="font-display uppercase text-3xl leading-[0.95] text-[#0F2926]">{c.title}</h3>
-          <button onClick={onClose} aria-label="Fermer la fenêtre d'information" className="w-10 h-10 rounded-full bg-[#F5FBF9] hover:bg-[#0F2926] hover:text-[#bae3d1] grid place-items-center shrink-0 transition-colors duration-300">
+          <button onClick={onClose} aria-label="Fermer la fenêtre d'information" className="w-10 h-10 rounded-full bg-[#F5FBF9] hover:bg-[#0F2926] hover:text-[#a5d2b2] grid place-items-center shrink-0 transition-colors duration-300">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -100,7 +100,7 @@ export default function SiteFooter({ onNavigate, onLegal }) {
               {SITE_PAGES.map((p) => (
                 <li key={p.id}>
                   <button onClick={() => onNavigate(p.id)} className="group flex items-center gap-2 text-sm font-bold">
-                    <span className="font-display text-xs text-[#0D9488]">{p.num}</span>
+                    <span className="font-display text-xs text-[#18407f]">{p.num}</span>
                     <span className="link-line">{p.label}</span>
                   </button>
                 </li>
@@ -115,18 +115,18 @@ export default function SiteFooter({ onNavigate, onLegal }) {
             <p className="text-sm text-slate-600 mt-3">
               <span className="font-bold text-[#0F2926]">Box de dépôt</span> dès le {EVENT.boxDateLabel}
             </p>
-            <p className="text-xs text-[#194080] font-bold mt-3">Entrée : un matériau déposé</p>
+            <p className="text-xs text-[#18407f] font-bold mt-3">Entrée : un matériau déposé</p>
           </div>
 
           <div className="lg:col-span-3">
             <h2 id="footer-newsletter" className="scroll-mt-28 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0F2926]/60 mb-4">Restez informé·e</h2>
             <p className="text-sm text-slate-600 leading-relaxed">Un e-mail pour l’ouverture des box, l’inauguration du pop-up et les contenus Vakita.</p>
             {sent ? (
-              <p className="modal-panel mt-4 p-3.5 rounded-2xl bg-[#bae3d1] text-sm font-bold">✓ Merci, vous êtes inscrit·e !</p>
+              <p className="modal-panel mt-4 p-3.5 rounded-2xl bg-[#a5d2b2] text-sm font-bold">✓ Merci, vous êtes inscrit·e !</p>
             ) : (
               <form onSubmit={submit} className="mt-4">
                 <label htmlFor="footer-email" className="sr-only">Votre adresse e-mail</label>
-                <div className="email-field flex items-center gap-1 p-1.5 pl-2 rounded-full bg-white border-2 border-[#bae3d1] transition-[border-color,box-shadow] duration-300">
+                <div className="email-field flex items-center gap-1 p-1.5 pl-2 rounded-full bg-white border-2 border-[#a5d2b2] transition-[border-color,box-shadow] duration-300">
                   <input
                     id="footer-email"
                     type="email"
@@ -136,7 +136,7 @@ export default function SiteFooter({ onNavigate, onLegal }) {
                     placeholder="votre.email@exemple.fr"
                     className="email-input flex-1 min-w-0 h-10 bg-transparent px-3 text-sm text-[#0F2926] placeholder:text-slate-400"
                   />
-                  <button type="submit" aria-label="S'inscrire" className="w-10 h-10 rounded-full bg-[#0F2926] text-[#bae3d1] grid place-items-center hover:bg-[#0D9488] transition-colors">
+                  <button type="submit" aria-label="S'inscrire" className="w-10 h-10 rounded-full bg-[#0F2926] text-[#a5d2b2] grid place-items-center hover:bg-[#18407f] transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -147,7 +147,7 @@ export default function SiteFooter({ onNavigate, onLegal }) {
                 ['vakita.fr', 'https://www.vakita.fr'],
                 ['lavieestbelt.fr', 'https://www.lavieestbelt.fr']
               ].map(([l, h]) => (
-                <a key={h} href={h} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-full border border-[#0F2926]/20 text-xs font-bold hover:bg-[#0F2926] hover:text-[#bae3d1] transition-colors inline-flex items-center gap-1">
+                <a key={h} href={h} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-full border border-[#0F2926]/20 text-xs font-bold hover:bg-[#0F2926] hover:text-[#a5d2b2] transition-colors inline-flex items-center gap-1">
                   {l} <ArrowUpRight className="w-3 h-3" />
                 </a>
               ))}

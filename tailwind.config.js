@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        vakita: { aqua: '#bae3d1', deep: '#0D9488', black: '#0F2926' },
-        ocean: '#194080',
+        vakita: { aqua: '#a5d2b2', deep: '#18407f', black: '#0F2926' },
+        ocean: '#18407f',
         lveb: { navy: '#115E59', sand: '#F5FBF9' }
       },
       fontFamily: {
